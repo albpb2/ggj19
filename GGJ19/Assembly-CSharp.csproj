@@ -120,6 +120,8 @@
     <Compile Include="Assets\Scripts\Refugees\BasicRefugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\MediumRefugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\Refugee.cs" />
+    <Compile Include="Assets\Scripts\Refugees\RefugeesFactory.cs" />
+    <Compile Include="Assets\Scripts\Refugees\RefugeeSpawningSpot.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeeWithBasicNeeds.cs" />
     <Compile Include="Assets\Scripts\Tags.cs" />
     <Compile Include="Assets\Scripts\TimeTracker.cs" />

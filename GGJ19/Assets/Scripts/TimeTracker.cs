@@ -15,11 +15,14 @@ public class TimeTracker : MonoBehaviour
     [SerializeField]
     private UnityEngine.UI.Text _clockText;
 
+    public delegate void NewDayBegins(int dayNumber);
+    public event NewDayBegins onNewDayBegun;
+
     private float _timeForCurrentDayInSeconds;
     private float _secondsPerHour;
     private float _secondsPerDay;
 
-    public int CurrentDay { get; set; } = 0;
+    public int CurrentDay { get; set; } = 1;
 
     public void Start()
     {
@@ -34,8 +37,7 @@ public class TimeTracker : MonoBehaviour
 
         if (_timeForCurrentDayInSeconds >= _secondsPerDay)
         {
-            CurrentDay++;
-            _timeForCurrentDayInSeconds = 0;
+            BeginNewDay();
         }
 
         var _currentTimeHour = (int)(_timeForCurrentDayInSeconds / _secondsPerHour);
@@ -44,6 +46,13 @@ public class TimeTracker : MonoBehaviour
         var _adjustedCurrentTimeHour = _currentTimeHour + _initialHour;
 
         _clockText.text = (_adjustedCurrentTimeHour % 24).ToString("00") + ":" + GetMinuteFraction(_currentTimeMinute).ToString("00");
+    }
+
+    private void BeginNewDay()
+    {
+        CurrentDay++;
+        onNewDayBegun?.Invoke(CurrentDay);
+        _timeForCurrentDayInSeconds = 0;
     }
 
     private int GetMinuteFraction(float minute)
