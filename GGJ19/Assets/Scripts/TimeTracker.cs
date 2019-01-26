@@ -11,10 +11,11 @@ public class TimeTracker : MonoBehaviour
     [SerializeField]
     private int _initialHour = 7;
     [SerializeField]
+    private int _minutesFraction = 15;
+    [SerializeField]
     private UnityEngine.UI.Text _clockText;
 
     private float _timeForCurrentDayInSeconds;
-    private float _secondsPerMinute;
     private float _secondsPerHour;
     private float _secondsPerDay;
 
@@ -24,7 +25,6 @@ public class TimeTracker : MonoBehaviour
     {
         _timeForCurrentDayInSeconds = 0;
         _secondsPerHour = _realDayDurationInMinutes * SecondsPerMinute / _dayDurationHours;
-        _secondsPerMinute = _secondsPerHour / 60;
         _secondsPerDay = _realDayDurationInMinutes * 60;
     }
 
@@ -48,21 +48,6 @@ public class TimeTracker : MonoBehaviour
 
     private int GetMinuteFraction(float minute)
     {
-        if (minute < 15)
-        {
-            return 0;
-        }
-
-        if (minute < 30)
-        {
-            return 15;
-        }
-
-        if (minute < 45)
-        {
-            return 30;
-        }
-
-        return 45;
+        return ((int) (minute / _minutesFraction)) * _minutesFraction;
     }
 }
