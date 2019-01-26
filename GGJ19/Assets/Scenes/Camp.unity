@@ -554,6 +554,7 @@ MonoBehaviour:
   _realDayDurationInMinutes: 1
   _dayDurationHours: 12
   _initialHour: 7
+  _minutesFraction: 10
   _clockText: {fileID: 227994323}
 --- !u!4 &753949498
 Transform:

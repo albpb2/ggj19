@@ -105,6 +105,9 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+    <Compile Include="Assets\Scripts\Refugees\BasicNeeds.cs" />
+    <Compile Include="Assets\Scripts\Refugees\BasicRefugee.cs" />
+    <Compile Include="Assets\Scripts\Refugees\Refugee.cs" />
     <Compile Include="Assets\Scripts\TimeTracker.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
