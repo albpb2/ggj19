@@ -7,6 +7,9 @@ namespace Assets.Scripts.Objects.InteractableSceneObjects
     {
         private LayerTransitionManager _layerTransitionManager;
 
+        [SerializeField]
+        private bool _advance;
+
         public override void Start()
         {
             base.Start();
@@ -16,7 +19,14 @@ namespace Assets.Scripts.Objects.InteractableSceneObjects
 
         public override void Interact()
         {
-            _layerTransitionManager.TransitionToNextLayer();
+            if (_advance)
+            {
+                _layerTransitionManager.TransitionToNextLayer();
+            }
+            else
+            {
+                _layerTransitionManager.TransitionToPreviousLayer();
+            }
         }
     }
 }
