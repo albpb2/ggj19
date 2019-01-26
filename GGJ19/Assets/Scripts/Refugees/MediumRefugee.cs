@@ -1,6 +1,6 @@
 ﻿namespace Assets.Scripts.Refugees
 {
-    public class BasicRefugee : RefugeeWithBasicNeeds
+    public class MediumRefugee : RefugeeWithBasicNeeds
     {
     }
 }

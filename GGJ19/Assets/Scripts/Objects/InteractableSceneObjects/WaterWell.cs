@@ -1,10 +1,12 @@
-﻿namespace Assets.Scripts.Objects.InteractableSceneObjects
+﻿using Assets.Scripts.Objects.PortableObjects;
+
+namespace Assets.Scripts.Objects.InteractableSceneObjects
 {
-    public class WaterWell : IInteractableSceneObject
+    public class WaterWell : InteractableSceneObject
     {
-        public void Interact()
+        public override void Interact()
         {
-            throw new System.NotImplementedException();
+            _player.TakePortableObject(new Water());
         }
     }
 }
