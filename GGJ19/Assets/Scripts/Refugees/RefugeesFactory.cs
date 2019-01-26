@@ -68,7 +68,7 @@ namespace Assets.Scripts.Refugees
             var randomNumber = _random.Next(0, 100);
             if (randomNumber < _basicRefugeeProbability)
             {
-                var refugee = CreateBasicRefugee(spawningSpot);
+                CreateBasicRefugee(spawningSpot);
             }
         }
     }

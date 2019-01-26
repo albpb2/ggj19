@@ -21,11 +21,14 @@ namespace Assets.Scripts.Player
         private int _initialKarma;
 
         private int _halfKarma;
+        private GameManager _gameManager;
 
         public int Amount { get; set; }
 
         public void Start()
         {
+            _gameManager = FindObjectOfType<GameManager>();
+
             Amount = Math.Max(Math.Min(_initialKarma, MaxKarma), MinKarma);
         }
 

@@ -10,6 +10,7 @@ namespace Assets.Scripts.Player
 
         private InputManager _inputManager;
         private Character _character;
+        private GameManager _gameManager;
         private Vector3? _targetDirection;
 
         public InteractableSceneObject TargetObject { get; set; }
@@ -18,10 +19,16 @@ namespace Assets.Scripts.Player
         {
             _inputManager = FindObjectOfType<InputManager>();
             _character = FindObjectOfType<Character>();
+            _gameManager = FindObjectOfType<GameManager>();;
         }
 
         public void Update()
         {
+            if (_gameManager.Pause)
+            {
+                return;
+            }
+
             float step = _speed * Time.deltaTime;
             
             if (_inputManager.MoveLeft)

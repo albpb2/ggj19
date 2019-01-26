@@ -9,22 +9,30 @@ namespace Assets.Scripts.Objects
         protected CharacterMovementController _characterMovementController;
         protected Character _player;
         protected InputManager _inputManager;
+        protected GameManager _gameManager;
 
         public virtual void Start()
         {
             _characterMovementController = FindObjectOfType<CharacterMovementController>();
             _player = FindObjectOfType<Character>();
             _inputManager = FindObjectOfType<InputManager>();
+            _gameManager = FindObjectOfType<GameManager>();
         }
 
         public void OnMouseEnter()
         {
-            _inputManager.SetSelectableCursor();
+            if (!_gameManager.Pause)
+            {
+                _inputManager.SetSelectableCursor();
+            }
         }
 
         public void OnMouseExit()
         {
-            _inputManager.SetDefaultCursor();
+            if (!_gameManager.Pause)
+            {
+                _inputManager.SetDefaultCursor();
+            }
         }
 
         public void OnPointerClick(PointerEventData eventData)

@@ -106,13 +106,16 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Scripts\CameraScripts\CharacterTracker.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Layers.cs" />
     <Compile Include="Assets\Scripts\LayerTransitionManager.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObject.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\PlaneSwitchTrigger.cs" />
+    <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\Store.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\WaterWell.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\PortableObjects\PortableObjectType.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObjects\Water.cs" />
     <Compile Include="Assets\Scripts\Player\Character.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterMovementController.cs" />
@@ -123,6 +126,10 @@
     <Compile Include="Assets\Scripts\Refugees\RefugeesFactory.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeeSpawningSpot.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeeWithBasicNeeds.cs" />
+    <Compile Include="Assets\Scripts\StorageSystem\Storage.cs" />
+    <Compile Include="Assets\Scripts\StorageSystem\StorageBack.cs" />
+    <Compile Include="Assets\Scripts\StorageSystem\StorageItem.cs" />
+    <Compile Include="Assets\Scripts\StorageSystem\StorageSpace.cs" />
     <Compile Include="Assets\Scripts\Tags.cs" />
     <Compile Include="Assets\Scripts\TimeTracker.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />

@@ -14,6 +14,7 @@ namespace Assets.Scripts
         private CursorMode _cursorMode = CursorMode.Auto;
         private Vector2 _hotSpot = Vector2.zero;
         private Texture2D _defaultCursor;
+        private GameManager _gameManager;
 
         public Vector3? ClickedPoint { get; set; }
 
@@ -24,10 +25,16 @@ namespace Assets.Scripts
         public void Start()
         {
             _character = FindObjectOfType<Character>();
+            _gameManager = FindObjectOfType<GameManager>();
         }
 
         public void Update()
         {
+            if (_gameManager.Pause)
+            {
+                return;
+            }
+
             ResetValues();
 
             DetectMovementClick();
