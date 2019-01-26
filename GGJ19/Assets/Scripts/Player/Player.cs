@@ -1,4 +1,6 @@
 ﻿using System;
+using Assets.Scripts.Objects;
+using UnityEngine;
 
 namespace Assets.Scripts.Player
 {
@@ -8,6 +10,8 @@ namespace Assets.Scripts.Player
         private const int MaxKarma = 100;
 
         public int Karma { get; private set; }
+        public PortableObject PortableObject { get; private set; }
+        public MonoBehaviour TargetObject { get; set; }
 
         public void IncreaseKarma(int quantity)
         {
@@ -17,6 +21,14 @@ namespace Assets.Scripts.Player
         public void ReduceKarma(int quantity)
         {
             Karma = Math.Max(Karma - quantity, MinKarma);
+        }
+
+        public void TakePortableObject(PortableObject portableObject)
+        {
+            if (PortableObject == null)
+            {
+                PortableObject = portableObject;
+            }
         }
     }
 }

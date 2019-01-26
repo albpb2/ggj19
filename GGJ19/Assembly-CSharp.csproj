@@ -105,6 +105,10 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+    <Compile Include="Assets\Scripts\Objects\InteractableSceneObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\WaterWell.cs" />
+    <Compile Include="Assets\Scripts\Objects\PortableObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\PortableObjects\Water.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Refugees\BasicRefugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\MediumRefugee.cs" />
