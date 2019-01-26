@@ -107,6 +107,7 @@
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\PlaneSwitchTrigger.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\WaterWell.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObjects\Water.cs" />
