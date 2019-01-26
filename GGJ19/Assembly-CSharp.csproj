@@ -117,6 +117,7 @@
     <Compile Include="Assets\Scripts\Refugees\MediumRefugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\Refugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeeWithBasicNeeds.cs" />
+    <Compile Include="Assets\Scripts\Tags.cs" />
     <Compile Include="Assets\Scripts\TimeTracker.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />

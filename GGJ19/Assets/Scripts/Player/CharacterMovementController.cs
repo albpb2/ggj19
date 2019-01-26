@@ -11,6 +11,7 @@ namespace Assets.Scripts.Player
         private InputManager _inputManager;
         private Character _character;
         private Vector3? _targetDirection;
+        private GameObject _targetPlaneSwitch;
 
         public InteractableSceneObject TargetObject { get; set; }
         
@@ -51,11 +52,20 @@ namespace Assets.Scripts.Player
                 {
                     _targetDirection = null;
                 }
+
+                TargetObject = null;
+                _targetPlaneSwitch = null;
             }
             else if (TargetObject != null)
             {
                 transform.position = Vector3.MoveTowards(transform.position, TargetObject.transform.position, step);
             }
+            else if (_targetPlaneSwitch != null)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, GetTargetWithXPosition(_targetPlaneSwitch.transform.position.x), step);
+            }
+
+            ProcessClickedPlaneSwitchTrigger();
         }
 
         private void MoveTowardsDirection(Vector3 direction, float step)
@@ -66,6 +76,7 @@ namespace Assets.Scripts.Player
         void OnTriggerEnter2D(Collider2D collider)
         {
             InteractWithTargetObjectIfIsOnTrigger(collider);
+            InteractWithTargetPlaneSwitchIfIsOnTrigger(collider);
         }
 
         void OnTriggerStay2D(Collider2D collider)
@@ -77,6 +88,7 @@ namespace Assets.Scripts.Player
         {
             TargetObject = interactableSceneObject;
             _targetDirection = null;
+            _targetPlaneSwitch = null;
         }
 
         private void InteractWithTargetObjectIfIsOnTrigger(Collider2D collider)
@@ -87,10 +99,44 @@ namespace Assets.Scripts.Player
                 TargetObject = null;
             }
         }
+        private void InteractWithTargetPlaneSwitchIfIsOnTrigger(Collider2D collider)
+        {
+            if (_targetPlaneSwitch != null && collider.gameObject == _targetPlaneSwitch)
+            {
+                Debug.Log("Switch reached");
+            }
+        }
 
         private bool IsCloseHorizontally(float x1, float x2)
         {
             return Mathf.Abs(x1 - x2) < 0.1f;
+        }
+
+        private void ProcessClickedPlaneSwitchTrigger()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                var hits = Physics.RaycastAll(ray, 100);
+
+                for (int i = 0; i < hits.Length; i++)
+                {
+                    if (hits[i].collider.gameObject.tag == Tags.PlaneSwitchTrigger)
+                    {
+                        _targetPlaneSwitch = hits[i].collider.gameObject;
+                        _targetDirection = null;
+                        TargetObject = null;
+                    }
+                }
+            }
+        }
+
+        private Vector3 GetTargetWithXPosition(float xPosition)
+        {
+            return new Vector3(
+                xPosition,
+                transform.position.y,
+                transform.position.z);
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Assets.Scripts
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.tag == "CharacterPlane")
+                    if (hits[i].collider.gameObject.tag == Tags.CharacterPlane)
                     {
                         ClickedPoint = hits[i].point;
                     }
