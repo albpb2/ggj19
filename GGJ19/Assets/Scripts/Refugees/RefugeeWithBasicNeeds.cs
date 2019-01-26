@@ -16,5 +16,15 @@
         {
             ResetNeeds();
         }
+
+        public void Feed()
+        {
+            HungerResolved = true;
+        }
+
+        public void GiveWater()
+        {
+            ThirstResolved = true;
+        }
     }
 }
