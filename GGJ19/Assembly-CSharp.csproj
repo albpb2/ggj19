@@ -105,7 +105,10 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+    <Compile Include="Assets\Scripts\CameraScripts\CharacterTracker.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />
+    <Compile Include="Assets\Scripts\Layers.cs" />
+    <Compile Include="Assets\Scripts\LayerTransitionManager.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObject.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\PlaneSwitchTrigger.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\WaterWell.cs" />
@@ -175,6 +178,12 @@
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>C:/PersonalRepos/GGJ19b/GGJ19/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>C:/PersonalRepos/GGJ19b/GGJ19/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>C:/PersonalRepos/GGJ19b/GGJ19/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
