@@ -80,7 +80,7 @@ namespace Assets.Scripts.Player
         {
             foreach (Transform child in _bagImage.transform)
             {
-                if (child.gameObject != _closeButton.gameObject)
+                if (child.gameObject.GetComponent<StorageItem>() != null)
                 {
                     Destroy(child.gameObject);
                 }

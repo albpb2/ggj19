@@ -11,13 +11,17 @@ namespace Assets.Scripts.Conversation
         [SerializeField]
         private TextAsset _basicDialogLines;
         [SerializeField]
+        private TextAsset _mediumDialogLines;
+        [SerializeField]
         protected DialogBox _dialogBox;
 
         public List<BasicDialogLine> BasicDialogLines { get; set; }
+        public List<MediumDialogLine> MediumDialogLines { get; set; }
 
         public void Start()
         {
             BasicDialogLines = ParseBasicDialogNames();
+            MediumDialogLines = ParseMediumDialogNames();
             _dialogBox = FindObjectOfType<DialogBox>();
         }
 
@@ -26,7 +30,12 @@ namespace Assets.Scripts.Conversation
             return JsonConvert.DeserializeObject<List<BasicDialogLine>>(_basicDialogLines.text);
         }
 
-        public void WriteLine(BasicDialogLine dialogLine, string refugeeName)
+        private List<MediumDialogLine> ParseMediumDialogNames()
+        {
+            return JsonConvert.DeserializeObject<List<MediumDialogLine>>(_mediumDialogLines.text);
+        }
+
+        public void WriteLine(DialogLine dialogLine, string refugeeName)
         {
             const string OwnLineHeader = "You";
             var name = dialogLine.OwnLine ? OwnLineHeader : refugeeName;

@@ -11,7 +11,7 @@ namespace Assets.Scripts.Refugees
     {
         private const int MinDaysToStay = 1;
         private const int FamilyProbability = 10;
-        private const int VisibleSortingOrder = 4;
+        private const int VisibleSortingOrder = 2;
 
         [SerializeField]
         private GameObject _basicRefugeePrefab;
@@ -64,11 +64,27 @@ namespace Assets.Scripts.Refugees
             ReadRefugeeNames();
 
             _timeTracker.onNewDayBegun += SpawnRandomRefugees;
+
+            SpawnRandomRefugees(2);
         }
 
         public Refugee CreateBasicRefugee(RefugeeSpawningSpot spawningSpot, int sortingLayerId)
         {
             var refugee = Instantiate(_basicRefugeePrefab).GetComponent<BasicRefugee>();
+            return SetUpRefugee(refugee, spawningSpot, sortingLayerId);
+        }
+
+        public Refugee CreateMediumRefugee(RefugeeSpawningSpot spawningSpot, int sortingLayerId)
+        {
+            var refugee = Instantiate(_mediumRefugeePrefab).GetComponent<MediumRefugee>();
+            refugee = (MediumRefugee)SetUpRefugee(refugee, spawningSpot, sortingLayerId);
+            refugee.ChooseLine();
+            return refugee;
+        }
+
+        private Refugee SetUpRefugee(Refugee refugee, RefugeeSpawningSpot spawningSpot, int sortingLayerId)
+        {
+            refugee.Start();
             refugee.transform.position = spawningSpot.transform.position;
             refugee.SetSpawningSpot(spawningSpot);
 
@@ -156,6 +172,10 @@ namespace Assets.Scripts.Refugees
             if (randomNumber < _basicRefugeeProbability)
             {
                 CreateBasicRefugee(spawningSpot, sortingLayerId);
+            }
+            else
+            {
+                CreateMediumRefugee(spawningSpot, sortingLayerId);
             }
         }
 

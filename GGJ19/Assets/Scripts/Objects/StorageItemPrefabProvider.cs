@@ -14,6 +14,18 @@ namespace Assets.Scripts.Objects
         private GameObject _feedingBottlePrefab;
         [SerializeField]
         private GameObject _pillsPrefab;
+        [SerializeField]
+        private GameObject _ballPrefab;
+        [SerializeField]
+        private GameObject _rosePrefab;
+        [SerializeField]
+        private GameObject _toyPrefab;
+        [SerializeField]
+        private GameObject _bookPrefab;
+        [SerializeField]
+        private GameObject _guitarPrefab;
+        [SerializeField]
+        private GameObject _bottlePrefab;
 
         private Dictionary<PortableObjectType, GameObject> _prefabsPerType;
 
@@ -25,6 +37,12 @@ namespace Assets.Scripts.Objects
                 [PortableObjectType.Coat] = _coatPrefab,
                 [PortableObjectType.FeedingBottle] = _feedingBottlePrefab,
                 [PortableObjectType.Pills] = _pillsPrefab,
+                [PortableObjectType.Ball] = _ballPrefab,
+                [PortableObjectType.Rose] = _rosePrefab,
+                [PortableObjectType.Toy] = _toyPrefab,
+                [PortableObjectType.Book] = _bookPrefab,
+                [PortableObjectType.Guitar] = _guitarPrefab,
+                [PortableObjectType.Bottle] = _bottlePrefab,
             };
         }
 

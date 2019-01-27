@@ -1,0 +1,149 @@
+[
+	{
+		"LineId": 1,
+		"OwnLine": true,
+		"Text": "I'm sorry. I hope we make you feel comfortable here.",
+		"PossibleResponses": [],
+		"RelatedObjects": []
+	},
+	{
+		"LineId": 2,
+		"OwnLine": true,
+		"Text": "You must miss it so bad...",
+		"PossibleResponses": [],
+		"RelatedObjects": []
+	},
+	{
+		"LineId": 3,
+		"OwnLine": true,
+		"Text": "We're here to make you feel like home (as much as we can).",
+		"PossibleResponses": [],
+		"RelatedObjects": []
+	},
+	{
+		"LineId": 4,
+		"OwnLine": false,
+		"Text": "Have a good day.",
+		"PossibleResponses": [[]],
+		"RelatedObjects": []
+	},
+	{
+		"LineId": 5,
+		"OwnLine": false,
+		"Text": "Thanks a lot for your help.",
+		"PossibleResponses": [[]],
+		"RelatedObjects": []
+	},
+	{
+		"LineId": 6,
+		"OwnLine": false,
+		"Text": "Thanks a lot! Just what I needed",
+		"PossibleResponses": [[]],
+		"RelatedObjects": []
+	},
+	{
+		"LineId": 7,
+		"OwnLine": false,
+		"Text": "You're a good person... Thank you!",
+		"PossibleResponses": [[]],
+		"RelatedObjects": []
+	},
+	{
+		"LineId": 8,
+		"OwnLine": false,
+		"Text": "I'm not sure of whether this is what I needed",
+		"PossibleResponses": [[]],
+		"RelatedObjects": []
+	},
+	{
+		"LineId": 9,
+		"OwnLine": false,
+		"Text": "Thank you, but I didn't ask for this",
+		"PossibleResponses": [[]],
+		"RelatedObjects": []
+	},
+	{
+		"LineId": 10,
+		"OwnLine": false,
+		"Text": "Thanks for having us here. These are really hard times; I remember that just a month ago I was reading a book in my house when everyhting started...",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Book"]
+	},
+	{
+		"LineId": 11,
+		"OwnLine": false,
+		"Text": "I used to be a professional footbal player in my country. Now I'm sitting here all day.",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Ball"]
+	},
+	{
+		"LineId": 12,
+		"OwnLine": false,
+		"Text": "I miss playing basketball with my friends. Here we can do no sport and I feel frustrated.",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Ball"]
+	},
+	{
+		"LineId": 13,
+		"OwnLine": false,
+		"Text": "I used to be a professional footbal player in my country. Now I'm sitting here all day",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Ball"]
+	},
+	{
+		"LineId": 14,
+		"OwnLine": false,
+		"Text": "I didn't have the time to take my books from home and now I can't evade from reallity. This is really sad.",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Book"]
+	},
+	{
+		"LineId": 15,
+		"OwnLine": false,
+		"Text": "I'm so bored here, I wish I had something to pass the time more quickly.",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Book", "Ball"]
+	},
+	{
+		"LineId": 16,
+		"OwnLine": false,
+		"Text": "My daughter is crying all day. We don't have anything to calm her down.",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Toy", "Ball"]
+	},
+	{
+		"LineId": 17,
+		"OwnLine": false,
+		"Text": "Life doesn't grow here, this is awful. I really miss my garden.",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Rose"]
+	},
+	{
+		"LineId": 18,
+		"OwnLine": false,
+		"Text": "I was going to play in my first concert just the day after the war started. I wish I had taken my guitar to practice.",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Guitar"]
+	},
+	{
+		"LineId": 19,
+		"OwnLine": false,
+		"Text": "I really miss my friends. We used to gather to play music and review the latest novels.",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Guitar", "Book"]
+	},
+	{
+		"LineId": 20,
+		"OwnLine": false,
+		"Text": "I was starting my own beer business and now it's been ages since the last time I had a drink. You wouldn't know if there's some way to grab a beer?.",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Drink"]
+	},
+	{
+		"LineId": 21,
+		"OwnLine": false,
+		"Text": "My son is realy bored here and I feel like his youth is being wasted. If only he had something to have a little fun.",
+		"PossibleResponses": [[1,2,3]],
+		"RelatedObjects": ["Toy", "Ball", "Book"]
+	}
+]

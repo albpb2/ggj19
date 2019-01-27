@@ -8,5 +8,6 @@
         public const string SpawningSpotLayer1 = "SpawningSpotLayer1";
         public const string SpawningSpotLayer2 = "SpawningSpotLayer2";
         public const string SpawningSpotLayer3 = "SpawningSpotLayer3";
+        public const string InvisibleWall = "InvisibleWall";
     }
 }

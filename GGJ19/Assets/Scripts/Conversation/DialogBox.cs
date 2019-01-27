@@ -62,6 +62,7 @@ namespace Assets.Scripts.Conversation
                 _textBoxText.text = string.Empty;
                 _textBoxName.text = string.Empty;
                 _textsToRead.RemoveAt(0);
+                _names.RemoveAt(0);
                 _index = 0;
                 _speed = 1;
                 if (!_textsToRead.Any())

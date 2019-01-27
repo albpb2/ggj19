@@ -108,7 +108,9 @@
     <Compile Include="Assets\Scripts\CameraScripts\CharacterTracker.cs" />
     <Compile Include="Assets\Scripts\Conversation\BasicDialogLine.cs" />
     <Compile Include="Assets\Scripts\Conversation\DialogBox.cs" />
+    <Compile Include="Assets\Scripts\Conversation\DialogLine.cs" />
     <Compile Include="Assets\Scripts\Conversation\DialogManager.cs" />
+    <Compile Include="Assets\Scripts\Conversation\MediumDialogLine.cs" />
     <Compile Include="Assets\Scripts\Extensions\IListExtensions.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="Assets\Scripts\Refugees\RefugeeSpawningSpot.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeesSettings.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeeWithBasicNeeds.cs" />
+    <Compile Include="Assets\Scripts\SceneManager.cs" />
     <Compile Include="Assets\Scripts\StorageSystem\Storage.cs" />
     <Compile Include="Assets\Scripts\StorageSystem\StorageBack.cs" />
     <Compile Include="Assets\Scripts\StorageSystem\StorageItem.cs" />
@@ -181,6 +184,7 @@
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
+    <None Include="Assets\Dialogs\MediumLines.txt" />
     <None Include="Assets\Refugees\FemaleNames.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />

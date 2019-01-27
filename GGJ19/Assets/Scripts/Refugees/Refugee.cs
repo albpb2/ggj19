@@ -3,7 +3,6 @@ using Assets.Scripts.Objects;
 using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.Player;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts.Refugees
 {
@@ -14,8 +13,11 @@ namespace Assets.Scripts.Refugees
         protected RefugeesSettings _refugeesSettings;
         protected DialogManager _dialogManager;
         protected Karma _karma;
+        protected TimeTracker _timeTracker;
 
         public int DaysToStay { get; set; }
+
+        public int ArrivalDay { get; set; }
             
         public override void Start()
         {
@@ -24,6 +26,10 @@ namespace Assets.Scripts.Refugees
             _dialogManager = FindObjectOfType<DialogManager>();
             _karma = FindObjectOfType<Karma>();
             _refugeesSettings = FindObjectOfType<RefugeesSettings>();
+            _timeTracker = FindObjectOfType<TimeTracker>();
+
+            ArrivalDay = _timeTracker.CurrentDay;
+            _timeTracker.onDayEnded += LeaveCampIfDayArrived;
         }
 
         public bool IsFemale { get; set; }
@@ -36,6 +42,11 @@ namespace Assets.Scripts.Refugees
 
         public override void Interact()
         {
+            if (GetComponent<SpriteRenderer>().sortingLayerName != _character.GetComponent<SpriteRenderer>().sortingLayerName)
+            {
+                return;
+            }
+
             _gameManager.Pause = true;
             _character.BeginInteraction(this);
         }
@@ -45,10 +56,19 @@ namespace Assets.Scripts.Refugees
             _spawningSpot = spawningSpot;
         }
 
-        public void LeaveCamp()
+        public virtual void LeaveCamp()
         {
             _spawningSpot.Refugee = null;
+            _timeTracker.onDayEnded -= LeaveCampIfDayArrived;
             Destroy(gameObject);
+        }
+
+        public void LeaveCampIfDayArrived()
+        {
+            if (_timeTracker.CurrentDay + 1 - ArrivalDay >= DaysToStay)
+            {
+                LeaveCamp();
+            }
         }
     }
 }

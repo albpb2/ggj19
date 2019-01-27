@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Assets.Scripts.Conversation
 {
     [Serializable]
-    public class BasicDialogLine
+    public class BasicDialogLine : DialogLine
     {
         public static int[] HungerLines = new[]
         {
@@ -40,13 +39,5 @@ namespace Assets.Scripts.Conversation
         {
             14, 15
         };
-
-        public int LineId;
-
-        public bool OwnLine;
-
-        public string Text;
-
-        public List<List<int>> PossibleResponses;
     }
 }

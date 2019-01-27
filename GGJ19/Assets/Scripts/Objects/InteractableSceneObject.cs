@@ -21,6 +21,12 @@ namespace Assets.Scripts.Objects
 
         public void OnMouseEnter()
         {
+            if (GetComponent<SpriteRenderer>() != null && 
+                GetComponent<SpriteRenderer>().sortingLayerName != FindObjectOfType<Character>().GetComponent<SpriteRenderer>().sortingLayerName)
+            {
+                return;
+            }
+
             if (!_gameManager.Pause)
             {
                 _inputManager.SetSelectableCursor();
@@ -37,6 +43,12 @@ namespace Assets.Scripts.Objects
 
         public void OnMouseDown()
         {
+            if (GetComponent<SpriteRenderer>() != null &&
+                GetComponent<SpriteRenderer>().sortingLayerName != FindObjectOfType<Character>().GetComponent<SpriteRenderer>().sortingLayerName)
+            {
+                return;
+            }
+
             _characterMovementController.MoveTowards(this);
         }
 

@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 04d43284c4d038a438c79b0e6f1f354d
+  - enabled: 1
+    path: Assets/Scenes/Camp.unity
+    guid: d502149c0c440534cbd9fa1a5b3db49b
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: f17f9ef3b68ebbe4291f485ff7c95aa6
   m_configObjects: {}

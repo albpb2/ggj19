@@ -3,20 +3,17 @@ using System.Linq;
 using Assets.Scripts.Conversation;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Objects.PortableObjects;
-using Assets.Scripts.Player;
 
 namespace Assets.Scripts.Refugees
 {
     public abstract class RefugeeWithBasicNeeds : Refugee
     {
         protected Random _random;
-        protected TimeTracker _timeTracker;
 
         public override void Start()
         {
             base.Start();
 
-            _timeTracker = FindObjectOfType<TimeTracker>();
             _random = new Random();
 
             _timeTracker.onDayEnded += CheckStatusAtEndOfDay;
@@ -126,7 +123,7 @@ namespace Assets.Scripts.Refugees
             UpdateKarma(karmaModifier);
         }
 
-        private void UpdateKarma(int karmaModifier)
+        protected void UpdateKarma(int karmaModifier)
         {
             if (karmaModifier > 0)
             {

@@ -10,6 +10,7 @@ TagManager:
   - SpawningSpotLayer3
   - SpawningSpotLayer2
   - SpawningSpotLayer1
+  - InvisibleWall
   layers:
   - Default
   - TransparentFX

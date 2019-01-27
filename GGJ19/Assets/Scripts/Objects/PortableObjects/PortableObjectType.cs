@@ -13,6 +13,11 @@ namespace Assets.Scripts.Objects.PortableObjects
         FeedingBottle,
         Pills,
         Rose,
-        Water
+        Water,
+        Ball,
+        Book,
+        Bottle,
+        Guitar,
+        Toy
     }
 }

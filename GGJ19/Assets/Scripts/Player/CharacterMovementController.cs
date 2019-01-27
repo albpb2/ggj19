@@ -9,6 +9,10 @@ namespace Assets.Scripts.Player
 
         [SerializeField]
         private float _speed = 1;
+        [SerializeField]
+        private float _minX = -11.53f;
+        [SerializeField]
+        private float _maxX = 45.48f;
 
         private InputManager _inputManager;
         private Character _character;
@@ -97,6 +101,7 @@ namespace Assets.Scripts.Player
             }
 
             _previousPosition = transform.position;
+            transform.localRotation = new Quaternion(0, 0, 0, 0);
         }
 
         private void MoveTowardsDirection(Vector3 direction, float step)
