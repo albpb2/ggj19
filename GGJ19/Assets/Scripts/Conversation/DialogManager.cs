@@ -29,10 +29,9 @@ namespace Assets.Scripts.Conversation
         public void WriteLine(BasicDialogLine dialogLine, string refugeeName)
         {
             const string OwnLineHeader = "You";
-            var header = dialogLine.OwnLine ? OwnLineHeader : refugeeName;
-            header += " : ";
+            var name = dialogLine.OwnLine ? OwnLineHeader : refugeeName;
 
-            _dialogBox.ShowText(header + dialogLine.Text);
+            _dialogBox.ShowText(name, dialogLine.Text);
 
             if (dialogLine.PossibleResponses.Any(possibleResponse => possibleResponse.Any()))
             {

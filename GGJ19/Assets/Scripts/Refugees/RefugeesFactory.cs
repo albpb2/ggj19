@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Extensions;
 using UnityEngine;
 using Random = System.Random;
@@ -9,7 +9,9 @@ namespace Assets.Scripts.Refugees
 {
     public class RefugeesFactory : MonoBehaviour
     {
-        protected const int MinDaysToStay = 1;
+        private const int MinDaysToStay = 1;
+        private const int FamilyProbability = 10;
+        private const int VisibleSortingOrder = 4;
 
         [SerializeField]
         private GameObject _basicRefugeePrefab;
@@ -27,18 +29,34 @@ namespace Assets.Scripts.Refugees
         private TextAsset _maleNamesFile;
         [SerializeField]
         private TextAsset _femaleNamesFile;
+        [SerializeField]
+        private List<Sprite> _maleSprites;
+        [SerializeField]
+        private List<Sprite> _femaleSprites;
+        [SerializeField]
+        private List<Sprite> _familySprites;
+        [SerializeField]
+        private LayerMask _layer;
 
-        private RefugeeSpawningSpot[] _spawningSpots;
+        private RefugeeSpawningSpot[] _spawningSpotsLayer1;
+        private RefugeeSpawningSpot[] _spawningSpotsLayer2;
+        private RefugeeSpawningSpot[] _spawningSpotsLayer3;
         private Random _random;
         private TimeTracker _timeTracker;
         private RefugeesSettings _refugeesSettings;
         private List<string> _maleNames;
         private List<string> _femaleNames;
         private List<string> _surnames;
+        private List<Sprite> _existingSprites; 
 
         public void Start()
         {
-            _spawningSpots = FindObjectsOfType<RefugeeSpawningSpot>();
+            _spawningSpotsLayer1 = GameObject.FindGameObjectsWithTag(Tags.SpawningSpotLayer1)
+                .Select(gameObject => gameObject.GetComponent<RefugeeSpawningSpot>()).ToArray();
+            _spawningSpotsLayer2 = GameObject.FindGameObjectsWithTag(Tags.SpawningSpotLayer2)
+                .Select(gameObject => gameObject.GetComponent<RefugeeSpawningSpot>()).ToArray();
+            _spawningSpotsLayer3 = GameObject.FindGameObjectsWithTag(Tags.SpawningSpotLayer3)
+                .Select(gameObject => gameObject.GetComponent<RefugeeSpawningSpot>()).ToArray();
             _timeTracker = FindObjectOfType<TimeTracker>();
             _refugeesSettings = FindObjectOfType<RefugeesSettings>();
             _random = new Random();
@@ -48,19 +66,51 @@ namespace Assets.Scripts.Refugees
             _timeTracker.onNewDayBegun += SpawnRandomRefugees;
         }
 
-        public Refugee CreateBasicRefugee(RefugeeSpawningSpot spawningSpot)
+        public Refugee CreateBasicRefugee(RefugeeSpawningSpot spawningSpot, int sortingLayerId)
         {
             var refugee = Instantiate(_basicRefugeePrefab).GetComponent<BasicRefugee>();
             refugee.transform.position = spawningSpot.transform.position;
             refugee.SetSpawningSpot(spawningSpot);
-            
+
             refugee.IsFemale = IsFemale();
             refugee.Name = refugee.IsFemale ? _femaleNames.GetRandomElement() : _maleNames.GetRandomElement();
             refugee.DaysToStay = _random.Next(MinDaysToStay, _refugeesSettings.MaxDaysToStay);
 
+            var spriteRenderer = refugee.GetComponent<SpriteRenderer>();
+            Sprite selectedSprite = null;
+
+            while (selectedSprite == null)
+            {
+                if (IsFamily() && _familySprites.Count > 0)
+                {
+                    selectedSprite = _familySprites.GetRandomElement();
+                }
+                else
+                {
+                    selectedSprite = refugee.IsFemale
+                        ? _femaleSprites.GetRandomElement()
+                        : _maleSprites.GetRandomElement();
+                }
+
+                if (_existingSprites.Contains(selectedSprite))
+                {
+                    selectedSprite = null;
+                }
+            }
+
+            spriteRenderer.sprite = selectedSprite;
+            spriteRenderer.sortingLayerID = sortingLayerId;
+            spriteRenderer.sortingOrder = VisibleSortingOrder;
+            refugee.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+
             spawningSpot.Refugee = refugee;
 
             return refugee;
+        }
+
+        private bool IsFamily()
+        {
+            return _random.Next(0, 100) < FamilyProbability;
         }
 
         private bool IsFemale()
@@ -75,25 +125,37 @@ namespace Assets.Scripts.Refugees
                 return;
             }
 
-            foreach (var refugeeSpawningSpot in _spawningSpots)
+            _existingSprites = FindObjectsOfType<Refugee>().Select(refugee =>
+                refugee.GetComponent<SpriteRenderer>().sprite).ToList();
+
+            SpawnRefugeesForLayer(_spawningSpotsLayer1, "Floor 1");
+            SpawnRefugeesForLayer(_spawningSpotsLayer2, "Floor 2");
+            SpawnRefugeesForLayer(_spawningSpotsLayer3, "Floor 3");
+        }
+
+        private void SpawnRefugeesForLayer(RefugeeSpawningSpot[] spots, string sortingLayerName)
+        {
+            var sortingLayerId = SortingLayer.NameToID(sortingLayerName);
+
+            foreach (var refugeeSpawningSpot in spots)
             {
                 if (refugeeSpawningSpot.Refugee == null)
                 {
                     var randomNumber = _random.Next(0, 100);
                     if (randomNumber < _spotSpawningProbability)
                     {
-                        SpawnRandomRefugee(refugeeSpawningSpot);
+                        SpawnRandomRefugee(refugeeSpawningSpot, sortingLayerId);
                     }
                 }
             }
         }
 
-        public void SpawnRandomRefugee(RefugeeSpawningSpot spawningSpot)
+        public void SpawnRandomRefugee(RefugeeSpawningSpot spawningSpot, int sortingLayerId)
         {
             var randomNumber = _random.Next(0, 100);
             if (randomNumber < _basicRefugeeProbability)
             {
-                CreateBasicRefugee(spawningSpot);
+                CreateBasicRefugee(spawningSpot, sortingLayerId);
             }
         }
 

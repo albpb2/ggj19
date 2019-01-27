@@ -117,7 +117,7 @@
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObject.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\PlaneSwitchTrigger.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\Store.cs" />
-    <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\WaterWell.cs" />
+    <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\WaterTank.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObjects\PortableObjectType.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObjects\Water.cs" />

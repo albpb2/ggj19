@@ -14,10 +14,13 @@ namespace Assets.Scripts.Conversation
         [SerializeField]
         private Image _textBox;
         [SerializeField]
+        private Text _textBoxName;
+        [SerializeField]
         private Text _textBoxText;
         [SerializeField]
         private int _speed = 1;
 
+        private List<string> _names;
         private List<string> _textsToRead;
         private int _index;
         private GameManager _gameManager;
@@ -28,6 +31,7 @@ namespace Assets.Scripts.Conversation
             _gameManager = FindObjectOfType<GameManager>();
             _character = FindObjectOfType<Character>();
 
+            _names = new List<string>();
             _textsToRead = new List<string>();
         }
 
@@ -43,6 +47,7 @@ namespace Assets.Scripts.Conversation
             {
                 var charsToRead = Mathf.Min(_speed, textToRead.Length - _index);
                 _textBoxText.text += textToRead.Substring(_index, charsToRead);
+                _textBoxName.text = _names.First();
 
                 _index += charsToRead;
                 if (_index >= textToRead.Length)
@@ -55,6 +60,7 @@ namespace Assets.Scripts.Conversation
             if (Input.GetMouseButton(0) && _index >= textToRead.Length)
             {
                 _textBoxText.text = string.Empty;
+                _textBoxName.text = string.Empty;
                 _textsToRead.RemoveAt(0);
                 _index = 0;
                 _speed = 1;
@@ -67,7 +73,7 @@ namespace Assets.Scripts.Conversation
             }
         }
 
-        public void ShowText(string text)
+        public void ShowText(string name, string text)
         {
             _gameManager.Pause = true;
 
@@ -75,10 +81,13 @@ namespace Assets.Scripts.Conversation
 
             if (!_textsToRead.Any())
             {
+                _textBoxText.text = string.Empty;
+                _textBoxName.text = string.Empty;
                 _index = 0;
                 _speed = 1;
             }
 
+            _names.Add(name);
             _textsToRead.Add(text);
         }
     }

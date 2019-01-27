@@ -12,6 +12,7 @@ namespace Assets.Scripts.Objects.PortableObjects
         Coat,
         FeedingBottle,
         Pills,
-        Rose
+        Rose,
+        Water
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Objects;
+using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.StorageSystem;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,19 +23,28 @@ namespace Assets.Scripts.Player
         private GameObject _storageSpacePrefab;
         [SerializeField]
         private Image _closeButton;
+        [SerializeField]
+        private Sprite _waterFullSprite;
+        [SerializeField]
+        private Sprite _waterEmptySprite;
 
         private StorageItemPrefabProvider _storageItemPrefabProvider;
         private GameManager _gameManager;
+        private Character _character;
 
         public List<PortableObject> Items { get; set; } = new List<PortableObject>();
+
         public List<StorageSpace> Spaces { get; set; } = new List<StorageSpace>();
 
         public Image Image => _bagImage;
+
+        public bool WaterFull { get; private set; }
 
         public void Start()
         {
             _storageItemPrefabProvider = FindObjectOfType<StorageItemPrefabProvider>();
             _gameManager = FindObjectOfType<GameManager>();
+            _character = GetComponent<Character>();
         }
 
         public void Update()
@@ -120,6 +130,22 @@ namespace Assets.Scripts.Player
         public void ShowCloseButton()
         {
             _closeButton.gameObject.SetActive(true);
+        }
+
+        public void FillWater()
+        {
+            WaterFull = true;
+            _bagImage.GetComponent<Image>().sprite = _waterFullSprite;
+        }
+
+        public void GiveWaterToRefugee()
+        {
+            if (WaterFull)
+            {
+                WaterFull = false;
+                _bagImage.GetComponent<Image>().sprite = _waterEmptySprite;
+                _character.GiveObjectToRefugee(PortableObjectType.Water);
+            }
         }
 
         private void ShowStorageSpace(int position)

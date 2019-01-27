@@ -7,6 +7,9 @@ TagManager:
   - CharacterPlane
   - PlaneSwitchTrigger
   - ActionsBox
+  - SpawningSpotLayer3
+  - SpawningSpotLayer2
+  - SpawningSpotLayer1
   layers:
   - Default
   - TransparentFX

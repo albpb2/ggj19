@@ -47,6 +47,14 @@ namespace Assets.Scripts.Refugees
                 lineId = BasicDialogLine.ThanksLines.GetRandomElement();
                 line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
                 _dialogManager.WriteLine(line, Name);
+                UpdateKarma(_refugeesSettings.HungerResolvedPoints);
+                return;
+            }
+            if (!ThirstResolved && objectType == PortableObjectType.Water)
+            {
+                lineId = BasicDialogLine.ThanksLines.GetRandomElement();
+                line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
+                _dialogManager.WriteLine(line, Name);
                 UpdateKarma(_refugeesSettings.ThirstResolvedPoints);
                 return;
             }

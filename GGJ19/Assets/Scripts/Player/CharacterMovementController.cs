@@ -5,6 +5,8 @@ namespace Assets.Scripts.Player
 {
     public class CharacterMovementController : MonoBehaviour
     {
+        private const string WalkAnimationName = "walk";
+
         [SerializeField]
         private float _speed = 1;
 
@@ -12,6 +14,9 @@ namespace Assets.Scripts.Player
         private Character _character;
         private GameManager _gameManager;
         private Vector3? _targetDirection;
+        private Vector3? _previousPosition;
+        private Animator _animator;
+        private SpriteRenderer _spriteRenderer;
 
         public InteractableSceneObject TargetObject { get; set; }
         
@@ -19,7 +24,9 @@ namespace Assets.Scripts.Player
         {
             _inputManager = FindObjectOfType<InputManager>();
             _character = FindObjectOfType<Character>();
-            _gameManager = FindObjectOfType<GameManager>();;
+            _gameManager = FindObjectOfType<GameManager>();
+            _animator = GetComponent<Animator>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         public void Update()
@@ -68,6 +75,28 @@ namespace Assets.Scripts.Player
                     GetTargetWithXPosition(TargetObject.transform.position.x),
                     step);
             }
+        }
+
+        public void FixedUpdate()
+        {
+            if (_previousPosition.HasValue && transform.position.x != _previousPosition.Value.x)
+            {
+                _animator.SetBool(WalkAnimationName, true);
+                if (transform.position.x > _previousPosition.Value.x)
+                {
+                    _spriteRenderer.flipX = false;
+                }
+                else
+                {
+                    _spriteRenderer.flipX = true;
+                }
+            }
+            else
+            {
+                _animator.SetBool(WalkAnimationName, false);
+            }
+
+            _previousPosition = transform.position;
         }
 
         private void MoveTowardsDirection(Vector3 direction, float step)
