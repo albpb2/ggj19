@@ -6,15 +6,17 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.StorageSystem
 {
-    public class StorageItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class StorageItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
     {
         [SerializeField]
         private PortableObjectType _portableObjectType;
 
         private Button _button;
         private Storage _storage;
+        private Bag _bag;
         private Vector3 _initialPosition;
         private Transform _initialParent;
+        private Character _character;
 
         public PortableObjectType PortableObjectType => _portableObjectType;
 
@@ -30,6 +32,8 @@ namespace Assets.Scripts.StorageSystem
         public void Start()
         {
             _button = GetComponent<Button>();
+            _character = FindObjectOfType<Character>();
+            _bag = _character.GetComponent<Bag>();
         }
 
         public void OnClick()
@@ -84,6 +88,22 @@ namespace Assets.Scripts.StorageSystem
         {
             this.transform.SetParent(_initialParent);
             this.transform.localPosition = _initialPosition;
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (IsInGiveMode())
+            {
+                _character.GiveObjectToRefugee(PortableObjectType);
+                Destroy(gameObject);
+                _bag.CloseBag();
+                _character.EndInteraction();
+            }
+        }
+
+        private bool IsInGiveMode()
+        {
+            return _storage == null && _character.InteractingWith != null;
         }
     }
 }

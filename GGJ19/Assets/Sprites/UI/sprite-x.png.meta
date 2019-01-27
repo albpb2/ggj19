@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-guid: 4a4deec53031af14fbc660efc9081236
+guid: 5a87221a47f91c64e876700487ff59e8
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: hospital store_0
-    21300002: hospital store_1
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -42,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -84,51 +82,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: hospital store_0
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 203
-        width: 1357
-        height: 712
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 64eee10bd5fa6fa4496c0943140da4d7
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hospital store_1
-      rect:
-        serializedVersion: 2
-        x: 1564
-        y: 219
-        width: 1361
-        height: 616
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5525c273897f114a8c2ca15ba93eb76
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 01a1db68fe399294abd25d1313a3efcd
+    spriteID: 
     vertices: []
     indices: 
     edges: []

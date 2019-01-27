@@ -8,5 +8,6 @@ namespace Assets.Scripts.Refugees
         public int HungerResolvedPoints = 5;
         public int ThirstResolvedPoints = 5;
         public int IllnessResolvedPoints = 10;
+        public int MaxDaysToStay = 4;
     }
 }

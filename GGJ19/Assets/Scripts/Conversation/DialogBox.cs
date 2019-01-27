@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Player;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.UI;
@@ -20,10 +21,12 @@ namespace Assets.Scripts.Conversation
         private List<string> _textsToRead;
         private int _index;
         private GameManager _gameManager;
+        private Character _character;
 
         public void Start()
         {
             _gameManager = FindObjectOfType<GameManager>();
+            _character = FindObjectOfType<Character>();
 
             _textsToRead = new List<string>();
         }
@@ -59,6 +62,7 @@ namespace Assets.Scripts.Conversation
                 {
                     _textBox.gameObject.SetActive(false);
                     _gameManager.Pause = false;
+                    _character.EndInteraction();
                 }
             }
         }

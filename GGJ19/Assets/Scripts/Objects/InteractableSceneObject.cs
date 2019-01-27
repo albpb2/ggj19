@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.Objects
 {
-    public abstract class InteractableSceneObject : MonoBehaviour, IPointerClickHandler
+    public abstract class InteractableSceneObject : MonoBehaviour
     {
         protected CharacterMovementController _characterMovementController;
         protected Character _player;
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Objects
             }
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public void OnMouseDown()
         {
             _characterMovementController.MoveTowards(this);
         }

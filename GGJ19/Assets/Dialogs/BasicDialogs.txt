@@ -40,5 +40,53 @@
 		"OwnLine": false,
 		"Text": "I'm really thirsty. Please could I have some water?",
 		"PossibleResponses": [[2, 3, 4]]
-	}
+	},
+	{
+		"LineId": 8,
+		"OwnLine": false,
+		"Text": "Have a good day.",
+		"PossibleResponses": [[]]
+	},
+	{
+		"LineId": 9,
+		"OwnLine": false,
+		"Text": "Thanks a lot for your help.",
+		"PossibleResponses": [[]]
+	},
+	{
+		"LineId": 10,
+		"OwnLine": false,
+		"Text": "Please, I really need some medicines.",
+		"PossibleResponses": [[2, 3, 4]]
+	},
+	{
+		"LineId": 11,
+		"OwnLine": false,
+		"Text": "I'm not feeling good at all...",
+		"PossibleResponses": [[2, 3, 4]]
+	},
+	{
+		"LineId": 12,
+		"OwnLine": false,
+		"Text": "Thanks a lot! Just what I needed",
+		"PossibleResponses": [[]]
+	},
+	{
+		"LineId": 13,
+		"OwnLine": false,
+		"Text": "You're a good person... Thank you!",
+		"PossibleResponses": [[]]
+	},
+	{
+		"LineId": 14,
+		"OwnLine": false,
+		"Text": "I'm not sure of whether this is what I needed",
+		"PossibleResponses": [[]]
+	},
+	{
+		"LineId": 15,
+		"OwnLine": false,
+		"Text": "Thank you, but I didn't ask for this",
+		"PossibleResponses": [[]]
+	},
 ]

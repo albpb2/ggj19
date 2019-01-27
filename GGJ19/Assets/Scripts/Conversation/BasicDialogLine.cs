@@ -31,6 +31,16 @@ namespace Assets.Scripts.Conversation
             10, 11
         };
 
+        public static int[] ThanksLines = new[]
+        {
+            12, 13
+        };
+
+        public static int[] WrongChoiceLines = new[]
+        {
+            14, 15
+        };
+
         public int LineId;
 
         public bool OwnLine;

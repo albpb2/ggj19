@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Linq;
+using Assets.Scripts.Conversation;
+using Assets.Scripts.Extensions;
+using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.Player;
 
 namespace Assets.Scripts.Refugees
@@ -25,6 +29,40 @@ namespace Assets.Scripts.Refugees
         public bool Ill { get; set; }
 
         public bool IllnessResolved { get; set; }
+
+        public override void Interact()
+        {
+            base.Interact();
+
+            _character.OpenActionsBox();
+        }
+
+        public override void GiveObject(PortableObjectType objectType)
+        {
+            int lineId;
+            BasicDialogLine line;
+
+            if (!HungerResolved && objectType == PortableObjectType.Bread)
+            {
+                lineId = BasicDialogLine.ThanksLines.GetRandomElement();
+                line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
+                _dialogManager.WriteLine(line, Name);
+                UpdateKarma(_refugeesSettings.ThirstResolvedPoints);
+                return;
+            }
+            if (Ill && !IllnessResolved && objectType == PortableObjectType.Pills)
+            {
+                lineId = BasicDialogLine.ThanksLines.GetRandomElement();
+                line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
+                _dialogManager.WriteLine(line, Name);
+                UpdateKarma(_refugeesSettings.IllnessResolvedPoints);
+                return;
+            }
+
+            lineId = BasicDialogLine.WrongChoiceLines.GetRandomElement();
+            line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
+            _dialogManager.WriteLine(line, Name);
+        }
 
         public void ResetNeeds()
         {
@@ -63,18 +101,16 @@ namespace Assets.Scripts.Refugees
 
         public void CheckStatusAtEndOfDay()
         {
-            var karmaModifier = HungerResolved
-                ? _refugeesSettings.HungerResolvedPoints
-                : -_refugeesSettings.HungerResolvedPoints;
-            karmaModifier += ThirstResolved
-                ? _refugeesSettings.ThirstResolvedPoints
-                : -_refugeesSettings.ThirstResolvedPoints;
-
-            if (IllnessResolved)
+            var karmaModifier = 0;
+            if (!HungerResolved)
             {
-                karmaModifier += _refugeesSettings.IllnessResolvedPoints;
+                karmaModifier -= _refugeesSettings.HungerResolvedPoints;
             }
-            else if (Ill)
+            if (!ThirstResolved)
+            {
+                karmaModifier -= _refugeesSettings.ThirstResolvedPoints;
+            }
+            if (Ill && !IllnessResolved)
             {
                 karmaModifier -= _refugeesSettings.IllnessResolvedPoints;
             }

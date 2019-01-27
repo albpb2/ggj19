@@ -89,6 +89,7 @@ namespace Assets.Scripts.Player
         {
             TargetObject = interactableSceneObject;
             _targetDirection = null;
+            _inputManager.OverrideThisFrame();
         }
 
         private void InteractWithTargetObjectIfIsOnTrigger(Collider2D collider)

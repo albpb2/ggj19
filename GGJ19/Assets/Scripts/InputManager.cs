@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Player;
+﻿using System.Linq;
+using Assets.Scripts.Objects;
+using Assets.Scripts.Player;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -15,6 +17,7 @@ namespace Assets.Scripts
         private Vector2 _hotSpot = Vector2.zero;
         private Texture2D _defaultCursor;
         private GameManager _gameManager;
+        private bool _overrideThisFrame;
 
         public Vector3? ClickedPoint { get; set; }
 
@@ -32,6 +35,12 @@ namespace Assets.Scripts
         {
             if (_gameManager.Pause)
             {
+                return;
+            }
+
+            if (_overrideThisFrame)
+            {
+                _overrideThisFrame = false;
                 return;
             }
 
@@ -59,6 +68,11 @@ namespace Assets.Scripts
             Cursor.SetCursor(null, Vector2.zero, _cursorMode);
         }
 
+        public void OverrideThisFrame()
+        {
+            _overrideThisFrame = true;
+        }
+
         private void ResetValues()
         {
             ClickedPoint = null;
@@ -75,7 +89,8 @@ namespace Assets.Scripts
 
                 for (int i = 0; i < hits.Length; i++)
                 {
-                    if (hits[i].collider.gameObject.tag == Tags.CharacterPlane)
+                    if (hits[i].collider.gameObject.tag == Tags.CharacterPlane
+                        && !hits[i].collider.gameObject.GetComponents<InteractableSceneObject>().Any())
                     {
                         ClickedPoint = hits[i].point;
                     }

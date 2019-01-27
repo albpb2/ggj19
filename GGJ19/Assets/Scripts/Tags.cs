@@ -4,5 +4,6 @@
     {
         public const string CharacterPlane = "CharacterPlane"; 
         public const string PlaneSwitchTrigger = "PlaneSwitchTrigger";
+        public const string ActionsBox = "ActionsBox";
     }
 }

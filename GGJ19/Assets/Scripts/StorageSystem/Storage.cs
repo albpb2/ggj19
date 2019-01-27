@@ -37,6 +37,7 @@ namespace Assets.Scripts.StorageSystem
         private Random _random;
         private TimeTracker _timeTracker;
         private GameManager _gameManager;
+        private Vector3 _bagOriginalPlace;
 
         public StorageItem SelectedItem { get; set; }
 
@@ -46,10 +47,19 @@ namespace Assets.Scripts.StorageSystem
             _selectedPrefabs = new List<GameObject>();
             _timeTracker = FindObjectOfType<TimeTracker>();
             _gameManager = FindObjectOfType<GameManager>();
+            _bagOriginalPlace = _bag.Image.transform.localPosition;
 
             _timeTracker.onNewDayBegun += Refill;
 
             Refill(1);
+        }
+
+        public void Update()
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                CloseStorage();
+            }
         }
 
         public void Refill(int dayNumber)
@@ -112,6 +122,8 @@ namespace Assets.Scripts.StorageSystem
             _storeBack.gameObject.SetActive(true);
             _storeFront.gameObject.SetActive(true);
             _bag.OpenBag();
+            _bag.HideCloseButton();
+            _bag.Image.transform.localPosition = _storeFront.transform.localPosition + new Vector3(300, 0, 0);
 
             Show();
         }
@@ -127,6 +139,8 @@ namespace Assets.Scripts.StorageSystem
 
             _storeBack.gameObject.SetActive(false);
             _storeFront.gameObject.SetActive(false);
+            _bag.ShowCloseButton();
+            _bag.Image.transform.localPosition = _bagOriginalPlace;
             _bag.CloseBag();
 
             _storageItems = new List<StorageItem>();

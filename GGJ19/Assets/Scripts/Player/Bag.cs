@@ -9,26 +9,40 @@ namespace Assets.Scripts.Player
 {
     public class Bag : MonoBehaviour
     {
-        private const float storageSpacesY = -6.03f;
+        private const float storageSpacesY = -10.03f;
 
         private readonly float[] storageSpacesX =
         {
-            -26.1f, 1.83f
+            -37.1f, 2.83f
         };
 
         [SerializeField]
         private Image _bagImage;
         [SerializeField]
         private GameObject _storageSpacePrefab;
+        [SerializeField]
+        private Image _closeButton;
 
         private StorageItemPrefabProvider _storageItemPrefabProvider;
+        private GameManager _gameManager;
 
         public List<PortableObject> Items { get; set; } = new List<PortableObject>();
         public List<StorageSpace> Spaces { get; set; } = new List<StorageSpace>();
 
+        public Image Image => _bagImage;
+
         public void Start()
         {
             _storageItemPrefabProvider = FindObjectOfType<StorageItemPrefabProvider>();
+            _gameManager = FindObjectOfType<GameManager>();
+        }
+
+        public void Update()
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                CloseBag();
+            }
         }
 
         public void OpenBag()
@@ -56,9 +70,14 @@ namespace Assets.Scripts.Player
         {
             foreach (Transform child in _bagImage.transform)
             {
-                Destroy(child.gameObject);
+                if (child.gameObject != _closeButton.gameObject)
+                {
+                    Destroy(child.gameObject);
+                }
             }
             _bagImage.gameObject.SetActive(false);
+
+            _gameManager.Pause = false;
         }
 
         public void AddItem(StorageItem storageItem, StorageSpace storageSpace)
@@ -86,6 +105,21 @@ namespace Assets.Scripts.Player
             }
 
             return false;
+        }
+
+        public void PlaceAt(Vector3 position)
+        {
+            transform.localPosition = position;
+        }
+
+        public void HideCloseButton()
+        {
+            _closeButton.gameObject.SetActive(false);
+        }
+
+        public void ShowCloseButton()
+        {
+            _closeButton.gameObject.SetActive(true);
         }
 
         private void ShowStorageSpace(int position)
