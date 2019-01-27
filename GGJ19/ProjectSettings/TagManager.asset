@@ -49,3 +49,12 @@ TagManager:
   - name: InteractableObjects
     uniqueID: 2628688675
     locked: 0
+  - name: Floor 3
+    uniqueID: 3396491677
+    locked: 0
+  - name: Floor 2
+    uniqueID: 3320878183
+    locked: 0
+  - name: Floor 1
+    uniqueID: 3416834953
+    locked: 0
