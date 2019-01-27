@@ -364,6 +364,9 @@
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>/Users/ayosetrujillo/Documents/ME/JAM/GitHub/GGJ19/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:/PersonalRepos/GGJ19b/GGJ19/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
     </Reference>

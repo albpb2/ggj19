@@ -1,0 +1,44 @@
+[
+	{
+		"LineId": 1,
+		"OwnLine": false,
+		"Text": "I'm hungry, can you get some food for me?",
+		"PossibleResponses": [[2, 3, 4]]
+	},
+	{
+		"LineId": 2,
+		"OwnLine": true,
+		"Text": "Sure.",
+		"PossibleResponses": []
+	},
+	{
+		"LineId": 3,
+		"OwnLine": true,
+		"Text": "I'll see what I can do.",
+		"PossibleResponses": []
+	},
+	{
+		"LineId": 4,
+		"OwnLine": true,
+		"Text": "Don't worry, I'm on it.",
+		"PossibleResponses": []
+	},
+	{
+		"LineId": 5,
+		"OwnLine": false,
+		"Text": "Could you bring me something to eat?",
+		"PossibleResponses": [[2, 3, 4]]
+	},
+	{
+		"LineId": 6,
+		"OwnLine": false,
+		"Text": "I need food and water, could you please bring me something?",
+		"PossibleResponses": [[2, 3, 4]]
+	},
+	{
+		"LineId": 7,
+		"OwnLine": false,
+		"Text": "I'm really thirsty. Please could I have some water?",
+		"PossibleResponses": [[2, 3, 4]]
+	}
+]

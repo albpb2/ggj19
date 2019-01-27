@@ -16,7 +16,9 @@ public class TimeTracker : MonoBehaviour
     private UnityEngine.UI.Text _clockText;
 
     public delegate void NewDayBegins(int dayNumber);
+    public delegate void DayEnds();
     public event NewDayBegins onNewDayBegun;
+    public event DayEnds onDayEnded;
 
     private float _timeForCurrentDayInSeconds;
     private float _secondsPerHour;
@@ -50,6 +52,7 @@ public class TimeTracker : MonoBehaviour
 
     private void BeginNewDay()
     {
+        onDayEnded?.Invoke();
         CurrentDay++;
         onNewDayBegun?.Invoke(CurrentDay);
         _timeForCurrentDayInSeconds = 0;

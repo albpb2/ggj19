@@ -1,35 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Player
 {
     public class Karma : MonoBehaviour
     {
-        private const int MinKarma = 0;
+        private const int MinKarma = -100;
         private const int MaxKarma = 100;
-        private const int HalfKarma = 50;
-
-        [SerializeField]
-        private SpriteRenderer _greenBar;
-        [SerializeField]
-        private SpriteRenderer _redBar;
+        
         [SerializeField]
         private int _initialKarma;
+        [SerializeField]
+        private int _centralBarX;
+        [SerializeField]
+        private int _minBarX;
+        [SerializeField]
+        private int _maxBarX;
+        [SerializeField]
+        private Image _goodBar;
+        [SerializeField]
+        private Image _badBar;
 
-        private int _halfKarma;
-        private GameManager _gameManager;
+        private float _xPerKarmaUnit;
 
         public int Amount { get; set; }
 
         public void Start()
         {
-            _gameManager = FindObjectOfType<GameManager>();
-
             Amount = Math.Max(Math.Min(_initialKarma, MaxKarma), MinKarma);
+
+            _xPerKarmaUnit = (float)(_maxBarX - _centralBarX) / 100;
         }
 
         public void Increment(int quantity)
@@ -46,23 +47,27 @@ namespace Assets.Scripts.Player
 
         private void UpdateBars()
         {
-            _greenBar.transform.localScale = new Vector3(
-                Math.Max(Amount - HalfKarma, 0),
-                _greenBar.transform.localScale.y,
-                _greenBar.transform.localScale.z);
-            _greenBar.transform.localPosition = new Vector3(
-                0.02f * _greenBar.transform.localScale.x,
-                _greenBar.transform.localPosition.y,
-                _greenBar.transform.localPosition.z);
+            _goodBar.gameObject.SetActive(false);
+            _badBar.gameObject.SetActive(false);
 
-            _redBar.transform.localScale = new Vector3(
-                Math.Max(0 - (Amount - HalfKarma), MinKarma),
-                _redBar.transform.localScale.y,
-                _redBar.transform.localScale.z);
-            _redBar.transform.localPosition = new Vector3(
-                0 - 0.03f * _redBar.transform.localScale.x,
-                _redBar.transform.localPosition.y,
-                _redBar.transform.localPosition.z);
+            if (Amount > 0)
+            {
+                _goodBar.gameObject.SetActive(true);
+                var newX = _centralBarX + _xPerKarmaUnit * Amount;
+                _goodBar.transform.localPosition = new Vector3(
+                    newX,
+                    _goodBar.transform.localPosition.y,
+                    _goodBar.transform.localPosition.z);
+            }
+            else if (Amount < 0)
+            {
+                _badBar.gameObject.SetActive(true);
+                var newX = _centralBarX + _xPerKarmaUnit * Amount;
+                _badBar.transform.localPosition = new Vector3(
+                    newX,
+                    _badBar.transform.localPosition.y,
+                    _badBar.transform.localPosition.z);
+            }
         }
     }
 }
