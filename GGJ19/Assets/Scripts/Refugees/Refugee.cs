@@ -7,11 +7,15 @@ namespace Assets.Scripts.Refugees
     {
         protected Character _character;
         protected RefugeeSpawningSpot _spawningSpot;
+        protected RefugeesSettings _refugeesSettings;
+        protected Karma _karma;
 
         public override void Start()
         {
             base.Start();
             _character = FindObjectOfType<Character>();
+            _refugeesSettings = FindObjectOfType<RefugeesSettings>();
+            _karma = FindObjectOfType<Karma>();
         }
 
         public abstract void WakeUp();
