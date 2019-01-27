@@ -127,7 +127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5721020
 Transform:
   m_ObjectHideFlags: 0
@@ -1588,7 +1588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 177, y: 0.000061035156}
+  m_AnchoredPosition: {x: 76, y: -18}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &325777385
@@ -1611,7 +1611,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a19f705128d503a43a1003fd205b0563, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1733,6 +1733,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7021f5912597ca2418044e06afaa747b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &353957318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353957311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac3a81b2ef91e7b4e870e09cc6b1f32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bagImage: {fileID: 325777385}
+  _storageSpacePrefab: {fileID: 1745160487116989448, guid: 10467d5e15fca854d9bf2884fc3aa7c1,
+    type: 3}
 --- !u!1 &368103202
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,9 +2231,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxCapacity: 8
   _minCapacity: 4
-  _storageSpacePrefab: {fileID: 0}
+  _storageSpacePrefab: {fileID: 1745160487116989448, guid: 10467d5e15fca854d9bf2884fc3aa7c1,
+    type: 3}
   _storeFront: {fileID: 1414665052}
   _storeBack: {fileID: 1222056298}
+  _bag: {fileID: 353957318}
   _columns: 4
   _spaceBetweenColumns: 45
   _spaceBetweenRows: 45
@@ -4469,7 +4486,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222056296}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 0.5050504, y: 0.5050504, z: 0.5050504}
   m_Children: []
   m_Father: {fileID: 380907210}
@@ -4529,7 +4546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316a0a49dbd2c6e40913f43740d24f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _storageFront: {fileID: 0}
+  _storageFront: {fileID: 1414665050}
 --- !u!1 &1267732012
 GameObject:
   m_ObjectHideFlags: 0
@@ -4937,7 +4954,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -216.5, y: 53.5}
+  m_AnchoredPosition: {x: -105.6, y: 3}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414665052
@@ -5381,6 +5398,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1562789825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1562789827}
+  - component: {fileID: 1562789826}
+  m_Layer: 0
+  m_Name: StorageItemPrefabProvider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1562789826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562789825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b64b6398fc1c0488c0994b6a67c64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _breadPrefab: {fileID: 4084957151714971618, guid: 7cab838f7d817b041b9a678e1f2e7e69,
+    type: 3}
+  _coatPrefab: {fileID: 484382242, guid: 90959a3938150784080923fc7b7e93b5, type: 3}
+  _feedingBottlePrefab: {fileID: 9097797934438211045, guid: 2202bd9d07106c44997e57b1bace683a,
+    type: 3}
+  _pillsPrefab: {fileID: 4904080433059542372, guid: 85abec1247f4b53499384ff030617efa,
+    type: 3}
+--- !u!4 &1562789827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562789825}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 850.4239, y: 396.44284, z: 447.02884}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1590953661
 GameObject:
   m_ObjectHideFlags: 0

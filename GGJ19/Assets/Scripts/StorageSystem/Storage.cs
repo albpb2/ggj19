@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
+using System.Linq;
+using Assets.Scripts.Player;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -18,6 +19,8 @@ namespace Assets.Scripts.StorageSystem
         private Image _storeFront;
         [SerializeField]
         private Image _storeBack;
+        [SerializeField]
+        private Bag _bag;
         [SerializeField]
         private int _columns;
         [SerializeField]
@@ -73,8 +76,9 @@ namespace Assets.Scripts.StorageSystem
                     break;
                 }
 
-                var storageItem = StorageItem.Create(selectedPrefab, _storeFront, this);
-                storageItem.transform.localPosition = new Vector3(currentX, currentY);
+                var storageItem = StorageItem.Create(selectedPrefab, _storeFront);
+                storageItem.transform.localPosition = new Vector3(currentX, currentY, 1);
+                storageItem.SetStorage(this);
                 _storageItems.Add(storageItem);
                 currentX += _spaceBetweenColumns;
                 currentColumn++;
@@ -86,19 +90,19 @@ namespace Assets.Scripts.StorageSystem
                 }
             }
 
-            ////for (var i = _storageItems.Count; i < _maxCapacity; i++)
-            ////{
-            ////    var storageSpace = Instantiate(_storageSpacePrefab, _storeFront.transform).GetComponent<StorageSpace>();
-            ////    storageSpace.transform.localPosition = new Vector3(currentX, currentY);
-            ////    currentX += _spaceBetweenColumns;
-            ////    currentColumn++;
-            ////    if (currentColumn == _columns)
-            ////    {
-            ////        currentColumn = 0;
-            ////        currentX = _firstPosition.x;
-            ////        currentY -= _spaceBetweenRows;
-            ////    }
-            ////}
+            for (var i = _storageItems.Count; i < _maxCapacity; i++)
+            {
+                var storageSpace = Instantiate(_storageSpacePrefab, _storeFront.transform).GetComponent<StorageSpace>();
+                storageSpace.transform.localPosition = new Vector3(currentX, currentY, 1);
+                currentX += _spaceBetweenColumns;
+                currentColumn++;
+                if (currentColumn == _columns)
+                {
+                    currentColumn = 0;
+                    currentX = _firstPosition.x;
+                    currentY -= _spaceBetweenRows;
+                }
+            }
         }
 
         public void OpenStorage()
@@ -107,6 +111,7 @@ namespace Assets.Scripts.StorageSystem
 
             _storeBack.gameObject.SetActive(true);
             _storeFront.gameObject.SetActive(true);
+            _bag.OpenBag();
 
             Show();
         }
@@ -115,10 +120,25 @@ namespace Assets.Scripts.StorageSystem
         {
             _gameManager.Pause = false;
 
+            foreach (Transform child in _storeFront.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
             _storeBack.gameObject.SetActive(false);
             _storeFront.gameObject.SetActive(false);
+            _bag.CloseBag();
 
             _storageItems = new List<StorageItem>();
+        }
+
+        public void RemoveItem(StorageItem storageItem, Vector3 localPosition)
+        {
+            var storageSpace = Instantiate(_storageSpacePrefab, _storeFront.transform).GetComponent<StorageSpace>();
+            storageSpace.transform.localPosition = localPosition;
+            _storageItems.Remove(storageItem);
+            _selectedPrefabs.Remove(_selectedPrefabs.First(p =>
+                p.GetComponent<StorageItem>().PortableObjectType == storageItem.PortableObjectType));
         }
     }
 }

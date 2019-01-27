@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assets.Scripts.Objects.PortableObjects;
 
 namespace Assets.Scripts.Objects
 {
-    public abstract class PortableObject
+    public class PortableObject
     {
+        public PortableObjectType Type { get; set; }
     }
 }

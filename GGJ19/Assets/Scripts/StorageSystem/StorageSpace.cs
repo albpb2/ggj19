@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Scripts.Objects;
+﻿using Assets.Scripts.Objects;
+using Assets.Scripts.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,14 +11,11 @@ namespace Assets.Scripts.StorageSystem
         private Storage _storage;
         private PortableObject _portableObject;
 
+        public Bag Bag { get; set; }
+
         public void Start()
         {
             _button = GetComponent<Button>();
-        }
-
-        public void OnClick()
-        {
-
         }
 
         public void SetStorage(Storage storage)

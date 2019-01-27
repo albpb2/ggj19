@@ -117,6 +117,8 @@
     <Compile Include="Assets\Scripts\Objects\PortableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObjects\PortableObjectType.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObjects\Water.cs" />
+    <Compile Include="Assets\Scripts\Objects\StorageItemPrefabProvider.cs" />
+    <Compile Include="Assets\Scripts\Player\Bag.cs" />
     <Compile Include="Assets\Scripts\Player\Character.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterMovementController.cs" />
     <Compile Include="Assets\Scripts\Player\Karma.cs" />

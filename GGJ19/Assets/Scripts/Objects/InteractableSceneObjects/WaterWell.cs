@@ -6,7 +6,6 @@ namespace Assets.Scripts.Objects.InteractableSceneObjects
     {
         public override void Interact()
         {
-            _player.TakePortableObject(new Water());
         }
     }
 }

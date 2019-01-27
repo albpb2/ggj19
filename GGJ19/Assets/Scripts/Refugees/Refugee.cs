@@ -18,7 +18,6 @@ namespace Assets.Scripts.Refugees
 
         public override void Interact()
         {
-            _character.GiveObjectTo(this);
         }
 
         public void SetSpawningSpot(RefugeeSpawningSpot spawningSpot)
