@@ -27,7 +27,7 @@ namespace Assets.Scripts.Objects
                 return;
             }
 
-            if (!_gameManager.Pause)
+            if (!_gameManager.GameFreezed)
             {
                 _inputManager.SetSelectableCursor();
             }
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Objects
 
         public void OnMouseExit()
         {
-            if (!_gameManager.Pause)
+            if (!_gameManager.GameFreezed)
             {
                 _inputManager.SetDefaultCursor();
             }

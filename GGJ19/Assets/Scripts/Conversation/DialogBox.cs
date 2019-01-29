@@ -68,7 +68,7 @@ namespace Assets.Scripts.Conversation
                 if (!_textsToRead.Any())
                 {
                     _textBox.gameObject.SetActive(false);
-                    _gameManager.Pause = false;
+                    _gameManager.GameFreezed = false;
                     _character.EndInteraction();
                 }
             }
@@ -76,7 +76,7 @@ namespace Assets.Scripts.Conversation
 
         public void ShowText(string name, string text)
         {
-            _gameManager.Pause = true;
+            _gameManager.GameFreezed = true;
 
             _textBox.gameObject.SetActive(true);
 

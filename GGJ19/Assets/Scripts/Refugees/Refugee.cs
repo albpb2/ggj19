@@ -47,7 +47,7 @@ namespace Assets.Scripts.Refugees
                 return;
             }
 
-            _gameManager.Pause = true;
+            _gameManager.GameFreezed = true;
             _character.BeginInteraction(this);
         }
 

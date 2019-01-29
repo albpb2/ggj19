@@ -69,7 +69,7 @@ namespace Assets.Scripts.StorageSystem
 
         public void Update()
         {
-            if (Input.GetKey(KeyCode.Escape))
+            if (Input.GetKey(KeyCode.Escape) && _storeBack.gameObject.activeSelf)
             {
                 CloseStorage();
             }
@@ -154,7 +154,7 @@ namespace Assets.Scripts.StorageSystem
 
         public void OpenStorage()
         {
-            _gameManager.Pause = true;
+            _gameManager.GameFreezed = true;
 
             _storeBack.gameObject.SetActive(true);
             _storeFront.gameObject.SetActive(true);
@@ -167,7 +167,7 @@ namespace Assets.Scripts.StorageSystem
 
         public void CloseStorage()
         {
-            _gameManager.Pause = false;
+            _gameManager.GameFreezed = false;
 
             foreach (Transform child in _storeFront.transform)
             {
@@ -187,9 +187,16 @@ namespace Assets.Scripts.StorageSystem
         {
             var storageSpace = Instantiate(_storageSpacePrefab, _storeFront.transform).GetComponent<StorageSpace>();
             storageSpace.transform.localPosition = localPosition;
-            _storageItems.Remove(storageItem);
-            _selectedPrefabs.Remove(_selectedPrefabs.First(p =>
-                p.GetComponent<StorageItem>().PortableObjectType == storageItem.PortableObjectType));
+            if (_storageItems.Contains(storageItem))
+            {
+                _storageItems.Remove(storageItem);
+                _selectedPrefabs.Remove(_selectedPrefabs.First(p =>
+                    p.GetComponent<StorageItem>().PortableObjectType == storageItem.PortableObjectType));
+            }
+            else
+            {
+                Gifts.Remove(Gifts.First(gift => gift == storageItem.PortableObjectType));
+            }
         }
 
         public void AddGift(PortableObjectType objectType)

@@ -20,7 +20,7 @@ namespace Assets.Scripts.Objects.InteractableSceneObjects
 
         public override void Interact()
         {
-            _gameManager.Pause = true;
+            _gameManager.GameFreezed = true;
             _inputManager.SetDefaultCursor();
             _storage.OpenStorage();
         }

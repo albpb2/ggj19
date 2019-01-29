@@ -49,7 +49,7 @@ namespace Assets.Scripts.Player
 
         public void Update()
         {
-            if (Input.GetKey(KeyCode.Escape))
+            if (Input.GetKey(KeyCode.Escape) && _bagImage.gameObject.activeSelf)
             {
                 CloseBag();
             }
@@ -87,7 +87,7 @@ namespace Assets.Scripts.Player
             }
             _bagImage.gameObject.SetActive(false);
 
-            _gameManager.Pause = false;
+            _gameManager.GameFreezed = false;
         }
 
         public void AddItem(StorageItem storageItem, StorageSpace storageSpace)

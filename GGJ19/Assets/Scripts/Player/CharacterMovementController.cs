@@ -35,7 +35,7 @@ namespace Assets.Scripts.Player
 
         public void Update()
         {
-            if (_gameManager.Pause)
+            if (_gameManager.GameFreezed)
             {
                 return;
             }
