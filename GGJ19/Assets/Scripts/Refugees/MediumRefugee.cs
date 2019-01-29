@@ -59,6 +59,7 @@ namespace Assets.Scripts.Refugees
                 line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
                 _dialogManager.WriteLine(line, Name);
                 UpdateKarma(_refugeesSettings.NostalgiaResolvedPoints);
+                NostalgiaResolved = true;
                 return;
             }
 
