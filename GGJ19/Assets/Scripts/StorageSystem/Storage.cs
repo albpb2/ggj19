@@ -187,11 +187,13 @@ namespace Assets.Scripts.StorageSystem
         {
             var storageSpace = Instantiate(_storageSpacePrefab, _storeFront.transform).GetComponent<StorageSpace>();
             storageSpace.transform.localPosition = localPosition;
-            if (_storageItems.Contains(storageItem))
+
+            _storageItems.Remove(storageItem);
+            var selectedPrefab = _selectedPrefabs.FirstOrDefault(p =>
+                p.GetComponent<StorageItem>().PortableObjectType == storageItem.PortableObjectType);
+            if (selectedPrefab != null)
             {
-                _storageItems.Remove(storageItem);
-                _selectedPrefabs.Remove(_selectedPrefabs.First(p =>
-                    p.GetComponent<StorageItem>().PortableObjectType == storageItem.PortableObjectType));
+                _selectedPrefabs.Remove(selectedPrefab);
             }
             else
             {
