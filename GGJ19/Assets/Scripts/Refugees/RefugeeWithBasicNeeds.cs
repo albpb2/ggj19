@@ -1,8 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using Assets.Scripts.Conversation;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Objects.PortableObjects;
+using UnityEngine;
+using Random = System.Random;
 
 namespace Assets.Scripts.Refugees
 {
@@ -106,6 +108,11 @@ namespace Assets.Scripts.Refugees
 
         public void CheckStatusAtEndOfDay()
         {
+            if (!RefugeeCountsForKarma())
+            {
+                return;
+            }
+
             var karmaModifier = 0;
             if (!HungerResolved)
             {
@@ -133,6 +140,13 @@ namespace Assets.Scripts.Refugees
             {
                 _karma.Reduce(-karmaModifier);
             }
+        }
+
+        public override void LeaveCamp()
+        {
+            _timeTracker.onDayEnded -= CheckStatusAtEndOfDay;
+
+            base.LeaveCamp();
         }
     }
 }

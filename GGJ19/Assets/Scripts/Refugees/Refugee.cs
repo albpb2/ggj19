@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Conversation;
+﻿using System.Linq;
+using Assets.Scripts.Conversation;
 using Assets.Scripts.Objects;
 using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.Player;
@@ -69,6 +70,13 @@ namespace Assets.Scripts.Refugees
             {
                 LeaveCamp();
             }
+        }
+
+        protected bool RefugeeCountsForKarma()
+        {
+            return _refugeesSettings.ValidSortingLayers == null ||
+                   !_refugeesSettings.ValidSortingLayers.Any() ||
+                   _refugeesSettings.ValidSortingLayers.Contains(GetComponent<SpriteRenderer>().sortingLayerName);
         }
     }
 }

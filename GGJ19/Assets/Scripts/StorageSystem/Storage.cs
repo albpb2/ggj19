@@ -77,6 +77,11 @@ namespace Assets.Scripts.StorageSystem
 
         public void Refill(int dayNumber)
         {
+            if (_storeBack.gameObject.activeSelf)
+            {
+                CloseStorage();
+                OpenStorage();
+            }
             var numberOfObjects = _random.Next(_minCapacity, _maxCapacity + 1);
             for (var i = _selectedPrefabs.Count; i < numberOfObjects; i++)
             {
@@ -154,6 +159,11 @@ namespace Assets.Scripts.StorageSystem
 
         public void OpenStorage()
         {
+            if (IsOpen())
+            {
+                return;
+            }
+
             _gameManager.GameFreezed = true;
 
             _storeBack.gameObject.SetActive(true);
@@ -167,6 +177,11 @@ namespace Assets.Scripts.StorageSystem
 
         public void CloseStorage()
         {
+            if (!IsOpen())
+            {
+                return;
+            }
+
             _gameManager.GameFreezed = false;
 
             foreach (Transform child in _storeFront.transform)
@@ -204,6 +219,11 @@ namespace Assets.Scripts.StorageSystem
         public void AddGift(PortableObjectType objectType)
         {
             Gifts.Add(objectType);
+        }
+
+        private bool IsOpen()
+        {
+            return _storeBack.gameObject.activeSelf;
         }
     }
 }

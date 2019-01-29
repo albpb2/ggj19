@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Objects;
+﻿using Assets.Scripts.Conversation;
+using Assets.Scripts.Objects;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
@@ -83,17 +84,28 @@ namespace Assets.Scripts.Player
 
         public void FixedUpdate()
         {
-            if (_previousPosition.HasValue && transform.position.x != _previousPosition.Value.x)
+            if (!_gameManager.GameFreezed && _previousPosition.HasValue && 
+                (TargetObject != null || _inputManager.MoveLeft || _inputManager.MoveRight || _targetDirection != null))
             {
                 _animator.SetBool(WalkAnimationName, true);
-                if (transform.position.x > _previousPosition.Value.x)
-                {
-                    _spriteRenderer.flipX = false;
-                }
-                else
+
+                if (_inputManager.MoveLeft)
                 {
                     _spriteRenderer.flipX = true;
                 }
+                else if (_inputManager.MoveRight)
+                {
+                    _spriteRenderer.flipX = false;
+                }
+                else if(transform.position.x > _previousPosition.Value.x)
+                {
+                    _spriteRenderer.flipX = false;
+                }
+                else if (transform.position.x < _previousPosition.Value.x)
+                {
+                    _spriteRenderer.flipX = true;
+                }
+                
             }
             else
             {

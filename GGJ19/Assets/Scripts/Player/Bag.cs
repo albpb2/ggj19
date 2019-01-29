@@ -84,6 +84,11 @@ namespace Assets.Scripts.Player
                 {
                     Destroy(child.gameObject);
                 }
+                else if (child.gameObject.GetComponent<StorageSpace>() != null)
+                {
+                    Destroy(child.gameObject);
+                    Spaces.Remove(child.gameObject.GetComponent<StorageSpace>());
+                }
             }
             _bagImage.gameObject.SetActive(false);
 

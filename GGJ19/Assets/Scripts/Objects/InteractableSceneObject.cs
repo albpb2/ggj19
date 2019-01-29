@@ -11,12 +11,30 @@ namespace Assets.Scripts.Objects
         protected InputManager _inputManager;
         protected GameManager _gameManager;
 
+        private bool _mouseExitWhileOnPause;
+        private bool _mouseEnterWhileOnPause;
+
         public virtual void Start()
         {
             _characterMovementController = FindObjectOfType<CharacterMovementController>();
             _player = FindObjectOfType<Character>();
             _inputManager = FindObjectOfType<InputManager>();
             _gameManager = FindObjectOfType<GameManager>();
+        }
+
+        public virtual void Update()
+        {
+            if (_mouseExitWhileOnPause)
+            {
+                _inputManager.SetDefaultCursor();
+                _mouseExitWhileOnPause = false;
+            }
+
+            if (_mouseEnterWhileOnPause)
+            {
+                _inputManager.SetSelectableCursor();
+                _mouseEnterWhileOnPause = false;
+            }
         }
 
         public void OnMouseEnter()
@@ -31,6 +49,11 @@ namespace Assets.Scripts.Objects
             {
                 _inputManager.SetSelectableCursor();
             }
+            else
+            {
+                _mouseEnterWhileOnPause = true;
+                _mouseExitWhileOnPause = false;
+            }
         }
 
         public void OnMouseExit()
@@ -38,6 +61,11 @@ namespace Assets.Scripts.Objects
             if (!_gameManager.GameFreezed)
             {
                 _inputManager.SetDefaultCursor();
+            }
+            else
+            {
+                _mouseExitWhileOnPause = true;
+                _mouseEnterWhileOnPause = false;
             }
         }
 
