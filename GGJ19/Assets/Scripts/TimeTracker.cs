@@ -5,7 +5,7 @@ public class TimeTracker : MonoBehaviour
     private const int SecondsPerMinute = 60;
     
     [SerializeField]
-    private int _realDayDurationInMinutes = 3;
+    private float _realDayDurationInMinutes = 3;
     [SerializeField]
     private int _dayDurationHours = 12;
     [SerializeField]

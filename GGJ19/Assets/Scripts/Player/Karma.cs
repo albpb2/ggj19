@@ -21,6 +21,8 @@ namespace Assets.Scripts.Player
         private Image _goodBar;
         [SerializeField]
         private Image _badBar;
+        [SerializeField]
+        private GameState _gameStatePrefab;
 
         private float _xPerKarmaUnit;
 
@@ -43,6 +45,7 @@ namespace Assets.Scripts.Player
         {
             Amount = Math.Max(Amount - quantity, MinKarma);
             UpdateBars();
+            EndGameIfMinKarmaReached();
         }
 
         private void UpdateBars()
@@ -67,6 +70,23 @@ namespace Assets.Scripts.Player
                     newX,
                     _badBar.transform.localPosition.y,
                     _badBar.transform.localPosition.z);
+            }
+        }
+
+        private void EndGameIfMinKarmaReached()
+        {
+            if (Amount <= MinKarma)
+            {
+                var gameState = FindObjectOfType<GameState>();
+                if (gameState == null)
+                {
+                    gameState = Instantiate(_gameStatePrefab);
+                    DontDestroyOnLoad(gameState);
+                }
+                var timeTracker = FindObjectOfType<TimeTracker>();
+                var sceneManager = FindObjectOfType<SceneManager>();
+                gameState.Days = timeTracker.CurrentDay;
+                sceneManager.OpenScene(2);
             }
         }
     }
