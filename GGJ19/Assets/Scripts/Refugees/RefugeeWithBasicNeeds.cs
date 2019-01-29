@@ -43,7 +43,7 @@ namespace Assets.Scripts.Refugees
             {
                 lineId = BasicDialogLine.ThanksLines.GetRandomElement();
                 line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteLine(line, Name);
+                _dialogManager.WriteBasicDialogLine(line, Name);
                 UpdateKarma(_refugeesSettings.HungerResolvedPoints);
                 return;
             }
@@ -51,7 +51,7 @@ namespace Assets.Scripts.Refugees
             {
                 lineId = BasicDialogLine.ThanksLines.GetRandomElement();
                 line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteLine(line, Name);
+                _dialogManager.WriteBasicDialogLine(line, Name);
                 UpdateKarma(_refugeesSettings.ThirstResolvedPoints);
                 return;
             }
@@ -59,14 +59,14 @@ namespace Assets.Scripts.Refugees
             {
                 lineId = BasicDialogLine.ThanksLines.GetRandomElement();
                 line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteLine(line, Name);
+                _dialogManager.WriteBasicDialogLine(line, Name);
                 UpdateKarma(_refugeesSettings.IllnessResolvedPoints);
                 return;
             }
 
             lineId = BasicDialogLine.WrongChoiceLines.GetRandomElement();
             line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-            _dialogManager.WriteLine(line, Name);
+            _dialogManager.WriteBasicDialogLine(line, Name);
         }
 
         public void ResetNeeds()

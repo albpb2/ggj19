@@ -28,18 +28,29 @@ namespace Assets.Scripts.Refugees
 
         public override void Talk()
         {
-            _dialogManager.WriteLine(DialogLine, Name);
+            if (!NostalgiaResolved)
+            {
+                _dialogManager.WriteMediumDialogLine(DialogLine, Name);
+            }
+            else
+            {
+
+                var lineId = MediumDialogLine.GreetingLines.GetRandomElement();
+                var line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
+                _dialogManager.WriteMediumDialogLine(line, Name);
+            }
         }
+
         public override void GiveObject(PortableObjectType objectType)
         {
             int lineId;
-            BasicDialogLine line;
+            MediumDialogLine line;
 
             if (NostalgiaResolved)
             {
-                lineId = BasicDialogLine.ThanksLines.GetRandomElement();
-                line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteLine(line, Name);
+                lineId = MediumDialogLine.ThanksLines.GetRandomElement();
+                line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
+                _dialogManager.WriteMediumDialogLine(line, Name);
             }
 
             var validObjectTypes = new List<PortableObjectType>();
@@ -52,20 +63,19 @@ namespace Assets.Scripts.Refugees
                 }
             }
             
-
             if (!NostalgiaResolved && validObjectTypes.Contains(objectType))
             {
-                lineId = BasicDialogLine.ThanksLines.GetRandomElement();
-                line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteLine(line, Name);
+                lineId = MediumDialogLine.ThanksLines.GetRandomElement();
+                line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
+                _dialogManager.WriteMediumDialogLine(line, Name);
                 UpdateKarma(_refugeesSettings.NostalgiaResolvedPoints);
                 NostalgiaResolved = true;
                 return;
             }
 
-            lineId = BasicDialogLine.WrongChoiceLines.GetRandomElement();
-            line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-            _dialogManager.WriteLine(line, Name);
+            lineId = MediumDialogLine.WrongChoiceLines.GetRandomElement();
+            line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
+            _dialogManager.WriteMediumDialogLine(line, Name);
         }
 
         public override void LeaveCamp()

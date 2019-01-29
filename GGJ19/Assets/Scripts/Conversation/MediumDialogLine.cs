@@ -6,39 +6,19 @@ namespace Assets.Scripts.Conversation
     [Serializable]
     public class MediumDialogLine : DialogLine
     {
-        public static int[] HungerLines = new[]
-        {
-            1, 5, 6, 7
-        };
-
-        public static int[] ThirstLines = new[]
-        {
-            7
-        };
-
-        public static int[] HungerAndThirstLines = new[]
-        {
-            6
-        };
-
         public static int[] GreetingLines = new[]
         {
-            8, 9
-        };
-
-        public static int[] IllnessLines = new[]
-        {
-            10, 11
+            4
         };
 
         public static int[] ThanksLines = new[]
         {
-            12, 13
+            5, 6, 7
         };
 
         public static int[] WrongChoiceLines = new[]
         {
-            14, 15
+            8, 9
         };
 
         public List<string> RelatedObjects;

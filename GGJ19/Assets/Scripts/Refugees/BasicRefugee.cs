@@ -39,7 +39,7 @@ namespace Assets.Scripts.Refugees
             var lineId = possibleLines.GetRandomElement();
             var line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
 
-            _dialogManager.WriteLine(line, Name);
+            _dialogManager.WriteBasicDialogLine(line, Name);
         }
     }
 }

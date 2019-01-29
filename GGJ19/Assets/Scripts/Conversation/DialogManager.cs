@@ -35,7 +35,17 @@ namespace Assets.Scripts.Conversation
             return JsonConvert.DeserializeObject<List<MediumDialogLine>>(_mediumDialogLines.text);
         }
 
-        public void WriteLine(DialogLine dialogLine, string refugeeName)
+        public void WriteBasicDialogLine(DialogLine dialogLine, string refugeeName)
+        {
+            WriteDialogLine(dialogLine, refugeeName, BasicDialogLines.Select(l => l as DialogLine).ToList());
+        }
+
+        public void WriteMediumDialogLine(DialogLine dialogLine, string refugeeName)
+        {
+            WriteDialogLine(dialogLine, refugeeName, MediumDialogLines.Select(l => l as DialogLine).ToList());
+        }
+
+        private void WriteDialogLine(DialogLine dialogLine, string refugeeName, List<DialogLine> dialogLines)
         {
             const string OwnLineHeader = "You";
             var name = dialogLine.OwnLine ? OwnLineHeader : refugeeName;
@@ -48,9 +58,9 @@ namespace Assets.Scripts.Conversation
                     .ToList().GetRandomElement();
 
                 var lineId = responseSet.GetRandomElement();
-                dialogLine = BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
+                dialogLine = dialogLines.SingleOrDefault(l => l.LineId == lineId);
 
-                WriteLine(dialogLine, refugeeName);
+                WriteBasicDialogLine(dialogLine, refugeeName);
             }
         }
     }

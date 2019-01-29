@@ -3,21 +3,21 @@
 		"LineId": 1,
 		"OwnLine": true,
 		"Text": "I'm sorry. I hope we make you feel comfortable here.",
-		"PossibleResponses": [],
+		"PossibleResponses": [[]],
 		"RelatedObjects": []
 	},
 	{
 		"LineId": 2,
 		"OwnLine": true,
 		"Text": "You must miss it so bad...",
-		"PossibleResponses": [],
+		"PossibleResponses": [[]],
 		"RelatedObjects": []
 	},
 	{
 		"LineId": 3,
 		"OwnLine": true,
 		"Text": "We're here to make you feel like home (as much as we can).",
-		"PossibleResponses": [],
+		"PossibleResponses": [[]],
 		"RelatedObjects": []
 	},
 	{
