@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 609725899}
   - component: {fileID: 609725898}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 1899499620}
   - component: {fileID: 1899499619}
   m_Layer: 5
-  m_Name: EventSystem (1)
+  m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
