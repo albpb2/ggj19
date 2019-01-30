@@ -36,11 +36,6 @@ namespace Assets.Scripts.StorageSystem
             _bag = _character.GetComponent<Bag>();
         }
 
-        public void OnClick()
-        {
-
-        }
-
         public void OnEndDrag(PointerEventData eventData)
         {
             if (_storage == null)
@@ -57,11 +52,6 @@ namespace Assets.Scripts.StorageSystem
             {
                 CancelDrag();
             }
-        }
-
-        public void OnTriggerEnter2D(Collider2D collider)
-        {
-
         }
 
         public void OnDrag(PointerEventData eventData)

@@ -12,6 +12,7 @@ namespace Assets.Scripts.Refugees
         private const int MinDaysToStay = 1;
         private const int FamilyProbability = 10;
         private const int VisibleSortingOrder = 2;
+        private const int MaxAttemptsToSpawn = 10;
 
         [SerializeField]
         private GameObject _basicRefugeePrefab;
@@ -94,9 +95,11 @@ namespace Assets.Scripts.Refugees
 
             var spriteRenderer = refugee.GetComponent<SpriteRenderer>();
             Sprite selectedSprite = null;
+            int attempts = 0;
 
-            while (selectedSprite == null)
+            while (selectedSprite == null && attempts < MaxAttemptsToSpawn)
             {
+                attempts++;
                 if (IsFamily() && _familySprites.Count > 0)
                 {
                     selectedSprite = _familySprites.GetRandomElement();
@@ -108,7 +111,7 @@ namespace Assets.Scripts.Refugees
                         : _maleSprites.GetRandomElement();
                 }
 
-                if (_existingSprites.Contains(selectedSprite))
+                if (attempts < MaxAttemptsToSpawn && _existingSprites.Contains(selectedSprite))
                 {
                     selectedSprite = null;
                 }
