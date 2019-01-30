@@ -11,7 +11,7 @@ namespace Assets.Scripts.Refugees
     public class MediumRefugee : RefugeeWithBasicNeeds
     {
         private const int MinLine = 10;
-        private const int MaxLine = 21;
+        private const int MaxLine = 20;
 
         private static PortableObjectType[] PossibleGifts = new[]
         {
@@ -34,10 +34,7 @@ namespace Assets.Scripts.Refugees
             }
             else
             {
-
-                var lineId = MediumDialogLine.GreetingLines.GetRandomElement();
-                var line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteMediumDialogLine(line, Name);
+                base.Talk();
             }
         }
 
@@ -48,9 +45,8 @@ namespace Assets.Scripts.Refugees
 
             if (NostalgiaResolved)
             {
-                lineId = MediumDialogLine.ThanksLines.GetRandomElement();
-                line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteMediumDialogLine(line, Name);
+                base.GiveObject(objectType);
+                return;
             }
 
             var validObjectTypes = new List<PortableObjectType>();
@@ -76,6 +72,7 @@ namespace Assets.Scripts.Refugees
             lineId = MediumDialogLine.WrongChoiceLines.GetRandomElement();
             line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
             _dialogManager.WriteMediumDialogLine(line, Name);
+            UpdateKarma(_refugeesSettings.RandomObjectPoints);
         }
 
         public override void LeaveCamp()
@@ -88,6 +85,11 @@ namespace Assets.Scripts.Refugees
             if (!NostalgiaResolved)
             {
                 UpdateKarma(- _refugeesSettings.NostalgiaResolvedPoints);
+                var randomNumber = _random.Next(0, 100);
+                if (randomNumber < 50)
+                {
+                    FindObjectOfType<Storage>().AddGift(PossibleGifts.GetRandomElement());
+                }
             }
             else
             {

@@ -135,13 +135,6 @@
 	{
 		"LineId": 20,
 		"OwnLine": false,
-		"Text": "I was starting my own beer business and now it's been ages since the last time I had a drink. You wouldn't know if there's some way to grab a beer?.",
-		"PossibleResponses": [[1,2,3]],
-		"RelatedObjects": ["Drink"]
-	},
-	{
-		"LineId": 21,
-		"OwnLine": false,
 		"Text": "My son is realy bored here and I feel like his youth is being wasted. If only he had something to have a little fun.",
 		"PossibleResponses": [[1,2,3]],
 		"RelatedObjects": ["Toy", "Ball", "Book"]

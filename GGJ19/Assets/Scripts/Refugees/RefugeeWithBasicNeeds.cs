@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using System.Runtime.Remoting.Messaging;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Conversation;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Objects.PortableObjects;
-using UnityEngine;
 using Random = System.Random;
 
 namespace Assets.Scripts.Refugees
@@ -49,7 +48,7 @@ namespace Assets.Scripts.Refugees
                 UpdateKarma(_refugeesSettings.HungerResolvedPoints);
                 return;
             }
-            if (!ThirstResolved && objectType == PortableObjectType.Water)
+            if (!ThirstResolved && (objectType == PortableObjectType.Water || objectType == PortableObjectType.Bottle || objectType == PortableObjectType.FeedingBottle))
             {
                 lineId = BasicDialogLine.ThanksLines.GetRandomElement();
                 line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
@@ -68,6 +67,42 @@ namespace Assets.Scripts.Refugees
 
             lineId = BasicDialogLine.WrongChoiceLines.GetRandomElement();
             line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
+            _dialogManager.WriteBasicDialogLine(line, Name);
+            UpdateKarma(_refugeesSettings.RandomObjectPoints);
+        }
+
+        public override void Talk()
+        {
+            var possibleLines = new List<int>();
+
+            if (!HungerResolved)
+            {
+                possibleLines.AddRange(BasicDialogLine.HungerLines);
+            }
+
+            if (!ThirstResolved)
+            {
+                possibleLines.AddRange(BasicDialogLine.ThirstLines);
+            }
+
+            if (!HungerResolved && !ThirstResolved)
+            {
+                possibleLines.AddRange(BasicDialogLine.HungerAndThirstLines);
+            }
+
+            if (Ill & !IllnessResolved)
+            {
+                possibleLines.AddRange(BasicDialogLine.IllnessLines);
+            }
+
+            if (HungerResolved && ThirstResolved && (!Ill || IllnessResolved))
+            {
+                possibleLines.AddRange(BasicDialogLine.GreetingLines);
+            }
+
+            var lineId = possibleLines.GetRandomElement();
+            var line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
+
             _dialogManager.WriteBasicDialogLine(line, Name);
         }
 
