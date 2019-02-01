@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class LayerTransitionManager : MonoBehaviour
+    public class OldLayerTransitionManager : MonoBehaviour
     {
         private const int FirstLayer = 0;
         private const int LastLayer = 2;

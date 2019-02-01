@@ -12,6 +12,7 @@ TagManager:
   - SpawningSpotLayer1
   - InvisibleWall
   - VerticalTrigger
+  - VerticalTriggerDown
   layers:
   - Default
   - TransparentFX
@@ -25,9 +26,9 @@ TagManager:
   - Focus
   - Sky
   - Ground
-  - 
-  - 
-  - 
+  - FirstFloor
+  - SecondFloor
+  - ThirdFloor
   - 
   - 
   - 
@@ -54,6 +55,15 @@ TagManager:
     locked: 0
   - name: InteractableObjects
     uniqueID: 2628688675
+    locked: 0
+  - name: Floor 3 Background
+    uniqueID: 3703975893
+    locked: 0
+  - name: Floor 2 Background
+    uniqueID: 1486495267
+    locked: 0
+  - name: Floor 1 Background
+    uniqueID: 2495573847
     locked: 0
   - name: Floor 3
     uniqueID: 3396491677

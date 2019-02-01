@@ -9,5 +9,7 @@
         public const string SpawningSpotLayer2 = "SpawningSpotLayer2";
         public const string SpawningSpotLayer3 = "SpawningSpotLayer3";
         public const string InvisibleWall = "InvisibleWall";
+        public const string VerticalTriggerUp = "VerticalTrigger";
+        public const string VerticalTriggerDown = "VerticalTriggerDown";
     }
 }

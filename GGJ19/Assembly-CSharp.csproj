@@ -116,7 +116,6 @@
     <Compile Include="Assets\Scripts\GameState.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Layers.cs" />
-    <Compile Include="Assets\Scripts\LayerTransitionManager.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObject.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\PlaneSwitchTrigger.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\Store.cs" />
@@ -125,10 +124,12 @@
     <Compile Include="Assets\Scripts\Objects\PortableObjects\PortableObjectType.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObjects\Water.cs" />
     <Compile Include="Assets\Scripts\Objects\StorageItemPrefabProvider.cs" />
+    <Compile Include="Assets\Scripts\OldLayerTransitionManager.cs" />
     <Compile Include="Assets\Scripts\Player\Bag.cs" />
     <Compile Include="Assets\Scripts\Player\Character.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterMovementController.cs" />
     <Compile Include="Assets\Scripts\Player\Karma.cs" />
+    <Compile Include="Assets\Scripts\Player\LayerTransitionManager.cs" />
     <Compile Include="Assets\Scripts\Refugees\BasicRefugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\MediumRefugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\Refugee.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Assets\Scripts\Refugees\RefugeesSettings.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeeWithBasicNeeds.cs" />
     <Compile Include="Assets\Scripts\SceneManager.cs" />
+    <Compile Include="Assets\Scripts\SortingLayers.cs" />
     <Compile Include="Assets\Scripts\StorageSystem\Storage.cs" />
     <Compile Include="Assets\Scripts\StorageSystem\StorageBack.cs" />
     <Compile Include="Assets\Scripts\StorageSystem\StorageItem.cs" />

@@ -21,7 +21,8 @@ namespace Assets.Scripts.Player
         private Vector3? _previousPosition;
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
-        private bool _allowVerticalMovement;
+        private bool _allowVerticalMovementUp;
+        private bool _allowVerticalMovementDown;
 
         public InteractableSceneObject TargetObject { get; set; }
         
@@ -33,7 +34,8 @@ namespace Assets.Scripts.Player
             _animator = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
 
-            _allowVerticalMovement = true;
+            _allowVerticalMovementUp = true;
+            _allowVerticalMovementDown = true;
         }
 
         public void Update()
@@ -59,13 +61,13 @@ namespace Assets.Scripts.Player
                     _targetDirection = null;
                     TargetObject = null;
                 }
-                if (_allowVerticalMovement && _inputManager.MoveUp)
+                if (_allowVerticalMovementUp && _inputManager.MoveUp)
                 {
                     MoveTowardsDirection(Vector3.up, step);
                     _targetDirection = null;
                     TargetObject = null;
                 }
-                else if (_inputManager.MoveDown)
+                else if (_allowVerticalMovementDown && _inputManager.MoveDown)
                 {
                     MoveTowardsDirection(Vector3.down, step);
                     _targetDirection = null;
@@ -134,27 +136,39 @@ namespace Assets.Scripts.Player
 
         void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.tag == "VerticalTrigger")
+            if (collider.tag == Tags.VerticalTriggerUp)
             {
-                _allowVerticalMovement = false;
+                _allowVerticalMovementUp = false;
+            }
+            else if (collider.tag == Tags.VerticalTriggerDown)
+            {
+                _allowVerticalMovementDown = false;
             }
             InteractWithTargetObjectIfIsOnTrigger(collider);
         }
 
         void OnTriggerStay2D(Collider2D collider)
         {
-            if (collider.tag == "VerticalTrigger")
+            if (collider.tag == Tags.VerticalTriggerUp)
             {
-                _allowVerticalMovement = false;
+                _allowVerticalMovementUp = false;
+            }
+            else if (collider.tag == Tags.VerticalTriggerDown)
+            {
+                _allowVerticalMovementDown = false;
             }
             InteractWithTargetObjectIfIsOnTrigger(collider);
         }
 
         void OnTriggerExit2D(Collider2D collider)
         {
-            if (collider.tag == "VerticalTrigger")
+            if (collider.tag == Tags.VerticalTriggerUp)
             {
-                _allowVerticalMovement = true;
+                _allowVerticalMovementUp = true;
+            }
+            else if (collider.tag == Tags.VerticalTriggerDown)
+            {
+                _allowVerticalMovementDown = true;
             }
         }
 

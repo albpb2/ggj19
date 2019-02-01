@@ -1,11 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.Objects.InteractableSceneObjects
 {
     public class PlaneSwitchTrigger : InteractableSceneObject
     {
-        private LayerTransitionManager _layerTransitionManager;
+        private OldLayerTransitionManager _layerTransitionManager;
 
         [SerializeField]
         private bool _advance;
@@ -14,7 +13,7 @@ namespace Assets.Scripts.Objects.InteractableSceneObjects
         {
             base.Start();
 
-            _layerTransitionManager = FindObjectOfType<LayerTransitionManager>();
+            _layerTransitionManager = FindObjectOfType<OldLayerTransitionManager>();
         }
 
         public override void Interact()
