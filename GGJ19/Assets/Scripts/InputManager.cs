@@ -25,6 +25,12 @@ namespace Assets.Scripts
 
         public bool MoveLeft { get; set; }
 
+        public bool MoveUp { get; set; }
+
+        public bool MoveDown { get; set; }
+
+        public bool MoveWithKeys => MoveRight || MoveLeft || MoveUp || MoveDown;
+
         public void Start()
         {
             _character = FindObjectOfType<Character>();
@@ -56,6 +62,15 @@ namespace Assets.Scripts
             {
                 MoveLeft = true;
             }
+
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+            {
+                MoveUp = true;
+            }
+            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            {
+                MoveDown = true;
+            }
         }
 
         public void SetSelectableCursor()
@@ -78,6 +93,8 @@ namespace Assets.Scripts
             ClickedPoint = null;
             MoveRight = false;
             MoveLeft = false;
+            MoveUp = false;
+            MoveDown = false;
         }
 
         private void DetectMovementClick()

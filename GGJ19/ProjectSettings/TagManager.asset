@@ -11,6 +11,7 @@ TagManager:
   - SpawningSpotLayer2
   - SpawningSpotLayer1
   - InvisibleWall
+  - VerticalTrigger
   layers:
   - Default
   - TransparentFX

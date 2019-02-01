@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Conversation;
-using Assets.Scripts.Objects;
+﻿using Assets.Scripts.Objects;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
@@ -22,6 +21,7 @@ namespace Assets.Scripts.Player
         private Vector3? _previousPosition;
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
+        private bool _allowVerticalMovement;
 
         public InteractableSceneObject TargetObject { get; set; }
         
@@ -32,6 +32,8 @@ namespace Assets.Scripts.Player
             _gameManager = FindObjectOfType<GameManager>();
             _animator = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
+
+            _allowVerticalMovement = true;
         }
 
         public void Update()
@@ -42,18 +44,33 @@ namespace Assets.Scripts.Player
             }
 
             float step = _speed * Time.deltaTime;
-            
-            if (_inputManager.MoveLeft)
+
+            if (_inputManager.MoveWithKeys)
             {
-                MoveTowardsDirection(Vector3.left, step);
-                _targetDirection = null;
-                TargetObject = null;
-            }
-            else if (_inputManager.MoveRight)
-            {
-                MoveTowardsDirection(Vector3.right, step);
-                _targetDirection = null;
-                TargetObject = null;
+                if (_inputManager.MoveLeft)
+                {
+                    MoveTowardsDirection(Vector3.left, step);
+                    _targetDirection = null;
+                    TargetObject = null;
+                }
+                else if (_inputManager.MoveRight)
+                {
+                    MoveTowardsDirection(Vector3.right, step);
+                    _targetDirection = null;
+                    TargetObject = null;
+                }
+                if (_allowVerticalMovement && _inputManager.MoveUp)
+                {
+                    MoveTowardsDirection(Vector3.up, step);
+                    _targetDirection = null;
+                    TargetObject = null;
+                }
+                else if (_inputManager.MoveDown)
+                {
+                    MoveTowardsDirection(Vector3.down, step);
+                    _targetDirection = null;
+                    TargetObject = null;
+                }
             }
             else if (_inputManager.ClickedPoint.HasValue)
             {
@@ -84,8 +101,7 @@ namespace Assets.Scripts.Player
 
         public void FixedUpdate()
         {
-            if (!_gameManager.GameFreezed && _previousPosition.HasValue && 
-                (TargetObject != null || _inputManager.MoveLeft || _inputManager.MoveRight || _targetDirection != null))
+            if (IsMoving())
             {
                 _animator.SetBool(WalkAnimationName, true);
 
@@ -116,19 +132,30 @@ namespace Assets.Scripts.Player
             transform.localRotation = new Quaternion(0, 0, 0, 0);
         }
 
-        private void MoveTowardsDirection(Vector3 direction, float step)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, step);
-        }
-
         void OnTriggerEnter2D(Collider2D collider)
         {
+            if (collider.tag == "VerticalTrigger")
+            {
+                _allowVerticalMovement = false;
+            }
             InteractWithTargetObjectIfIsOnTrigger(collider);
         }
 
         void OnTriggerStay2D(Collider2D collider)
         {
+            if (collider.tag == "VerticalTrigger")
+            {
+                _allowVerticalMovement = false;
+            }
             InteractWithTargetObjectIfIsOnTrigger(collider);
+        }
+
+        void OnTriggerExit2D(Collider2D collider)
+        {
+            if (collider.tag == "VerticalTrigger")
+            {
+                _allowVerticalMovement = true;
+            }
         }
 
         public void MoveTowards(InteractableSceneObject interactableSceneObject)
@@ -136,6 +163,22 @@ namespace Assets.Scripts.Player
             TargetObject = interactableSceneObject;
             _targetDirection = null;
             _inputManager.OverrideThisFrame();
+        }
+
+        private void MoveTowardsDirection(Vector3 direction, float step)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, step);
+        }
+
+        private bool IsMoving()
+        {
+            return !_gameManager.GameFreezed && _previousPosition.HasValue &&
+                (TargetObject != null || 
+                 _inputManager.MoveLeft || 
+                 _inputManager.MoveRight ||
+                 _inputManager.MoveUp ||
+                 _inputManager.MoveDown ||
+                 _targetDirection != null);
         }
 
         private void InteractWithTargetObjectIfIsOnTrigger(Collider2D collider)
