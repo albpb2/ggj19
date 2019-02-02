@@ -17,30 +17,15 @@ namespace Assets.Scripts.Player
         private Dictionary<string, List<GameObject>> _verticalCollidersPerSortingLayer;
         private List<GameObject> _firstLayerVerticalColliders;
         private List<GameObject> _secondLayerVerticalColliders;
+        private List<GameObject> _thirdLayerVerticalColliders;
 
         public void Start()
         {
             _character = FindObjectOfType<Character>();
             _characterSpriteRenderer = _character.GetComponent<SpriteRenderer>();
 
-            _firstLayerVerticalColliders = GameObject
-                .FindGameObjectsWithTag(Tags.VerticalTriggerUp)
-                .Where(o => o.layer == (int)Layers.FirstFloor).ToList();
-            _firstLayerVerticalColliders.AddRange(GameObject
-                .FindGameObjectsWithTag(Tags.VerticalTriggerDown)
-                .Where(o => o.layer == (int)Layers.FirstFloor));
-            _secondLayerVerticalColliders = GameObject
-                .FindGameObjectsWithTag(Tags.VerticalTriggerUp)
-                .Where(o => o.layer == (int)Layers.SecondFloor).ToList();
-            _secondLayerVerticalColliders.AddRange(GameObject
-                .FindGameObjectsWithTag(Tags.VerticalTriggerDown)
-                .Where(o => o.layer == (int)Layers.SecondFloor));
-
-            foreach (var secondLayerVerticalCollider in _secondLayerVerticalColliders)
-            {
-                secondLayerVerticalCollider.SetActive(false);
-            }
-
+            FindVerticalColliders();
+            DisableBackLayersColliders();
             InitializeLayerRelationships();
         }
 
@@ -50,12 +35,44 @@ namespace Assets.Scripts.Player
             _previousPosition = _character.transform.position;
         }
 
+        private void FindVerticalColliders()
+        {
+            _firstLayerVerticalColliders = GetLayerVerticalColliders(Layers.FirstFloor);
+            _secondLayerVerticalColliders = GetLayerVerticalColliders(Layers.SecondFloor);
+            _thirdLayerVerticalColliders = GetLayerVerticalColliders(Layers.ThirdFloor);
+        }
+
+        private List<GameObject> GetLayerVerticalColliders(Layers layer)
+        {
+            var colliders = GameObject
+                .FindGameObjectsWithTag(Tags.VerticalTriggerUp)
+                .Where(o => o.layer == (int)layer).ToList();
+            colliders.AddRange(GameObject
+                .FindGameObjectsWithTag(Tags.VerticalTriggerDown)
+                .Where(o => o.layer == (int)layer));
+
+            return colliders;
+        }
+
+        private void DisableBackLayersColliders()
+        {
+            foreach (var collider in _secondLayerVerticalColliders)
+            {
+                collider.SetActive(false);
+            }
+            foreach (var collider in _thirdLayerVerticalColliders)
+            {
+                collider.SetActive(false);
+            }
+        }
+
         private void InitializeLayerRelationships()
         {
             _verticalCollidersPerSortingLayer = new Dictionary<string, List<GameObject>>
             {
                 [SortingLayers.Floor1] = _firstLayerVerticalColliders,
                 [SortingLayers.Floor2] = _secondLayerVerticalColliders,
+                [SortingLayers.Floor3] = _thirdLayerVerticalColliders,
             };
         }
 
@@ -104,11 +121,6 @@ namespace Assets.Scripts.Player
             {
                 collider.gameObject.SetActive(true);
             }
-
-            //foreach (Transform collider in colliders.transform)
-            //{
-            //    collider.gameObject.SetActive(true);
-            //}
         }
 
         private void DisableVerticalColliders(string sortingLayer)
@@ -118,11 +130,6 @@ namespace Assets.Scripts.Player
             {
                 collider.gameObject.SetActive(false);
             }
-
-            //foreach (Transform collider in colliders.transform)
-            //{
-            //    collider.gameObject.SetActive(false);
-            //}
         }
     }
 }
