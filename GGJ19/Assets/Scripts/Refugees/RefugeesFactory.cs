@@ -121,10 +121,18 @@ namespace Assets.Scripts.Refugees
             spriteRenderer.sortingLayerID = sortingLayerId;
             spriteRenderer.sortingOrder = VisibleSortingOrder;
             refugee.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            refugee.gameObject.AddComponent<PolygonCollider2D>();
+            refugee.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
 
             spawningSpot.Refugee = refugee;
 
             return refugee;
+        }
+
+        private void AddColliderToRefugee(Refugee refugee)
+        {
+            refugee.gameObject.AddComponent<PolygonCollider2D>();
+            refugee.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
         }
 
         private bool IsFamily()
