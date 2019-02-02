@@ -13,6 +13,10 @@ namespace Assets.Scripts.Player
         private float _minX = -11.53f;
         [SerializeField]
         private float _maxX = 45.48f;
+        [SerializeField]
+        private float _minY = 3.3f;
+        [SerializeField]
+        private float _maxY = 12.6f;
 
         private InputManager _inputManager;
         private Character _character;
@@ -179,9 +183,29 @@ namespace Assets.Scripts.Player
             _inputManager.OverrideThisFrame();
         }
 
+        private void MoveTowards(Vector3 direction, float step)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, direction, step);
+        }
+
         private void MoveTowardsDirection(Vector3 direction, float step)
         {
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, step);
+            var targetPosition = FixTargetPosition(transform.position + direction);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+        }
+
+        private Vector3 FixTargetPosition(Vector3 targetPosition)
+        {
+            (float x, float y, float z) = (targetPosition.x, targetPosition.y, targetPosition.z);
+            if (targetPosition.y > _maxY)
+            {
+                y = _maxY;
+            }
+            else if (targetPosition.y < _minY)
+            {
+                y = _minY;
+            }
+            return new Vector3(x, y, z);
         }
 
         private bool IsMoving()

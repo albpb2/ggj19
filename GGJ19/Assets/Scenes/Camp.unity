@@ -207,7 +207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab04b0129a2cf041a004218912462a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _marginPercentage: 20
+  _horizontalMarginPercentage: 20
+  _verticalMarginPercentage: 40
+  _minCameraY: -16.769
 --- !u!1 &31124000
 GameObject:
   m_ObjectHideFlags: 0
@@ -3359,6 +3361,11 @@ PrefabInstance:
       propertyPath: _firstLayerTopY
       value: 6.15
       objectReference: {fileID: 0}
+    - target: {fileID: 8089350449235218344, guid: 96d6afbce855b4efc9eeb3762eb216c4,
+        type: 3}
+      propertyPath: _secondLayerTopY
+      value: 11.5
+      objectReference: {fileID: 0}
     - target: {fileID: 45904383904552486, guid: 96d6afbce855b4efc9eeb3762eb216c4,
         type: 3}
       propertyPath: m_Name
@@ -3537,6 +3544,8 @@ MonoBehaviour:
   _speed: 5
   _minX: -11.53
   _maxX: -11.53
+  _minY: 3.3
+  _maxY: 11.83433
 --- !u!114 &483156347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6164,7 +6173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab04b0129a2cf041a004218912462a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _marginPercentage: 20
+  _horizontalMarginPercentage: 20
+  _verticalMarginPercentage: 40
+  _minCameraY: -16.769
 --- !u!81 &1123506329
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10190,7 +10201,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab04b0129a2cf041a004218912462a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _marginPercentage: 20
+  _horizontalMarginPercentage: 20
+  _verticalMarginPercentage: 40
+  _minCameraY: 5.5
 --- !u!1 &2072408544
 GameObject:
   m_ObjectHideFlags: 0
