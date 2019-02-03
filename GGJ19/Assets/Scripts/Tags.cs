@@ -11,5 +11,7 @@
         public const string InvisibleWall = "InvisibleWall";
         public const string VerticalTriggerUp = "VerticalTrigger";
         public const string VerticalTriggerDown = "VerticalTriggerDown";
+        public const string HorizontalTriggerLeft = "HorizontalTriggerLeft";
+        public const string HorizontalTriggerRight = "HorizontalTriggerRight";
     }
 }

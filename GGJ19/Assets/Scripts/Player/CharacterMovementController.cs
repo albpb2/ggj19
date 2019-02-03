@@ -27,6 +27,8 @@ namespace Assets.Scripts.Player
         private SpriteRenderer _spriteRenderer;
         private bool _allowVerticalMovementUp;
         private bool _allowVerticalMovementDown;
+        private bool _allowHorizontalMovementLeft;
+        private bool _allowHorizontalMovementRight;
 
         public InteractableSceneObject TargetObject { get; set; }
         
@@ -40,6 +42,8 @@ namespace Assets.Scripts.Player
 
             _allowVerticalMovementUp = true;
             _allowVerticalMovementDown = true;
+            _allowHorizontalMovementLeft = true;
+            _allowHorizontalMovementRight = true;
         }
 
         public void Update()
@@ -53,13 +57,13 @@ namespace Assets.Scripts.Player
 
             if (_inputManager.MoveWithKeys)
             {
-                if (_inputManager.MoveLeft)
+                if (_allowHorizontalMovementLeft && _inputManager.MoveLeft)
                 {
                     MoveTowardsDirection(Vector3.left, step);
                     _targetDirection = null;
                     TargetObject = null;
                 }
-                else if (_inputManager.MoveRight)
+                else if (_allowHorizontalMovementRight && _inputManager.MoveRight)
                 {
                     MoveTowardsDirection(Vector3.right, step);
                     _targetDirection = null;
@@ -140,39 +144,67 @@ namespace Assets.Scripts.Player
 
         void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.tag == Tags.VerticalTriggerUp)
+            switch (collider.tag)
             {
-                _allowVerticalMovementUp = false;
+                case Tags.VerticalTriggerUp:
+                    _allowVerticalMovementUp = false;
+                    break;
+                case Tags.VerticalTriggerDown:
+                    _allowVerticalMovementDown = false;
+                    break;
+                case Tags.HorizontalTriggerLeft:
+                    _allowHorizontalMovementLeft = false;
+                    break;
+                case Tags.HorizontalTriggerRight:
+                    _allowHorizontalMovementRight = false;
+                    break;
+                default:
+                    break;
             }
-            else if (collider.tag == Tags.VerticalTriggerDown)
-            {
-                _allowVerticalMovementDown = false;
-            }
+
             InteractWithTargetObjectIfIsOnTrigger(collider);
         }
 
         void OnTriggerStay2D(Collider2D collider)
         {
-            if (collider.tag == Tags.VerticalTriggerUp)
+            switch (collider.tag)
             {
-                _allowVerticalMovementUp = false;
-            }
-            else if (collider.tag == Tags.VerticalTriggerDown)
-            {
-                _allowVerticalMovementDown = false;
+                case Tags.VerticalTriggerUp:
+                    _allowVerticalMovementUp = false;
+                    break;
+                case Tags.VerticalTriggerDown:
+                    _allowVerticalMovementDown = false;
+                    break;
+                case Tags.HorizontalTriggerLeft:
+                    _allowHorizontalMovementLeft = false;
+                    break;
+                case Tags.HorizontalTriggerRight:
+                    _allowHorizontalMovementRight = false;
+                    break;
+                default:
+                    break;
             }
             InteractWithTargetObjectIfIsOnTrigger(collider);
         }
 
         void OnTriggerExit2D(Collider2D collider)
         {
-            if (collider.tag == Tags.VerticalTriggerUp)
+            switch (collider.tag)
             {
-                _allowVerticalMovementUp = true;
-            }
-            else if (collider.tag == Tags.VerticalTriggerDown)
-            {
-                _allowVerticalMovementDown = true;
+                case Tags.VerticalTriggerUp:
+                    _allowVerticalMovementUp = true;
+                    break;
+                case Tags.VerticalTriggerDown:
+                    _allowVerticalMovementDown = true;
+                    break;
+                case Tags.HorizontalTriggerLeft:
+                    _allowHorizontalMovementLeft = true;
+                    break;
+                case Tags.HorizontalTriggerRight:
+                    _allowHorizontalMovementRight = true;
+                    break;
+                default:
+                    break;
             }
         }
 
