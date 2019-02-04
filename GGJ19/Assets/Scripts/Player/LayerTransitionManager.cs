@@ -14,19 +14,19 @@ namespace Assets.Scripts.Player
         private Vector3? _previousPosition;
         private Character _character;
         private SpriteRenderer _characterSpriteRenderer;
-        private Dictionary<string, List<GameObject>> _verticalCollidersPerSortingLayer;
-        private List<GameObject> _firstLayerVerticalColliders;
-        private List<GameObject> _secondLayerVerticalColliders;
-        private List<GameObject> _thirdLayerVerticalColliders;
+        private Dictionary<string, List<GameObject>> _mainCollidersPerLayer; // Colliders to activate when the character is in the layer
+        private Dictionary<string, List<GameObject>> _secondaryCollidersPerLayer; // Colliders to activate when the character is NOT in the layer
 
         public void Start()
         {
             _character = FindObjectOfType<Character>();
             _characterSpriteRenderer = _character.GetComponent<SpriteRenderer>();
 
-            FindVerticalColliders();
+            _mainCollidersPerLayer = new Dictionary<string, List<GameObject>>();
+            _secondaryCollidersPerLayer = new Dictionary<string, List<GameObject>>();
+
+            FindColliders();
             DisableBackLayersColliders();
-            InitializeLayerRelationships();
         }
 
         public void FixedUpdate()
@@ -35,45 +35,37 @@ namespace Assets.Scripts.Player
             _previousPosition = _character.transform.position;
         }
 
-        private void FindVerticalColliders()
+        private void FindColliders()
         {
-            _firstLayerVerticalColliders = GetLayerVerticalColliders(Layers.FirstFloor);
-            _secondLayerVerticalColliders = GetLayerVerticalColliders(Layers.SecondFloor);
-            _thirdLayerVerticalColliders = GetLayerVerticalColliders(Layers.ThirdFloor);
+            var allObjectsWithColliders = GameObject
+                .FindGameObjectsWithTag(Tags.VerticalTriggerUp)
+                .Select(c => c.transform.parent.gameObject);
+
+            FindLayerColliders(SortingLayers.Floor1, allObjectsWithColliders);
+            FindLayerColliders(SortingLayers.Floor2, allObjectsWithColliders);
+            FindLayerColliders(SortingLayers.Floor3, allObjectsWithColliders);
         }
 
-        private List<GameObject> GetLayerVerticalColliders(Layers layer)
+        private void FindLayerColliders(string sortingLayer, IEnumerable<GameObject> allObjectsWithColliders)
         {
-            var colliders = GameObject
-                .FindGameObjectsWithTag(Tags.VerticalTriggerUp)
-                .Where(o => o.layer == (int)layer).ToList();
-            colliders.AddRange(GameObject
-                .FindGameObjectsWithTag(Tags.VerticalTriggerDown)
-                .Where(o => o.layer == (int)layer));
+            var collidersInLayer = allObjectsWithColliders
+                .Where(o => o.GetComponent<SpriteRenderer>().sortingLayerName == sortingLayer)
+                .SelectMany(o => o.GetComponentsInChildren<Collider2D>())
+                .Select(c => c.gameObject)
+                .ToList();
 
-            return colliders;
+            _mainCollidersPerLayer[sortingLayer] = collidersInLayer.Where(c => c.tag == Tags.VerticalTriggerUp)
+                    .Concat(collidersInLayer.Where(c => c.tag == Tags.HorizontalTriggerLeft))
+                    .Concat(collidersInLayer.Where(c => c.tag == Tags.HorizontalTriggerRight)).ToList();
+
+            _secondaryCollidersPerLayer[sortingLayer] = collidersInLayer.Where(c => c.tag == Tags.VerticalTriggerDown).ToList();
         }
 
         private void DisableBackLayersColliders()
         {
-            foreach (var collider in _secondLayerVerticalColliders)
-            {
-                collider.SetActive(false);
-            }
-            foreach (var collider in _thirdLayerVerticalColliders)
-            {
-                collider.SetActive(false);
-            }
-        }
-
-        private void InitializeLayerRelationships()
-        {
-            _verticalCollidersPerSortingLayer = new Dictionary<string, List<GameObject>>
-            {
-                [SortingLayers.Floor1] = _firstLayerVerticalColliders,
-                [SortingLayers.Floor2] = _secondLayerVerticalColliders,
-                [SortingLayers.Floor3] = _thirdLayerVerticalColliders,
-            };
+            EnableMainColliders(SortingLayers.Floor1);
+            DisableMainColliders(SortingLayers.Floor2);
+            DisableMainColliders(SortingLayers.Floor3);
         }
 
         private void SwitchIfNewPositionIsInDifferentLayer(Vector3 newPosition)
@@ -110,25 +102,33 @@ namespace Assets.Scripts.Player
         private void SwitchToLayer(string newLayer, string previousLayer)
         {
             _characterSpriteRenderer.sortingLayerName = newLayer;
-            DisableVerticalColliders(previousLayer);
-            EnableVerticalColliders(newLayer);
+            DisableMainColliders(previousLayer);
+            EnableMainColliders(newLayer);
         }
 
-        private void EnableVerticalColliders(string sortingLayer)
+        private void EnableMainColliders(string sortingLayer)
         {
-            var colliders = _verticalCollidersPerSortingLayer[sortingLayer];
-            foreach (var collider in colliders)
+            foreach (var colliderToEnable in _mainCollidersPerLayer[sortingLayer])
             {
-                collider.gameObject.SetActive(true);
+                colliderToEnable.gameObject.SetActive(true);
+            }
+            
+            foreach (var colliderToDisable in _secondaryCollidersPerLayer[sortingLayer])
+            {
+                colliderToDisable.gameObject.SetActive(false);
             }
         }
 
-        private void DisableVerticalColliders(string sortingLayer)
+        private void DisableMainColliders(string sortingLayer)
         {
-            var colliders = _verticalCollidersPerSortingLayer[sortingLayer];
-            foreach (var collider in colliders)
+            foreach (var colliderToDisable in _mainCollidersPerLayer[sortingLayer])
             {
-                collider.gameObject.SetActive(false);
+                colliderToDisable.gameObject.SetActive(false);
+            }
+
+            foreach (var colliderToEnable in _secondaryCollidersPerLayer[sortingLayer])
+            {
+                colliderToEnable.gameObject.SetActive(true);
             }
         }
     }
