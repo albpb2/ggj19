@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,9 +123,9 @@ GameObject:
   - component: {fileID: 5071276}
   - component: {fileID: 5071278}
   - component: {fileID: 5071277}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,9 +373,9 @@ GameObject:
   - component: {fileID: 32806401}
   - component: {fileID: 32806403}
   - component: {fileID: 32806402}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer (1)
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1103,8 +1103,8 @@ GameObject:
   - component: {fileID: 123624798}
   - component: {fileID: 123624797}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1185,8 +1185,8 @@ GameObject:
   - component: {fileID: 128759774}
   - component: {fileID: 128759773}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1481,7 +1481,6 @@ Transform:
   - {fileID: 166930466}
   - {fileID: 128759772}
   - {fileID: 1727706067}
-  - {fileID: 266940944}
   m_Father: {fileID: 1087798455}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1576,8 +1575,8 @@ GameObject:
   - component: {fileID: 166930468}
   - component: {fileID: 166930467}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1857,9 +1856,9 @@ GameObject:
   - component: {fileID: 191790128}
   - component: {fileID: 191790130}
   - component: {fileID: 191790129}
-  m_Layer: 16
-  m_Name: VerticalTriggerSecondLayer
-  m_TagString: VerticalTriggerDown
+  m_Layer: 0
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1903,12 +1902,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 3.7416985, y: -0.2739993}
+    - - {x: 3.3672009, y: 0.1003365}
       - {x: 3.599347, y: 0.92802924}
       - {x: -3.8614624, y: 0.9594108}
-      - {x: -4.630702, y: -0.05896053}
-      - {x: -4.1354933, y: -0.4322968}
-      - {x: 3.45708, y: -0.90385157}
+      - {x: -4.115764, y: 0.4323551}
+      - {x: -3.8312147, y: 0.10581107}
+      - {x: 2.7314854, y: -0.014803933}
 --- !u!50 &191790130
 Rigidbody2D:
   serializedVersion: 4
@@ -2039,8 +2038,8 @@ GameObject:
   - component: {fileID: 225159920}
   - component: {fileID: 225159919}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2265,8 +2264,8 @@ GameObject:
   - component: {fileID: 232133726}
   - component: {fileID: 232133725}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2347,8 +2346,8 @@ GameObject:
   - component: {fileID: 247704380}
   - component: {fileID: 247704379}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2486,92 +2485,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 247953164}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &266940943
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 266940944}
-  - component: {fileID: 266940946}
-  - component: {fileID: 266940945}
-  m_Layer: 16
-  m_Name: VerticalTriggerSecondLayer
-  m_TagString: VerticalTrigger
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &266940944
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266940943}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.780002, y: -1.9000002, z: 3.90502}
-  m_LocalScale: {x: 1.6666667, y: 1.6666667, z: 1.6666667}
-  m_Children: []
-  m_Father: {fileID: 153270181}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &266940945
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266940943}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 2.447862, y: 0.7507756}
-      - {x: -0.13150662, y: 0.61398965}
-      - {x: -5.785796, y: 0.6061161}
-      - {x: -6.0950704, y: -0.56878585}
-      - {x: -4.1836305, y: -0.87331915}
-      - {x: -2.1588352, y: -0.8307394}
-      - {x: 1.8883604, y: -0.74252903}
-      - {x: 3.334184, y: -0.2878686}
---- !u!50 &266940946
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266940943}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
 --- !u!4 &270101069
 Transform:
   m_ObjectHideFlags: 0
@@ -2801,9 +2714,9 @@ GameObject:
   - component: {fileID: 310118297}
   - component: {fileID: 310118299}
   - component: {fileID: 310118298}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2847,14 +2760,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 4.2588944, y: 1.0537256}
-      - {x: -2.1067488, y: 0.86333114}
-      - {x: -2.4473011, y: 0.5162299}
-      - {x: -3.2820973, y: 0.29484782}
-      - {x: -3.2854428, y: -0.878886}
-      - {x: 1.6091287, y: -0.97185004}
-      - {x: 4.2034373, y: -0.52791655}
-      - {x: 5.012462, y: -0.70228446}
+    - - {x: 3.7939177, y: 0.22924645}
+      - {x: -1.9442837, y: 0.021839475}
+      - {x: -2.3586836, y: 0.10286557}
+      - {x: -3.0605545, y: -0.14804234}
+      - {x: -3.182056, y: -0.99698985}
+      - {x: 1.5347564, y: -1.04619}
+      - {x: 1.6277225, y: -1.0276042}
+      - {x: 4.2034373, y: -0.67659533}
+      - {x: 5.012462, y: -0.8323772}
 --- !u!50 &310118299
 Rigidbody2D:
   serializedVersion: 4
@@ -2887,9 +2801,9 @@ GameObject:
   - component: {fileID: 312514753}
   - component: {fileID: 312514755}
   - component: {fileID: 312514754}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2933,10 +2847,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.9565194, y: 0.61588013}
+    - - {x: 1.6606476, y: -0.027036548}
       - {x: 2.1691906, y: -0.6152667}
       - {x: -3.042302, y: -0.5312766}
-      - {x: -2.4824722, y: 0.58854306}
+      - {x: -2.4310157, y: -0.041516185}
 --- !u!50 &312514755
 Rigidbody2D:
   serializedVersion: 4
@@ -3785,8 +3699,8 @@ GameObject:
   - component: {fileID: 388751783}
   - component: {fileID: 388751782}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3867,8 +3781,8 @@ GameObject:
   - component: {fileID: 396919226}
   - component: {fileID: 396919225}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3912,14 +3826,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 4.3632326, y: 0.54001427}
+    - - {x: 4.530569, y: 0.40992072}
       - {x: 0.37445548, y: 0.54232985}
       - {x: -0.37347212, y: 0.5496788}
       - {x: -0.7734337, y: 0.027256964}
       - {x: -0.5426378, y: -0.6781931}
       - {x: 1.6091291, y: -0.8046064}
       - {x: 4.1030903, y: -0.3941211}
-      - {x: 4.945566, y: -0.5350408}
+      - {x: 5.0757184, y: -0.64654917}
 --- !u!50 &396919226
 Rigidbody2D:
   serializedVersion: 4
@@ -3965,8 +3879,8 @@ GameObject:
   - component: {fileID: 407933279}
   - component: {fileID: 407933278}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4384,9 +4298,9 @@ GameObject:
   - component: {fileID: 524896518}
   - component: {fileID: 524896520}
   - component: {fileID: 524896519}
-  m_Layer: 16
-  m_Name: VerticalTriggerSecondLayer
-  m_TagString: VerticalTriggerDown
+  m_Layer: 0
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4430,10 +4344,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 3.2984357, y: -1.3474244}
-      - {x: 3.1157496, y: 0.35308838}
-      - {x: -3.7679322, y: -0.084057786}
-      - {x: -3.6422684, y: -1.4760002}
+    - - {x: 2.553505, y: -0.71612924}
+      - {x: 3.018585, y: 0.3369007}
+      - {x: -3.686962, y: -0.05168338}
+      - {x: -3.4965208, y: -0.90945244}
 --- !u!50 &524896520
 Rigidbody2D:
   serializedVersion: 4
@@ -4749,9 +4663,9 @@ GameObject:
   - component: {fileID: 598989438}
   - component: {fileID: 598989440}
   - component: {fileID: 598989439}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4795,12 +4709,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.09223458, y: 0.45696992}
-      - {x: -4.3720007, y: 0.5276062}
-      - {x: -4.630702, y: -0.4122553}
-      - {x: -2.1588361, y: -0.746831}
-      - {x: 2.113268, y: -0.5859986}
-      - {x: 1.5502746, y: 0.5305974}
+    - - {x: -0.09223458, y: 0.08527371}
+      - {x: -4.018735, y: 0.13732523}
+      - {x: -4.203064, y: -0.65385723}
+      - {x: -2.1216507, y: -0.7840004}
+      - {x: 1.9459295, y: -0.69750786}
+      - {x: 1.5874605, y: -0.026947044}
 --- !u!50 &598989440
 Rigidbody2D:
   serializedVersion: 4
@@ -5633,9 +5547,9 @@ GameObject:
   - component: {fileID: 728665509}
   - component: {fileID: 728665511}
   - component: {fileID: 728665510}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5679,10 +5593,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 5.324182, y: -1.3474249}
-      - {x: 4.6169715, y: 0.53395826}
-      - {x: -4.997847, y: 0.5128134}
-      - {x: -5.353087, y: -1.2058715}
+    - - {x: -0.85650486, y: -1.7533749}
+      - {x: 1.055822, y: -1.8435156}
+      - {x: 5.324182, y: -1.3474249}
+      - {x: 4.227594, y: -0.04985733}
+      - {x: -4.6863427, y: -0.28506872}
+      - {x: -5.061049, y: -1.5950826}
 --- !u!50 &728665511
 Rigidbody2D:
   serializedVersion: 4
@@ -5797,9 +5713,9 @@ GameObject:
   - component: {fileID: 739525012}
   - component: {fileID: 739525014}
   - component: {fileID: 739525013}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5844,8 +5760,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 3.2984357, y: -1.3474244}
-      - {x: 3.1157496, y: 0.35308838}
-      - {x: -3.7679322, y: -0.084057786}
+      - {x: 2.856644, y: -0.45626545}
+      - {x: -3.4116604, y: -0.73154056}
       - {x: -3.6422684, y: -1.4760002}
 --- !u!50 &739525014
 Rigidbody2D:
@@ -6007,8 +5923,8 @@ GameObject:
   - component: {fileID: 791606299}
   - component: {fileID: 791606298}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6110,6 +6026,7 @@ Transform:
   - {fileID: 890143182}
   - {fileID: 1820512169}
   - {fileID: 859908861}
+  - {fileID: 991293954}
   m_Father: {fileID: 1575948286}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6241,8 +6158,8 @@ GameObject:
   - component: {fileID: 812218787}
   - component: {fileID: 812218786}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6342,9 +6259,9 @@ GameObject:
   - component: {fileID: 853028545}
   - component: {fileID: 853028547}
   - component: {fileID: 853028546}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6389,9 +6306,9 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 3.7416985, y: -0.2739993}
-      - {x: 3.599347, y: 0.92802924}
-      - {x: -3.8614624, y: 0.9594108}
-      - {x: -4.630702, y: -0.05896053}
+      - {x: 3.3750966, y: 0.4389693}
+      - {x: -3.677985, y: 0.47034994}
+      - {x: -4.386063, y: -0.05896053}
       - {x: -4.1354933, y: -0.4322968}
       - {x: 3.45708, y: -0.90385157}
 --- !u!50 &853028547
@@ -6426,9 +6343,9 @@ GameObject:
   - component: {fileID: 859908861}
   - component: {fileID: 859908863}
   - component: {fileID: 859908862}
-  m_Layer: 15
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Layer: 0
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6472,13 +6389,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.0027923584, y: -0.0056176186}
+    - - {x: 0.018190384, y: -0.14412832}
       - {x: -0.04560089, y: -0.08367729}
       - {x: -0.19690132, y: -0.37095642}
       - {x: -0.1340847, y: -0.5403118}
       - {x: 0.20170593, y: -0.63759136}
-      - {x: 0.55134964, y: -0.42077923}
-      - {x: 0.5379181, y: 0.076259136}
+      - {x: 0.5975399, y: -0.43616962}
+      - {x: 0.64569473, y: -0.01608181}
 --- !u!50 &859908863
 Rigidbody2D:
   serializedVersion: 4
@@ -6511,9 +6428,9 @@ GameObject:
   - component: {fileID: 874664029}
   - component: {fileID: 874664031}
   - component: {fileID: 874664030}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6557,12 +6474,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -5.051548, y: -0.4582827}
-      - {x: -6.7221584, y: -0.8937094}
-      - {x: -6.804186, y: -2.4760509}
-      - {x: 1.0221024, y: -2.8483257}
-      - {x: 6.91914, y: -2.417242}
-      - {x: 6.190424, y: -0.85114884}
+    - - {x: -4.897732, y: -1.6626477}
+      - {x: -6.235075, y: -1.8162017}
+      - {x: -6.3940105, y: -2.911672}
+      - {x: 1.0221024, y: -3.2070727}
+      - {x: 6.0731525, y: -2.7247396}
+      - {x: 5.472616, y: -1.4148941}
 --- !u!50 &874664031
 Rigidbody2D:
   serializedVersion: 4
@@ -6916,9 +6833,9 @@ GameObject:
   - component: {fileID: 890143182}
   - component: {fileID: 890143184}
   - component: {fileID: 890143183}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6962,13 +6879,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.052387655, y: -0.0056176186}
-      - {x: -0.4258247, y: -0.05062914}
-      - {x: -0.4283424, y: -0.40400457}
+    - - {x: 0.052387655, y: -0.2210784}
+      - {x: -0.31804615, y: -0.15835953}
+      - {x: -0.33596188, y: -0.40400457}
       - {x: -0.36552387, y: -0.57336044}
       - {x: 0.15211147, y: -0.68716383}
       - {x: 0.55135006, y: -0.4703517}
-      - {x: 0.5379185, y: 0.12583208}
+      - {x: 0.49172825, y: -0.15118933}
 --- !u!50 &890143184
 Rigidbody2D:
   serializedVersion: 4
@@ -7154,9 +7071,9 @@ GameObject:
   - component: {fileID: 931931613}
   - component: {fileID: 931931615}
   - component: {fileID: 931931614}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7200,10 +7117,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 4.506563, y: 0.22143936}
-      - {x: -3.5828454, y: 0.21577787}
-      - {x: -3.322809, y: -1.6160636}
-      - {x: 5.1045017, y: -1.4950156}
+    - - {x: 4.76256, y: -0.59740925}
+      - {x: -3.1732423, y: -0.8077836}
+      - {x: -3.2204072, y: -1.769598}
+      - {x: 4.950903, y: -1.597372}
 --- !u!50 &931931615
 Rigidbody2D:
   serializedVersion: 4
@@ -7236,9 +7153,9 @@ GameObject:
   - component: {fileID: 939483747}
   - component: {fileID: 939483749}
   - component: {fileID: 939483748}
-  m_Layer: 16
-  m_Name: VerticalTriggerSecondLayer
-  m_TagString: VerticalTriggerDown
+  m_Layer: 0
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7282,10 +7199,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 5.324182, y: -1.3474249}
+    - - {x: 3.8055954, y: -0.31601715}
       - {x: 4.6169715, y: 0.53395826}
       - {x: -4.997847, y: 0.5128134}
-      - {x: -5.353087, y: -1.2058715}
+      - {x: -4.652199, y: -0.5442133}
 --- !u!50 &939483749
 Rigidbody2D:
   serializedVersion: 4
@@ -7319,8 +7236,8 @@ GameObject:
   - component: {fileID: 956426311}
   - component: {fileID: 956426310}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7479,9 +7396,9 @@ GameObject:
   - component: {fileID: 981603642}
   - component: {fileID: 981603644}
   - component: {fileID: 981603643}
-  m_Layer: 16
-  m_Name: VerticalTriggerSecondLayer
-  m_TagString: VerticalTriggerDown
+  m_Layer: 0
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7527,8 +7444,9 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 4.506563, y: 0.22143936}
       - {x: -3.5828454, y: 0.21577787}
-      - {x: -3.322809, y: -1.6160636}
-      - {x: 5.1045017, y: -1.4950156}
+      - {x: -3.2204056, y: -0.5925021}
+      - {x: 4.4388924, y: -0.47145367}
+      - {x: 4.3876915, y: -0.42027617}
 --- !u!50 &981603644
 Rigidbody2D:
   serializedVersion: 4
@@ -7629,6 +7547,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984698402}
   m_CullTransparentMesh: 0
+--- !u!1 &991293953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 991293954}
+  - component: {fileID: 991293956}
+  - component: {fileID: 991293955}
+  m_Layer: 0
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &991293954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991293953}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.12999916, y: -0.09681964, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 803893870}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &991293955
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991293953}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.052387238, y: -0.021007538}
+      - {x: -0.3334446, y: -0.081409454}
+      - {x: -0.22818565, y: -0.37322474}
+      - {x: -0.19615936, y: -0.46563005}
+      - {x: 0.15211105, y: -0.42553234}
+      - {x: 0.39738083, y: -0.39340115}
+      - {x: 0.50712585, y: 0.002711296}
+--- !u!50 &991293956
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991293953}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &1003288910
 GameObject:
   m_ObjectHideFlags: 0
@@ -7641,8 +7644,8 @@ GameObject:
   - component: {fileID: 1003288913}
   - component: {fileID: 1003288912}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7998,9 +8001,9 @@ GameObject:
   - component: {fileID: 1069236272}
   - component: {fileID: 1069236274}
   - component: {fileID: 1069236273}
-  m_Layer: 15
-  m_Name: VerticalTriggerSecondLayer
-  m_TagString: VerticalTriggerDown
+  m_Layer: 0
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8046,11 +8049,11 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.09223458, y: 0.45696992}
       - {x: -4.590937, y: 0.3830477}
-      - {x: -4.3456035, y: -0.35839605}
-      - {x: -2.1588364, y: -0.51130104}
-      - {x: 1.412315, y: -0.36278108}
-      - {x: 1.9954506, y: -0.075683616}
-      - {x: 2.1109402, y: -0.2426667}
+      - {x: -4.308747, y: -0.11280205}
+      - {x: -2.244831, y: -0.20430806}
+      - {x: 1.0314788, y: -0.104907066}
+      - {x: 1.4303359, y: -0.03884411}
+      - {x: 1.828384, y: 0.17484379}
       - {x: 2.0130615, y: 0.6751553}
 --- !u!50 &1069236274
 Rigidbody2D:
@@ -8118,9 +8121,9 @@ GameObject:
   - component: {fileID: 1106102580}
   - component: {fileID: 1106102582}
   - component: {fileID: 1106102581}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8735,8 +8738,8 @@ GameObject:
   - component: {fileID: 1177663245}
   - component: {fileID: 1177663244}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8961,8 +8964,8 @@ GameObject:
   - component: {fileID: 1202435471}
   - component: {fileID: 1202435470}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9212,8 +9215,8 @@ GameObject:
   - component: {fileID: 1298252938}
   - component: {fileID: 1298252937}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9296,8 +9299,8 @@ GameObject:
   - component: {fileID: 1299511709}
   - component: {fileID: 1299511708}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9459,8 +9462,8 @@ GameObject:
   - component: {fileID: 1319438375}
   - component: {fileID: 1319438374}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9769,8 +9772,8 @@ GameObject:
   - component: {fileID: 1368226436}
   - component: {fileID: 1368226435}
   m_Layer: 0
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9814,14 +9817,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.0922351, y: 0.22143948}
-      - {x: -4.512393, y: 0.069008015}
+    - - {x: -0.043095052, y: -0.024154564}
+      - {x: -4.4509687, y: -0.16430654}
       - {x: -4.301279, y: -1.1268296}
-      - {x: -2.2340112, y: -1.3482455}
-      - {x: 1.3137136, y: -1.3674206}
+      - {x: -2.283151, y: -1.13949}
+      - {x: 0.53975344, y: -1.048148}
       - {x: 1.8701098, y: -0.79125255}
       - {x: 2.113268, y: -0.5859986}
-      - {x: 1.8167001, y: 0.32186043}
+      - {x: 1.8167001, y: 0.027146922}
 --- !u!50 &1368226436
 Rigidbody2D:
   serializedVersion: 4
@@ -10169,9 +10172,9 @@ GameObject:
   - component: {fileID: 1425175058}
   - component: {fileID: 1425175060}
   - component: {fileID: 1425175059}
-  m_Layer: 16
-  m_Name: VerticalTriggerSecondLayer
-  m_TagString: VerticalTriggerDown
+  m_Layer: 0
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10216,11 +10219,11 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -5.051548, y: -0.4582827}
-      - {x: -6.7221584, y: -0.8937094}
-      - {x: -6.804186, y: -2.4760509}
-      - {x: 1.0221024, y: -2.8483257}
-      - {x: 6.6239243, y: -2.417242}
-      - {x: 6.190424, y: -0.85114884}
+      - {x: -6.337618, y: -0.53496194}
+      - {x: -6.3940105, y: -1.5791831}
+      - {x: 0.9195576, y: -1.74646}
+      - {x: 5.2908535, y: -1.4947495}
+      - {x: 5.652069, y: -0.5180266}
 --- !u!50 &1425175060
 Rigidbody2D:
   serializedVersion: 4
@@ -10345,9 +10348,9 @@ GameObject:
   - component: {fileID: 1509776900}
   - component: {fileID: 1509776902}
   - component: {fileID: 1509776901}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10391,10 +10394,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 2.9950407, y: 0.6851143}
+    - - {x: 2.8468692, y: -0.068882525}
       - {x: 3.3923342, y: -0.54603153}
+      - {x: -1.4694564, y: -1.0806966}
       - {x: -2.7653625, y: -0.9697624}
-      - {x: -2.8747995, y: 0.08082336}
+      - {x: -2.5919268, y: -0.45774513}
 --- !u!50 &1509776902
 Rigidbody2D:
   serializedVersion: 4
@@ -10845,8 +10849,8 @@ GameObject:
   - component: {fileID: 1603323224}
   - component: {fileID: 1603323223}
   m_Layer: 0
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTriggerDown
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10892,8 +10896,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 2.3538473, y: 0.7596159}
       - {x: -3.436066, y: 0.5582536}
-      - {x: -3.5674133, y: -1.0778972}
-      - {x: 3.734604, y: -0.9079129}
+      - {x: -3.36261, y: -0.66847265}
+      - {x: 3.120201, y: -0.29377627}
 --- !u!50 &1603323224
 Rigidbody2D:
   serializedVersion: 4
@@ -11006,8 +11010,8 @@ GameObject:
   - component: {fileID: 1632787774}
   - component: {fileID: 1632787773}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11863,8 +11867,8 @@ GameObject:
   - component: {fileID: 1710002626}
   - component: {fileID: 1710002625}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12091,9 +12095,9 @@ GameObject:
   - component: {fileID: 1727706067}
   - component: {fileID: 1727706069}
   - component: {fileID: 1727706068}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer2
-  m_TagString: VerticalTriggerDown
+  m_Layer: 0
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12140,11 +12144,11 @@ PolygonCollider2D:
     - - {x: 2.47583, y: 0.8626527}
       - {x: -0.0755692, y: 0.6699285}
       - {x: -5.7857947, y: 0.773932}
-      - {x: -6.1230397, y: -0.37300032}
-      - {x: -4.1836305, y: -0.7055031}
-      - {x: -2.1588361, y: -0.746831}
-      - {x: 1.7205443, y: -0.5467435}
-      - {x: 3.2782452, y: -0.17599116}
+      - {x: -5.795353, y: 0.11831567}
+      - {x: -4.207035, y: -0.19079167}
+      - {x: -2.1120262, y: -0.068347044}
+      - {x: 1.4162635, y: 0.061552044}
+      - {x: 2.3419952, y: 0.26853225}
 --- !u!50 &1727706069
 Rigidbody2D:
   serializedVersion: 4
@@ -12414,9 +12418,9 @@ GameObject:
   - component: {fileID: 1774766717}
   - component: {fileID: 1774766719}
   - component: {fileID: 1774766718}
-  m_Layer: 15
-  m_Name: VerticalTriggerFirstLayer
-  m_TagString: VerticalTrigger
+  m_Layer: 0
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12460,10 +12464,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 3.2888777, y: -1.4549375}
-      - {x: -1.8437973, y: -1.4444919}
-      - {x: -1.8471419, y: -3.053061}
-      - {x: 3.1727784, y: -3.1106026}
+    - - {x: 2.824055, y: -1.9381423}
+      - {x: -1.7136465, y: -1.964866}
+      - {x: -1.6054341, y: -3.2017388}
+      - {x: 2.9310699, y: -3.129187}
 --- !u!50 &1774766719
 Rigidbody2D:
   serializedVersion: 4
@@ -12579,8 +12583,8 @@ GameObject:
   - component: {fileID: 1788585230}
   - component: {fileID: 1788585229}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12739,9 +12743,9 @@ GameObject:
   - component: {fileID: 1811668459}
   - component: {fileID: 1811668461}
   - component: {fileID: 1811668460}
-  m_Layer: 16
-  m_Name: VerticalTriggerSecondLayer
-  m_TagString: VerticalTriggerDown
+  m_Layer: 0
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12785,10 +12789,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 3.2888777, y: -1.4549375}
-      - {x: -1.8437973, y: -1.4444919}
-      - {x: -1.8471419, y: -3.053061}
-      - {x: 3.1727784, y: -3.1106026}
+    - - {x: 3.1029477, y: -1.454937}
+      - {x: -1.7136458, y: -1.4444922}
+      - {x: -1.642619, y: -2.2539139}
+      - {x: 2.856699, y: -2.441549}
 --- !u!50 &1811668461
 Rigidbody2D:
   serializedVersion: 4
@@ -12865,9 +12869,9 @@ GameObject:
   - component: {fileID: 1820512169}
   - component: {fileID: 1820512171}
   - component: {fileID: 1820512170}
-  m_Layer: 15
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Layer: 0
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12912,8 +12916,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.052387655, y: -0.0056176186}
-      - {x: -0.42582512, y: -0.11672592}
-      - {x: -0.42834282, y: -0.40400457}
+      - {x: -0.51820564, y: -0.14750624}
+      - {x: -0.45913696, y: -0.49634504}
       - {x: -0.3655243, y: -0.5072632}
       - {x: 0.16864395, y: -0.62106705}
       - {x: 0.28684616, y: -0.4373026}
@@ -13029,9 +13033,9 @@ GameObject:
   - component: {fileID: 1834403322}
   - component: {fileID: 1834403324}
   - component: {fileID: 1834403323}
-  m_Layer: 16
-  m_Name: VerticalTriggerSecondLayer
-  m_TagString: VerticalTriggerDown
+  m_Layer: 0
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13076,11 +13080,11 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.09223458, y: 0.45696992}
-      - {x: -4.3720007, y: 0.5276062}
-      - {x: -4.630702, y: -0.4122553}
-      - {x: -2.1588361, y: -0.746831}
-      - {x: 2.113268, y: -0.5859986}
-      - {x: 1.5502746, y: 0.5305974}
+      - {x: -4.223257, y: 0.63911504}
+      - {x: -4.2216578, y: -0.077729195}
+      - {x: -2.0658722, y: -0.2264566}
+      - {x: 1.9645241, y: -0.17713258}
+      - {x: 1.6804254, y: 0.56776685}
 --- !u!50 &1834403324
 Rigidbody2D:
   serializedVersion: 4
@@ -13545,8 +13549,8 @@ GameObject:
   - component: {fileID: 1961364442}
   - component: {fileID: 1961364441}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13706,8 +13710,8 @@ GameObject:
   - component: {fileID: 1986586694}
   - component: {fileID: 1986586693}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13952,8 +13956,8 @@ GameObject:
   - component: {fileID: 2062795648}
   - component: {fileID: 2062795647}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14037,8 +14041,8 @@ GameObject:
   - component: {fileID: 2065943677}
   - component: {fileID: 2065943676}
   m_Layer: 0
-  m_Name: HorizontalTriggerLeft
-  m_TagString: HorizontalTriggerLeft
+  m_Name: RightObjectTrigger
+  m_TagString: RightObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14260,8 +14264,8 @@ GameObject:
   - component: {fileID: 2081594143}
   - component: {fileID: 2081594142}
   m_Layer: 0
-  m_Name: HorizontalTriggerRight
-  m_TagString: HorizontalTriggerRight
+  m_Name: LeftObjectTrigger
+  m_TagString: LeftObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14550,8 +14554,8 @@ GameObject:
   - component: {fileID: 2116229015}
   - component: {fileID: 2116229014}
   m_Layer: 0
-  m_Name: VerticalTriggerFirstLayer (1)
-  m_TagString: VerticalTrigger
+  m_Name: BottomObjectTrigger
+  m_TagString: BottomObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14595,9 +14599,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 2.5984764, y: 0.07466315}
-      - {x: -3.338219, y: 0.020076495}
-      - {x: -3.7141879, y: -1.4203734}
+    - - {x: 2.6496775, y: -0.33476114}
+      - {x: -3.0822184, y: -0.5940597}
+      - {x: -3.3045847, y: -1.4715521}
       - {x: 3.636753, y: -1.2014642}
 --- !u!50 &2116229015
 Rigidbody2D:
@@ -14683,9 +14687,9 @@ GameObject:
   - component: {fileID: 2133027164}
   - component: {fileID: 2133027166}
   - component: {fileID: 2133027165}
-  m_Layer: 16
-  m_Name: HorizontalTriggerSecondLayer
-  m_TagString: VerticalTriggerDown
+  m_Layer: 0
+  m_Name: TopObjectTrigger
+  m_TagString: TopObjectTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14729,14 +14733,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 4.2588944, y: 1.0537256}
+    - - {x: 4.240301, y: 0.9236317}
       - {x: -2.1067488, y: 0.86333114}
       - {x: -2.4473011, y: 0.5162299}
       - {x: -3.2820973, y: 0.29484782}
-      - {x: -3.2854428, y: -0.878886}
-      - {x: 1.6091287, y: -0.97185004}
-      - {x: 4.2034373, y: -0.52791655}
-      - {x: 5.012462, y: -0.70228446}
+      - {x: -2.9321766, y: -0.43285078}
+      - {x: 1.5719432, y: -0.41430563}
+      - {x: 3.7572067, y: -0.26773065}
+      - {x: 4.4918594, y: -0.27483365}
 --- !u!50 &2133027166
 Rigidbody2D:
   serializedVersion: 4

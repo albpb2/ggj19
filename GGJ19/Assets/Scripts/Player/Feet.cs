@@ -5,33 +5,45 @@ namespace Assets.Scripts.Player
 {
     public class Feet : MonoBehaviour
     {
+        private Vector3 originalPosition;
+        private Quaternion originalRotation;
+
         public bool AllowVerticalMovementUp { get; set; }
         public bool AllowVerticalMovementDown { get; set; }
         public bool AllowHorizontalMovementLeft { get; set; }
         public bool AllowHorizontalMovementRight { get; set; }
 
-        void Start()
+        public void Start()
         {
             AllowVerticalMovementUp = true;
             AllowVerticalMovementDown = true;
             AllowHorizontalMovementLeft = true;
             AllowHorizontalMovementRight = true;
+
+            originalPosition = transform.localPosition;
+            originalRotation = transform.localRotation;
+        }
+
+        public void Update()
+        {
+            transform.localPosition = originalPosition;
+            transform.localRotation = originalRotation;
         }
 
         void OnTriggerEnter2D(Collider2D collider)
         {
             switch (collider.tag)
             {
-                case Tags.VerticalTriggerUp:
+                case Tags.BottomObjectTrigger:
                     AllowVerticalMovementUp = false;
                     break;
-                case Tags.VerticalTriggerDown:
+                case Tags.TopObjectTrigger:
                     AllowVerticalMovementDown = false;
                     break;
-                case Tags.HorizontalTriggerLeft:
+                case Tags.RightObjectTrigger:
                     AllowHorizontalMovementLeft = false;
                     break;
-                case Tags.HorizontalTriggerRight:
+                case Tags.LeftObjectTrigger:
                     AllowHorizontalMovementRight = false;
                     break;
                 default:
@@ -43,16 +55,16 @@ namespace Assets.Scripts.Player
         {
             switch (collider.tag)
             {
-                case Tags.VerticalTriggerUp:
+                case Tags.BottomObjectTrigger:
                     AllowVerticalMovementUp = false;
                     break;
-                case Tags.VerticalTriggerDown:
+                case Tags.TopObjectTrigger:
                     AllowVerticalMovementDown = false;
                     break;
-                case Tags.HorizontalTriggerLeft:
+                case Tags.RightObjectTrigger:
                     AllowHorizontalMovementLeft = false;
                     break;
-                case Tags.HorizontalTriggerRight:
+                case Tags.LeftObjectTrigger:
                     AllowHorizontalMovementRight = false;
                     break;
                 default:
@@ -64,16 +76,16 @@ namespace Assets.Scripts.Player
         {
             switch (collider.tag)
             {
-                case Tags.VerticalTriggerUp:
+                case Tags.BottomObjectTrigger:
                     AllowVerticalMovementUp = true;
                     break;
-                case Tags.VerticalTriggerDown:
+                case Tags.TopObjectTrigger:
                     AllowVerticalMovementDown = true;
                     break;
-                case Tags.HorizontalTriggerLeft:
+                case Tags.RightObjectTrigger:
                     AllowHorizontalMovementLeft = true;
                     break;
-                case Tags.HorizontalTriggerRight:
+                case Tags.LeftObjectTrigger:
                     AllowHorizontalMovementRight = true;
                     break;
                 default:
