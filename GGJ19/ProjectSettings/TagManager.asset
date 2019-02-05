@@ -11,10 +11,10 @@ TagManager:
   - SpawningSpotLayer2
   - SpawningSpotLayer1
   - InvisibleWall
-  - VerticalTrigger
-  - VerticalTriggerDown
-  - HorizontalTriggerLeft
-  - HorizontalTriggerRight
+  - BottomObjectTrigger
+  - RightObjectTrigger
+  - LeftObjectTrigger
+  - TopObjectTrigger
   layers:
   - Default
   - TransparentFX
@@ -31,8 +31,8 @@ TagManager:
   - FirstFloor
   - SecondFloor
   - ThirdFloor
-  - 
-  - 
+  - FirstTriggerLayer
+  - SecondTriggerLayer
   - 
   - 
   - 
