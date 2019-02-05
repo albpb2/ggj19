@@ -3902,10 +3902,10 @@ MonoBehaviour:
   _storeBack: {fileID: 1222056298}
   _bag: {fileID: 483156345}
   _columns: 4
-  _spaceBetweenColumns: 60
-  _spaceBetweenRows: 60
-  _firstPosition: {x: -84, y: 64.2}
-  _firstGiftPosition: {x: -84, y: -70}
+  _spaceBetweenColumns: 200
+  _spaceBetweenRows: 150
+  _firstPosition: {x: -300, y: 155}
+  _firstGiftPosition: {x: -300, y: -200}
   _storageItemPrefabs:
   - {fileID: 4084957151714971618, guid: 7cab838f7d817b041b9a678e1f2e7e69, type: 3}
   - {fileID: 484382242, guid: 90959a3938150784080923fc7b7e93b5, type: 3}
