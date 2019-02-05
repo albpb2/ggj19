@@ -54,11 +54,9 @@ namespace Assets.Scripts.Player
                 .Select(c => c.gameObject)
                 .ToList();
 
-            _mainCollidersPerLayer[sortingLayer] = collidersInLayer.Where(c => c.tag == Tags.VerticalTriggerUp)
-                    .Concat(collidersInLayer.Where(c => c.tag == Tags.HorizontalTriggerLeft))
-                    .Concat(collidersInLayer.Where(c => c.tag == Tags.HorizontalTriggerRight)).ToList();
+            _mainCollidersPerLayer[sortingLayer] = collidersInLayer.Where(c => c.layer == (int)Layers.FirstTriggersLayer).ToList();
 
-            _secondaryCollidersPerLayer[sortingLayer] = collidersInLayer.Where(c => c.tag == Tags.VerticalTriggerDown).ToList();
+            _secondaryCollidersPerLayer[sortingLayer] = collidersInLayer.Where(c => c.layer == (int)Layers.SecondTriggersLayer).ToList();
         }
 
         private void DisableBackLayersColliders()

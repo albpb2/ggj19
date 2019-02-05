@@ -8,6 +8,8 @@
         Ground = 11,
         FirstFloor = 12,
         SecondFloor = 13,
-        ThirdFloor = 14
+        ThirdFloor = 14,
+        FirstTriggersLayer = 15,
+        SecondTriggersLayer = 16
     }
 }
