@@ -53,7 +53,7 @@ namespace Assets.Scripts.Conversation
                 if (_index >= textToRead.Length)
                 {
                     _textBoxText.text += Environment.NewLine;
-                    _textBoxText.text += "Click to continue.";
+                    _textBoxText.text += " ";  //click to continue
                 }
             }
 
