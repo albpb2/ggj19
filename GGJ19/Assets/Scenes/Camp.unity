@@ -5813,7 +5813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380bb9d4f55448b44bf4e2df909f7e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _realDayDurationInMinutes: 0.2
+  _realDayDurationInMinutes: 1
   _dayDurationHours: 12
   _initialHour: 7
   _minutesFraction: 10
