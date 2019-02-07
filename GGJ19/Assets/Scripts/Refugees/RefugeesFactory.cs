@@ -48,7 +48,7 @@ namespace Assets.Scripts.Refugees
         private List<string> _maleNames;
         private List<string> _femaleNames;
         private List<string> _surnames;
-        private List<Sprite> _existingSprites; 
+        private List<string> _existingSprites; 
 
         public void Start()
         {
@@ -97,6 +97,29 @@ namespace Assets.Scripts.Refugees
             Sprite selectedSprite = null;
             int attempts = 0;
 
+            selectedSprite = SelectRandomSprite(refugee);
+
+            if (selectedSprite == null)
+            {
+                selectedSprite = SelectSpriteInOrder(refugee);
+            }
+
+            spriteRenderer.sprite = selectedSprite;
+            spriteRenderer.sortingLayerID = sortingLayerId;
+            spriteRenderer.sortingOrder = VisibleSortingOrder;
+            refugee.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            AddColliderToRefugee(refugee);
+
+            spawningSpot.Refugee = refugee;
+
+            return refugee;
+        }
+
+        private Sprite SelectRandomSprite(Refugee refugee)
+        {
+            Sprite selectedSprite = null;
+            int attempts = 0;
+
             while (selectedSprite == null && attempts < MaxAttemptsToSpawn)
             {
                 attempts++;
@@ -111,22 +134,48 @@ namespace Assets.Scripts.Refugees
                         : _maleSprites.GetRandomElement();
                 }
 
-                if (attempts < MaxAttemptsToSpawn && _existingSprites.Contains(selectedSprite))
+                if (_existingSprites.Contains(selectedSprite.name))
                 {
                     selectedSprite = null;
                 }
             }
 
-            spriteRenderer.sprite = selectedSprite;
-            spriteRenderer.sortingLayerID = sortingLayerId;
-            spriteRenderer.sortingOrder = VisibleSortingOrder;
-            refugee.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-            refugee.gameObject.AddComponent<PolygonCollider2D>();
-            refugee.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
+            return selectedSprite;
+        }
 
-            spawningSpot.Refugee = refugee;
+        private Sprite SelectSpriteInOrder(Refugee refugee)
+        {
+            if (IsFamily() && _familySprites.Count > 0)
+            {
+                foreach (var familySprite in _familySprites)
+                {
+                    if (_existingSprites.Contains(familySprite.name))
+                    {
+                        return familySprite;
+                    }
+                }
+            }
 
-            return refugee;
+            if (refugee.IsFemale)
+            {
+                foreach (var femaleSprite in _femaleSprites)
+                {
+                    if (_existingSprites.Contains(femaleSprite.name))
+                    {
+                        return femaleSprite;
+                    }
+                }
+            }
+
+            foreach (var maleSprite in _maleSprites)
+            {
+                if (_existingSprites.Contains(maleSprite.name))
+                {
+                    return maleSprite;
+                }
+            }
+            
+            return null;
         }
 
         private void AddColliderToRefugee(Refugee refugee)
@@ -153,7 +202,7 @@ namespace Assets.Scripts.Refugees
             }
 
             _existingSprites = FindObjectsOfType<Refugee>().Select(refugee =>
-                refugee.GetComponent<SpriteRenderer>().sprite).ToList();
+                refugee.GetComponent<SpriteRenderer>().sprite.name).ToList();
 
             SpawnRefugeesForLayer(_spawningSpotsLayer1, "Floor 1");
             SpawnRefugeesForLayer(_spawningSpotsLayer2, "Floor 2");
