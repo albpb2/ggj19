@@ -10,13 +10,6 @@ namespace Assets.Scripts.Player
 {
     public class Bag : MonoBehaviour
     {
-        private const float storageSpacesY = -10.03f;
-
-        private readonly float[] storageSpacesX =
-        {
-            -37.1f, 2.83f
-        };
-
         [SerializeField]
         private Image _bagImage;
         [SerializeField]
@@ -27,6 +20,10 @@ namespace Assets.Scripts.Player
         private Sprite _waterFullSprite;
         [SerializeField]
         private Sprite _waterEmptySprite;
+        [SerializeField]
+        private Vector2 _firstSpacePosition = new Vector2(-142, -41);
+        [SerializeField]
+        private Vector2 _secondSpacePosition = new Vector2(17, -30);
 
         private StorageItemPrefabProvider _storageItemPrefabProvider;
         private GameManager _gameManager;
@@ -156,9 +153,10 @@ namespace Assets.Scripts.Player
         private void ShowStorageSpace(int position)
         {
             var storageSpace = Instantiate(_storageSpacePrefab, _bagImage.transform).GetComponent<StorageSpace>();
+            var localPosition = GetSpacePosition(position);
             storageSpace.transform.localPosition = new Vector3(
-                storageSpacesX[position],
-                storageSpacesY,
+                localPosition.x,
+                localPosition.y,
                 1);
             storageSpace.Bag = this;
             storageSpace.SetStorage(null);
@@ -168,10 +166,16 @@ namespace Assets.Scripts.Player
         private void ShowStorageItem(PortableObject portableObject, int position)
         {
             var storageItem = StorageItem.Create(_storageItemPrefabProvider.GetPrefab(portableObject.Type), _bagImage);
+            var localPosition = GetSpacePosition(position);
             storageItem.transform.localPosition = new Vector3(
-                storageSpacesX[position],
-                storageSpacesY,
+                localPosition.x,
+                localPosition.y,
                 1);
+        }
+
+        private Vector2 GetSpacePosition(int position)
+        {
+            return position == 0 ? _firstSpacePosition : _secondSpacePosition;
         }
     }
 }

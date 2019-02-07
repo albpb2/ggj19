@@ -4069,6 +4069,8 @@ MonoBehaviour:
   _closeButton: {fileID: 149302440}
   _waterFullSprite: {fileID: 21300000, guid: 15dc997e799e415409cc1e9d920cf2c2, type: 3}
   _waterEmptySprite: {fileID: 21300000, guid: a19f705128d503a43a1003fd205b0563, type: 3}
+  _firstSpacePosition: {x: -142, y: -41}
+  _secondSpacePosition: {x: 17, y: -30}
 --- !u!114 &483156346
 MonoBehaviour:
   m_ObjectHideFlags: 0
