@@ -112,6 +112,7 @@
     <Compile Include="Assets\Scripts\Conversation\DialogManager.cs" />
     <Compile Include="Assets\Scripts\Conversation\MediumDialogLine.cs" />
     <Compile Include="Assets\Scripts\Extensions\IListExtensions.cs" />
+    <Compile Include="Assets\Scripts\Extensions\Vector3Extensions.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameState.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />

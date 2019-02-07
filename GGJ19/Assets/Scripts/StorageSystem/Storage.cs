@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Extensions;
 using Assets.Scripts.Objects;
 using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.Player;
@@ -37,6 +38,8 @@ namespace Assets.Scripts.StorageSystem
         private Vector2 _firstGiftPosition;
         [SerializeField]
         private List<GameObject> _storageItemPrefabs;
+        [SerializeField]
+        private float _bagDistanceToStorageInScreenPercentage = 0.3f;
 
         private List<GameObject> _selectedPrefabs;
         private List<StorageItem> _storageItems;
@@ -170,7 +173,9 @@ namespace Assets.Scripts.StorageSystem
             _storeFront.gameObject.SetActive(true);
             _bag.OpenBag();
             _bag.HideCloseButton();
-            _bag.Image.transform.localPosition = _storeFront.transform.localPosition + new Vector3(300, 0, 0);
+
+            _bag.Image.transform.localPosition =
+                _storeFront.transform.localPosition.AddX((float)Screen.width * _bagDistanceToStorageInScreenPercentage);
 
             Show();
         }
