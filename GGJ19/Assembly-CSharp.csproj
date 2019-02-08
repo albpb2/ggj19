@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Layers.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\Gifts.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\PlaneSwitchTrigger.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\Store.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\WaterTank.cs" />

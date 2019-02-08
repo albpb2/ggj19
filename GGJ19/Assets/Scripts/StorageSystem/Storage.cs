@@ -66,8 +66,8 @@ namespace Assets.Scripts.StorageSystem
 
             Refill(1);
 
-            AddGift(PortableObjectType.Ball);
-            AddGift(PortableObjectType.Book);
+            AddGift(GenerateRandomGift());
+            AddGift(GenerateRandomGift());
         }
 
         public void Update()
@@ -229,6 +229,11 @@ namespace Assets.Scripts.StorageSystem
         private bool IsOpen()
         {
             return _storeBack.gameObject.activeSelf;
+        }
+
+        private PortableObjectType GenerateRandomGift()
+        {
+            return Objects.InteractableSceneObjects.Gifts.GetGiftPortableObjectTypes().GetRandomElement();
         }
     }
 }
