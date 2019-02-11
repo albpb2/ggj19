@@ -1,15 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Conversation;
+using Assets.Scripts.Events;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Objects.PortableObjects;
+using Assets.Scripts.Refugees.Events;
 using Random = System.Random;
 
 namespace Assets.Scripts.Refugees
 {
     public abstract class RefugeeWithBasicNeeds : Refugee
     {
+        private GameEventsManager _gameEventsManager;
+
         protected Random _random;
+
+        void Awake()
+        {
+            _gameEventsManager = FindObjectOfType<GameEventsManager>();
+        }
 
         public override void Start()
         {
@@ -45,6 +54,7 @@ namespace Assets.Scripts.Refugees
                 lineId = BasicDialogLine.ThanksLines.GetRandomElement();
                 line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
                 _dialogManager.WriteBasicDialogLine(line, Name);
+                _gameEventsManager.AddEvent(new HungerSolvedGameEvent());
                 UpdateKarma(_refugeesSettings.HungerResolvedPoints);
                 return;
             }
@@ -53,6 +63,7 @@ namespace Assets.Scripts.Refugees
                 lineId = BasicDialogLine.ThanksLines.GetRandomElement();
                 line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
                 _dialogManager.WriteBasicDialogLine(line, Name);
+                _gameEventsManager.AddEvent(new ThirstSolvedEvent());
                 UpdateKarma(_refugeesSettings.ThirstResolvedPoints);
                 return;
             }
@@ -61,6 +72,7 @@ namespace Assets.Scripts.Refugees
                 lineId = BasicDialogLine.ThanksLines.GetRandomElement();
                 line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
                 _dialogManager.WriteBasicDialogLine(line, Name);
+                _gameEventsManager.AddEvent(new IllnessSolvedEvent());
                 UpdateKarma(_refugeesSettings.IllnessResolvedPoints);
                 return;
             }

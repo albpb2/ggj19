@@ -114,6 +114,8 @@
     <Compile Include="Assets\Scripts\Conversation\DialogManager.cs" />
     <Compile Include="Assets\Scripts\Conversation\MediumDialogLine.cs" />
     <Compile Include="Assets\Scripts\DayTransition.cs" />
+    <Compile Include="Assets\Scripts\Events\GameEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\GameEventsManager.cs" />
     <Compile Include="Assets\Scripts\Extensions\ColorExtensions.cs" />
     <Compile Include="Assets\Scripts\Extensions\IListExtensions.cs" />
     <Compile Include="Assets\Scripts\Extensions\Vector3Extensions.cs" />
@@ -138,6 +140,10 @@
     <Compile Include="Assets\Scripts\Player\Karma.cs" />
     <Compile Include="Assets\Scripts\Player\LayerTransitionManager.cs" />
     <Compile Include="Assets\Scripts\Refugees\BasicRefugee.cs" />
+    <Compile Include="Assets\Scripts\Refugees\Events\ColdSolvedEvent.cs" />
+    <Compile Include="Assets\Scripts\Refugees\Events\HungerSolvedGameEvent.cs" />
+    <Compile Include="Assets\Scripts\Refugees\Events\IllnessSolvedEvent.cs" />
+    <Compile Include="Assets\Scripts\Refugees\Events\ThirstSolvedEvent.cs" />
     <Compile Include="Assets\Scripts\Refugees\MediumRefugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\Refugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeesFactory.cs" />
