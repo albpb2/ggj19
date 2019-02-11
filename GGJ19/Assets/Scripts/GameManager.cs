@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -9,6 +8,8 @@ namespace Assets.Scripts
         [SerializeField]
         private Image _pauseImage;
 
+        private TimeTracker _timeTracker;
+        private DayTransition _dayTransition;
         public bool Pause { get; set; }
         private bool _a;
 
@@ -19,6 +20,16 @@ namespace Assets.Scripts
             {
                 _a = value;
             }
+        }
+
+        public void Start()
+        {
+            _timeTracker = FindObjectOfType<TimeTracker>();
+            _dayTransition = FindObjectOfType<DayTransition>();
+
+            _dayTransition.gameObject.SetActive(false);
+
+            _timeTracker.onDayEnded += StartDayTransition;
         }
 
         public void Update()
@@ -61,5 +72,10 @@ namespace Assets.Scripts
         }
 
         private bool IsOnPauseScreen() => Pause;
+
+        private void StartDayTransition()
+        {
+            _dayTransition.gameObject.SetActive(true);
+        }
     }
 }

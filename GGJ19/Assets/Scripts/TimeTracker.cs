@@ -23,6 +23,7 @@ public class TimeTracker : MonoBehaviour
     private float _timeForCurrentDayInSeconds;
     private float _secondsPerHour;
     private float _secondsPerDay;
+    private bool _stopped;
 
     public int CurrentDay { get; set; } = 1;
 
@@ -35,11 +36,16 @@ public class TimeTracker : MonoBehaviour
 
     public void Update()
     {
+        if (_stopped)
+        {
+            return;
+        }
+
         _timeForCurrentDayInSeconds = _timeForCurrentDayInSeconds += Time.deltaTime;
 
         if (_timeForCurrentDayInSeconds >= _secondsPerDay)
         {
-            BeginNewDay();
+            EndDay();
         }
 
         var _currentTimeHour = (int)(_timeForCurrentDayInSeconds / _secondsPerHour);
@@ -50,12 +56,18 @@ public class TimeTracker : MonoBehaviour
         _clockText.text = (_adjustedCurrentTimeHour % 24).ToString("00") + ":" + GetMinuteFraction(_currentTimeMinute).ToString("00");
     }
 
-    private void BeginNewDay()
+    public void BeginNewDay()
     {
-        onDayEnded?.Invoke();
+        _stopped = false;
         CurrentDay++;
         onNewDayBegun?.Invoke(CurrentDay);
         _timeForCurrentDayInSeconds = 0;
+    }
+
+    private void EndDay()
+    {
+        _stopped = true;
+        onDayEnded?.Invoke();
     }
 
     private int GetMinuteFraction(float minute)
