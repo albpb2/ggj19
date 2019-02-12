@@ -7,6 +7,7 @@ namespace Assets.Scripts.Refugees
         public int IllnessProbability = 20;
         public int HungerResolvedPoints = 5;
         public int ThirstResolvedPoints = 5;
+        public int ColdResolvedPoints = 4;
         public int IllnessResolvedPoints = 10;
         public int MaxDaysToStay = 4;
         public int NostalgiaResolvedPoints = 12;

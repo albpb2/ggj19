@@ -39,5 +39,10 @@ namespace Assets.Scripts.Conversation
         {
             14, 15
         };
+
+        public static int[] ColdLines = new[]
+        {
+            16, 17
+        };
     }
 }

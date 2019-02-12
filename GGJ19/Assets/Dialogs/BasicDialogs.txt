@@ -89,4 +89,16 @@
 		"Text": "Thank you, but I didn't ask for this",
 		"PossibleResponses": [[]]
 	},
+	{
+		"LineId": 16,
+		"OwnLine": false,
+		"Text": "It's so cold here. Do you have any extra jacket?",
+		"PossibleResponses": [[2, 3, 4]]
+	},
+	{
+		"LineId": 17,
+		"OwnLine": false,
+		"Text": "We've lost most of our cloths, we're gonna freeze!",
+		"PossibleResponses": [[3, 4]]
+	},
 ]
