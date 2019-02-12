@@ -14,6 +14,9 @@ namespace Assets.Scripts
     {
         private const string DaySummaryTitleName = "DaySummaryTitle";
         private const string HungerSummaryTextName = "HungerSummaryText";
+        private const string ThirstSummaryTextName = "ThirstSummaryText";
+        private const string ColdSummaryTextName = "ColdSummaryText";
+        private const string IllnessSummaryTextName = "IllnessSummaryText";
 
         private TimeTracker _timeTracker;
         private GameEventsManager _gameEventsManager;
@@ -22,6 +25,9 @@ namespace Assets.Scripts
         private bool _transitionEnded;
         private Text _summaryTitleText;
         private Text _hungerSummaryText;
+        private Text _thirstSummaryText;
+        private Text _coldSummaryText;
+        private Text _illnessSummaryText;
 
         void Awake()
         {
@@ -60,18 +66,27 @@ namespace Assets.Scripts
             var texts = GetComponentsInChildren<Text>();
             _summaryTitleText = texts.Single(t => t.name == DaySummaryTitleName);
             _hungerSummaryText = texts.Single(t => t.name == HungerSummaryTextName);
+            _thirstSummaryText = texts.Single(t => t.name == ThirstSummaryTextName);
+            _coldSummaryText = texts.Single(t => t.name == ColdSummaryTextName);
+            _illnessSummaryText = texts.Single(t => t.name == IllnessSummaryTextName);
         }
 
         private void HideComponents()
         {
             _summaryTitleText.gameObject.SetActive(false);
             _hungerSummaryText.gameObject.SetActive(false);
+            _thirstSummaryText.gameObject.SetActive(false);
+            _coldSummaryText.gameObject.SetActive(false);
+            _illnessSummaryText.gameObject.SetActive(false);
         }
         
         private void ShowComponents()
         {
             _summaryTitleText.gameObject.SetActive(true);
             _hungerSummaryText.gameObject.SetActive(true);
+            _thirstSummaryText.gameObject.SetActive(true);
+            _coldSummaryText.gameObject.SetActive(true);
+            _illnessSummaryText.gameObject.SetActive(true);
         }
 
         private IEnumerator TransitionToBlackScreen()
@@ -95,15 +110,23 @@ namespace Assets.Scripts
 
         private void SetBasicNeedsTexts()
         {
-            var hungerSolved = _gameEventsManager.DayEvents.Count(e => e is HungerSolvedGameEvent);
-            var hungryRefugees = CountHungryRefugees();
-            _hungerSummaryText.text = $"You helped {hungerSolved}/{hungryRefugees + hungerSolved} hungry people";
-        }
-
-        private int CountHungryRefugees()
-        {
             var refugees = FindObjectsOfType<RefugeeWithBasicNeeds>();
-            return refugees.Count(r => !r.HungerResolved);
+
+            var hungerSolved = _gameEventsManager.DayEvents.Count(e => e is HungerSolvedGameEvent);
+            var hungryRefugees = refugees.Count(r => !r.HungerResolved);
+            _hungerSummaryText.text = $"You helped {hungerSolved}/{hungryRefugees + hungerSolved} hungry people";
+
+            var thirstSolved = _gameEventsManager.DayEvents.Count(e => e is ThirstSolvedEvent);
+            var thirstyRefugees = refugees.Count(r => !r.ThirstResolved);
+            _thirstSummaryText.text = $"You helped {thirstSolved}/{thirstyRefugees + thirstSolved} thirsty people";
+
+            var coldSolved = _gameEventsManager.DayEvents.Count(e => e is ColdSolvedEvent);
+            var coldRefugees = refugees.Count(r => !r.ColdResolved);
+            _coldSummaryText.text = $"You helped {coldSolved}/{coldRefugees + coldSolved} cold people";
+
+            var illnessSolved = _gameEventsManager.DayEvents.Count(e => e is IllnessSolvedEvent);
+            var illRefugees = refugees.Count(r => !r.IllnessResolved && r.Ill);
+            _illnessSummaryText.text = $"You helped {illnessSolved}/{illRefugees + illnessSolved} ill people";
         }
     }
 }
