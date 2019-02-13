@@ -13,10 +13,10 @@ namespace Assets.Scripts
     public class DayTransition : MonoBehaviour, IPointerDownHandler
     {
         private const string DaySummaryTitleName = "DaySummaryTitle";
-        private const string HungerSummaryTextName = "HungerSummaryText";
-        private const string ThirstSummaryTextName = "ThirstSummaryText";
-        private const string ColdSummaryTextName = "ColdSummaryText";
-        private const string IllnessSummaryTextName = "IllnessSummaryText";
+        private const string HungerSummaryComponentName = "HungerSummary";
+        private const string ThirstSummaryComponentName = "ThirstSummary";
+        private const string ColdSummaryComponentName = "ColdSummary";
+        private const string IllnessSummaryComponentName = "IllnessSummary";
 
         private TimeTracker _timeTracker;
         private GameEventsManager _gameEventsManager;
@@ -28,6 +28,7 @@ namespace Assets.Scripts
         private Text _thirstSummaryText;
         private Text _coldSummaryText;
         private Text _illnessSummaryText;
+        private SpriteRenderer _hungerSummaryIcon;
 
         void Awake()
         {
@@ -63,13 +64,21 @@ namespace Assets.Scripts
 
         private void FindTextFields()
         {
+            const string TextComponentSuffix = "Text";
             var texts = GetComponentsInChildren<Text>();
             _summaryTitleText = texts.Single(t => t.name == DaySummaryTitleName);
-            _hungerSummaryText = texts.Single(t => t.name == HungerSummaryTextName);
-            _thirstSummaryText = texts.Single(t => t.name == ThirstSummaryTextName);
-            _coldSummaryText = texts.Single(t => t.name == ColdSummaryTextName);
-            _illnessSummaryText = texts.Single(t => t.name == IllnessSummaryTextName);
+            _hungerSummaryText = texts.Single(t => t.name == $"{HungerSummaryComponentName}{TextComponentSuffix}");
+            _thirstSummaryText = texts.Single(t => t.name == $"{ThirstSummaryComponentName}{TextComponentSuffix}");
+            _coldSummaryText = texts.Single(t => t.name == $"{ColdSummaryComponentName}{TextComponentSuffix}");
+            _illnessSummaryText = texts.Single(t => t.name == $"{IllnessSummaryComponentName}{TextComponentSuffix}");
         }
+
+        //private void FindIcons()
+        //{
+        //    const string IconComponentSuffix = "Icon";
+        //    var icons = GetComponentsInChildren<SpriteRenderer>();
+        //    _hungerSummaryIcon = icons.Single(t => t.name == $"{HungerSummaryComponentName}{IconComponentSuffix}");
+        //}
 
         private void HideComponents()
         {
