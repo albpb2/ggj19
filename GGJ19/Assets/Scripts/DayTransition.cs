@@ -73,13 +73,6 @@ namespace Assets.Scripts
             _illnessSummaryText = texts.Single(t => t.name == $"{IllnessSummaryComponentName}{TextComponentSuffix}");
         }
 
-        //private void FindIcons()
-        //{
-        //    const string IconComponentSuffix = "Icon";
-        //    var icons = GetComponentsInChildren<SpriteRenderer>();
-        //    _hungerSummaryIcon = icons.Single(t => t.name == $"{HungerSummaryComponentName}{IconComponentSuffix}");
-        //}
-
         private void HideComponents()
         {
             _summaryTitleText.gameObject.SetActive(false);

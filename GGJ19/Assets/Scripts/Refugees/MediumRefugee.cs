@@ -4,6 +4,7 @@ using System.Linq;
 using Assets.Scripts.Conversation;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Objects.PortableObjects;
+using Assets.Scripts.Refugees.Events;
 using Assets.Scripts.StorageSystem;
 
 namespace Assets.Scripts.Refugees
@@ -66,6 +67,7 @@ namespace Assets.Scripts.Refugees
                 _dialogManager.WriteMediumDialogLine(line, Name);
                 UpdateKarma(_refugeesSettings.NostalgiaResolvedPoints);
                 NostalgiaResolved = true;
+                _gameEventsManager.AddEvent(new RightHomeObjectEvent());
                 return;
             }
 

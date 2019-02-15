@@ -1,24 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Assets.Scripts.Conversation;
-using Assets.Scripts.Events;
+﻿using Assets.Scripts.Conversation;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.Refugees.Events;
+using System.Collections.Generic;
+using System.Linq;
 using Random = System.Random;
 
 namespace Assets.Scripts.Refugees
 {
     public abstract class RefugeeWithBasicNeeds : Refugee
     {
-        private GameEventsManager _gameEventsManager;
-
         protected Random _random;
-
-        void Awake()
-        {
-            _gameEventsManager = FindObjectOfType<GameEventsManager>();
-        }
 
         public override void Start()
         {
