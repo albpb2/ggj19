@@ -171,7 +171,7 @@ namespace Assets.Scripts.Refugees
             IllnessResolved = true;
         }
 
-        public void CheckStatusAtEndOfDay()
+        public void CheckStatusAtEndOfDay(int dayNumber)
         {
             if (!RefugeeCountsForKarma())
             {

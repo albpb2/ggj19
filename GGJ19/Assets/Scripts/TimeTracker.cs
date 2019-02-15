@@ -16,7 +16,7 @@ public class TimeTracker : MonoBehaviour
     private UnityEngine.UI.Text _clockText;
 
     public delegate void NewDayBegins(int dayNumber);
-    public delegate void DayEnds();
+    public delegate void DayEnds(int dayNumber);
     public event NewDayBegins onNewDayBegun;
     public event DayEnds onDayEnded;
 
@@ -67,7 +67,7 @@ public class TimeTracker : MonoBehaviour
     private void EndDay()
     {
         _stopped = true;
-        onDayEnded?.Invoke();
+        onDayEnded?.Invoke(CurrentDay);
     }
 
     private int GetMinuteFraction(float minute)

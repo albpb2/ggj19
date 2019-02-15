@@ -9,9 +9,16 @@ namespace Assets.Scripts.Events
 
         public List<GameEvent> DayEvents { get; set; }
 
+        public List<GameEvent> PermanentEvents { get; set; }
+
         public void AddEvent(GameEvent gameEvent)
         {
             DayEvents.Add(gameEvent);
+        }
+
+        public void AddPermanentEvent(GameEvent gameEvent)
+        {
+            PermanentEvents.Add(gameEvent);
         }
 
         void Awake()
@@ -22,6 +29,7 @@ namespace Assets.Scripts.Events
         void Start()
         {
             DayEvents = new List<GameEvent>();
+            PermanentEvents = new List<GameEvent>();
             _timeTracker.onNewDayBegun += ResetDayEvents;
         }
 

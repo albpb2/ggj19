@@ -73,7 +73,7 @@ namespace Assets.Scripts
 
         private bool IsOnPauseScreen() => Pause;
 
-        private void StartDayTransition()
+        private void StartDayTransition(int dayNumber)
         {
             _dayTransition.gameObject.SetActive(true);
         }

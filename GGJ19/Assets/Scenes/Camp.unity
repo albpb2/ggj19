@@ -4257,6 +4257,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionsBox: {fileID: 343656338}
+--- !u!114 &483156348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483156341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9247f718974b19841b002235db55c89c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &483156351
 BoxCollider2D:
   m_ObjectHideFlags: 0

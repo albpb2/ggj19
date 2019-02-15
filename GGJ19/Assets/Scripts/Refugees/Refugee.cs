@@ -67,7 +67,7 @@ namespace Assets.Scripts.Refugees
             Destroy(gameObject);
         }
 
-        public void LeaveCampIfDayArrived()
+        public void LeaveCampIfDayArrived(int dayNumber)
         {
             if (_timeTracker.CurrentDay + 1 - ArrivalDay >= DaysToStay)
             {

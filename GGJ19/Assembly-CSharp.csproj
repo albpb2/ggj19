@@ -114,6 +114,7 @@
     <Compile Include="Assets\Scripts\Conversation\DialogManager.cs" />
     <Compile Include="Assets\Scripts\Conversation\MediumDialogLine.cs" />
     <Compile Include="Assets\Scripts\DayTransition.cs" />
+    <Compile Include="Assets\Scripts\Events\DayEndedEvent.cs" />
     <Compile Include="Assets\Scripts\Events\GameEvent.cs" />
     <Compile Include="Assets\Scripts\Events\GameEventsManager.cs" />
     <Compile Include="Assets\Scripts\Extensions\ColorExtensions.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Assets\Scripts\Player\Bag.cs" />
     <Compile Include="Assets\Scripts\Player\Character.cs" />
     <Compile Include="Assets\Scripts\Player\CharacterMovementController.cs" />
+    <Compile Include="Assets\Scripts\Player\DiaryWriter.cs" />
     <Compile Include="Assets\Scripts\Player\Feet.cs" />
     <Compile Include="Assets\Scripts\Player\Karma.cs" />
     <Compile Include="Assets\Scripts\Player\LayerTransitionManager.cs" />
