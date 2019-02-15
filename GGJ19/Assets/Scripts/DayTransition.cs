@@ -17,6 +17,7 @@ namespace Assets.Scripts
         private const string ThirstSummaryComponentName = "ThirstSummary";
         private const string ColdSummaryComponentName = "ColdSummary";
         private const string IllnessSummaryComponentName = "IllnessSummary";
+        private const string NostalgiaSummaryComponentName = "NostalgiaSummary";
 
         private TimeTracker _timeTracker;
         private GameEventsManager _gameEventsManager;
@@ -28,7 +29,7 @@ namespace Assets.Scripts
         private Text _thirstSummaryText;
         private Text _coldSummaryText;
         private Text _illnessSummaryText;
-        private SpriteRenderer _hungerSummaryIcon;
+        private Text _nostalgiaSummaryText;
 
         void Awake()
         {
@@ -71,6 +72,7 @@ namespace Assets.Scripts
             _thirstSummaryText = texts.Single(t => t.name == $"{ThirstSummaryComponentName}{TextComponentSuffix}");
             _coldSummaryText = texts.Single(t => t.name == $"{ColdSummaryComponentName}{TextComponentSuffix}");
             _illnessSummaryText = texts.Single(t => t.name == $"{IllnessSummaryComponentName}{TextComponentSuffix}");
+            _nostalgiaSummaryText = texts.Single(t => t.name == $"{NostalgiaSummaryComponentName}{TextComponentSuffix}");
         }
 
         private void HideComponents()
@@ -80,6 +82,7 @@ namespace Assets.Scripts
             _thirstSummaryText.gameObject.SetActive(false);
             _coldSummaryText.gameObject.SetActive(false);
             _illnessSummaryText.gameObject.SetActive(false);
+            _nostalgiaSummaryText.gameObject.SetActive(false);
         }
         
         private void ShowComponents()
@@ -89,6 +92,7 @@ namespace Assets.Scripts
             _thirstSummaryText.gameObject.SetActive(true);
             _coldSummaryText.gameObject.SetActive(true);
             _illnessSummaryText.gameObject.SetActive(true);
+            _nostalgiaSummaryText.gameObject.SetActive(true);
         }
 
         private IEnumerator TransitionToBlackScreen()
@@ -112,23 +116,28 @@ namespace Assets.Scripts
 
         private void SetBasicNeedsTexts()
         {
-            var refugees = FindObjectsOfType<RefugeeWithBasicNeeds>();
+            var basicRefugees = FindObjectsOfType<RefugeeWithBasicNeeds>();
+            var mediumRefugees = FindObjectsOfType<MediumRefugee>();
 
             var hungerSolved = _gameEventsManager.DayEvents.Count(e => e is HungerSolvedGameEvent);
-            var hungryRefugees = refugees.Count(r => !r.HungerResolved);
+            var hungryRefugees = basicRefugees.Count(r => !r.HungerResolved);
             _hungerSummaryText.text = $"You helped {hungerSolved}/{hungryRefugees + hungerSolved} hungry people";
 
             var thirstSolved = _gameEventsManager.DayEvents.Count(e => e is ThirstSolvedEvent);
-            var thirstyRefugees = refugees.Count(r => !r.ThirstResolved);
+            var thirstyRefugees = basicRefugees.Count(r => !r.ThirstResolved);
             _thirstSummaryText.text = $"You helped {thirstSolved}/{thirstyRefugees + thirstSolved} thirsty people";
 
             var coldSolved = _gameEventsManager.DayEvents.Count(e => e is ColdSolvedEvent);
-            var coldRefugees = refugees.Count(r => !r.ColdResolved);
+            var coldRefugees = basicRefugees.Count(r => !r.ColdResolved);
             _coldSummaryText.text = $"You helped {coldSolved}/{coldRefugees + coldSolved} cold people";
 
             var illnessSolved = _gameEventsManager.DayEvents.Count(e => e is IllnessSolvedEvent);
-            var illRefugees = refugees.Count(r => !r.IllnessResolved && r.Ill);
+            var illRefugees = basicRefugees.Count(r => !r.IllnessResolved && r.Ill);
             _illnessSummaryText.text = $"You helped {illnessSolved}/{illRefugees + illnessSolved} ill people";
+
+            var refugeesFeelingAtHome = _gameEventsManager.DayEvents.Count(e => e is RightHomeObjectEvent);
+            var nostalgicRefugees = mediumRefugees.Count(r => !r.NostalgiaResolved);
+            _nostalgiaSummaryText.text = $"{refugeesFeelingAtHome}/{nostalgicRefugees + refugeesFeelingAtHome} people felt at home today";
         }
     }
 }
