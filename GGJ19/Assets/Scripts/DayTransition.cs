@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Events;
 using Assets.Scripts.Extensions;
@@ -22,6 +23,7 @@ namespace Assets.Scripts
         private TimeTracker _timeTracker;
         private GameEventsManager _gameEventsManager;
         private Image _image;
+        private IEnumerable<IUIHideable> _hideableUIElements;
 
         private bool _transitionEnded;
         private Text _summaryTitleText;
@@ -36,6 +38,7 @@ namespace Assets.Scripts
             _timeTracker = FindObjectOfType<TimeTracker>();
             _gameEventsManager = FindObjectOfType<GameEventsManager>();
             _image = GetComponent<Image>();
+            _hideableUIElements = FindObjectsOfType<MonoBehaviour>().OfType<IUIHideable>();
 
             FindTextFields();
         }
@@ -52,6 +55,7 @@ namespace Assets.Scripts
 
             HideComponents();
             StartCoroutine(TransitionToBlackScreen());
+            HideUIElements();
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -93,6 +97,14 @@ namespace Assets.Scripts
             _coldSummaryText.gameObject.SetActive(true);
             _illnessSummaryText.gameObject.SetActive(true);
             _nostalgiaSummaryText.gameObject.SetActive(true);
+        }
+
+        private void HideUIElements()
+        {
+            foreach (var hideableUIElement in _hideableUIElements)
+            {
+                hideableUIElement.HideUIElement();
+            }
         }
 
         private IEnumerator TransitionToBlackScreen()

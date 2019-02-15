@@ -10,7 +10,7 @@ using Random = System.Random;
 
 namespace Assets.Scripts.StorageSystem
 {
-    public class Storage : MonoBehaviour
+    public class Storage : MonoBehaviour, IUIHideable
     {
         [SerializeField]
         private int _maxCapacity;
@@ -224,6 +224,14 @@ namespace Assets.Scripts.StorageSystem
         public void AddGift(PortableObjectType objectType)
         {
             Gifts.Add(objectType);
+        }
+
+        public void HideUIElement()
+        {
+            if (IsOpen())
+            {
+                CloseStorage();
+            }
         }
 
         private bool IsOpen()

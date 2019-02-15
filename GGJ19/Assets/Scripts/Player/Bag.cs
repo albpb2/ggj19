@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Player
 {
-    public class Bag : MonoBehaviour
+    public class Bag : MonoBehaviour, IUIHideable
     {
         [SerializeField]
         private Image _bagImage;
@@ -36,6 +36,8 @@ namespace Assets.Scripts.Player
         public Image Image => _bagImage;
 
         public bool WaterFull { get; private set; }
+
+        public bool IsOpen => _bagImage?.gameObject.activeSelf ?? false;
 
         public void Start()
         {
@@ -147,6 +149,14 @@ namespace Assets.Scripts.Player
                 WaterFull = false;
                 _bagImage.GetComponent<Image>().sprite = _waterEmptySprite;
                 _character.GiveObjectToRefugee(PortableObjectType.Water);
+            }
+        }
+
+        public void HideUIElement()
+        {
+            if (IsOpen)
+            {
+                CloseBag();
             }
         }
 

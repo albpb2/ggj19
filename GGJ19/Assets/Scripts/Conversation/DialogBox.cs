@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Assets.Scripts.Player;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Player;
 using UnityEngine;
-using UnityEngine.Experimental.UIElements;
 using UnityEngine.UI;
 using Image = UnityEngine.UI.Image;
 
 namespace Assets.Scripts.Conversation
 {
-    public class DialogBox : MonoBehaviour
+    public class DialogBox : MonoBehaviour, IUIHideable
     {
         [SerializeField]
         private Image _textBox;
@@ -25,6 +24,8 @@ namespace Assets.Scripts.Conversation
         private int _index;
         private GameManager _gameManager;
         private Character _character;
+
+        public bool IsOpen => _textBox?.gameObject.activeSelf ?? false;
 
         public void Start()
         {
@@ -67,9 +68,7 @@ namespace Assets.Scripts.Conversation
                 _speed = 1;
                 if (!_textsToRead.Any())
                 {
-                    _textBox.gameObject.SetActive(false);
-                    _gameManager.GameFreezed = false;
-                    _character.EndInteraction();
+                    Close();
                 }
             }
         }
@@ -90,6 +89,21 @@ namespace Assets.Scripts.Conversation
 
             _names.Add(name);
             _textsToRead.Add(text);
+        }
+
+        public void HideUIElement()
+        {
+            if (IsOpen)
+            {
+                Close();
+            }
+        }
+
+        private void Close()
+        {
+            _textBox.gameObject.SetActive(false);
+            _character.EndInteraction();
+            _gameManager.GameFreezed = false;
         }
     }
 }
