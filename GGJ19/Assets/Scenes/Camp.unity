@@ -9010,7 +9010,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c804d2782b0f5a845ab5a4df589ca122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedCursorTexture: {fileID: 2800000, guid: 96a3a30c0e1843b459f4b03fb8fa0182,
+  _defaultCursorTexture: {fileID: 2800000, guid: 0334b645ff728874abf2c4050ded861f,
+    type: 3}
+  _selectedCursorTexture: {fileID: 2800000, guid: 0334b645ff728874abf2c4050ded861f,
     type: 3}
 --- !u!4 &1177336370
 Transform:
