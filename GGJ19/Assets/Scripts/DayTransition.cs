@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.CameraScripts;
 using Assets.Scripts.Events;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Player;
@@ -26,6 +27,7 @@ namespace Assets.Scripts
         private Image _image;
         private IEnumerable<IUIHideable> _hideableUIElements;
         private CharacterMovementController _characterMovementController;
+        private CameraMovementController _cameraMovementController;
 
         private bool _transitionEnded;
         private Text _summaryTitleText;
@@ -42,6 +44,7 @@ namespace Assets.Scripts
             _image = GetComponent<Image>();
             _hideableUIElements = FindObjectsOfType<MonoBehaviour>().OfType<IUIHideable>();
             _characterMovementController = FindObjectOfType<CharacterMovementController>();
+            _cameraMovementController = FindObjectOfType<CameraMovementController>();
 
             FindTextFields();
         }
@@ -122,6 +125,7 @@ namespace Assets.Scripts
             SetDaySummaryTitle();
             SetBasicNeedsTexts();
             HideUIElements();
+            ResetCameraPosition();
             ResetCharacterPositionAndScale();
         }
 
@@ -159,6 +163,11 @@ namespace Assets.Scripts
         private void ResetCharacterPositionAndScale()
         {
             _characterMovementController.ResetInitialPositionAndScale();
+        }
+
+        private void ResetCameraPosition()
+        {
+            _cameraMovementController.ResetPosition();
         }
     }
 }
