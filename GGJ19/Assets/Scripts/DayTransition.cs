@@ -42,7 +42,7 @@ namespace Assets.Scripts
             _timeTracker = FindObjectOfType<TimeTracker>();
             _gameEventsManager = FindObjectOfType<GameEventsManager>();
             _image = GetComponent<Image>();
-            _hideableUIElements = FindObjectsOfType<MonoBehaviour>().OfType<IUIHideable>();
+            _hideableUIElements = Resources.FindObjectsOfTypeAll<MonoBehaviour>().OfType<IUIHideable>();
             _characterMovementController = FindObjectOfType<CharacterMovementController>();
             _cameraMovementController = FindObjectOfType<CameraMovementController>();
 
@@ -59,6 +59,7 @@ namespace Assets.Scripts
                 _image.color.b,
                 0);
 
+            HideUIElements();
             HideComponents();
             StartCoroutine(TransitionToBlackScreen());
         }
@@ -75,7 +76,7 @@ namespace Assets.Scripts
         private void FindTextFields()
         {
             const string TextComponentSuffix = "Text";
-            var texts = GetComponentsInChildren<Text>();
+            var texts = GetComponentsInChildren<Text>(true);
             _summaryTitleText = texts.Single(t => t.name == DaySummaryTitleName);
             _hungerSummaryText = texts.Single(t => t.name == $"{HungerSummaryComponentName}{TextComponentSuffix}");
             _thirstSummaryText = texts.Single(t => t.name == $"{ThirstSummaryComponentName}{TextComponentSuffix}");
@@ -124,7 +125,6 @@ namespace Assets.Scripts
             ShowComponents();
             SetDaySummaryTitle();
             SetBasicNeedsTexts();
-            HideUIElements();
             ResetCameraPosition();
             ResetCharacterPositionAndScale();
         }

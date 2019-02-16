@@ -3191,6 +3191,7 @@ GameObject:
   - component: {fileID: 343656337}
   - component: {fileID: 343656339}
   - component: {fileID: 343656338}
+  - component: {fileID: 343656340}
   m_Layer: 5
   m_Name: ActionsBox
   m_TagString: ActionsBox
@@ -3257,6 +3258,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343656336}
   m_CullTransparentMesh: 0
+--- !u!114 &343656340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343656336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc915297c82ee14488cf8d9477749108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &369501232
 GameObject:
   m_ObjectHideFlags: 0
@@ -5935,7 +5948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380bb9d4f55448b44bf4e2df909f7e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _realDayDurationInMinutes: 0.2
+  _realDayDurationInMinutes: 1
   _dayDurationHours: 12
   _initialHour: 7
   _minutesFraction: 10
@@ -9414,7 +9427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1228401481
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13678,6 +13691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseImage: {fileID: 553345798}
+  _dayTransition: {fileID: 0}
 --- !u!1 &1820512168
 GameObject:
   m_ObjectHideFlags: 0

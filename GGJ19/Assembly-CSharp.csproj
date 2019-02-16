@@ -164,6 +164,7 @@
     <Compile Include="Assets\Scripts\SummaryWriter.cs" />
     <Compile Include="Assets\Scripts\Tags.cs" />
     <Compile Include="Assets\Scripts\TimeTracker.cs" />
+    <Compile Include="Assets\Scripts\UI\ActionsBox.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
     <None Include="Assets\Refugees\MaleNames.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />

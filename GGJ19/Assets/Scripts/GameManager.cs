@@ -7,9 +7,11 @@ namespace Assets.Scripts
     {
         [SerializeField]
         private Image _pauseImage;
+        [SerializeField]
+        private DayTransition _dayTransition;
+
 
         private TimeTracker _timeTracker;
-        private DayTransition _dayTransition;
         public bool Pause { get; set; }
         private bool _a;
 
@@ -25,9 +27,6 @@ namespace Assets.Scripts
         public void Start()
         {
             _timeTracker = FindObjectOfType<TimeTracker>();
-            _dayTransition = FindObjectOfType<DayTransition>();
-
-            _dayTransition.gameObject.SetActive(false);
 
             _timeTracker.onDayEnded += StartDayTransition;
         }
