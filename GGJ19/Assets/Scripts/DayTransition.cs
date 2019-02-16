@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Events;
 using Assets.Scripts.Extensions;
+using Assets.Scripts.Player;
 using Assets.Scripts.Refugees;
 using Assets.Scripts.Refugees.Events;
 using UnityEngine;
@@ -24,6 +25,7 @@ namespace Assets.Scripts
         private GameEventsManager _gameEventsManager;
         private Image _image;
         private IEnumerable<IUIHideable> _hideableUIElements;
+        private CharacterMovementController _characterMovementController;
 
         private bool _transitionEnded;
         private Text _summaryTitleText;
@@ -39,6 +41,7 @@ namespace Assets.Scripts
             _gameEventsManager = FindObjectOfType<GameEventsManager>();
             _image = GetComponent<Image>();
             _hideableUIElements = FindObjectsOfType<MonoBehaviour>().OfType<IUIHideable>();
+            _characterMovementController = FindObjectOfType<CharacterMovementController>();
 
             FindTextFields();
         }
@@ -55,7 +58,6 @@ namespace Assets.Scripts
 
             HideComponents();
             StartCoroutine(TransitionToBlackScreen());
-            HideUIElements();
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -119,6 +121,8 @@ namespace Assets.Scripts
             ShowComponents();
             SetDaySummaryTitle();
             SetBasicNeedsTexts();
+            HideUIElements();
+            ResetCharacterPositionAndScale();
         }
 
         private void SetDaySummaryTitle()
@@ -150,6 +154,11 @@ namespace Assets.Scripts
             var refugeesFeelingAtHome = _gameEventsManager.DayEvents.Count(e => e is RightHomeObjectEvent);
             var nostalgicRefugees = mediumRefugees.Count(r => !r.NostalgiaResolved);
             _nostalgiaSummaryText.text = $"{refugeesFeelingAtHome}/{nostalgicRefugees + refugeesFeelingAtHome} people felt at home today";
+        }
+
+        private void ResetCharacterPositionAndScale()
+        {
+            _characterMovementController.ResetInitialPositionAndScale();
         }
     }
 }
