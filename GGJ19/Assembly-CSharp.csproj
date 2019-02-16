@@ -107,6 +107,7 @@
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Audio\PermanentAudioSource.cs" />
+    <Compile Include="Assets\Scripts\CameraScripts\CameraMovementController.cs" />
     <Compile Include="Assets\Scripts\CameraScripts\CharacterTracker.cs" />
     <Compile Include="Assets\Scripts\Conversation\BasicDialogLine.cs" />
     <Compile Include="Assets\Scripts\Conversation\DialogBox.cs" />

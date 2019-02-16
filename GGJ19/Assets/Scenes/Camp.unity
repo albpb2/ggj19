@@ -5935,7 +5935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380bb9d4f55448b44bf4e2df909f7e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _realDayDurationInMinutes: 0.1
+  _realDayDurationInMinutes: 0.2
   _dayDurationHours: 12
   _initialHour: 7
   _minutesFraction: 10
@@ -15008,6 +15008,7 @@ GameObject:
   - component: {fileID: 2013755701}
   - component: {fileID: 2013755700}
   - component: {fileID: 2013755703}
+  - component: {fileID: 2013755704}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -15095,6 +15096,18 @@ MonoBehaviour:
   _horizontalMarginPercentage: 40
   _verticalMarginPercentage: 40
   _minCameraY: 5.5
+--- !u!114 &2013755704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013755699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e5470d338280947888cb7aa66e77ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2018219800
 GameObject:
   m_ObjectHideFlags: 0
