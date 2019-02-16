@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeTracker : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class TimeTracker : MonoBehaviour
     [SerializeField]
     private int _minutesFraction = 15;
     [SerializeField]
-    private UnityEngine.UI.Text _clockText;
+    private Text _clockText;
+    [SerializeField]
+    private Text _dayText;
 
     public delegate void NewDayBegins(int dayNumber);
     public delegate void DayEnds(int dayNumber);
@@ -32,6 +35,7 @@ public class TimeTracker : MonoBehaviour
         _timeForCurrentDayInSeconds = 0;
         _secondsPerHour = _realDayDurationInMinutes * SecondsPerMinute / _dayDurationHours;
         _secondsPerDay = _realDayDurationInMinutes * 60;
+        _dayText.text = "1";
     }
 
     public void Update()
@@ -62,6 +66,7 @@ public class TimeTracker : MonoBehaviour
         CurrentDay++;
         onNewDayBegun?.Invoke(CurrentDay);
         _timeForCurrentDayInSeconds = 0;
+        _dayText.text = CurrentDay.ToString();
     }
 
     private void EndDay()

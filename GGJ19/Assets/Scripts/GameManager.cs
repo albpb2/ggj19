@@ -13,14 +13,14 @@ namespace Assets.Scripts
 
         private TimeTracker _timeTracker;
         public bool Pause { get; set; }
-        private bool _a;
+        private bool _gameFreezed;
 
         public bool GameFreezed
         {
-            get => _a;
+            get => _gameFreezed;
             set
             {
-                _a = value;
+                _gameFreezed = value;
             }
         }
 
