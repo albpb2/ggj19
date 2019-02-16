@@ -115,6 +115,7 @@
     <Compile Include="Assets\Scripts\Conversation\DialogManager.cs" />
     <Compile Include="Assets\Scripts\Conversation\MediumDialogLine.cs" />
     <Compile Include="Assets\Scripts\DayTransition.cs" />
+    <Compile Include="Assets\Scripts\DepthSpriteScaler.cs" />
     <Compile Include="Assets\Scripts\Events\DayEndedEvent.cs" />
     <Compile Include="Assets\Scripts\Events\GameEvent.cs" />
     <Compile Include="Assets\Scripts\Events\GameEventsManager.cs" />
