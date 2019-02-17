@@ -121,6 +121,7 @@
     <Compile Include="Assets\Scripts\Events\GameEventsManager.cs" />
     <Compile Include="Assets\Scripts\Extensions\ColorExtensions.cs" />
     <Compile Include="Assets\Scripts\Extensions\IListExtensions.cs" />
+    <Compile Include="Assets\Scripts\Extensions\RectTransformExtensions.cs" />
     <Compile Include="Assets\Scripts\Extensions\Vector3Extensions.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameState.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\WaterTank.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObject.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObjects\PortableObjectType.cs" />
+    <Compile Include="Assets\Scripts\Objects\PortableObjects\PortableObjectTypeExtensions.cs" />
     <Compile Include="Assets\Scripts\Objects\PortableObjects\Water.cs" />
     <Compile Include="Assets\Scripts\Objects\StorageItemPrefabProvider.cs" />
     <Compile Include="Assets\Scripts\OldLayerTransitionManager.cs" />

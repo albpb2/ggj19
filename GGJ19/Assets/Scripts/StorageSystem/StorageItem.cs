@@ -1,5 +1,7 @@
-﻿using Assets.Scripts.Objects.PortableObjects;
+﻿using Assets.Scripts.Extensions;
+using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.Player;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -20,6 +22,8 @@ namespace Assets.Scripts.StorageSystem
 
         public PortableObjectType PortableObjectType => _portableObjectType;
 
+        public bool FromStorage;
+
         public static StorageItem Create(
             GameObject prefab,
             Image parentImage)
@@ -34,23 +38,18 @@ namespace Assets.Scripts.StorageSystem
             _button = GetComponent<Button>();
             _character = FindObjectOfType<Character>();
             _bag = _character.GetComponent<Bag>();
+            _storage = FindObjectOfType<Storage>();
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if (_storage == null)
+            if (FromStorage)
             {
-                CancelDrag();
-            }
-
-            var bag = FindObjectOfType<Bag>();
-            if (bag.DropStorageItem(this))
-            {
-                _storage.RemoveItem(this, _initialPosition);
+                DropFromStorage();
             }
             else
             {
-                CancelDrag();
+                DropFromBag();
             }
         }
 
@@ -62,16 +61,12 @@ namespace Assets.Scripts.StorageSystem
                 2);
         }
 
-        public void SetStorage(Storage storage)
-        {
-            _storage = storage;
-        }
-
         public void OnBeginDrag(PointerEventData eventData)
         {
             _initialPosition = this.transform.localPosition;
             _initialParent = transform.parent;
             transform.SetParent(transform.parent.parent);
+            FromStorage = PointerOnStorage();
         }
 
         private void CancelDrag()
@@ -93,7 +88,49 @@ namespace Assets.Scripts.StorageSystem
 
         private bool IsInGiveMode()
         {
-            return _storage == null && _character.InteractingWith != null;
+            return !_storage.IsOpen && _character.InteractingWith != null;
+        }
+
+        private bool PointerOnBag()
+        {
+            Rect bagRect = _bag.Image.GetComponent<RectTransform>().GetScreenSpaceRect();
+
+            return bagRect.Contains(Input.mousePosition);
+        }
+
+        private bool PointerOnStorage()
+        {
+            Rect storageRect = _storage.Front.GetComponent<RectTransform>().GetScreenSpaceRect();
+
+            return storageRect.Contains(Input.mousePosition);
+        }
+
+        private void DropFromStorage()
+        {
+            if (PointerOnBag() && _bag.Spaces.Any())
+            {
+                _bag.AddItem(this);
+                _storage.RemoveItem(this);
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                CancelDrag();
+            }
+        }
+
+        private void DropFromBag()
+        {
+            if (PointerOnStorage() && _storage.HasRoomForStorageItem(this))
+            {
+                _storage.AddItem(this);
+                _bag.RemoveItem(this);
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                CancelDrag();
+            }
         }
     }
 }

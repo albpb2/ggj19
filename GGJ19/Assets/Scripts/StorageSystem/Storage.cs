@@ -53,6 +53,14 @@ namespace Assets.Scripts.StorageSystem
 
         public List<PortableObjectType> Gifts { get; set; } = new List<PortableObjectType>();
 
+        public Image Front => _storeFront;
+
+        public bool HasFreeItemsSpace => _storageItems.Count < _maxCapacity;
+
+        public bool HasFreeGiftsSpace => Gifts.Count < _maxGiftCapacity;
+
+        public bool IsOpen => _storeBack.gameObject.activeSelf;
+
         public void Start()
         {
             _random = new Random();
@@ -88,12 +96,115 @@ namespace Assets.Scripts.StorageSystem
             var numberOfObjects = _random.Next(_minCapacity, _maxCapacity + 1);
             for (var i = _selectedPrefabs.Count; i < numberOfObjects; i++)
             {
-                var randomObject = _random.Next(0, _storageItemPrefabs.Count);
-                _selectedPrefabs.Add(_storageItemPrefabs[randomObject]);
+                _selectedPrefabs.Add(_storageItemPrefabs.GetRandomElement());
             }
         }
 
-        public void Show()
+        public void OpenStorage()
+        {
+            if (IsOpen)
+            {
+                return;
+            }
+
+            _gameManager.GameFreezed = true;
+
+            _storeBack.gameObject.SetActive(true);
+            _storeFront.gameObject.SetActive(true);
+            _bag.OpenBag();
+            _bag.HideCloseButton();
+
+            _bag.Image.transform.localPosition =
+                _storeFront.transform.localPosition.AddX((float)Screen.width * _bagDistanceToStorageInScreenPercentage);
+
+            PaintItems();
+        }
+
+        public void CloseStorage()
+        {
+            if (!IsOpen)
+            {
+                return;
+            }
+
+            _gameManager.GameFreezed = false;
+
+            ClearItems();
+
+            _storeBack.gameObject.SetActive(false);
+            _storeFront.gameObject.SetActive(false);
+            _bag.ShowCloseButton();
+            _bag.Image.transform.localPosition = _bagOriginalPlace;
+            _bag.CloseBag();
+
+            _storageItems = new List<StorageItem>();
+        }
+
+        public bool HasRoomForStorageItem(StorageItem item)
+        {
+            return item.PortableObjectType.IsOfGiftType() ?
+                HasFreeGiftsSpace : HasFreeItemsSpace;
+        }
+
+        public void AddItem(StorageItem item)
+        {
+            if (item.PortableObjectType.IsOfGiftType())
+            {
+                if (HasFreeGiftsSpace)
+                {
+                    Gifts.Add(item.PortableObjectType);
+                }
+            }
+            else
+            {
+                if (HasFreeItemsSpace)
+                {
+                    var prefabToAdd = _storageItemPrefabs.FirstOrDefault(p =>
+                        p.GetComponent<StorageItem>().PortableObjectType == item.PortableObjectType);
+                    _selectedPrefabs.Add(prefabToAdd);
+                }
+            }
+            ClearItems();
+            PaintItems();
+        }
+
+        public void RemoveItem(StorageItem storageItem)
+        {
+            _storageItems.Remove(storageItem);
+            var selectedPrefab = _selectedPrefabs.FirstOrDefault(p =>
+                p.GetComponent<StorageItem>().PortableObjectType == storageItem.PortableObjectType);
+            if (selectedPrefab != null)
+            {
+                _selectedPrefabs.Remove(selectedPrefab);
+            }
+            else
+            {
+                Gifts.Remove(Gifts.First(gift => gift == storageItem.PortableObjectType));
+            }
+            ClearItems();
+            PaintItems();
+        }
+
+        public void AddGift(PortableObjectType objectType)
+        {
+            Gifts.Add(objectType);
+        }
+
+        public void HideUIElement()
+        {
+            if (IsOpen)
+            {
+                CloseStorage();
+            }
+        }
+
+        private void PaintItems()
+        {
+            PaintStorageItems();
+            PaintGifts();
+        }
+
+        private void PaintStorageItems()
         {
             var currentColumn = 0;
             var currentX = _firstPosition.x;
@@ -109,7 +220,6 @@ namespace Assets.Scripts.StorageSystem
 
                 var storageItem = StorageItem.Create(selectedPrefab, _storeFront);
                 storageItem.transform.localPosition = new Vector3(currentX, currentY, 1);
-                storageItem.SetStorage(this);
                 _storageItems.Add(storageItem);
                 currentX += _spaceBetweenColumns;
                 currentColumn++;
@@ -134,10 +244,15 @@ namespace Assets.Scripts.StorageSystem
                     currentY -= _spaceBetweenRows;
                 }
             }
+        }
 
-            currentX = _firstGiftPosition.x;
-            currentY = _firstGiftPosition.y;
+        private void PaintGifts()
+        {
+            var currentColumn = 0;
+            var currentX = _firstGiftPosition.x;
+            var currentY = _firstGiftPosition.y;
             var displayedGifts = 0;
+
             foreach (var gift in Gifts)
             {
                 if (displayedGifts >= _maxGiftCapacity)
@@ -147,8 +262,6 @@ namespace Assets.Scripts.StorageSystem
 
                 var storageItem = StorageItem.Create(_prefabProvider.GetPrefab(gift), _storeFront);
                 storageItem.transform.localPosition = new Vector3(currentX, currentY, 1);
-                storageItem.SetStorage(this);
-                _storageItems.Add(storageItem);
                 currentX += _spaceBetweenColumns;
                 currentColumn++;
                 if (currentColumn == _columns)
@@ -160,88 +273,17 @@ namespace Assets.Scripts.StorageSystem
             }
         }
 
-        public void OpenStorage()
+        private PortableObjectType GenerateRandomGift()
         {
-            if (IsOpen())
-            {
-                return;
-            }
-
-            _gameManager.GameFreezed = true;
-
-            _storeBack.gameObject.SetActive(true);
-            _storeFront.gameObject.SetActive(true);
-            _bag.OpenBag();
-            _bag.HideCloseButton();
-
-            _bag.Image.transform.localPosition =
-                _storeFront.transform.localPosition.AddX((float)Screen.width * _bagDistanceToStorageInScreenPercentage);
-
-            Show();
+            return Objects.InteractableSceneObjects.Gifts.GetGiftPortableObjectTypes().GetRandomElement();
         }
 
-        public void CloseStorage()
+        private void ClearItems()
         {
-            if (!IsOpen())
-            {
-                return;
-            }
-
-            _gameManager.GameFreezed = false;
-
             foreach (Transform child in _storeFront.transform)
             {
                 Destroy(child.gameObject);
             }
-
-            _storeBack.gameObject.SetActive(false);
-            _storeFront.gameObject.SetActive(false);
-            _bag.ShowCloseButton();
-            _bag.Image.transform.localPosition = _bagOriginalPlace;
-            _bag.CloseBag();
-
-            _storageItems = new List<StorageItem>();
-        }
-
-        public void RemoveItem(StorageItem storageItem, Vector3 localPosition)
-        {
-            var storageSpace = Instantiate(_storageSpacePrefab, _storeFront.transform).GetComponent<StorageSpace>();
-            storageSpace.transform.localPosition = localPosition;
-
-            _storageItems.Remove(storageItem);
-            var selectedPrefab = _selectedPrefabs.FirstOrDefault(p =>
-                p.GetComponent<StorageItem>().PortableObjectType == storageItem.PortableObjectType);
-            if (selectedPrefab != null)
-            {
-                _selectedPrefabs.Remove(selectedPrefab);
-            }
-            else
-            {
-                Gifts.Remove(Gifts.First(gift => gift == storageItem.PortableObjectType));
-            }
-        }
-
-        public void AddGift(PortableObjectType objectType)
-        {
-            Gifts.Add(objectType);
-        }
-
-        public void HideUIElement()
-        {
-            if (IsOpen())
-            {
-                CloseStorage();
-            }
-        }
-
-        private bool IsOpen()
-        {
-            return _storeBack.gameObject.activeSelf;
-        }
-
-        private PortableObjectType GenerateRandomGift()
-        {
-            return Objects.InteractableSceneObjects.Gifts.GetGiftPortableObjectTypes().GetRandomElement();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Extensions;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.StorageSystem
@@ -22,17 +23,11 @@ namespace Assets.Scripts.StorageSystem
 
         private void HidePanelIfClickOutside()
         {
-            Rect rect = RectTransformToScreenSpace(_storageFront.GetComponent<RectTransform>());
-            if (!rect.Contains(UnityEngine.Input.mousePosition))
+            Rect rect = _storageFront.GetComponent<RectTransform>().GetScreenSpaceRect();
+            if (!rect.Contains(Input.mousePosition))
             {
                 _storage.CloseStorage();
             }
-        }
-
-        private static Rect RectTransformToScreenSpace(RectTransform transform)
-        {
-            Vector2 size = Vector2.Scale(transform.rect.size, transform.lossyScale);
-            return new Rect((Vector2)transform.position - (size * 0.5f), size);
         }
     }
 }
