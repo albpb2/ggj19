@@ -10,6 +10,7 @@ namespace Assets.Scripts.Objects
         protected Character _player;
         protected InputManager _inputManager;
         protected GameManager _gameManager;
+        protected LayerTransitionManager _layerTransitionManager;
 
         private bool _mouseExitWhileOnPause;
         private bool _mouseEnterWhileOnPause;
@@ -20,6 +21,7 @@ namespace Assets.Scripts.Objects
             _player = FindObjectOfType<Character>();
             _inputManager = FindObjectOfType<InputManager>();
             _gameManager = FindObjectOfType<GameManager>();
+            _layerTransitionManager = FindObjectOfType<LayerTransitionManager>();
         }
 
         public virtual void Update()
@@ -39,8 +41,7 @@ namespace Assets.Scripts.Objects
 
         public void OnMouseEnter()
         {
-            if (GetComponent<SpriteRenderer>() != null && 
-                GetComponent<SpriteRenderer>().sortingLayerName != FindObjectOfType<Character>().GetComponent<SpriteRenderer>().sortingLayerName)
+            if (!IsOnCharacterLayer())
             {
                 return;
             }
@@ -71,8 +72,7 @@ namespace Assets.Scripts.Objects
 
         public void OnMouseDown()
         {
-            if (GetComponent<SpriteRenderer>() != null &&
-                GetComponent<SpriteRenderer>().sortingLayerName != FindObjectOfType<Character>().GetComponent<SpriteRenderer>().sortingLayerName)
+            if (!IsOnCharacterLayer())
             {
                 return;
             }
@@ -81,5 +81,11 @@ namespace Assets.Scripts.Objects
         }
 
         public abstract void Interact();
+
+        private bool IsOnCharacterLayer()
+        {
+            return GetComponent<SpriteRenderer>() != null &&
+                  GetComponent<SpriteRenderer>().sortingLayerName == _layerTransitionManager.CurrentLayer;
+        }
     }
 }
