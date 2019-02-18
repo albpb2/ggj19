@@ -205,7 +205,7 @@ namespace Assets.Scripts.Player
             if (TargetObject != null && collider.gameObject == TargetObject.gameObject)
             {
                 TargetObject.Interact();
-                _targetDirection = GetTargetWithXPosition(TargetObject.transform.position.x);
+                _targetDirection = null;
                 TargetObject = null;
             }
         }
