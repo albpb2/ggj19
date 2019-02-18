@@ -112,6 +112,7 @@ namespace Assets.Scripts.Player
                 WaterFull = false;
                 _bagImage.GetComponent<Image>().sprite = _waterEmptySprite;
                 _character.GiveObjectToRefugee(PortableObjectType.Water);
+                CloseBag();
             }
         }
 

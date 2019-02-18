@@ -47,7 +47,12 @@ namespace Assets.Scripts.Player
         public void GiveObjectToRefugee(PortableObjectType objectType)
         {
             InteractingWith.GiveObject(objectType);
-            _bag.Items.Remove(_bag.Items.First(item => item.Type == objectType));
+
+            var itemToRemove = _bag.Items.FirstOrDefault(item => item.Type == objectType);
+            if (itemToRemove != null)
+            {
+                _bag.Items.Remove(itemToRemove);
+            }
         }
     }
 }
