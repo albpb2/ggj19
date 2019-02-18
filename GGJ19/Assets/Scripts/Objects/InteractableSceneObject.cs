@@ -72,7 +72,7 @@ namespace Assets.Scripts.Objects
 
         public void OnMouseDown()
         {
-            if (!IsOnCharacterLayer())
+            if (_gameManager.GameFreezed || !IsOnCharacterLayer())
             {
                 return;
             }
