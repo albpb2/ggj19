@@ -157,6 +157,7 @@
     <Compile Include="Assets\Scripts\Refugees\Refugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeesFactory.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeeSpawningSpot.cs" />
+    <Compile Include="Assets\Scripts\Refugees\RefugeesResizer.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeesSettings.cs" />
     <Compile Include="Assets\Scripts\Refugees\RefugeeWithBasicNeeds.cs" />
     <Compile Include="Assets\Scripts\SceneManager.cs" />
