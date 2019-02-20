@@ -44,12 +44,6 @@ namespace Assets.Scripts.Refugees
             int lineId;
             MediumDialogLine line;
 
-            if (NostalgiaResolved)
-            {
-                base.GiveObject(objectType);
-                return;
-            }
-
             var validObjectTypes = new List<PortableObjectType>();
 
             foreach (var dialogLineRelatedObject in DialogLine.RelatedObjects)
@@ -68,13 +62,12 @@ namespace Assets.Scripts.Refugees
                 UpdateKarma(_refugeesSettings.NostalgiaResolvedPoints);
                 NostalgiaResolved = true;
                 _gameEventsManager.AddEvent(new RightHomeObjectEvent());
+            }
+            else
+            {
+                base.GiveObject(objectType);
                 return;
             }
-
-            lineId = MediumDialogLine.WrongChoiceLines.GetRandomElement();
-            line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
-            _dialogManager.WriteMediumDialogLine(line, Name);
-            UpdateKarma(_refugeesSettings.RandomObjectPoints);
         }
 
         public override void LeaveCamp()

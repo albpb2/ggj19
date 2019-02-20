@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Conversation;
 using Assets.Scripts.Extensions;
+using Assets.Scripts.Maths;
 using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.Refugees.Events;
 using System.Collections.Generic;
@@ -132,20 +133,15 @@ namespace Assets.Scripts.Refugees
 
         public void ResetNeeds()
         {
-            HungerResolved = false;
-            ThirstResolved = false;
-            ColdResolved = false;
-
-            var randomNumber = _random.Next(0, 100);
-            if (randomNumber < _refugeesSettings.IllnessProbability)
-            {
-                Ill = true;
-            }
+            HungerResolved = !Probabilities.CalculateSuccessBase100(_refugeesSettings.HungerProbability);
+            ThirstResolved = !Probabilities.CalculateSuccessBase100(_refugeesSettings.ThirstProbability);
+            ColdResolved = !Probabilities.CalculateSuccessBase100(_refugeesSettings.ColdProbability);
+            Ill = !Probabilities.CalculateSuccessBase100(_refugeesSettings.IllnessProbability);
 
             IllnessResolved = false;
         }
 
-        public override void WakeUp()
+        public override void WakeUp(int dayNumber)
         {
             ResetNeeds();
         }

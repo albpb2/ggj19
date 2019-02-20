@@ -4,6 +4,9 @@ namespace Assets.Scripts.Refugees
 {
     public class RefugeesSettings : MonoBehaviour
     {
+        public int HungerProbability = 50;
+        public int ThirstProbability = 40;
+        public int ColdProbability = 30;
         public int IllnessProbability = 20;
         public int HungerResolvedPoints = 5;
         public int ThirstResolvedPoints = 5;

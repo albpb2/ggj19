@@ -34,13 +34,16 @@ namespace Assets.Scripts.Refugees
 
             ArrivalDay = _timeTracker.CurrentDay;
             _timeTracker.onDayEnded += LeaveCampIfDayArrived;
+            _timeTracker.onNewDayBegun += WakeUp;
+
+            WakeUp(_timeTracker.CurrentDay);
         }
 
         public bool IsFemale { get; set; }
 
         public string Name { get; set; }
 
-        public abstract void WakeUp();
+        public abstract void WakeUp(int dayNumber);
         public abstract void Talk();
         public abstract void GiveObject(PortableObjectType objectType);
 
