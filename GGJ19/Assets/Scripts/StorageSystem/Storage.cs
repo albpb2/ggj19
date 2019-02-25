@@ -4,6 +4,7 @@ using Assets.Scripts.Extensions;
 using Assets.Scripts.Objects;
 using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.Player;
+using Assets.Scripts.Refugees;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -37,12 +38,21 @@ namespace Assets.Scripts.StorageSystem
         [SerializeField]
         private Vector2 _firstGiftPosition;
         [SerializeField]
-        private List<GameObject> _storageItemPrefabs;
+        private GameObject _breadItemPrefab;
+        [SerializeField]
+        private GameObject _bottleItemPrefab;
+        [SerializeField]
+        private GameObject _coatItemPrefab;
+        [SerializeField]
+        private GameObject _pillItemPrefab;
         [SerializeField]
         private float _bagDistanceToStorageInScreenPercentage = 0.3f;
-
+        [SerializeField]
+        private RefugeesSettings _refugeesSettings;
+        
         private List<GameObject> _selectedPrefabs;
         private List<StorageItem> _storageItems;
+        private List<GameObject> _itemPrefabs;
         private Random _random;
         private TimeTracker _timeTracker;
         private GameManager _gameManager;
@@ -69,6 +79,10 @@ namespace Assets.Scripts.StorageSystem
             _gameManager = FindObjectOfType<GameManager>();
             _prefabProvider = FindObjectOfType<StorageItemPrefabProvider>();
             _bagOriginalPlace = _bag.Image.transform.localPosition;
+            _itemPrefabs = new List<GameObject>
+            {
+                _breadItemPrefab, _bottleItemPrefab, _coatItemPrefab, _pillItemPrefab
+            };
 
             _timeTracker.onNewDayBegun += Refill;
 
@@ -93,10 +107,11 @@ namespace Assets.Scripts.StorageSystem
                 CloseStorage();
                 OpenStorage();
             }
+
             var numberOfObjects = _random.Next(_minCapacity, _maxCapacity + 1);
             for (var i = _selectedPrefabs.Count; i < numberOfObjects; i++)
             {
-                _selectedPrefabs.Add(_storageItemPrefabs.GetRandomElement());
+                AddRandomItemToStorage();
             }
         }
 
@@ -159,7 +174,7 @@ namespace Assets.Scripts.StorageSystem
             {
                 if (HasFreeItemsSpace)
                 {
-                    var prefabToAdd = _storageItemPrefabs.FirstOrDefault(p =>
+                    var prefabToAdd = _itemPrefabs.FirstOrDefault(p =>
                         p.GetComponent<StorageItem>().PortableObjectType == item.PortableObjectType);
                     _selectedPrefabs.Add(prefabToAdd);
                 }
@@ -195,6 +210,38 @@ namespace Assets.Scripts.StorageSystem
             if (IsOpen)
             {
                 CloseStorage();
+            }
+        }
+
+        private void AddRandomItemToStorage()
+        {
+            var totalProbability = _refugeesSettings.HungerItemProbability
+                                   + _refugeesSettings.ThirstResolvedPoints
+                                   + _refugeesSettings.ColdItemProbability
+                                   + _refugeesSettings.IllnessItemProbability;
+
+            var number = _random.Next(0, 100);
+            var hungerItemProbability = _refugeesSettings.HungerItemProbability * 100 / totalProbability;
+            var thirstItemProbability = _refugeesSettings.ThirstItemProbability * 100 / totalProbability
+                                        + hungerItemProbability;
+            var coldItemProbability = _refugeesSettings.ColdItemProbability * 100 / totalProbability
+                                      + thirstItemProbability;
+
+            if (number < hungerItemProbability)
+            {
+                _selectedPrefabs.Add(_breadItemPrefab);
+            }
+            else if (number < thirstItemProbability)
+            {
+                _selectedPrefabs.Add(_bottleItemPrefab);
+            }
+            else if (number < coldItemProbability)
+            {
+                _selectedPrefabs.Add(_coatItemPrefab);
+            }
+            else
+            {
+                _selectedPrefabs.Add(_pillItemPrefab);
             }
         }
 
