@@ -6277,8 +6277,8 @@ MonoBehaviour:
   - {fileID: 21300008, guid: 4458e04a087a042469e14e34223e5926, type: 3}
   - {fileID: 21300122, guid: 4458e04a087a042469e14e34223e5926, type: 3}
   _femaleSprites:
-  - {fileID: 21300020, guid: 2b160334c2901254084c9f923adb6235, type: 3}
-  - {fileID: 21300022, guid: 2b160334c2901254084c9f923adb6235, type: 3}
+  - {fileID: 21300000, guid: 501fb6396855001419df9d40fabf8f3a, type: 3}
+  - {fileID: 21300000, guid: a64e137fbfc604f49943a4407a7b281f, type: 3}
   - {fileID: 21300014, guid: 2b160334c2901254084c9f923adb6235, type: 3}
   - {fileID: 21300000, guid: 4458e04a087a042469e14e34223e5926, type: 3}
   - {fileID: 21300004, guid: 4458e04a087a042469e14e34223e5926, type: 3}
@@ -16000,6 +16000,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4badd3bae2ed704f8d83bf45b72c1f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HungerProbability: 50
+  ThirstProbability: 40
+  ColdProbability: 30
   IllnessProbability: 20
   HungerResolvedPoints: 5
   ThirstResolvedPoints: 5
