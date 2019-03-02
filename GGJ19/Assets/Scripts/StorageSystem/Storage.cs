@@ -95,9 +95,6 @@ namespace Assets.Scripts.StorageSystem
             _timeTracker.onNewDayBegun += Refill;
 
             Refill(1);
-
-            AddGift(GenerateRandomGift());
-            AddGift(GenerateRandomGift());
         }
 
         public void Update()
@@ -117,6 +114,7 @@ namespace Assets.Scripts.StorageSystem
             }
 
             _itemsSpawner.SpawnItems();
+            _itemsSpawner.SpawnGifts();
         }
 
         public void OpenStorage()
@@ -295,11 +293,6 @@ namespace Assets.Scripts.StorageSystem
                     currentY -= _spaceBetweenRows;
                 }
             }
-        }
-
-        private PortableObjectType GenerateRandomGift()
-        {
-            return Objects.InteractableSceneObjects.Gifts.GetGiftPortableObjectTypes().GetRandomElement();
         }
 
         private void ClearItems()

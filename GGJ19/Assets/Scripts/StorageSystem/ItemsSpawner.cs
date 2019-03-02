@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts.Extensions;
+using Assets.Scripts.Objects.InteractableSceneObjects;
 using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.Player;
 using Assets.Scripts.Refugees;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
@@ -39,6 +41,26 @@ namespace Assets.Scripts.StorageSystem
                 SpawnItem(refugee);
 
                 if (_storage.ItemsCount > numberOfObjects)
+                {
+                    return;
+                }
+            }
+        }
+
+        public void SpawnGifts()
+        {
+            if (!_storage.HasFreeGiftsSpace)
+            {
+                return;
+            }
+
+            var mediumRefugees = Object.FindObjectsOfType<MediumRefugee>();
+
+            foreach (var refugee in mediumRefugees)
+            {
+                SpawnGift(refugee);
+
+                if (!_storage.HasFreeGiftsSpace)
                 {
                     return;
                 }
@@ -105,6 +127,26 @@ namespace Assets.Scripts.StorageSystem
             }
 
             return PortableObjectType.Pills;
+        }
+
+        private void SpawnGift(MediumRefugee refugee)
+        {
+            if (!refugee.NostalgiaResolved)
+            {
+                SpawnGift(refugee.ValidObjectTypes);
+            }
+        }
+
+        private void SpawnGift(List<PortableObjectType> validObjectTypes)
+        {
+            if (RandomHelper.IsProbabilityReached100(_refugeesSettings.ProperItemSpawningProbability))
+            {
+                _storage.AddGift(validObjectTypes.GetRandomElement());
+            }
+            else
+            {
+                _storage.AddGift(Gifts.GetGiftPortableObjectTypes().GetRandomElement());
+            }
         }
     }
 }

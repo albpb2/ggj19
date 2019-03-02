@@ -26,6 +26,7 @@ namespace Assets.Scripts.Refugees
 
         public MediumDialogLine DialogLine { get; set; }
         public bool NostalgiaResolved { get; set; }
+        public List<PortableObjectType> ValidObjectTypes { get; private set; }
 
         public override void Talk()
         {
@@ -43,18 +44,8 @@ namespace Assets.Scripts.Refugees
         {
             int lineId;
             MediumDialogLine line;
-
-            var validObjectTypes = new List<PortableObjectType>();
-
-            foreach (var dialogLineRelatedObject in DialogLine.RelatedObjects)
-            {
-                if (Enum.TryParse(dialogLineRelatedObject, out PortableObjectType validObjectType))
-                {
-                    validObjectTypes.Add(validObjectType);
-                }
-            }
             
-            if (!NostalgiaResolved && validObjectTypes.Contains(objectType))
+            if (!NostalgiaResolved && ValidObjectTypes.Contains(objectType))
             {
                 lineId = MediumDialogLine.ThanksLines.GetRandomElement();
                 line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
@@ -116,6 +107,15 @@ namespace Assets.Scripts.Refugees
             }
 
             DialogLine = _dialogManager.MediumDialogLines.SingleOrDefault(line => line.LineId == dialogLineId);
+
+            ValidObjectTypes = new List<PortableObjectType>();
+            foreach (var dialogLineRelatedObject in DialogLine.RelatedObjects)
+            {
+                if (Enum.TryParse(dialogLineRelatedObject, out PortableObjectType validObjectType))
+                {
+                    ValidObjectTypes.Add(validObjectType);
+                }
+            }
         }
     }
 }
