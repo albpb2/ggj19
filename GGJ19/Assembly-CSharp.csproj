@@ -147,6 +147,7 @@
     <Compile Include="Assets\Scripts\Player\Feet.cs" />
     <Compile Include="Assets\Scripts\Player\Karma.cs" />
     <Compile Include="Assets\Scripts\Player\LayerTransitionManager.cs" />
+    <Compile Include="Assets\Scripts\RandomHelper.cs" />
     <Compile Include="Assets\Scripts\Refugees\BasicRefugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\Events\ColdSolvedEvent.cs" />
     <Compile Include="Assets\Scripts\Refugees\Events\HungerSolvedGameEvent.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Assets\Scripts\Refugees\RefugeeWithBasicNeeds.cs" />
     <Compile Include="Assets\Scripts\SceneManager.cs" />
     <Compile Include="Assets\Scripts\SortingLayers.cs" />
+    <Compile Include="Assets\Scripts\StorageSystem\ItemsSpawner.cs" />
     <Compile Include="Assets\Scripts\StorageSystem\Storage.cs" />
     <Compile Include="Assets\Scripts\StorageSystem\StorageBack.cs" />
     <Compile Include="Assets\Scripts\StorageSystem\StorageItem.cs" />
