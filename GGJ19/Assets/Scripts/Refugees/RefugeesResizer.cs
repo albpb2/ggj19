@@ -10,10 +10,10 @@ namespace Assets.Scripts.Refugees
             switch(spriteRenderer.sortingLayerName)
             {
                 case SortingLayers.Floor2:
-                    refugee.transform.localScale *= 0.95f;
+                    refugee.transform.localScale *= 0.94f;
                     return;
                 case SortingLayers.Floor3:
-                    refugee.transform.localScale *= 0.85f;
+                    refugee.transform.localScale *= 0.86f;
                     return;
                 default:
                     return;
