@@ -15124,7 +15124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab04b0129a2cf041a004218912462a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _horizontalMarginPercentage: 40
+  _horizontalMarginPercentage: 20
   _verticalMarginPercentage: 40
   _minCameraY: 5.5
 --- !u!114 &2013755704
