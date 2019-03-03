@@ -49,7 +49,6 @@ namespace Assets.Scripts.Refugees
         private List<string> _maleNames;
         private List<string> _femaleNames;
         private List<string> _surnames;
-        private List<string> _existingSprites; 
 
         public void Start()
         {
@@ -71,21 +70,49 @@ namespace Assets.Scripts.Refugees
             SpawnRandomRefugees(2);
         }
 
-        public Refugee CreateBasicRefugee(RefugeeSpawningSpot spawningSpot, int sortingLayerId)
+        public Refugee CreateBasicRefugee(
+            RefugeeSpawningSpot spawningSpot,
+            int sortingLayerId,
+            List<Sprite> familySprites,
+            List<Sprite> femaleSprites,
+            List<Sprite> maleSprites)
         {
             var refugee = Instantiate(_basicRefugeePrefab).GetComponent<BasicRefugee>();
-            return SetUpRefugee(refugee, spawningSpot, sortingLayerId);
+            return SetUpRefugee(
+                refugee,
+                spawningSpot,
+                sortingLayerId,
+                familySprites,
+                femaleSprites,
+                maleSprites);
         }
 
-        public Refugee CreateMediumRefugee(RefugeeSpawningSpot spawningSpot, int sortingLayerId)
+        public Refugee CreateMediumRefugee(
+            RefugeeSpawningSpot spawningSpot,
+            int sortingLayerId,
+            List<Sprite> familySprites,
+            List<Sprite> femaleSprites,
+            List<Sprite> maleSprites)
         {
             var refugee = Instantiate(_mediumRefugeePrefab).GetComponent<MediumRefugee>();
-            refugee = (MediumRefugee)SetUpRefugee(refugee, spawningSpot, sortingLayerId);
+            refugee = (MediumRefugee)SetUpRefugee(
+                refugee,
+                spawningSpot,
+                sortingLayerId,
+                familySprites,
+                femaleSprites,
+                maleSprites);
             refugee.ChooseLine();
             return refugee;
         }
 
-        private Refugee SetUpRefugee(Refugee refugee, RefugeeSpawningSpot spawningSpot, int sortingLayerId)
+        private Refugee SetUpRefugee(
+            Refugee refugee,
+            RefugeeSpawningSpot spawningSpot,
+            int sortingLayerId,
+            List<Sprite> familySprites,
+            List<Sprite> femaleSprites,
+            List<Sprite> maleSprites)
         {
             refugee.Start();
             refugee.transform.position = spawningSpot.transform.position;
@@ -97,19 +124,34 @@ namespace Assets.Scripts.Refugees
 
             var spriteRenderer = refugee.GetComponent<SpriteRenderer>();
             Sprite selectedSprite = null;
-            int attempts = 0;
-
-            selectedSprite = SelectRandomSprite(refugee);
+            selectedSprite = SelectRandomSprite(
+                refugee,
+                familySprites,
+                femaleSprites,
+                maleSprites);
 
             if (selectedSprite == null)
             {
-                selectedSprite = SelectSpriteInOrder(refugee);
+                refugee.IsFemale = !refugee.IsFemale;
+                refugee.Name = refugee.IsFemale ? _femaleNames.GetRandomElement() : _maleNames.GetRandomElement();
+                selectedSprite = SelectRandomSprite(
+                    refugee,
+                    familySprites,
+                    femaleSprites,
+                    maleSprites);
+            }
+
+            if (selectedSprite == null)
+            {
+                selectedSprite = SelectRandomDuplicatedSprite(refugee);
             }
 
             spriteRenderer.sprite = selectedSprite;
             spriteRenderer.sortingLayerID = sortingLayerId;
             spriteRenderer.sortingOrder = VisibleSortingOrder;
+
             refugee.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+
             _refugeesResizer.ResizeRefugeeBasingOnSortingLayer(refugee);
             AddColliderToRefugee(refugee);
 
@@ -118,67 +160,43 @@ namespace Assets.Scripts.Refugees
             return refugee;
         }
 
-        private Sprite SelectRandomSprite(Refugee refugee)
+        private Sprite SelectRandomSprite(
+            Refugee refugee,
+            List<Sprite> familySprites,
+            List<Sprite> femaleSprites,
+            List<Sprite> maleSprites)
         {
-            Sprite selectedSprite = null;
-            int attempts = 0;
-
-            while (selectedSprite == null && attempts < MaxAttemptsToSpawn)
+            if (IsFamily())
             {
-                attempts++;
-                if (IsFamily() && _familySprites.Count > 0)
-                {
-                    selectedSprite = _familySprites.GetRandomElement();
-                }
-                else
-                {
-                    selectedSprite = refugee.IsFemale
-                        ? _femaleSprites.GetRandomElement()
-                        : _maleSprites.GetRandomElement();
-                }
-
-                if (_existingSprites.Contains(selectedSprite.name))
-                {
-                    selectedSprite = null;
-                }
+                return SelectRandomSprite(familySprites);
             }
 
+            return refugee.IsFemale 
+                ? SelectRandomSprite(femaleSprites) 
+                : SelectRandomSprite(maleSprites);
+        }
+
+        private Sprite SelectRandomSprite(List<Sprite> spritesList)
+        {
+            if (!spritesList.Any())
+            {
+                return null;
+            }
+
+            var selectedSprite = spritesList.GetRandomElement();
+            spritesList.Remove(selectedSprite);
             return selectedSprite;
         }
 
-        private Sprite SelectSpriteInOrder(Refugee refugee)
+        private Sprite SelectRandomDuplicatedSprite(
+            Refugee refugee)
         {
-            if (IsFamily() && _familySprites.Count > 0)
+            if (IsFamily())
             {
-                foreach (var familySprite in _familySprites)
-                {
-                    if (_existingSprites.Contains(familySprite.name))
-                    {
-                        return familySprite;
-                    }
-                }
+                return _familySprites.GetRandomElement();
             }
 
-            if (refugee.IsFemale)
-            {
-                foreach (var femaleSprite in _femaleSprites)
-                {
-                    if (_existingSprites.Contains(femaleSprite.name))
-                    {
-                        return femaleSprite;
-                    }
-                }
-            }
-
-            foreach (var maleSprite in _maleSprites)
-            {
-                if (_existingSprites.Contains(maleSprite.name))
-                {
-                    return maleSprite;
-                }
-            }
-            
-            return null;
+            return refugee.IsFemale ? _femaleSprites.GetRandomElement() : _maleSprites.GetRandomElement();
         }
 
         private void AddColliderToRefugee(Refugee refugee)
@@ -204,15 +222,49 @@ namespace Assets.Scripts.Refugees
                 return;
             }
 
-            _existingSprites = FindObjectsOfType<Refugee>().Select(refugee =>
-                refugee.GetComponent<SpriteRenderer>().sprite.name).ToList();
+            var availableFemaleSprites = new List<Sprite>(_femaleSprites);
+            var availableMaleSprites = new List<Sprite>(_maleSprites);
+            var availableFamilySprites = new List<Sprite>(_familySprites);
 
-            SpawnRefugeesForLayer(_spawningSpotsLayer1, "Floor 1");
-            SpawnRefugeesForLayer(_spawningSpotsLayer2, "Floor 2");
-            SpawnRefugeesForLayer(_spawningSpotsLayer3, "Floor 3");
+            RemoveExistingSpritesFromLists(availableFamilySprites, availableFemaleSprites, availableMaleSprites);
+
+            SpawnRefugeesForLayer(_spawningSpotsLayer1, "Floor 1", availableFamilySprites, availableFemaleSprites, availableMaleSprites);
+            SpawnRefugeesForLayer(_spawningSpotsLayer2, "Floor 2", availableFamilySprites, availableFemaleSprites, availableMaleSprites);
+            SpawnRefugeesForLayer(_spawningSpotsLayer3, "Floor 3", availableFamilySprites, availableFemaleSprites, availableMaleSprites);
         }
 
-        private void SpawnRefugeesForLayer(RefugeeSpawningSpot[] spots, string sortingLayerName)
+        private void RemoveExistingSpritesFromLists(
+            List<Sprite> familySprites,
+            List<Sprite> femaleSprites,
+            List<Sprite> maleSprites)
+        {
+
+            var existingSprites = FindObjectsOfType<Refugee>().Select(refugee =>
+                refugee.GetComponent<SpriteRenderer>().sprite.name).ToList();
+
+            foreach (var item in existingSprites)
+            {
+                if (femaleSprites.Any(s => s.name == item))
+                {
+                    femaleSprites.Remove(femaleSprites.First(s => s.name == item));
+                }
+                else if (maleSprites.Any(s => s.name == item))
+                {
+                    maleSprites.Remove(maleSprites.First(s => s.name == item));
+                }
+                else if (familySprites.Any(s => s.name == item))
+                {
+                    familySprites.Remove(familySprites.First(s => s.name == item));
+                }
+            }
+        }
+
+        private void SpawnRefugeesForLayer(
+            RefugeeSpawningSpot[] spots,
+            string sortingLayerName,
+            List<Sprite> familySprites,
+            List<Sprite> femaleSprites,
+            List<Sprite> maleSprites)
         {
             var sortingLayerId = SortingLayer.NameToID(sortingLayerName);
 
@@ -223,22 +275,42 @@ namespace Assets.Scripts.Refugees
                     var randomNumber = _random.Next(0, 100);
                     if (randomNumber < _spotSpawningProbability)
                     {
-                        SpawnRandomRefugee(refugeeSpawningSpot, sortingLayerId);
+                        SpawnRandomRefugee(
+                            refugeeSpawningSpot,
+                            sortingLayerId,
+                            familySprites,
+                            femaleSprites,
+                            maleSprites);
                     }
                 }
             }
         }
 
-        public void SpawnRandomRefugee(RefugeeSpawningSpot spawningSpot, int sortingLayerId)
+        public void SpawnRandomRefugee(
+            RefugeeSpawningSpot spawningSpot,
+            int sortingLayerId,
+            List<Sprite> familySprites,
+            List<Sprite> femaleSprites,
+            List<Sprite> maleSprites)
         {
             var randomNumber = _random.Next(0, 100);
             if (randomNumber < _basicRefugeeProbability)
             {
-                CreateBasicRefugee(spawningSpot, sortingLayerId);
+                CreateBasicRefugee(
+                    spawningSpot,
+                    sortingLayerId,
+                    familySprites,
+                    femaleSprites,
+                    maleSprites);
             }
             else
             {
-                CreateMediumRefugee(spawningSpot, sortingLayerId);
+                CreateMediumRefugee(
+                    spawningSpot,
+                    sortingLayerId,
+                    familySprites,
+                    femaleSprites,
+                    maleSprites);
             }
         }
 
