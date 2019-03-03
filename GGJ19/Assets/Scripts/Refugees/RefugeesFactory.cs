@@ -45,6 +45,7 @@ namespace Assets.Scripts.Refugees
         private Random _random;
         private TimeTracker _timeTracker;
         private RefugeesSettings _refugeesSettings;
+        private RefugeesResizer _refugeesResizer;
         private List<string> _maleNames;
         private List<string> _femaleNames;
         private List<string> _surnames;
@@ -61,6 +62,7 @@ namespace Assets.Scripts.Refugees
             _timeTracker = FindObjectOfType<TimeTracker>();
             _refugeesSettings = FindObjectOfType<RefugeesSettings>();
             _random = new Random();
+            _refugeesResizer = new RefugeesResizer();
 
             ReadRefugeeNames();
 
@@ -108,6 +110,7 @@ namespace Assets.Scripts.Refugees
             spriteRenderer.sortingLayerID = sortingLayerId;
             spriteRenderer.sortingOrder = VisibleSortingOrder;
             refugee.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            _refugeesResizer.ResizeRefugeeBasingOnSortingLayer(refugee);
             AddColliderToRefugee(refugee);
 
             spawningSpot.Refugee = refugee;

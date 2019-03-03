@@ -8,8 +8,10 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Player
 {
-    public class Bag : MonoBehaviour
+    public class Bag : MonoBehaviour, IUIHideable
     {
+        public const int MaxItems = 2;
+
         [SerializeField]
         private Image _bagImage;
         [SerializeField]
@@ -37,6 +39,8 @@ namespace Assets.Scripts.Player
 
         public bool WaterFull { get; private set; }
 
+        public bool IsOpen => _bagImage?.gameObject.activeSelf ?? false;
+
         public void Start()
         {
             _storageItemPrefabProvider = FindObjectOfType<StorageItemPrefabProvider>();
@@ -56,67 +60,28 @@ namespace Assets.Scripts.Player
         {
             _bagImage.gameObject.SetActive(true);
 
-            if (Items.Count == 0)
-            {
-                ShowStorageSpace(0);
-                ShowStorageSpace(1);
-            }
-            else if (Items.Count == 1)
-            {
-                ShowStorageItem(Items.First(), 0);
-                ShowStorageSpace(1);
-            }
-            else
-            {
-                ShowStorageItem(Items.First(), 0);
-                ShowStorageItem(Items.Last(), 1);
-            }
+            PaintItems();
         }
 
         public void CloseBag()
         {
-            foreach (Transform child in _bagImage.transform)
-            {
-                if (child.gameObject.GetComponent<StorageItem>() != null)
-                {
-                    Destroy(child.gameObject);
-                }
-                else if (child.gameObject.GetComponent<StorageSpace>() != null)
-                {
-                    Destroy(child.gameObject);
-                    Spaces.Remove(child.gameObject.GetComponent<StorageSpace>());
-                }
-            }
+            ClearBag();
             _bagImage.gameObject.SetActive(false);
 
             _gameManager.GameFreezed = false;
         }
 
-        public void AddItem(StorageItem storageItem, StorageSpace storageSpace)
+        public void AddItem(StorageItem storageItem)
         {
             Items.Add(new PortableObject
             {
                 Type = storageItem.PortableObjectType
             });
-
-            storageItem.transform.SetParent(_bagImage.transform);
-            storageItem.transform.localPosition = storageSpace.transform.localPosition;
+            var storageSpace = Spaces.First();
             Spaces.Remove(storageSpace);
-            Destroy(storageSpace.gameObject);
-        }
 
-        public bool DropStorageItem(StorageItem storageItem)
-        {
-            foreach (var storageSpace in Spaces)
-            {
-                if (Vector3.Distance(storageItem.transform.position, storageSpace.transform.position) < 20)
-                {
-                    AddItem(storageItem, storageSpace);
-                    return true;
-                }
-            }
-
-            return false;
+            ClearBag();
+            PaintItems();
         }
 
         public void PlaceAt(Vector3 position)
@@ -147,6 +112,15 @@ namespace Assets.Scripts.Player
                 WaterFull = false;
                 _bagImage.GetComponent<Image>().sprite = _waterEmptySprite;
                 _character.GiveObjectToRefugee(PortableObjectType.Water);
+                CloseBag();
+            }
+        }
+
+        public void HideUIElement()
+        {
+            if (IsOpen)
+            {
+                CloseBag();
             }
         }
 
@@ -163,6 +137,32 @@ namespace Assets.Scripts.Player
             Spaces.Add(storageSpace);
         }
 
+        public void RemoveItem(StorageItem item)
+        {
+            Items.Remove(Items.First(i => i.Type == item.PortableObjectType));
+            ClearBag();
+            PaintItems();
+        }
+
+        private void PaintItems()
+        {
+            if (Items.Count == 0)
+            {
+                ShowStorageSpace(0);
+                ShowStorageSpace(1);
+            }
+            else if (Items.Count == 1)
+            {
+                ShowStorageItem(Items.First(), 0);
+                ShowStorageSpace(1);
+            }
+            else
+            {
+                ShowStorageItem(Items.First(), 0);
+                ShowStorageItem(Items.Last(), 1);
+            }
+        }
+
         private void ShowStorageItem(PortableObject portableObject, int position)
         {
             var storageItem = StorageItem.Create(_storageItemPrefabProvider.GetPrefab(portableObject.Type), _bagImage);
@@ -176,6 +176,22 @@ namespace Assets.Scripts.Player
         private Vector2 GetSpacePosition(int position)
         {
             return position == 0 ? _firstSpacePosition : _secondSpacePosition;
+        }
+
+        private void ClearBag()
+        {
+            foreach (Transform child in _bagImage.transform)
+            {
+                if (child.gameObject.GetComponent<StorageItem>() != null)
+                {
+                    Destroy(child.gameObject);
+                }
+                else if (child.gameObject.GetComponent<StorageSpace>() != null)
+                {
+                    Destroy(child.gameObject);
+                    Spaces.Remove(child.gameObject.GetComponent<StorageSpace>());
+                }
+            }
         }
     }
 }

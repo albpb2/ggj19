@@ -120,7 +120,7 @@ namespace Assets.Scripts.CameraScripts
         {
             Camera.main.transform.position = new Vector3(
                 Camera.main.transform.position.x,
-                Camera.main.transform.position.y + deltaY,
+                Mathf.Max (Camera.main.transform.position.y + deltaY, _minCameraY),
                 Camera.main.transform.position.z);
         }
     }

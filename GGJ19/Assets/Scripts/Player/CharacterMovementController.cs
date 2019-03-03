@@ -27,6 +27,8 @@ namespace Assets.Scripts.Player
         private Vector3? _previousPosition;
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
+        private Vector3 _initialPosition;
+        private Vector3 _initialScale;
 
         public InteractableSceneObject TargetObject { get; set; }
         
@@ -37,6 +39,9 @@ namespace Assets.Scripts.Player
             _gameManager = FindObjectOfType<GameManager>();
             _animator = GetComponent<Animator>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
+
+            _initialPosition = transform.position;
+            _initialScale = transform.localScale;
         }
 
         public void Update()
@@ -135,6 +140,13 @@ namespace Assets.Scripts.Player
             transform.localRotation = new Quaternion(0, 0, 0, 0);
         }
 
+        public void ResetInitialPositionAndScale()
+        {
+            transform.position = _initialPosition;
+            transform.localScale = _initialScale;
+            _spriteRenderer.flipX = false;
+        }
+
         void OnTriggerEnter2D(Collider2D collider)
         {
             InteractWithTargetObjectIfIsOnTrigger(collider);
@@ -193,7 +205,7 @@ namespace Assets.Scripts.Player
             if (TargetObject != null && collider.gameObject == TargetObject.gameObject)
             {
                 TargetObject.Interact();
-                _targetDirection = GetTargetWithXPosition(TargetObject.transform.position.x);
+                _targetDirection = null;
                 TargetObject = null;
             }
         }

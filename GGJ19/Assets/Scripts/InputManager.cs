@@ -10,6 +10,8 @@ namespace Assets.Scripts
         [SerializeField]
         private Plane _characterPlane;
         [SerializeField]
+        public Texture2D _defaultCursorTexture;
+        [SerializeField]
         public Texture2D _selectedCursorTexture;
 
         private Character _character;
@@ -35,6 +37,7 @@ namespace Assets.Scripts
         {
             _character = FindObjectOfType<Character>();
             _gameManager = FindObjectOfType<GameManager>();
+            SetDefaultCursor();
         }
 
         public void Update()
@@ -80,7 +83,7 @@ namespace Assets.Scripts
 
         public void SetDefaultCursor()
         {
-            Cursor.SetCursor(null, Vector2.zero, _cursorMode);
+            Cursor.SetCursor(_defaultCursorTexture, Vector2.zero, _cursorMode);
         }
 
         public void OverrideThisFrame()

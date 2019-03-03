@@ -12,11 +12,15 @@ namespace Assets.Scripts.Player
         private Vector3? _previousPosition;
         private Character _character;
         private SpriteRenderer _characterSpriteRenderer;
+        private string _currentLayer;
+
+        public string CurrentLayer => _currentLayer;
 
         public void Start()
         {
             _character = FindObjectOfType<Character>();
             _characterSpriteRenderer = _character.GetComponent<SpriteRenderer>();
+            _currentLayer = GetPositionSortingLayer(_character.transform.position);
         }
 
         public void FixedUpdate()
@@ -32,12 +36,11 @@ namespace Assets.Scripts.Player
                 return;
             }
 
-            var previousLayer = GetPositionSortingLayer(_previousPosition.Value);
             var newLayer = GetPositionSortingLayer(newPosition);
 
-            if (newLayer != previousLayer)
+            if (newLayer != _currentLayer)
             {
-                SwitchToLayer(newLayer, previousLayer);
+                SwitchToLayer(newLayer, _currentLayer);
             }
         }
 
@@ -58,6 +61,7 @@ namespace Assets.Scripts.Player
 
         private void SwitchToLayer(string newLayer, string previousLayer)
         {
+            _currentLayer = newLayer;
             _characterSpriteRenderer.sortingLayerName = newLayer;
         }
     }

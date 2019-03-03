@@ -4,6 +4,7 @@ using System.Linq;
 using Assets.Scripts.Conversation;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Objects.PortableObjects;
+using Assets.Scripts.Refugees.Events;
 using Assets.Scripts.StorageSystem;
 
 namespace Assets.Scripts.Refugees
@@ -25,6 +26,7 @@ namespace Assets.Scripts.Refugees
 
         public MediumDialogLine DialogLine { get; set; }
         public bool NostalgiaResolved { get; set; }
+        public List<PortableObjectType> ValidObjectTypes { get; private set; }
 
         public override void Talk()
         {
@@ -42,37 +44,21 @@ namespace Assets.Scripts.Refugees
         {
             int lineId;
             MediumDialogLine line;
-
-            if (NostalgiaResolved)
-            {
-                base.GiveObject(objectType);
-                return;
-            }
-
-            var validObjectTypes = new List<PortableObjectType>();
-
-            foreach (var dialogLineRelatedObject in DialogLine.RelatedObjects)
-            {
-                if (Enum.TryParse(dialogLineRelatedObject, out PortableObjectType validObjectType))
-                {
-                    validObjectTypes.Add(validObjectType);
-                }
-            }
             
-            if (!NostalgiaResolved && validObjectTypes.Contains(objectType))
+            if (!NostalgiaResolved && ValidObjectTypes.Contains(objectType))
             {
                 lineId = MediumDialogLine.ThanksLines.GetRandomElement();
                 line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
                 _dialogManager.WriteMediumDialogLine(line, Name);
                 UpdateKarma(_refugeesSettings.NostalgiaResolvedPoints);
                 NostalgiaResolved = true;
+                _gameEventsManager.AddEvent(new RightHomeObjectEvent());
+            }
+            else
+            {
+                base.GiveObject(objectType);
                 return;
             }
-
-            lineId = MediumDialogLine.WrongChoiceLines.GetRandomElement();
-            line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
-            _dialogManager.WriteMediumDialogLine(line, Name);
-            UpdateKarma(_refugeesSettings.RandomObjectPoints);
         }
 
         public override void LeaveCamp()
@@ -121,6 +107,15 @@ namespace Assets.Scripts.Refugees
             }
 
             DialogLine = _dialogManager.MediumDialogLines.SingleOrDefault(line => line.LineId == dialogLineId);
+
+            ValidObjectTypes = new List<PortableObjectType>();
+            foreach (var dialogLineRelatedObject in DialogLine.RelatedObjects)
+            {
+                if (Enum.TryParse(dialogLineRelatedObject, out PortableObjectType validObjectType))
+                {
+                    ValidObjectTypes.Add(validObjectType);
+                }
+            }
         }
     }
 }

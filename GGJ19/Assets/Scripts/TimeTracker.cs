@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeTracker : MonoBehaviour
 {
@@ -13,16 +14,19 @@ public class TimeTracker : MonoBehaviour
     [SerializeField]
     private int _minutesFraction = 15;
     [SerializeField]
-    private UnityEngine.UI.Text _clockText;
+    private Text _clockText;
+    [SerializeField]
+    private Text _dayText;
 
     public delegate void NewDayBegins(int dayNumber);
-    public delegate void DayEnds();
+    public delegate void DayEnds(int dayNumber);
     public event NewDayBegins onNewDayBegun;
     public event DayEnds onDayEnded;
 
     private float _timeForCurrentDayInSeconds;
     private float _secondsPerHour;
     private float _secondsPerDay;
+    private bool _stopped;
 
     public int CurrentDay { get; set; } = 1;
 
@@ -31,15 +35,21 @@ public class TimeTracker : MonoBehaviour
         _timeForCurrentDayInSeconds = 0;
         _secondsPerHour = _realDayDurationInMinutes * SecondsPerMinute / _dayDurationHours;
         _secondsPerDay = _realDayDurationInMinutes * 60;
+        _dayText.text = "1";
     }
 
     public void Update()
     {
+        if (_stopped)
+        {
+            return;
+        }
+
         _timeForCurrentDayInSeconds = _timeForCurrentDayInSeconds += Time.deltaTime;
 
         if (_timeForCurrentDayInSeconds >= _secondsPerDay)
         {
-            BeginNewDay();
+            EndDay();
         }
 
         var _currentTimeHour = (int)(_timeForCurrentDayInSeconds / _secondsPerHour);
@@ -50,12 +60,19 @@ public class TimeTracker : MonoBehaviour
         _clockText.text = (_adjustedCurrentTimeHour % 24).ToString("00") + ":" + GetMinuteFraction(_currentTimeMinute).ToString("00");
     }
 
-    private void BeginNewDay()
+    public void BeginNewDay()
     {
-        onDayEnded?.Invoke();
+        _stopped = false;
         CurrentDay++;
         onNewDayBegun?.Invoke(CurrentDay);
         _timeForCurrentDayInSeconds = 0;
+        _dayText.text = CurrentDay.ToString();
+    }
+
+    private void EndDay()
+    {
+        _stopped = true;
+        onDayEnded?.Invoke(CurrentDay);
     }
 
     private int GetMinuteFraction(float minute)

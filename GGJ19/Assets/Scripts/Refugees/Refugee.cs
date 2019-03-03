@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Assets.Scripts.Conversation;
+using Assets.Scripts.Events;
 using Assets.Scripts.Objects;
 using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.Player;
@@ -15,6 +16,7 @@ namespace Assets.Scripts.Refugees
         protected DialogManager _dialogManager;
         protected Karma _karma;
         protected TimeTracker _timeTracker;
+        protected GameEventsManager _gameEventsManager;
 
         public int DaysToStay { get; set; }
 
@@ -28,16 +30,20 @@ namespace Assets.Scripts.Refugees
             _karma = FindObjectOfType<Karma>();
             _refugeesSettings = FindObjectOfType<RefugeesSettings>();
             _timeTracker = FindObjectOfType<TimeTracker>();
+            _gameEventsManager = FindObjectOfType<GameEventsManager>();
 
             ArrivalDay = _timeTracker.CurrentDay;
             _timeTracker.onDayEnded += LeaveCampIfDayArrived;
+            _timeTracker.onNewDayBegun += WakeUp;
+
+            WakeUp(_timeTracker.CurrentDay);
         }
 
         public bool IsFemale { get; set; }
 
         public string Name { get; set; }
 
-        public abstract void WakeUp();
+        public abstract void WakeUp(int dayNumber);
         public abstract void Talk();
         public abstract void GiveObject(PortableObjectType objectType);
 
@@ -64,7 +70,7 @@ namespace Assets.Scripts.Refugees
             Destroy(gameObject);
         }
 
-        public void LeaveCampIfDayArrived()
+        public void LeaveCampIfDayArrived(int dayNumber)
         {
             if (_timeTracker.CurrentDay + 1 - ArrivalDay >= DaysToStay)
             {
