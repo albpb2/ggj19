@@ -378,7 +378,6 @@ Transform:
   - {fileID: 765713069}
   - {fileID: 153305339}
   - {fileID: 2072408545}
-  - {fileID: 388068845}
   - {fileID: 117471182}
   - {fileID: 662096315}
   m_Father: {fileID: 0}
@@ -943,7 +942,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 63352677}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &117471183
 SpriteRenderer:
@@ -3629,12 +3628,9 @@ GameObject:
   m_Component:
   - component: {fileID: 388068845}
   - component: {fileID: 388068846}
-  - component: {fileID: 388068847}
   - component: {fileID: 388068849}
-  - component: {fileID: 388068848}
-  - component: {fileID: 388068850}
   m_Layer: 0
-  m_Name: WaterTank
+  m_Name: MiniWaterTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3648,11 +3644,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388068844}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.470001, y: 1.9500008, z: 0.97}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
+  m_LocalPosition: {x: -2.2416668, y: -0.816666, z: 0}
+  m_LocalScale: {x: 0.7499999, y: 0.7499999, z: 1}
   m_Children: []
-  m_Father: {fileID: 63352677}
-  m_RootOrder: 5
+  m_Father: {fileID: 2072408545}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &388068846
 SpriteRenderer:
@@ -3702,44 +3698,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &388068847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388068844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63b803c5494e2d14cb9b8c8adcced143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!61 &388068848
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388068844}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.30646774, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.6599998, y: 5.8}
-    newSize: {x: 2.6599998, y: 5.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.0470653, y: 5.8}
-  m_EdgeRadius: 0
 --- !u!50 &388068849
 Rigidbody2D:
   serializedVersion: 4
@@ -3761,18 +3719,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &388068850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388068844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63b803c5494e2d14cb9b8c8adcced143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &388751780
 GameObject:
   m_ObjectHideFlags: 0
@@ -4997,7 +4943,7 @@ Transform:
   m_LocalScale: {x: 0.3484, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 63352677}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &662096316
 SpriteRenderer:
@@ -15481,7 +15427,7 @@ GameObject:
   - component: {fileID: 2072408548}
   - component: {fileID: 2072408550}
   m_Layer: 0
-  m_Name: WaterTank 2
+  m_Name: WaterTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15497,7 +15443,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.78, y: 2.93, z: 0.97}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 388068845}
   m_Father: {fileID: 63352677}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15595,7 +15542,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.7788434, y: 0}
+  m_Offset: {x: -1.1795682, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -15606,7 +15553,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.016522, y: 5.8}
+  m_Size: {x: 3.910858, y: 5.8}
   m_EdgeRadius: 0
 --- !u!114 &2072408550
 MonoBehaviour:
@@ -15615,7 +15562,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072408544}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63b803c5494e2d14cb9b8c8adcced143, type: 3}
   m_Name: 
