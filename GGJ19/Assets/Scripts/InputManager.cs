@@ -78,12 +78,12 @@ namespace Assets.Scripts
 
         public void SetSelectableCursor()
         {
-            Cursor.SetCursor(_selectedCursorTexture, _hotSpot, _cursorMode);
+           // Cursor.SetCursor(_selectedCursorTexture, _hotSpot, _cursorMode);    // NO CUSTOM CURSOR ON MAC
         }
 
         public void SetDefaultCursor()
         {
-            Cursor.SetCursor(_defaultCursorTexture, Vector2.zero, _cursorMode);
+            // Cursor.SetCursor(_defaultCursorTexture, Vector2.zero, _cursorMode); // NO CUSTOM CURSOR ON MAC
         }
 
         public void OverrideThisFrame()
