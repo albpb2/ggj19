@@ -15,6 +15,7 @@ TagManager:
   - RightObjectTrigger
   - LeftObjectTrigger
   - TopObjectTrigger
+  - water-fill-notification
   layers:
   - Default
   - TransparentFX

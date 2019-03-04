@@ -30,6 +30,7 @@ namespace Assets.Scripts.Player
         private StorageItemPrefabProvider _storageItemPrefabProvider;
         private GameManager _gameManager;
         private Character _character;
+        private GameObject _bottleNotification;
 
         public List<PortableObject> Items { get; set; } = new List<PortableObject>();
 
@@ -46,6 +47,8 @@ namespace Assets.Scripts.Player
             _storageItemPrefabProvider = FindObjectOfType<StorageItemPrefabProvider>();
             _gameManager = FindObjectOfType<GameManager>();
             _character = GetComponent<Character>();
+            _bottleNotification = GameObject.FindGameObjectWithTag("water-fill-notification");
+
         }
 
         public void Update()
@@ -103,6 +106,8 @@ namespace Assets.Scripts.Player
         {
             WaterFull = true;
             _bagImage.GetComponent<Image>().sprite = _waterFullSprite;
+            _bottleNotification.GetComponent<Animator>().SetTrigger("fill");
+
         }
 
         public void GiveWaterToRefugee()
