@@ -4213,8 +4213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initialKarma: 0
   _centralBarX: 0
-  _minBarX: -42
-  _maxBarX: 42
+  _minBarX: -140
+  _maxBarX: 140
   _goodBar: {fileID: 1705146493}
   _badBar: {fileID: 896258096}
   _gameStatePrefab: {fileID: 7642376689936943115, guid: 78634faa8e7285b41bc194471f7522c1,
@@ -16016,8 +16016,6 @@ MonoBehaviour:
   MaxDaysToStay: 4
   NostalgiaResolvedPoints: 12
   RandomObjectPoints: 2
-  ValidSortingLayers:
-  - Floor 1
 --- !u!4 &2118458392
 Transform:
   m_ObjectHideFlags: 0
