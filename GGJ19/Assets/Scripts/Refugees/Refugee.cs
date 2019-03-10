@@ -77,12 +77,5 @@ namespace Assets.Scripts.Refugees
                 LeaveCamp();
             }
         }
-
-        protected bool RefugeeCountsForKarma()
-        {
-            return _refugeesSettings.ValidSortingLayers == null ||
-                   !_refugeesSettings.ValidSortingLayers.Any() ||
-                   _refugeesSettings.ValidSortingLayers.Contains(GetComponent<SpriteRenderer>().sortingLayerName);
-        }
     }
 }

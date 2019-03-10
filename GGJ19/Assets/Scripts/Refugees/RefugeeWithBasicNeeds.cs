@@ -169,27 +169,22 @@ namespace Assets.Scripts.Refugees
 
         public void CheckStatusAtEndOfDay(int dayNumber)
         {
-            if (!RefugeeCountsForKarma())
-            {
-                return;
-            }
-
             var karmaModifier = 0;
             if (!HungerResolved)
             {
-                karmaModifier -= _refugeesSettings.HungerResolvedPoints;
+                karmaModifier -= _refugeesSettings.HungerResolvedPoints / 2;
             }
             if (!ThirstResolved)
             {
-                karmaModifier -= _refugeesSettings.ThirstResolvedPoints;
+                karmaModifier -= _refugeesSettings.ThirstResolvedPoints / 2;
             }
             if (!ColdResolved)
             {
-                karmaModifier -= _refugeesSettings.ColdResolvedPoints;
+                karmaModifier -= _refugeesSettings.ColdResolvedPoints / 2;
             }
             if (Ill && !IllnessResolved)
             {
-                karmaModifier -= _refugeesSettings.IllnessResolvedPoints;
+                karmaModifier -= _refugeesSettings.IllnessResolvedPoints / 2;
             }
 
             UpdateKarma(karmaModifier);
