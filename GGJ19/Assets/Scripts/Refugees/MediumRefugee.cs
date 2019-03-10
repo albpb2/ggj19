@@ -63,11 +63,6 @@ namespace Assets.Scripts.Refugees
 
         public override void LeaveCamp()
         {
-            if (!RefugeeCountsForKarma())
-            {
-                return;
-            }
-
             if (!NostalgiaResolved)
             {
                 UpdateKarma(- _refugeesSettings.NostalgiaResolvedPoints);
