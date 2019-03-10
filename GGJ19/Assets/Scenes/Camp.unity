@@ -4716,7 +4716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxCapacity: 8
-  _maxGiftCapacity: 4
+  _maxGiftCapacity: 2
   _minCapacity: 4
   _storageSpacePrefab: {fileID: 1745160487116989448, guid: 10467d5e15fca854d9bf2884fc3aa7c1,
     type: 3}
