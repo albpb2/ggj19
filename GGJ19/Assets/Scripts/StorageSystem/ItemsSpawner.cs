@@ -45,6 +45,11 @@ namespace Assets.Scripts.StorageSystem
                     return;
                 }
             }
+
+            while (_storage.ItemsCount < _storage.MinCapacity)
+            {
+                SpawnItem(GetRandomObjectType());
+            }
         }
 
         public void SpawnGifts()
