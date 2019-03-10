@@ -28,6 +28,7 @@ namespace Assets.Scripts
         private IEnumerable<IUIHideable> _hideableUIElements;
         private CharacterMovementController _characterMovementController;
         private CameraMovementController _cameraMovementController;
+        private GameManager _gameManager;
 
         private bool _transitionEnded;
         private Text _summaryTitleText;
@@ -45,6 +46,7 @@ namespace Assets.Scripts
             _hideableUIElements = Resources.FindObjectsOfTypeAll<MonoBehaviour>().OfType<IUIHideable>();
             _characterMovementController = FindObjectOfType<CharacterMovementController>();
             _cameraMovementController = FindObjectOfType<CameraMovementController>();
+            _gameManager = FindObjectOfType<GameManager>();
 
             FindTextFields();
         }
@@ -69,6 +71,8 @@ namespace Assets.Scripts
             if (_transitionEnded)
             {
                 _timeTracker.BeginNewDay();
+                _gameManager.Pause = false;
+                _gameManager.GameFreezed = false;
                 gameObject.SetActive(false);
             }
         }
