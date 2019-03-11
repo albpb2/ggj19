@@ -72,68 +72,54 @@
 	{
 		"LineId": 11,
 		"OwnLine": false,
-		"Text": "I used to be a professional footbal player in my country. Now I'm sitting here all day.",
+		"Text": "I miss playing football with my friends. Here we can do no sport and I feel frustrated.",
 		"PossibleResponses": [[1,2,3]],
 		"RelatedObjects": ["Ball"]
 	},
 	{
 		"LineId": 12,
 		"OwnLine": false,
-		"Text": "I miss playing basketball with my friends. Here we can do no sport and I feel frustrated.",
-		"PossibleResponses": [[1,2,3]],
-		"RelatedObjects": ["Ball"]
-	},
-	{
-		"LineId": 13,
-		"OwnLine": false,
-		"Text": "I used to be a professional footbal player in my country. Now I'm sitting here all day",
-		"PossibleResponses": [[1,2,3]],
-		"RelatedObjects": ["Ball"]
-	},
-	{
-		"LineId": 14,
-		"OwnLine": false,
 		"Text": "I didn't have the time to take my books from home and now I can't evade from reallity. This is really sad.",
 		"PossibleResponses": [[1,2,3]],
 		"RelatedObjects": ["Book"]
 	},
 	{
-		"LineId": 15,
+		"LineId": 13,
 		"OwnLine": false,
 		"Text": "I'm so bored here, I wish I had something to pass the time more quickly.",
 		"PossibleResponses": [[1,2,3]],
 		"RelatedObjects": ["Book", "Ball"]
 	},
 	{
-		"LineId": 16,
+		"LineId": 14,
 		"OwnLine": false,
 		"Text": "My daughter is crying all day. We don't have anything to calm her down.",
 		"PossibleResponses": [[1,2,3]],
 		"RelatedObjects": ["Toy", "Ball"]
 	},
 	{
-		"LineId": 17,
+		"LineId": 15,
 		"OwnLine": false,
 		"Text": "Life doesn't grow here, this is awful. I really miss my garden.",
 		"PossibleResponses": [[1,2,3]],
 		"RelatedObjects": ["Rose"]
 	},
 	{
-		"LineId": 18,
+		"LineId": 16,
 		"OwnLine": false,
 		"Text": "I was going to play in my first concert just the day after the war started. I wish I had taken my guitar to practice.",
 		"PossibleResponses": [[1,2,3]],
 		"RelatedObjects": ["Guitar"]
 	},
 	{
-		"LineId": 19,
+		"LineId": 17,
 		"OwnLine": false,
-		"Text": "I really miss my friends. We used to gather to play music and review the latest novels.",
+		"Text": "I really miss my friends. We used to gather to play music and review the latest books.",
 		"PossibleResponses": [[1,2,3]],
 		"RelatedObjects": ["Guitar", "Book"]
 	},
 	{
-		"LineId": 20,
+		"LineId": 18,
 		"OwnLine": false,
 		"Text": "My son is realy bored here and I feel like his youth is being wasted. If only he had something to have a little fun.",
 		"PossibleResponses": [[1,2,3]],

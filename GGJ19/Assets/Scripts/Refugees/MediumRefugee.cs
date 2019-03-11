@@ -12,7 +12,7 @@ namespace Assets.Scripts.Refugees
     public class MediumRefugee : RefugeeWithBasicNeeds
     {
         private const int MinLine = 10;
-        private const int MaxLine = 20;
+        private const int MaxLine = 18;
 
         private static PortableObjectType[] PossibleGifts = new[]
         {
