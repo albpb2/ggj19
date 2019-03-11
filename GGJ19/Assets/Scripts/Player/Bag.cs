@@ -67,8 +67,6 @@ namespace Assets.Scripts.Player
         {
             ClearBag();
             _bagImage.gameObject.SetActive(false);
-
-            _gameManager.GameFreezed = false;
         }
 
         public void AddItem(StorageItem storageItem)
