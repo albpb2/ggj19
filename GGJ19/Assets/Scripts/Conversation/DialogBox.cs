@@ -54,7 +54,7 @@ namespace Assets.Scripts.Conversation
                 if (_index >= textToRead.Length)
                 {
                     _textBoxText.text += Environment.NewLine;
-                    _textBoxText.text += " ";  //click to continue
+                    _textBoxText.text += " ";
                 }
             }
 
@@ -65,7 +65,6 @@ namespace Assets.Scripts.Conversation
                 _textsToRead.RemoveAt(0);
                 _names.RemoveAt(0);
                 _index = 0;
-                _speed = 1;
                 if (!_textsToRead.Any())
                 {
                     Close();
@@ -84,7 +83,6 @@ namespace Assets.Scripts.Conversation
                 _textBoxText.text = string.Empty;
                 _textBoxName.text = string.Empty;
                 _index = 0;
-                _speed = 1;
             }
 
             _names.Add(name);

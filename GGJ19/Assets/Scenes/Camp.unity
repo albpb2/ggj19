@@ -669,7 +669,7 @@ MonoBehaviour:
   _textBox: {fileID: 1361268430}
   _textBoxName: {fileID: 984698404}
   _textBoxText: {fileID: 539158277}
-  _speed: 1
+  _speed: 2
 --- !u!4 &103557513
 Transform:
   m_ObjectHideFlags: 0
