@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -540,11 +540,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1602559660, guid: 7e7c7bd12f59e274c979c71790690e9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.17
+      value: 7.63
       objectReference: {fileID: 0}
     - target: {fileID: 1602559660, guid: 7e7c7bd12f59e274c979c71790690e9a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.62
+      value: 10.19
       objectReference: {fileID: 0}
     - target: {fileID: 1602559660, guid: 7e7c7bd12f59e274c979c71790690e9a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -668,7 +668,7 @@ MonoBehaviour:
   _textBox: {fileID: 1361268430}
   _textBoxName: {fileID: 984698404}
   _textBoxText: {fileID: 539158277}
-  _speed: 1
+  _speed: 2
 --- !u!4 &103557513
 Transform:
   m_ObjectHideFlags: 0
@@ -1357,6 +1357,17 @@ MonoBehaviour:
       - m_Target: {fileID: 483156345}
         m_MethodName: CloseBag
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1813063100}
+        m_MethodName: set_GameFreezed
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4160,8 +4171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initialKarma: 0
   _centralBarX: 0
-  _minBarX: -42
-  _maxBarX: 42
+  _minBarX: -140
+  _maxBarX: 140
   _goodBar: {fileID: 1705146493}
   _badBar: {fileID: 896258096}
   _gameStatePrefab: {fileID: 7642376689936943115, guid: 78634faa8e7285b41bc194471f7522c1,
@@ -4663,7 +4674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxCapacity: 8
-  _maxGiftCapacity: 4
+  _maxGiftCapacity: 2
   _minCapacity: 4
   _storageSpacePrefab: {fileID: 1745160487116989448, guid: 10467d5e15fca854d9bf2884fc3aa7c1,
     type: 3}
@@ -15165,7 +15176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab04b0129a2cf041a004218912462a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _horizontalMarginPercentage: 40
+  _horizontalMarginPercentage: 20
   _verticalMarginPercentage: 40
   _minCameraY: 5.5
 --- !u!114 &2013755704
@@ -15443,8 +15454,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.78, y: 2.93, z: 0.97}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
-  m_Children:
-  - {fileID: 388068845}
+  m_Children: [{fileID: 388068845}]
   m_Father: {fileID: 63352677}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16058,8 +16068,6 @@ MonoBehaviour:
   MaxDaysToStay: 4
   NostalgiaResolvedPoints: 12
   RandomObjectPoints: 2
-  ValidSortingLayers:
-  - Floor 1
 --- !u!4 &2118458392
 Transform:
   m_ObjectHideFlags: 0

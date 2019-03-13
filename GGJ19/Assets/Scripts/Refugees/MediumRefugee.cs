@@ -12,7 +12,7 @@ namespace Assets.Scripts.Refugees
     public class MediumRefugee : RefugeeWithBasicNeeds
     {
         private const int MinLine = 10;
-        private const int MaxLine = 20;
+        private const int MaxLine = 18;
 
         private static PortableObjectType[] PossibleGifts = new[]
         {
@@ -63,11 +63,6 @@ namespace Assets.Scripts.Refugees
 
         public override void LeaveCamp()
         {
-            if (!RefugeeCountsForKarma())
-            {
-                return;
-            }
-
             if (!NostalgiaResolved)
             {
                 UpdateKarma(- _refugeesSettings.NostalgiaResolvedPoints);
