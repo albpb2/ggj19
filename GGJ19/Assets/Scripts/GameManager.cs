@@ -9,7 +9,8 @@ namespace Assets.Scripts
         private Image _pauseImage;
         [SerializeField]
         private DayTransition _dayTransition;
-
+        [SerializeField]
+        private GameObject _endDayPanel;
 
         private TimeTracker _timeTracker;
         public bool Pause { get; set; }
@@ -63,6 +64,25 @@ namespace Assets.Scripts
             GameFreezed = false;
             _pauseImage.gameObject.SetActive(false);
             Pause = false;
+        }
+
+        public void ShowEndDayPanel()
+        {
+            if (!Pause && !GameFreezed)
+            {
+                _timeTracker.PauseTimer();
+                Pause = true;
+                GameFreezed = true;
+                _endDayPanel.SetActive(true);
+            }
+        }
+
+        public void HideEndDayPanel()
+        {
+            _endDayPanel.SetActive(false);
+            Pause = false;
+            GameFreezed = false;
+            _timeTracker.StartTimer();
         }
 
         private bool IsOnAnyPauseState()

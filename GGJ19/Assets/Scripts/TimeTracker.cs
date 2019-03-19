@@ -69,10 +69,20 @@ public class TimeTracker : MonoBehaviour
         _dayText.text = CurrentDay.ToString();
     }
 
-    private void EndDay()
+    public void EndDay()
     {
         _stopped = true;
         onDayEnded?.Invoke(CurrentDay);
+    }
+
+    public void PauseTimer()
+    {
+        _stopped = true;
+    }
+
+    public void StartTimer()
+    {
+        _stopped = false;
     }
 
     private int GetMinuteFraction(float minute)
