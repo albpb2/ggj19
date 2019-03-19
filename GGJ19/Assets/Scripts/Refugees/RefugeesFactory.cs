@@ -39,6 +39,14 @@ namespace Assets.Scripts.Refugees
         [SerializeField]
         private LayerMask _layer;
 
+        [Header("Initial refugees spawning spots")]
+        [SerializeField]
+        private RefugeeSpawningSpot _initialRefugeeSpawningSpotLayer1;
+        [SerializeField]
+        private RefugeeSpawningSpot _initialRefugeeSpawningSpotLayer2;
+        [SerializeField]
+        private RefugeeSpawningSpot _initialRefugeeSpawningSpotLayer3;
+
         private RefugeeSpawningSpot[] _spawningSpotsLayer1;
         private RefugeeSpawningSpot[] _spawningSpotsLayer2;
         private RefugeeSpawningSpot[] _spawningSpotsLayer3;
