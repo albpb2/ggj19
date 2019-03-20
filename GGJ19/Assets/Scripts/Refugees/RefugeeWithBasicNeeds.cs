@@ -141,9 +141,22 @@ namespace Assets.Scripts.Refugees
             IllnessResolved = false;
         }
 
+        public void ClearNeeds()
+        {
+            HungerResolved = true;
+            ThirstResolved = true;
+            ColdResolved = true;
+            Ill = false;
+
+            IllnessResolved = true;
+        }
+
         public override void WakeUp(int dayNumber)
         {
-            ResetNeeds();
+            if (dayNumber != 1)
+            {
+                ResetNeeds();
+            }
         }
 
         public void Feed()

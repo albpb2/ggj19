@@ -101,7 +101,12 @@ namespace Assets.Scripts.Refugees
                 }
             }
 
-            DialogLine = _dialogManager.MediumDialogLines.SingleOrDefault(line => line.LineId == dialogLineId);
+            SetLine(dialogLineId);
+        }
+
+        public void SetLine(int lineId)
+        {
+            DialogLine = _dialogManager.MediumDialogLines.SingleOrDefault(line => line.LineId == lineId);
 
             ValidObjectTypes = new List<PortableObjectType>();
             foreach (var dialogLineRelatedObject in DialogLine.RelatedObjects)

@@ -75,7 +75,7 @@ namespace Assets.Scripts.Refugees
 
             _timeTracker.onNewDayBegun += SpawnRandomRefugees;
 
-            SpawnRandomRefugees(2);
+            SpawnFirstDaysRefugees();
         }
 
         public Refugee CreateBasicRefugee(
@@ -346,6 +346,45 @@ namespace Assets.Scripts.Refugees
                     _surnames.Add(parts[1]);
                 }
             }
+        }
+
+        private void SpawnFirstDaysRefugees()
+        {
+            var availableFemaleSprites = new List<Sprite>(_femaleSprites);
+            var availableMaleSprites = new List<Sprite>(_maleSprites);
+            var availableFamilySprites = new List<Sprite>(_familySprites);
+
+            var refugee1 = CreateBasicRefugee(
+                _initialRefugeeSpawningSpotLayer1,
+                SortingLayer.NameToID(SortingLayers.Floor1),
+                availableFamilySprites,
+                availableFemaleSprites,
+                availableMaleSprites) as RefugeeWithBasicNeeds;
+
+            refugee1.ClearNeeds();
+            refugee1.HungerResolved = false;
+            refugee1.ThirstResolved = false;
+
+            var refugee2 = CreateBasicRefugee(
+                _initialRefugeeSpawningSpotLayer2,
+                SortingLayer.NameToID(SortingLayers.Floor2),
+                availableFamilySprites,
+                availableFemaleSprites,
+                availableMaleSprites) as RefugeeWithBasicNeeds;
+
+            refugee2.ClearNeeds();
+            refugee2.IllnessResolved = false;
+            refugee2.Ill = true;
+
+            var refugee3 = CreateMediumRefugee(
+                _initialRefugeeSpawningSpotLayer3,
+                SortingLayer.NameToID(SortingLayers.Floor3),
+                availableFamilySprites,
+                availableFemaleSprites,
+                availableMaleSprites) as MediumRefugee;
+
+            refugee3.ClearNeeds();
+            refugee3.SetLine(10);
         }
     }
 }
