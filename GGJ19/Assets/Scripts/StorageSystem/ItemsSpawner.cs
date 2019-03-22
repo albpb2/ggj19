@@ -52,6 +52,13 @@ namespace Assets.Scripts.StorageSystem
             }
         }
 
+        public void SpawnFirstDayItems()
+        {
+            _storage.AddItem(PortableObjectType.Bread);
+            _storage.AddItem(PortableObjectType.Pills);
+            _storage.AddItem(PortableObjectType.Coat);
+        }
+
         public void SpawnGifts()
         {
             if (!_storage.HasFreeGiftsSpace)
@@ -70,6 +77,11 @@ namespace Assets.Scripts.StorageSystem
                     return;
                 }
             }
+        }
+
+        public void SpawnFirstDayGifts()
+        {
+            _storage.AddGift(PortableObjectType.Ball);
         }
 
         private void SpawnItem(RefugeeWithBasicNeeds referenceRefugee)

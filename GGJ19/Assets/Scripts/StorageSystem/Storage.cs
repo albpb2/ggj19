@@ -94,7 +94,8 @@ namespace Assets.Scripts.StorageSystem
 
             _timeTracker.onNewDayBegun += Refill;
 
-            Refill(1);
+            _itemsSpawner.SpawnFirstDayItems();
+            _itemsSpawner.SpawnFirstDayGifts();
         }
 
         public void Update()
