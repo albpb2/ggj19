@@ -12,7 +12,7 @@ namespace Assets.Scripts.Refugees
     public abstract class RefugeeWithBasicNeeds : Refugee
     {
         protected Random _random;
-
+        
         public override void Start()
         {
             base.Start();
@@ -64,15 +64,22 @@ namespace Assets.Scripts.Refugees
                 UpdateKarma(_refugeesSettings.ThirstResolvedPoints);
                 return;
             }
-            if (!ColdResolved && (objectType == PortableObjectType.Coat))
+            if (objectType == PortableObjectType.Coat)
             {
-                lineId = BasicDialogLine.ThanksLines.GetRandomElement();
-                line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteBasicDialogLine(line, Name);
-                ColdResolved = true;
-                _gameEventsManager.AddEvent(new ColdSolvedEvent());
-                UpdateKarma(_refugeesSettings.ColdResolvedPoints);
-                return;
+                if (!_inventory.Contains(PortableObjectType.Coat))
+                {
+                    _inventory.Add(PortableObjectType.Coat);
+                }
+                if (!ColdResolved)
+                {
+                    lineId = BasicDialogLine.ThanksLines.GetRandomElement();
+                    line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
+                    _dialogManager.WriteBasicDialogLine(line, Name);
+                    ColdResolved = true;
+                    _gameEventsManager.AddEvent(new ColdSolvedEvent());
+                    UpdateKarma(_refugeesSettings.ColdResolvedPoints);
+                    return;
+                }
             }
             if (Ill && !IllnessResolved && objectType == PortableObjectType.Pills)
             {
@@ -135,7 +142,7 @@ namespace Assets.Scripts.Refugees
         {
             HungerResolved = !Probabilities.CalculateSuccessBase100(_refugeesSettings.HungerProbability);
             ThirstResolved = !Probabilities.CalculateSuccessBase100(_refugeesSettings.ThirstProbability);
-            ColdResolved = !Probabilities.CalculateSuccessBase100(_refugeesSettings.ColdProbability);
+            ColdResolved = _inventory.Contains(PortableObjectType.Coat) || !Probabilities.CalculateSuccessBase100(_refugeesSettings.ColdProbability);
             Ill = !Probabilities.CalculateSuccessBase100(_refugeesSettings.IllnessProbability);
 
             IllnessResolved = false;
