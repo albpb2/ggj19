@@ -1,8 +1,10 @@
 ﻿using Assets.Scripts.Conversation;
+using Assets.Scripts.Events;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Maths;
 using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.Refugees.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Random = System.Random;
@@ -12,12 +14,18 @@ namespace Assets.Scripts.Refugees
     public abstract class RefugeeWithBasicNeeds : Refugee
     {
         protected Random _random;
-        
+
+        protected Dictionary<BasicNeed, Func<GameEvent>> _createNeedResolvedEvent;
+        protected Dictionary<BasicNeed, int> _pointsPerNeed;
+
         public override void Start()
         {
             base.Start();
 
             _random = new Random();
+
+            InitializeNeedResolvedEventsDictionary();
+            IntializePointsPerNeedDictionary();
 
             _timeTracker.onDayEnded += CheckStatusAtEndOfDay;
         }
@@ -46,22 +54,14 @@ namespace Assets.Scripts.Refugees
 
             if (!HungerResolved && objectType == PortableObjectType.Bread)
             {
-                lineId = BasicDialogLine.ThanksLines.GetRandomElement();
-                line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteBasicDialogLine(line, Name);
                 HungerResolved = true;
-                _gameEventsManager.AddEvent(new HungerSolvedGameEvent());
-                UpdateKarma(_refugeesSettings.HungerResolvedPoints);
+                ResolveNeed(BasicNeed.Hunger);
                 return;
             }
             if (!ThirstResolved && (objectType == PortableObjectType.Water || objectType == PortableObjectType.Bottle))
             {
-                lineId = BasicDialogLine.ThanksLines.GetRandomElement();
-                line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteBasicDialogLine(line, Name);
                 ThirstResolved = true;
-                _gameEventsManager.AddEvent(new ThirstSolvedEvent());
-                UpdateKarma(_refugeesSettings.ThirstResolvedPoints);
+                ResolveNeed(BasicNeed.Thirst);
                 return;
             }
             if (objectType == PortableObjectType.Coat)
@@ -72,23 +72,15 @@ namespace Assets.Scripts.Refugees
                 }
                 if (!ColdResolved)
                 {
-                    lineId = BasicDialogLine.ThanksLines.GetRandomElement();
-                    line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                    _dialogManager.WriteBasicDialogLine(line, Name);
                     ColdResolved = true;
-                    _gameEventsManager.AddEvent(new ColdSolvedEvent());
-                    UpdateKarma(_refugeesSettings.ColdResolvedPoints);
+                    ResolveNeed(BasicNeed.Cold);
                     return;
                 }
             }
             if (Ill && !IllnessResolved && objectType == PortableObjectType.Pills)
             {
-                lineId = BasicDialogLine.ThanksLines.GetRandomElement();
-                line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteBasicDialogLine(line, Name);
                 IllnessResolved = true;
-                _gameEventsManager.AddEvent(new IllnessSolvedEvent());
-                UpdateKarma(_refugeesSettings.IllnessResolvedPoints);
+                ResolveNeed(BasicNeed.Illness);
                 return;
             }
 
@@ -96,6 +88,15 @@ namespace Assets.Scripts.Refugees
             line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
             _dialogManager.WriteBasicDialogLine(line, Name);
             UpdateKarma(_refugeesSettings.RandomObjectPoints);
+        }
+
+        private void ResolveNeed(BasicNeed resolvedNeed)
+        {
+            var lineId = BasicDialogLine.ThanksLines.GetRandomElement();
+            var line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
+            _dialogManager.WriteBasicDialogLine(line, Name);
+            _gameEventsManager.AddEvent(_createNeedResolvedEvent[resolvedNeed]());
+            UpdateKarma(_pointsPerNeed[resolvedNeed]);
         }
 
         public override void Talk()
@@ -227,6 +228,28 @@ namespace Assets.Scripts.Refugees
             _timeTracker.onDayEnded -= CheckStatusAtEndOfDay;
 
             base.LeaveCamp();
+        }
+
+        private void InitializeNeedResolvedEventsDictionary()
+        {
+            _createNeedResolvedEvent = new Dictionary<BasicNeed, Func<GameEvent>>()
+            {
+                [BasicNeed.Hunger] = () => new HungerSolvedGameEvent(),
+                [BasicNeed.Thirst] = () => new ThirstSolvedEvent(),
+                [BasicNeed.Illness] = () => new IllnessSolvedEvent(),
+                [BasicNeed.Cold] = () => new ColdSolvedEvent(),
+            };
+        }
+
+        private void IntializePointsPerNeedDictionary()
+        {
+            _pointsPerNeed = new Dictionary<BasicNeed, int>
+            {
+                [BasicNeed.Hunger] = _refugeesSettings.HungerResolvedPoints,
+                [BasicNeed.Thirst] = _refugeesSettings.ThirstResolvedPoints,
+                [BasicNeed.Illness] = _refugeesSettings.IllnessResolvedPoints,
+                [BasicNeed.Cold] = _refugeesSettings.ColdItemProbability
+            };
         }
     }
 }

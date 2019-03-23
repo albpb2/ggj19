@@ -149,6 +149,7 @@
     <Compile Include="Assets\Scripts\Player\Karma.cs" />
     <Compile Include="Assets\Scripts\Player\LayerTransitionManager.cs" />
     <Compile Include="Assets\Scripts\RandomHelper.cs" />
+    <Compile Include="Assets\Scripts\Refugees\BasicNeed.cs" />
     <Compile Include="Assets\Scripts\Refugees\BasicRefugee.cs" />
     <Compile Include="Assets\Scripts\Refugees\Events\ColdSolvedEvent.cs" />
     <Compile Include="Assets\Scripts\Refugees\Events\HungerSolvedGameEvent.cs" />
