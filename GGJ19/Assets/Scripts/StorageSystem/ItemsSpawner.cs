@@ -11,6 +11,14 @@ namespace Assets.Scripts.StorageSystem
 {
     public class ItemsSpawner
     {
+        private const PortableObjectType FirstDayGift = PortableObjectType.Book;
+        private static readonly PortableObjectType[] FirstDayObjects =
+        {
+            PortableObjectType.Bread,
+            PortableObjectType.Pills,
+            PortableObjectType.Coat,
+        };
+
         private readonly Storage _storage;
         private readonly Bag _bag;
         private readonly RefugeesSettings _refugeesSettings;
@@ -54,9 +62,10 @@ namespace Assets.Scripts.StorageSystem
 
         public void SpawnFirstDayItems()
         {
-            _storage.AddItem(PortableObjectType.Bread);
-            _storage.AddItem(PortableObjectType.Pills);
-            _storage.AddItem(PortableObjectType.Coat);
+            foreach (var objecType in FirstDayObjects)
+            {
+                _storage.AddItem(objecType);
+            }
         }
 
         public void SpawnGifts()
@@ -81,7 +90,7 @@ namespace Assets.Scripts.StorageSystem
 
         public void SpawnFirstDayGifts()
         {
-            _storage.AddGift(PortableObjectType.Ball);
+            _storage.AddGift(FirstDayGift);
         }
 
         private void SpawnItem(RefugeeWithBasicNeeds referenceRefugee)
