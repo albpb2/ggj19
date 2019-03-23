@@ -80,7 +80,39 @@ namespace Assets.Scripts.Refugees
             base.LeaveCamp();
         }
 
-        public void ChooseLine()
+        public void SetRandomLine()
+        {
+            var mediumLines = GetPossibleLines();
+
+            DialogLine = mediumLines.GetRandomElement();
+
+            SelectValidObjectTypes();
+        }
+
+        public void SetLine(int lineId)
+        {
+            DialogLine = _dialogManager.MediumDialogLines.SingleOrDefault(line => line.LineId == lineId);
+
+            SelectValidObjectTypes();
+        }
+
+        private List<MediumDialogLine> GetPossibleLines()
+        {
+            var otherRefugeesLineIds = GetOtherRefugeesLineIds();
+
+            var mediumLines = new List<MediumDialogLine>(_dialogManager.MediumDialogLines.Skip(MinLine));
+
+            if (IsChild)
+            {
+                mediumLines.RemoveAll(l => l.AdultsOnly);
+            }
+
+            var uniqueLines = mediumLines.Where(l => !otherRefugeesLineIds.Contains(l.LineId)).ToList();
+
+            return uniqueLines.Any() ? uniqueLines : mediumLines;
+        }
+
+        private List<int> GetOtherRefugeesLineIds()
         {
             var otherRefugees = FindObjectsOfType<MediumRefugee>().Where(refugee => refugee != this).ToList();
             var otherLines = new List<int>();
@@ -89,25 +121,11 @@ namespace Assets.Scripts.Refugees
                 otherLines = otherRefugees.Select(
                     refugee => refugee.DialogLine.LineId).ToList();
             }
-
-            var random = new Random();
-            var dialogLineId = 0;
-            while (dialogLineId == 0)
-            {
-                dialogLineId = random.Next(MinLine, MaxLine + 1);
-                if (otherLines.Contains(dialogLineId))
-                {
-                    dialogLineId = 0;
-                }
-            }
-
-            SetLine(dialogLineId);
+            return otherLines;
         }
 
-        public void SetLine(int lineId)
+        private void SelectValidObjectTypes()
         {
-            DialogLine = _dialogManager.MediumDialogLines.SingleOrDefault(line => line.LineId == lineId);
-
             ValidObjectTypes = new List<PortableObjectType>();
             foreach (var dialogLineRelatedObject in DialogLine.RelatedObjects)
             {

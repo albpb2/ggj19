@@ -27,5 +27,6 @@ namespace Assets.Scripts.Refugees
         public int MaxDaysToStay = 4;
         public int NostalgiaResolvedPoints = 12;
         public int RandomObjectPoints = 2;
+        public int ChildRefugeeProbability = 10;
     }
 }

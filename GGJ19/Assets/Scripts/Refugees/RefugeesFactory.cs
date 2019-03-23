@@ -37,6 +37,8 @@ namespace Assets.Scripts.Refugees
         [SerializeField]
         private List<Sprite> _familySprites;
         [SerializeField]
+        private List<Sprite> _girlSprites;
+        [SerializeField]
         private LayerMask _layer;
 
         [Header("Initial refugees spawning spots")]
@@ -83,7 +85,8 @@ namespace Assets.Scripts.Refugees
             int sortingLayerId,
             List<Sprite> familySprites,
             List<Sprite> femaleSprites,
-            List<Sprite> maleSprites)
+            List<Sprite> maleSprites,
+            List<Sprite> girlSprites)
         {
             var refugee = Instantiate(_basicRefugeePrefab).GetComponent<BasicRefugee>();
             return SetUpRefugee(
@@ -92,7 +95,8 @@ namespace Assets.Scripts.Refugees
                 sortingLayerId,
                 familySprites,
                 femaleSprites,
-                maleSprites);
+                maleSprites,
+                girlSprites);
         }
 
         public Refugee CreateMediumRefugee(
@@ -100,7 +104,8 @@ namespace Assets.Scripts.Refugees
             int sortingLayerId,
             List<Sprite> familySprites,
             List<Sprite> femaleSprites,
-            List<Sprite> maleSprites)
+            List<Sprite> maleSprites,
+            List<Sprite> girlSprites)
         {
             var refugee = Instantiate(_mediumRefugeePrefab).GetComponent<MediumRefugee>();
             refugee = (MediumRefugee)SetUpRefugee(
@@ -109,8 +114,9 @@ namespace Assets.Scripts.Refugees
                 sortingLayerId,
                 familySprites,
                 femaleSprites,
-                maleSprites);
-            refugee.ChooseLine();
+                maleSprites,
+                girlSprites);
+            refugee.SetRandomLine();
             return refugee;
         }
 
@@ -120,13 +126,15 @@ namespace Assets.Scripts.Refugees
             int sortingLayerId,
             List<Sprite> familySprites,
             List<Sprite> femaleSprites,
-            List<Sprite> maleSprites)
+            List<Sprite> maleSprites,
+            List<Sprite> girlSprites)
         {
             refugee.Start();
             refugee.transform.position = spawningSpot.transform.position;
             refugee.SetSpawningSpot(spawningSpot);
 
             refugee.IsFemale = IsFemale();
+            refugee.IsChild = refugee.IsFemale ? DecideIfRefugeeIsChild() : false;
             refugee.Name = refugee.IsFemale ? _femaleNames.GetRandomElement() : _maleNames.GetRandomElement();
             refugee.DaysToStay = _random.Next(MinDaysToStay, _refugeesSettings.MaxDaysToStay);
 
@@ -136,7 +144,8 @@ namespace Assets.Scripts.Refugees
                 refugee,
                 familySprites,
                 femaleSprites,
-                maleSprites);
+                maleSprites,
+                girlSprites);
 
             if (selectedSprite == null)
             {
@@ -146,7 +155,8 @@ namespace Assets.Scripts.Refugees
                     refugee,
                     familySprites,
                     femaleSprites,
-                    maleSprites);
+                    maleSprites,
+                    girlSprites);
             }
 
             if (selectedSprite == null)
@@ -172,16 +182,20 @@ namespace Assets.Scripts.Refugees
             Refugee refugee,
             List<Sprite> familySprites,
             List<Sprite> femaleSprites,
-            List<Sprite> maleSprites)
+            List<Sprite> maleSprites,
+            List<Sprite> girlSprites)
         {
             if (IsFamily())
             {
                 return SelectRandomSprite(familySprites);
             }
 
-            return refugee.IsFemale 
-                ? SelectRandomSprite(femaleSprites) 
-                : SelectRandomSprite(maleSprites);
+            if (!refugee.IsFemale)
+            {
+                return SelectRandomSprite(maleSprites);
+            }
+
+            return refugee.IsChild ? SelectRandomSprite(girlSprites) : SelectRandomSprite(femaleSprites);
         }
 
         private Sprite SelectRandomSprite(List<Sprite> spritesList)
@@ -204,7 +218,12 @@ namespace Assets.Scripts.Refugees
                 return _familySprites.GetRandomElement();
             }
 
-            return refugee.IsFemale ? _femaleSprites.GetRandomElement() : _maleSprites.GetRandomElement();
+            if (!refugee.IsFemale)
+            {
+                return _maleSprites.GetRandomElement();
+            }
+
+            return refugee.IsChild ? _girlSprites.GetRandomElement() : _femaleSprites.GetRandomElement();
         }
 
         private void AddColliderToRefugee(Refugee refugee)
@@ -223,6 +242,11 @@ namespace Assets.Scripts.Refugees
             return _random.Next(0, 2) == 1;
         }
 
+        private bool DecideIfRefugeeIsChild()
+        {
+            return RandomHelper.IsProbabilityReached100(_refugeesSettings.ChildRefugeeProbability);
+        }
+
         public void SpawnRandomRefugees(int dayNumber)
         {
             if (dayNumber < _firstDayToSpanRandomRefugees)
@@ -233,18 +257,20 @@ namespace Assets.Scripts.Refugees
             var availableFemaleSprites = new List<Sprite>(_femaleSprites);
             var availableMaleSprites = new List<Sprite>(_maleSprites);
             var availableFamilySprites = new List<Sprite>(_familySprites);
+            var availableGirlSprites = new List<Sprite>(_girlSprites);
 
-            RemoveExistingSpritesFromLists(availableFamilySprites, availableFemaleSprites, availableMaleSprites);
+            RemoveExistingSpritesFromLists(availableFamilySprites, availableFemaleSprites, availableMaleSprites, availableGirlSprites);
 
-            SpawnRefugeesForLayer(_spawningSpotsLayer1, "Floor 1", availableFamilySprites, availableFemaleSprites, availableMaleSprites);
-            SpawnRefugeesForLayer(_spawningSpotsLayer2, "Floor 2", availableFamilySprites, availableFemaleSprites, availableMaleSprites);
-            SpawnRefugeesForLayer(_spawningSpotsLayer3, "Floor 3", availableFamilySprites, availableFemaleSprites, availableMaleSprites);
+            SpawnRefugeesForLayer(_spawningSpotsLayer1, "Floor 1", availableFamilySprites, availableFemaleSprites, availableMaleSprites, availableGirlSprites);
+            SpawnRefugeesForLayer(_spawningSpotsLayer2, "Floor 2", availableFamilySprites, availableFemaleSprites, availableMaleSprites, availableGirlSprites);
+            SpawnRefugeesForLayer(_spawningSpotsLayer3, "Floor 3", availableFamilySprites, availableFemaleSprites, availableMaleSprites, availableGirlSprites);
         }
 
         private void RemoveExistingSpritesFromLists(
             List<Sprite> familySprites,
             List<Sprite> femaleSprites,
-            List<Sprite> maleSprites)
+            List<Sprite> maleSprites,
+            List<Sprite> girlSprites)
         {
 
             var existingSprites = FindObjectsOfType<Refugee>().Select(refugee =>
@@ -264,6 +290,10 @@ namespace Assets.Scripts.Refugees
                 {
                     familySprites.Remove(familySprites.First(s => s.name == item));
                 }
+                else if (girlSprites.Any(s => s.name == item))
+                {
+                    girlSprites.Remove(girlSprites.First(s => s.name == item));
+                }
             }
         }
 
@@ -272,7 +302,8 @@ namespace Assets.Scripts.Refugees
             string sortingLayerName,
             List<Sprite> familySprites,
             List<Sprite> femaleSprites,
-            List<Sprite> maleSprites)
+            List<Sprite> maleSprites,
+            List<Sprite> girlSprites)
         {
             var sortingLayerId = SortingLayer.NameToID(sortingLayerName);
 
@@ -288,7 +319,8 @@ namespace Assets.Scripts.Refugees
                             sortingLayerId,
                             familySprites,
                             femaleSprites,
-                            maleSprites);
+                            maleSprites,
+                            girlSprites);
                     }
                 }
             }
@@ -299,7 +331,8 @@ namespace Assets.Scripts.Refugees
             int sortingLayerId,
             List<Sprite> familySprites,
             List<Sprite> femaleSprites,
-            List<Sprite> maleSprites)
+            List<Sprite> maleSprites,
+            List<Sprite> girlSprites)
         {
             var randomNumber = _random.Next(0, 100);
             if (randomNumber < _basicRefugeeProbability)
@@ -309,7 +342,8 @@ namespace Assets.Scripts.Refugees
                     sortingLayerId,
                     familySprites,
                     femaleSprites,
-                    maleSprites);
+                    maleSprites,
+                    girlSprites);
             }
             else
             {
@@ -318,7 +352,8 @@ namespace Assets.Scripts.Refugees
                     sortingLayerId,
                     familySprites,
                     femaleSprites,
-                    maleSprites);
+                    maleSprites,
+                    girlSprites);
             }
         }
 
@@ -353,13 +388,15 @@ namespace Assets.Scripts.Refugees
             var availableFemaleSprites = new List<Sprite>(_femaleSprites);
             var availableMaleSprites = new List<Sprite>(_maleSprites);
             var availableFamilySprites = new List<Sprite>(_familySprites);
+            var availableGirlSprites = new List<Sprite>(_girlSprites);
 
             var refugee1 = CreateBasicRefugee(
                 _initialRefugeeSpawningSpotLayer1,
                 SortingLayer.NameToID(SortingLayers.Floor1),
                 availableFamilySprites,
                 availableFemaleSprites,
-                availableMaleSprites) as RefugeeWithBasicNeeds;
+                availableMaleSprites,
+                availableGirlSprites) as RefugeeWithBasicNeeds;
 
             refugee1.ClearNeeds();
             refugee1.HungerResolved = false;
@@ -370,7 +407,8 @@ namespace Assets.Scripts.Refugees
                 SortingLayer.NameToID(SortingLayers.Floor2),
                 availableFamilySprites,
                 availableFemaleSprites,
-                availableMaleSprites) as RefugeeWithBasicNeeds;
+                availableMaleSprites,
+                availableGirlSprites) as RefugeeWithBasicNeeds;
 
             refugee2.ClearNeeds();
             refugee2.IllnessResolved = false;
@@ -381,7 +419,8 @@ namespace Assets.Scripts.Refugees
                 SortingLayer.NameToID(SortingLayers.Floor3),
                 availableFamilySprites,
                 availableFemaleSprites,
-                availableMaleSprites) as MediumRefugee;
+                availableMaleSprites,
+                availableGirlSprites) as MediumRefugee;
 
             refugee3.ClearNeeds();
             refugee3.SetLine(10);

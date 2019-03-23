@@ -6,6 +6,8 @@ namespace Assets.Scripts.Conversation
     [Serializable]
     public class MediumDialogLine : DialogLine
     {
+        public bool AdultsOnly { get; set; }
+
         public static int[] GreetingLines = new[]
         {
             4

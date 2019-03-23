@@ -41,6 +41,8 @@ namespace Assets.Scripts.Refugees
 
         public bool IsFemale { get; set; }
 
+        public bool IsChild { get; set; }
+
         public string Name { get; set; }
 
         public abstract void WakeUp(int dayNumber);

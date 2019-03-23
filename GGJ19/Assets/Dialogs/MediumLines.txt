@@ -95,14 +95,16 @@
 		"OwnLine": false,
 		"Text": "My daughter is crying all day. We don't have anything to calm her down.",
 		"PossibleResponses": [[1,2,3]],
-		"RelatedObjects": ["Toy", "Ball"]
+		"RelatedObjects": ["Toy", "Ball"],
+		"AdultsOnly": true
 	},
 	{
 		"LineId": 15,
 		"OwnLine": false,
 		"Text": "Life doesn't grow here, this is awful. I really miss my garden.",
 		"PossibleResponses": [[1,2,3]],
-		"RelatedObjects": ["Rose"]
+		"RelatedObjects": ["Rose"],
+		"AdultsOnly": true
 	},
 	{
 		"LineId": 16,
@@ -116,13 +118,15 @@
 		"OwnLine": false,
 		"Text": "I really miss my friends. We used to gather to play music and review the latest books.",
 		"PossibleResponses": [[1,2,3]],
-		"RelatedObjects": ["Guitar", "Book"]
+		"RelatedObjects": ["Guitar", "Book"],
+		"AdultsOnly": true
 	},
 	{
 		"LineId": 18,
 		"OwnLine": false,
 		"Text": "My son is realy bored here and I feel like his youth is being wasted. If only he had something to have a little fun.",
 		"PossibleResponses": [[1,2,3]],
-		"RelatedObjects": ["Toy", "Ball", "Book"]
+		"RelatedObjects": ["Toy", "Ball", "Book"],
+		"AdultsOnly": true
 	}
 ]

@@ -6546,6 +6546,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 603e18f13212de241b3017b3bdd32fb7, type: 3}
   - {fileID: 21300000, guid: 56098bd38aed85945a5b8bec7118c9b0, type: 3}
   - {fileID: 21300000, guid: 903100d979db491408ffd3af4e1f3a63, type: 3}
+  _girlSprites:
+  - {fileID: 21300000, guid: 48c004e12a3700844a8b82be740e7d77, type: 3}
+  - {fileID: 21300000, guid: 05c6561147b2ee142bfe6bbdebcad74c, type: 3}
   _layer:
     serializedVersion: 2
     m_Bits: 0
@@ -17392,6 +17395,7 @@ MonoBehaviour:
   MaxDaysToStay: 4
   NostalgiaResolvedPoints: 12
   RandomObjectPoints: 2
+  ChildRefugeeProbability: 10
 --- !u!4 &2118458392
 Transform:
   m_ObjectHideFlags: 0
