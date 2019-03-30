@@ -6552,6 +6552,7 @@ MonoBehaviour:
   _layer:
     serializedVersion: 2
     m_Bits: 0
+  _initialMaxRefugees: 4
   _initialRefugeeSpawningSpotLayer1: {fileID: 1707507218}
   _initialRefugeeSpawningSpotLayer2: {fileID: 2044233702}
   _initialRefugeeSpawningSpotLayer3: {fileID: 1973329923}
@@ -14875,6 +14876,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1813063099}
   - component: {fileID: 1813063100}
+  - component: {fileID: 1813063101}
+  - component: {fileID: 1813063102}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -14911,6 +14914,37 @@ MonoBehaviour:
   _pauseImage: {fileID: 553345798}
   _dayTransition: {fileID: 1228401484}
   _endDayPanel: {fileID: 1459306229}
+--- !u!114 &1813063101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813063098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4415f5792088e794b9108254a8081ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _daysToReduceItemsProbability: 2
+  _itemsProbabilityReductionStep: 10
+  _daysToIncreaseNeedsProbability: 2
+  _needsProbabilityIncreaseStep: 10
+  _daysToIncreaseMaxRefugees: 2
+--- !u!114 &1813063102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813063098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a2ac4b7269be74395b49b198cc9ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableKarmaReduction: 0
+  _disableKarmaIncrease: 0
 --- !u!1 &1820512168
 GameObject:
   m_ObjectHideFlags: 0

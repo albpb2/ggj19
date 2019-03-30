@@ -40,6 +40,8 @@ namespace Assets.Scripts.Refugees
         private List<Sprite> _girlSprites;
         [SerializeField]
         private LayerMask _layer;
+        [SerializeField]
+        private int _initialMaxRefugees = 4;
 
         [Header("Initial refugees spawning spots")]
         [SerializeField]
@@ -60,6 +62,8 @@ namespace Assets.Scripts.Refugees
         private List<string> _femaleNames;
         private List<string> _surnames;
 
+        public int MaxRefugees { get; set; }
+
         public void Start()
         {
             _spawningSpotsLayer1 = GameObject.FindGameObjectsWithTag(Tags.SpawningSpotLayer1)
@@ -72,6 +76,8 @@ namespace Assets.Scripts.Refugees
             _refugeesSettings = FindObjectOfType<RefugeesSettings>();
             _random = new Random();
             _refugeesResizer = new RefugeesResizer();
+
+            MaxRefugees = _initialMaxRefugees;
 
             ReadRefugeeNames();
 
@@ -307,9 +313,10 @@ namespace Assets.Scripts.Refugees
         {
             var sortingLayerId = SortingLayer.NameToID(sortingLayerName);
 
+            var existingRefugeesCount = FindObjectsOfType<Refugee>().Count();
             foreach (var refugeeSpawningSpot in spots)
             {
-                if (refugeeSpawningSpot.Refugee == null)
+                if (existingRefugeesCount < MaxRefugees && refugeeSpawningSpot.Refugee == null)
                 {
                     var randomNumber = _random.Next(0, 100);
                     if (randomNumber < _spotSpawningProbability)
@@ -321,6 +328,7 @@ namespace Assets.Scripts.Refugees
                             femaleSprites,
                             maleSprites,
                             girlSprites);
+                        existingRefugeesCount++;
                     }
                 }
             }

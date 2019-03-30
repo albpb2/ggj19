@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DebugManager.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Assets\Scripts\Conversation\MediumDialogLine.cs" />
     <Compile Include="Assets\Scripts\DayTransition.cs" />
     <Compile Include="Assets\Scripts\DepthSpriteScaler.cs" />
+    <Compile Include="Assets\Scripts\DifficultyManager.cs" />
     <Compile Include="Assets\Scripts\Events\DayEndedEvent.cs" />
     <Compile Include="Assets\Scripts\Events\GameEvent.cs" />
     <Compile Include="Assets\Scripts\Events\GameEventsManager.cs" />

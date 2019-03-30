@@ -24,12 +24,16 @@ namespace Assets.Scripts.Player
         [SerializeField]
         private GameState _gameStatePrefab;
 
+        private DebugManager _debugManager;
+
         private float _xPerKarmaUnit;
 
         public int Amount { get; set; }
 
         public void Start()
         {
+            _debugManager = FindObjectOfType<DebugManager>();
+
             Amount = Math.Max(Math.Min(_initialKarma, MaxKarma), MinKarma);
 
             _xPerKarmaUnit = (float)(_maxBarX - _centralBarX) / 100;
@@ -37,12 +41,22 @@ namespace Assets.Scripts.Player
 
         public void Increment(int quantity)
         {
+            if (_debugManager.DisableKarmaIncrease)
+            {
+                return;
+            }
+
             Amount = Math.Min(Amount + quantity, MaxKarma);
             UpdateBars();
         }
 
         public void Reduce(int quantity)
         {
+            if (_debugManager.DisableKarmaReduction)
+            {
+                return;
+            }
+
             Amount = Math.Max(Amount - quantity, MinKarma);
             UpdateBars();
             EndGameIfMinKarmaReached();
