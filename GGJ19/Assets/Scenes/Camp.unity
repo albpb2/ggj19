@@ -17333,7 +17333,7 @@ MonoBehaviour:
   HungerProbability: 50
   ThirstProbability: 40
   ColdProbability: 30
-  IllnessProbability: 20
+  IllnessProbability: 10
   ProperItemSpawningProbability: 70
   HungerItemProbability: 40
   ThirstItemProbability: 40
