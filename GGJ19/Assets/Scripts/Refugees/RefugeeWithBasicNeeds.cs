@@ -103,19 +103,17 @@ namespace Assets.Scripts.Refugees
         {
             var possibleLines = new List<int>();
 
-            if (!HungerResolved)
-            {
-                possibleLines.AddRange(BasicDialogLine.HungerLines);
-            }
-
-            if (!ThirstResolved)
-            {
-                possibleLines.AddRange(BasicDialogLine.ThirstLines);
-            }
-
             if (!HungerResolved && !ThirstResolved)
             {
                 possibleLines.AddRange(BasicDialogLine.HungerAndThirstLines);
+            }
+            else if (!HungerResolved)
+            {
+                possibleLines.AddRange(BasicDialogLine.HungerLines);
+            }
+            else if (!ThirstResolved)
+            {
+                possibleLines.AddRange(BasicDialogLine.ThirstLines);
             }
 
             if (!ColdResolved)
@@ -128,7 +126,7 @@ namespace Assets.Scripts.Refugees
                 possibleLines.AddRange(BasicDialogLine.IllnessLines);
             }
 
-            if (HungerResolved && ThirstResolved && (!Ill || IllnessResolved))
+            if (HungerResolved && ThirstResolved && ColdResolved && (!Ill || IllnessResolved))
             {
                 possibleLines.AddRange(BasicDialogLine.GreetingLines);
             }
