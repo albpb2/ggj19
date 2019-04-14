@@ -11,6 +11,10 @@ namespace Assets.Scripts.CameraScripts
         private float _verticalMarginPercentage = 20;
         [SerializeField]
         private float _minCameraY = 5.5f;
+        [SerializeField]
+        private float _minCameraX = -3.4f;
+        [SerializeField]
+        private float _maxCameraX = 49f;
 
         private CharacterMovementController _characterMovementController;
         private float _characterPreviousX;
@@ -27,14 +31,16 @@ namespace Assets.Scripts.CameraScripts
         {
             if (IsCharacterMovingRight(_characterPreviousX, _characterMovementController.transform.position.x))
             {
-                if (IsCharacterCloseToRightEdge(_characterMovementController.transform.position))
+                if (IsCharacterCloseToRightEdge(_characterMovementController.transform.position) &&
+                    Camera.main.transform.position.x < _maxCameraX)
                 {
                     MoveCameraHorizontally(_characterMovementController.transform.position.x - _characterPreviousX);
                 }
             }
             else if (IsCharacterMovingLeft(_characterPreviousX, _characterMovementController.transform.position.x))
             {
-                if (IsCharacterCloseToLeftEdge(_characterMovementController.transform.position))
+                if (IsCharacterCloseToLeftEdge(_characterMovementController.transform.position) &&
+                    Camera.main.transform.position.x > _minCameraX)
                 {
                     MoveCameraHorizontally(_characterMovementController.transform.position.x - _characterPreviousX);
                 }

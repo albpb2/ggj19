@@ -16161,6 +16161,8 @@ MonoBehaviour:
   _horizontalMarginPercentage: 20
   _verticalMarginPercentage: 40
   _minCameraY: 5.5
+  _minCameraX: -3.4
+  _maxCameraX: 49
 --- !u!114 &2013755704
 MonoBehaviour:
   m_ObjectHideFlags: 0
