@@ -57,20 +57,22 @@ namespace Assets.Scripts
 
             DetectMovementClick();
 
-            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            var horizontalInput = Input.GetAxis("Horizontal");
+            if (horizontalInput > 0)
             {
                 MoveRight = true;
             }
-            else if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            else if(horizontalInput < 0)
             {
                 MoveLeft = true;
             }
 
-            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+            var verticalInput = Input.GetAxis("Vertical");
+            if (verticalInput > 0)
             {
                 MoveUp = true;
             }
-            else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            else if (verticalInput < 0)
             {
                 MoveDown = true;
             }
