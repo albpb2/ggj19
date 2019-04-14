@@ -32,7 +32,7 @@ namespace Assets.Scripts.Refugees
         {
             if (!NostalgiaResolved)
             {
-                _dialogManager.WriteMediumDialogLine(DialogLine, Name);
+                _dialogManager.WriteMediumDialogLine(DialogLine, Name, true);
             }
             else
             {
@@ -49,7 +49,7 @@ namespace Assets.Scripts.Refugees
             {
                 lineId = MediumDialogLine.ThanksLines.GetRandomElement();
                 line = _dialogManager.MediumDialogLines.SingleOrDefault(l => l.LineId == lineId);
-                _dialogManager.WriteMediumDialogLine(line, Name);
+                _dialogManager.WriteMediumDialogLine(line, Name, false);
                 UpdateKarma(_refugeesSettings.NostalgiaResolvedPoints);
                 NostalgiaResolved = true;
                 _gameEventsManager.AddEvent(new RightHomeObjectEvent());

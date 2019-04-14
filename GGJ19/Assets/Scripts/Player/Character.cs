@@ -54,5 +54,10 @@ namespace Assets.Scripts.Player
                 _bag.Items.Remove(itemToRemove);
             }
         }
+
+        public void OpenBag()
+        {
+            _bag.OpenBag();
+        }
     }
 }

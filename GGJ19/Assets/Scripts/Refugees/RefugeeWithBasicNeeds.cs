@@ -44,7 +44,7 @@ namespace Assets.Scripts.Refugees
         {
             base.Interact();
 
-            _character.OpenActionsBox();
+            _character.TalkToRefugee();
         }
 
         public override void GiveObject(PortableObjectType objectType)
@@ -86,7 +86,7 @@ namespace Assets.Scripts.Refugees
 
             lineId = BasicDialogLine.WrongChoiceLines.GetRandomElement();
             line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-            _dialogManager.WriteBasicDialogLine(line, Name);
+            _dialogManager.WriteBasicDialogLine(line, Name, false);
             UpdateKarma(_refugeesSettings.RandomObjectPoints);
         }
 
@@ -94,7 +94,7 @@ namespace Assets.Scripts.Refugees
         {
             var lineId = BasicDialogLine.ThanksLines.GetRandomElement();
             var line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
-            _dialogManager.WriteBasicDialogLine(line, Name);
+            _dialogManager.WriteBasicDialogLine(line, Name, false);
             _gameEventsManager.AddEvent(_createNeedResolvedEvent[resolvedNeed]());
             UpdateKarma(_pointsPerNeed[resolvedNeed]);
         }
@@ -102,6 +102,7 @@ namespace Assets.Scripts.Refugees
         public override void Talk()
         {
             var possibleLines = new List<int>();
+            var isObjectRequest = true;
 
             if (!HungerResolved && !ThirstResolved)
             {
@@ -129,12 +130,13 @@ namespace Assets.Scripts.Refugees
             if (HungerResolved && ThirstResolved && ColdResolved && (!Ill || IllnessResolved))
             {
                 possibleLines.AddRange(BasicDialogLine.GreetingLines);
+                isObjectRequest = false;
             }
 
             var lineId = possibleLines.GetRandomElement();
             var line = _dialogManager.BasicDialogLines.SingleOrDefault(l => l.LineId == lineId);
 
-            _dialogManager.WriteBasicDialogLine(line, Name);
+            _dialogManager.WriteBasicDialogLine(line, Name, isObjectRequest);
         }
 
         public void ResetNeeds()

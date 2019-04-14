@@ -22,7 +22,6 @@ namespace Assets.Scripts.Conversation
         {
             BasicDialogLines = ParseBasicDialogNames();
             MediumDialogLines = ParseMediumDialogNames();
-            _dialogBox = FindObjectOfType<DialogBox>();
         }
 
         private List<BasicDialogLine> ParseBasicDialogNames()
@@ -35,22 +34,22 @@ namespace Assets.Scripts.Conversation
             return JsonConvert.DeserializeObject<List<MediumDialogLine>>(_mediumDialogLines.text);
         }
 
-        public void WriteBasicDialogLine(DialogLine dialogLine, string refugeeName)
+        public void WriteBasicDialogLine(DialogLine dialogLine, string refugeeName, bool isObjectRequest)
         {
-            WriteDialogLine(dialogLine, refugeeName, BasicDialogLines.Select(l => l as DialogLine).ToList());
+            WriteDialogLine(dialogLine, refugeeName, BasicDialogLines.Select(l => l as DialogLine).ToList(), isObjectRequest);
         }
 
-        public void WriteMediumDialogLine(DialogLine dialogLine, string refugeeName)
+        public void WriteMediumDialogLine(DialogLine dialogLine, string refugeeName, bool isObjectRequest)
         {
-            WriteDialogLine(dialogLine, refugeeName, MediumDialogLines.Select(l => l as DialogLine).ToList());
+            WriteDialogLine(dialogLine, refugeeName, MediumDialogLines.Select(l => l as DialogLine).ToList(), isObjectRequest);
         }
 
-        private void WriteDialogLine(DialogLine dialogLine, string refugeeName, List<DialogLine> dialogLines)
+        private void WriteDialogLine(DialogLine dialogLine, string refugeeName, List<DialogLine> dialogLines, bool isObjectRequest)
         {
             const string OwnLineHeader = "You";
             var name = dialogLine.OwnLine ? OwnLineHeader : refugeeName;
 
-            _dialogBox.ShowText(name, dialogLine.Text);
+            _dialogBox.ShowText(name, dialogLine.Text, isObjectRequest);
 
             if (dialogLine.PossibleResponses.Any(possibleResponse => possibleResponse.Any()))
             {
@@ -60,7 +59,7 @@ namespace Assets.Scripts.Conversation
                 var lineId = responseSet.GetRandomElement();
                 dialogLine = dialogLines.SingleOrDefault(l => l.LineId == lineId);
 
-                WriteBasicDialogLine(dialogLine, refugeeName);
+                WriteBasicDialogLine(dialogLine, refugeeName, isObjectRequest);
             }
         }
     }
