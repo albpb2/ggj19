@@ -57,7 +57,7 @@ namespace Assets.Scripts
 
             DetectMovementClick();
 
-            var horizontalInput = Input.GetAxis("Horizontal");
+            var horizontalInput = Input.GetAxisRaw("Horizontal");
             if (horizontalInput > 0)
             {
                 MoveRight = true;
@@ -67,7 +67,7 @@ namespace Assets.Scripts
                 MoveLeft = true;
             }
 
-            var verticalInput = Input.GetAxis("Vertical");
+            var verticalInput = Input.GetAxisRaw("Vertical");
             if (verticalInput > 0)
             {
                 MoveUp = true;
