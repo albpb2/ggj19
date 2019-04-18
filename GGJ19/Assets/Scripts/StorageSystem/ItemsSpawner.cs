@@ -20,14 +20,14 @@ namespace Assets.Scripts.StorageSystem
         };
 
         private readonly Storage _storage;
-        private readonly Bag _bag;
+        private readonly BagHandler _bag;
         private readonly RefugeesSettings _refugeesSettings;
         private readonly Random _random;
 
         public ItemsSpawner()
         {
             _storage = Object.FindObjectOfType<Storage>();
-            _bag = Object.FindObjectOfType<Bag>();
+            _bag = Object.FindObjectOfType<BagHandler>();
             _refugeesSettings = Object.FindObjectOfType<RefugeesSettings>();
 
             _random = new Random();

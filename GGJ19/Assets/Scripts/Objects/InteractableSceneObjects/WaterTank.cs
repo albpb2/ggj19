@@ -4,13 +4,13 @@ namespace Assets.Scripts.Objects.InteractableSceneObjects
 {
     public class WaterTank : InteractableSceneObject
     {
-        private Bag _bag;
+        private BagHandler _bag;
 
         public override  void Start()
         {
             base.Start();
             
-            _bag = FindObjectOfType<Bag>();
+            _bag = FindObjectOfType<BagHandler>();
         }
 
         public override void Interact()

@@ -11,7 +11,7 @@ namespace Assets.Scripts.StorageSystem
         private Storage _storage;
         private PortableObject _portableObject;
 
-        public Bag Bag { get; set; }
+        public BagHandler Bag { get; set; }
 
         public void Start()
         {

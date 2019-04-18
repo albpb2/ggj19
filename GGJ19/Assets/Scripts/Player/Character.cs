@@ -14,14 +14,14 @@ namespace Assets.Scripts.Player
         private Image _actionsBox;
 
         private Karma _karma;
-        private Bag _bag;
+        private BagHandler _bag;
 
         public Refugee InteractingWith { get; set; }
 
         public void Start()
         {
             _karma = GetComponent<Karma>();
-            _bag = GetComponent<Bag>();
+            _bag = GetComponent<BagHandler>();
         }
 
         public void BeginInteraction(Refugee refugee)

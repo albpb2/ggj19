@@ -8,49 +8,33 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Player
 {
-    public class Bag : MonoBehaviour, IUIHideable
+    public class BagHandler : MonoBehaviour, IUIHideable
     {
         public const int MaxItems = 2;
 
         [SerializeField]
-        private Image _storageBagImage;
+        private Bag _storageBag;
         [SerializeField]
-        private Image _dialogBagImage;
+        private Bag _dialogBag;
         [SerializeField]
         private GameObject _storageSpacePrefab;
-        [SerializeField]
-        private Image _closeButton;
-        [SerializeField]
-        private Sprite _storageBagFullWaterSprite;
-        [SerializeField]
-        private Sprite _storageBagEmptyWaterSprite;
-        [SerializeField]
-        private Sprite _dialogBagFullWaterSprite;
-        [SerializeField]
-        private Sprite _dialogBagEmptyWaterSprite;
-        [SerializeField]
-        private Vector2 _firstStorageSpacePosition = new Vector2(-142, -41);
-        [SerializeField]
-        private Vector2 _secondStorageSpacePosition = new Vector2(17, -30);
-        [SerializeField]
-        private Vector2 _firstDialogSpacePosition = new Vector2(-142, -41);
-        [SerializeField]
-        private Vector2 _secondDialogSpacePosition = new Vector2(17, -30);
 
         private StorageItemPrefabProvider _storageItemPrefabProvider;
         private GameManager _gameManager;
         private Character _character;
         private GameObject _bottleNotification;
 
+        public Bag ActiveBag { get; set; }
+
         public List<PortableObject> Items { get; set; } = new List<PortableObject>();
 
         public List<StorageSpace> Spaces { get; set; } = new List<StorageSpace>();
 
-        public Image Image => _storageBagImage.gameObject.activeSelf ? _storageBagImage : _dialogBagImage;
+        public Image Image => ActiveBag.GetComponent<Image>();
 
         public bool WaterFull { get; private set; }
 
-        public bool IsOpen => _storageBagImage.gameObject.activeSelf || _dialogBagImage.gameObject.activeSelf;
+        public bool IsOpen => ActiveBag.gameObject.activeSelf;
 
         public void Start()
         {
@@ -58,7 +42,7 @@ namespace Assets.Scripts.Player
             _gameManager = FindObjectOfType<GameManager>();
             _character = GetComponent<Character>();
             _bottleNotification = GameObject.FindGameObjectWithTag("water-fill-notification");
-
+            ActiveBag = _dialogBag;
         }
 
         public void Update()
@@ -71,16 +55,14 @@ namespace Assets.Scripts.Player
 
         public void OpenStorageBag()
         {
-            _storageBagImage.gameObject.SetActive(true);
-
-            PaintItems();
+            ActiveBag = _storageBag;
+            OpenActiveBag();
         }
 
         public void OpenDialogBag()
         {
-            _dialogBagImage.gameObject.SetActive(true);
-
-            PaintItems();
+            ActiveBag = _dialogBag;
+            OpenActiveBag();
         }
 
         public void CloseBag()
@@ -109,19 +91,19 @@ namespace Assets.Scripts.Player
 
         public void HideCloseButton()
         {
-            _closeButton.gameObject.SetActive(false);
+            ActiveBag.CloseButton.gameObject.SetActive(false);
         }
 
         public void ShowCloseButton()
         {
-            _closeButton.gameObject.SetActive(true);
+            ActiveBag.CloseButton.gameObject.SetActive(true);
         }
 
         public void FillWater()
         {
             WaterFull = true;
-            _storageBagImage.GetComponent<Image>().sprite = _storageBagFullWaterSprite;
-            _dialogBagImage.GetComponent<Image>().sprite = _dialogBagFullWaterSprite;
+            _storageBag.SetFullWaterSprite();
+            _dialogBag.SetFullWaterSprite();
             _bottleNotification.GetComponent<Animator>().SetTrigger("fill");
 
         }
@@ -131,8 +113,8 @@ namespace Assets.Scripts.Player
             if (WaterFull)
             {
                 WaterFull = false;
-                _storageBagImage.GetComponent<Image>().sprite = _storageBagEmptyWaterSprite;
-                _dialogBagImage.GetComponent<Image>().sprite = _dialogBagEmptyWaterSprite;
+                _storageBag.SetEmptyWaterSprite();
+                _dialogBag.SetEmptyWaterSprite();
                 _character.GiveObjectToRefugee(PortableObjectType.Water);
                 CloseBag();
             }
@@ -148,7 +130,7 @@ namespace Assets.Scripts.Player
 
         private void ShowStorageSpace(int position)
         {
-            var storageSpace = Instantiate(_storageSpacePrefab, _storageBagImage.transform).GetComponent<StorageSpace>();
+            var storageSpace = Instantiate(_storageSpacePrefab, ActiveBag.transform).GetComponent<StorageSpace>();
             var localPosition = GetSpacePosition(position);
             storageSpace.transform.localPosition = new Vector3(
                 localPosition.x,
@@ -163,6 +145,12 @@ namespace Assets.Scripts.Player
         {
             Items.Remove(Items.First(i => i.Type == item.PortableObjectType));
             ClearBag();
+            PaintItems();
+        }
+
+        private void OpenActiveBag()
+        {
+            ActiveBag.gameObject.SetActive(true);
             PaintItems();
         }
 
@@ -197,12 +185,7 @@ namespace Assets.Scripts.Player
 
         private Vector2 GetSpacePosition(int position)
         {
-            if (_storageBagImage.gameObject.activeSelf)
-            {
-                return position == 0 ? _firstStorageSpacePosition : _secondStorageSpacePosition;
-            }
-
-            return position == 0 ? _firstDialogSpacePosition : _secondDialogSpacePosition;
+            return position == 0 ? ActiveBag.FirstItemPosition : ActiveBag.SecondItemPosition;
         }
 
         private void ClearBag()

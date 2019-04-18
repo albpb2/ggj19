@@ -26,6 +26,8 @@ namespace Assets.Scripts.StorageSystem
         [SerializeField]
         private Image _storeBack;
         [SerializeField]
+        private BagHandler _bagHandler;
+        [SerializeField]
         private Bag _bag;
         [SerializeField]
         private int _columns;
@@ -85,7 +87,7 @@ namespace Assets.Scripts.StorageSystem
             _timeTracker = FindObjectOfType<TimeTracker>();
             _gameManager = FindObjectOfType<GameManager>();
             _prefabProvider = FindObjectOfType<StorageItemPrefabProvider>();
-            _bagOriginalPlace = _bag.Image.transform.localPosition;
+            _bagOriginalPlace = _bag.transform.localPosition;
             _itemPrefabs = new List<GameObject>
             {
                 _breadItemPrefab, _bottleItemPrefab, _coatItemPrefab, _pillItemPrefab
@@ -129,10 +131,10 @@ namespace Assets.Scripts.StorageSystem
 
             _storeBack.gameObject.SetActive(true);
             _storeFront.gameObject.SetActive(true);
-            _bag.OpenStorageBag();
-            _bag.HideCloseButton();
+            _bagHandler.OpenStorageBag();
+            _bagHandler.HideCloseButton();
 
-            _bag.Image.transform.localPosition =
+            _bag.transform.localPosition =
                 _storeFront.transform.localPosition.AddX((float)Screen.width * _bagDistanceToStorageInScreenPercentage);
 
             PaintItems();
@@ -151,9 +153,9 @@ namespace Assets.Scripts.StorageSystem
 
             _storeBack.gameObject.SetActive(false);
             _storeFront.gameObject.SetActive(false);
-            _bag.ShowCloseButton();
-            _bag.Image.transform.localPosition = _bagOriginalPlace;
-            _bag.CloseBag();
+            _bagHandler.ShowCloseButton();
+            _bag.transform.localPosition = _bagOriginalPlace;
+            _bagHandler.CloseBag();
 
             _storageItems = new List<StorageItem>();
         }

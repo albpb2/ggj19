@@ -3206,6 +3206,7 @@ GameObject:
   - component: {fileID: 325777384}
   - component: {fileID: 325777386}
   - component: {fileID: 325777385}
+  - component: {fileID: 325777387}
   m_Layer: 5
   m_Name: StorageBag
   m_TagString: Untagged
@@ -3271,6 +3272,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325777383}
   m_CullTransparentMesh: 0
+--- !u!114 &325777387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325777383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170af09a5d7824542bc46e38cd3e5b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _closeButton: {fileID: 149302440}
+  _fullWaterSprite: {fileID: 21300000, guid: ce9e4650890300543beed4e4921a60a2, type: 3}
+  _emptyWaterSprite: {fileID: 21300000, guid: a19f705128d503a43a1003fd205b0563, type: 3}
+  _firstItemPosition: {x: -142, y: -41}
+  _secondItemPosition: {x: 17, y: -30}
 --- !u!1 &342688796
 GameObject:
   m_ObjectHideFlags: 0
@@ -3897,6 +3915,7 @@ GameObject:
   - component: {fileID: 390265518}
   - component: {fileID: 390265520}
   - component: {fileID: 390265519}
+  - component: {fileID: 390265521}
   m_Layer: 5
   m_Name: DialogBag
   m_TagString: Untagged
@@ -3962,6 +3981,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390265517}
   m_CullTransparentMesh: 0
+--- !u!114 &390265521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390265517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 170af09a5d7824542bc46e38cd3e5b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _closeButton: {fileID: 307590772}
+  _fullWaterSprite: {fileID: 21300000, guid: c00070b4c6ad6c0428ee7f72bf368779, type: 3}
+  _emptyWaterSprite: {fileID: 21300000, guid: 043f484d3db7e0a46b514b2979a8e563, type: 3}
+  _firstItemPosition: {x: 266.4, y: 6.4}
+  _secondItemPosition: {x: 80.1, y: 16.6}
 --- !u!1 &396919223
 GameObject:
   m_ObjectHideFlags: 0
@@ -4421,23 +4457,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3a81b2ef91e7b4e870e09cc6b1f32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _storageBagImage: {fileID: 325777385}
-  _dialogBagImage: {fileID: 390265519}
+  _storageBag: {fileID: 325777387}
+  _dialogBag: {fileID: 390265521}
   _storageSpacePrefab: {fileID: 1745160487116989448, guid: 10467d5e15fca854d9bf2884fc3aa7c1,
     type: 3}
-  _closeButton: {fileID: 149302440}
-  _storageBagFullWaterSprite: {fileID: 21300000, guid: ce9e4650890300543beed4e4921a60a2,
-    type: 3}
-  _storageBagEmptyWaterSprite: {fileID: 21300000, guid: a19f705128d503a43a1003fd205b0563,
-    type: 3}
-  _dialogBagFullWaterSprite: {fileID: 21300000, guid: c00070b4c6ad6c0428ee7f72bf368779,
-    type: 3}
-  _dialogBagEmptyWaterSprite: {fileID: 21300000, guid: 043f484d3db7e0a46b514b2979a8e563,
-    type: 3}
-  _firstStorageSpacePosition: {x: -142, y: -41}
-  _secondStorageSpacePosition: {x: 17, y: -30}
-  _firstDialogSpacePosition: {x: 266.4, y: 6.4}
-  _secondDialogSpacePosition: {x: 80.1, y: 16.6}
 --- !u!114 &483156346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4921,7 +4944,8 @@ MonoBehaviour:
     type: 3}
   _storeFront: {fileID: 1414665052}
   _storeBack: {fileID: 1222056298}
-  _bag: {fileID: 483156345}
+  _bagHandler: {fileID: 483156345}
+  _bag: {fileID: 325777387}
   _columns: 4
   _spaceBetweenColumns: 200
   _spaceBetweenRows: 150

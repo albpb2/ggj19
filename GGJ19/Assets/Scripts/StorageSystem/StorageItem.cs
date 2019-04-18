@@ -15,7 +15,7 @@ namespace Assets.Scripts.StorageSystem
 
         private Button _button;
         private Storage _storage;
-        private Bag _bag;
+        private BagHandler _bag;
         private Vector3 _initialPosition;
         private Transform _initialParent;
         private Character _character;
@@ -37,7 +37,7 @@ namespace Assets.Scripts.StorageSystem
         {
             _button = GetComponent<Button>();
             _character = FindObjectOfType<Character>();
-            _bag = _character.GetComponent<Bag>();
+            _bag = _character.GetComponent<BagHandler>();
             _storage = FindObjectOfType<Storage>();
         }
 
