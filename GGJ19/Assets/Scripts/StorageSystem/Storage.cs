@@ -129,7 +129,7 @@ namespace Assets.Scripts.StorageSystem
 
             _storeBack.gameObject.SetActive(true);
             _storeFront.gameObject.SetActive(true);
-            _bag.OpenBag();
+            _bag.OpenStorageBag();
             _bag.HideCloseButton();
 
             _bag.Image.transform.localPosition =

@@ -57,7 +57,7 @@ namespace Assets.Scripts.Player
 
         public void OpenBag()
         {
-            _bag.OpenBag();
+            _bag.OpenDialogBag();
         }
     }
 }
