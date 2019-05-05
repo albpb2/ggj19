@@ -135,7 +135,6 @@ namespace Assets.Scripts.Refugees
             List<Sprite> maleSprites,
             List<Sprite> girlSprites)
         {
-            refugee.Start();
             refugee.transform.position = spawningSpot.transform.position;
             refugee.SetSpawningSpot(spawningSpot);
 
@@ -409,6 +408,7 @@ namespace Assets.Scripts.Refugees
             refugee1.ClearNeeds();
             refugee1.HungerResolved = false;
             refugee1.ThirstResolved = false;
+            refugee1.PrintNeeds();
 
             var refugee2 = CreateBasicRefugee(
                 _initialRefugeeSpawningSpotLayer2,
@@ -421,6 +421,7 @@ namespace Assets.Scripts.Refugees
             refugee2.ClearNeeds();
             refugee2.IllnessResolved = false;
             refugee2.Ill = true;
+            refugee2.PrintNeeds();
 
             var refugee3 = CreateMediumRefugee(
                 _initialRefugeeSpawningSpotLayer3,
@@ -432,6 +433,7 @@ namespace Assets.Scripts.Refugees
 
             refugee3.ClearNeeds();
             refugee3.SetLine(10);
+            refugee3.PrintNeeds();
         }
     }
 }

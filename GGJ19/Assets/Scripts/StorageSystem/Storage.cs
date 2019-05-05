@@ -175,19 +175,11 @@ namespace Assets.Scripts.StorageSystem
         {
             if (portableObjectType.IsOfGiftType())
             {
-                if (HasFreeGiftsSpace)
-                {
-                    Gifts.Add(portableObjectType);
-                }
+                AddGift(portableObjectType);
             }
             else
             {
-                if (HasFreeItemsSpace)
-                {
-                    var prefabToAdd = _itemPrefabs.FirstOrDefault(p =>
-                        p.GetComponent<StorageItem>().PortableObjectType == portableObjectType);
-                    _selectedPrefabs.Add(prefabToAdd);
-                }
+                AddNormalItem(portableObjectType);
             }
             ClearItems();
             PaintItems();
@@ -212,7 +204,28 @@ namespace Assets.Scripts.StorageSystem
 
         public void AddGift(PortableObjectType objectType)
         {
-            Gifts.Add(objectType);
+            PrintItemAdditionAttempt(objectType);
+
+            if (HasFreeGiftsSpace)
+            {
+                Gifts.Add(objectType);
+
+                Debug.Log($"{objectType} added to gifts.");
+            }
+        }
+
+        public void AddNormalItem(PortableObjectType objectType)
+        {
+            PrintItemAdditionAttempt(objectType);
+
+            if (HasFreeItemsSpace)
+            {
+                var prefabToAdd = _itemPrefabs.FirstOrDefault(p =>
+                    p.GetComponent<StorageItem>().PortableObjectType == objectType);
+                _selectedPrefabs.Add(prefabToAdd);
+
+                Debug.Log($"{objectType} added to items.");
+            }
         }
 
         public void HideUIElement()
@@ -304,6 +317,12 @@ namespace Assets.Scripts.StorageSystem
             {
                 Destroy(child.gameObject);
             }
+        }
+
+        private void PrintItemAdditionAttempt(PortableObjectType objectType)
+        {
+            Debug.Log($"Trying to add {objectType} to the storage.");
+            Debug.Log($"Storage items count: {Gifts.Count}/{_maxGiftCapacity} gifts, {_selectedPrefabs.Count}/{_maxCapacity} items");
         }
     }
 }

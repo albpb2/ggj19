@@ -7,6 +7,7 @@ using Assets.Scripts.Refugees.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Random = System.Random;
 
 namespace Assets.Scripts.Refugees
@@ -147,6 +148,37 @@ namespace Assets.Scripts.Refugees
             Ill = !Probabilities.CalculateSuccessBase100(_refugeesSettings.IllnessProbability);
 
             IllnessResolved = false;
+
+            PrintNeeds();
+        }
+
+        protected override string GetNeedsString()
+        {
+            var message = "";
+
+            if (!HungerResolved)
+            {
+                message += "food, ";
+            }
+            if (!ThirstResolved)
+            {
+                message += "water, ";
+            }
+            if (!ColdResolved)
+            {
+                message += "jacket, ";
+            }
+            if (!IllnessResolved && Ill)
+            {
+                message += "pills, ";
+            }
+
+            if (message.EndsWith(", "))
+            {
+                message = message.Substring(0, message.Length - 2);
+            }
+
+            return message;
         }
 
         public void ClearNeeds()

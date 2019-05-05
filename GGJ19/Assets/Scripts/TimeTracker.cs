@@ -36,6 +36,7 @@ public class TimeTracker : MonoBehaviour
         _secondsPerHour = _realDayDurationInMinutes * SecondsPerMinute / _dayDurationHours;
         _secondsPerDay = _realDayDurationInMinutes * 60;
         _dayText.text = "1";
+        Debug.Log("Day 1 starts.");
     }
 
     public void Update()
@@ -64,6 +65,7 @@ public class TimeTracker : MonoBehaviour
     {
         _stopped = false;
         CurrentDay++;
+        Debug.Log($"Day {CurrentDay} starts.");
         onNewDayBegun?.Invoke(CurrentDay);
         _timeForCurrentDayInSeconds = 0;
         _dayText.text = CurrentDay.ToString();
@@ -72,6 +74,7 @@ public class TimeTracker : MonoBehaviour
     public void EndDay()
     {
         _stopped = true;
+        Debug.Log($"Day {CurrentDay} ends.");
         onDayEnded?.Invoke(CurrentDay);
     }
 

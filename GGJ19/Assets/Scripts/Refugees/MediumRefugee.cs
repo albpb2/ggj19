@@ -96,6 +96,22 @@ namespace Assets.Scripts.Refugees
             SelectValidObjectTypes();
         }
 
+        protected override string GetNeedsString()
+        {
+            var message = NostalgiaResolved || ValidObjectTypes == null
+                ? string.Empty 
+                : $"{string.Join(", ", ValidObjectTypes.Select(i => $"{i}"))}, ";
+
+            message = message + base.GetNeedsString();
+
+            if (message.EndsWith(", "))
+            {
+                message = message.Substring(0, message.Length - 2);
+            }
+
+            return message;
+        }
+
         private List<MediumDialogLine> GetPossibleLines()
         {
             var otherRefugeesLineIds = GetOtherRefugeesLineIds();

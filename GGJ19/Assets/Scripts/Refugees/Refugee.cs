@@ -23,22 +23,29 @@ namespace Assets.Scripts.Refugees
         public int DaysToStay { get; set; }
 
         public int ArrivalDay { get; set; }
-            
-        public override void Start()
+
+        public void Awake()
         {
-            base.Start();
+            _inventory = new List<PortableObjectType>();
+
             _character = FindObjectOfType<Character>();
             _dialogManager = FindObjectOfType<DialogManager>();
             _karma = FindObjectOfType<Karma>();
             _refugeesSettings = FindObjectOfType<RefugeesSettings>();
             _timeTracker = FindObjectOfType<TimeTracker>();
             _gameEventsManager = FindObjectOfType<GameEventsManager>();
+        }
 
-            _inventory = new List<PortableObjectType>();
-
+        public override void Start()
+        {
+            base.Start();
+            
             ArrivalDay = _timeTracker.CurrentDay;
+
             _timeTracker.onDayEnded += LeaveCampIfDayArrived;
             _timeTracker.onNewDayBegun += WakeUp;
+            
+            Debug.Log($"Refugee {Name} has arrived to the camp.");
 
             WakeUp(_timeTracker.CurrentDay);
         }
@@ -71,7 +78,10 @@ namespace Assets.Scripts.Refugees
 
         public virtual void LeaveCamp()
         {
+            Debug.Log($"Refugee {Name} is leaving the camp.");
+
             _spawningSpot.Refugee = null;
+            _timeTracker.onNewDayBegun -= WakeUp;
             _timeTracker.onDayEnded -= LeaveCampIfDayArrived;
             Destroy(gameObject);
         }
@@ -82,6 +92,16 @@ namespace Assets.Scripts.Refugees
             {
                 LeaveCamp();
             }
+        }
+
+        public void PrintNeeds()
+        {
+            Debug.Log($"Refugee {Name} needs {GetNeedsString()}");
+        }
+
+        protected virtual string GetNeedsString()
+        {
+            return string.Empty;
         }
     }
 }
