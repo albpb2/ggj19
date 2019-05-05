@@ -145,7 +145,7 @@ namespace Assets.Scripts.Refugees
             HungerResolved = !Probabilities.CalculateSuccessBase100(_refugeesSettings.HungerProbability);
             ThirstResolved = !Probabilities.CalculateSuccessBase100(_refugeesSettings.ThirstProbability);
             ColdResolved = _inventory.Contains(PortableObjectType.Coat) || !Probabilities.CalculateSuccessBase100(_refugeesSettings.ColdProbability);
-            Ill = !Probabilities.CalculateSuccessBase100(_refugeesSettings.IllnessProbability);
+            Ill = Probabilities.CalculateSuccessBase100(_refugeesSettings.IllnessProbability);
 
             IllnessResolved = false;
 
