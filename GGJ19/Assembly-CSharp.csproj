@@ -109,7 +109,10 @@
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudio.cs" />
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudioRoom.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Audio\FModSound.cs" />
+    <Compile Include="Assets\Scripts\Audio\OneShotSoundPlayer.cs" />
     <Compile Include="Assets\Scripts\Audio\PermanentAudioSource.cs" />
+    <Compile Include="Assets\Scripts\Audio\Sound.cs" />
     <Compile Include="Assets\Scripts\CameraScripts\CameraMovementController.cs" />
     <Compile Include="Assets\Scripts\CameraScripts\CharacterTracker.cs" />
     <Compile Include="Assets\Scripts\Conversation\BasicDialogLine.cs" />
