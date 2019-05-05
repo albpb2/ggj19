@@ -100,7 +100,7 @@ namespace Assets.Scripts.Refugees
         {
             var message = NostalgiaResolved || ValidObjectTypes == null
                 ? string.Empty 
-                : $"{string.Join(", ", ValidObjectTypes.Select(i => $"{i}"))}, ";
+                : $"{string.Join(" or ", ValidObjectTypes.Select(i => $"{i}"))}, ";
 
             message = message + base.GetNeedsString();
 

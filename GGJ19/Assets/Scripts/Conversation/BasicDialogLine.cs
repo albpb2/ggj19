@@ -7,7 +7,7 @@ namespace Assets.Scripts.Conversation
     {
         public static int[] HungerLines = new[]
         {
-            1, 5, 6, 7
+            1, 5
         };
 
         public static int[] ThirstLines = new[]

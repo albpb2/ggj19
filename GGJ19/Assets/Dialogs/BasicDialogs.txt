@@ -98,7 +98,7 @@
 	{
 		"LineId": 17,
 		"OwnLine": false,
-		"Text": "We've lost most of our cloths, we're gonna freeze!",
+		"Text": "We've lost most of our clothes, we're gonna freeze!",
 		"PossibleResponses": [[3, 4]]
 	},
 ]
