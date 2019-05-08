@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Objects;
+using FMODUnity;
 using UnityEngine;
 
 namespace Assets.Scripts.Player
@@ -19,6 +20,8 @@ namespace Assets.Scripts.Player
         private float _maxY = 12.6f;
         [SerializeField]
         private Feet _feet;
+        [SerializeField]
+        private StudioEventEmitter _fmodStudioEventEmitter;
 
         private InputManager _inputManager;
         private Character _character;
@@ -112,6 +115,7 @@ namespace Assets.Scripts.Player
             if (IsMoving())
             {
                 _animator.SetBool(WalkAnimationName, true);
+                StartStepsSound();
 
                 if (_inputManager.MoveLeft)
                 {
@@ -134,6 +138,7 @@ namespace Assets.Scripts.Player
             else
             {
                 _animator.SetBool(WalkAnimationName, false);
+                StopStepsSound();
             }
 
             _previousPosition = transform.position;
@@ -221,6 +226,16 @@ namespace Assets.Scripts.Player
                 xPosition,
                 transform.position.y,
                 transform.position.z);
+        }
+
+        private void StartStepsSound()
+        {
+            _fmodStudioEventEmitter.gameObject.SetActive(true);
+        }
+
+        private void StopStepsSound()
+        {
+            _fmodStudioEventEmitter.gameObject.SetActive(false);
         }
     }
 }
