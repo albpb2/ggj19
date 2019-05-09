@@ -13,31 +13,57 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 114173293454238398}
-  - {fileID: 114765585463959120}
+  - {fileID: 114831614093948622}
+  - {fileID: 114944868969863948}
   EditorEvents:
-  - {fileID: 114693826120860966}
-  - {fileID: 114478013011311174}
-  - {fileID: 114978329645220274}
-  - {fileID: 114829460510652982}
-  - {fileID: 114454056661129632}
-  - {fileID: 114300953217523864}
-  - {fileID: 114848867300618724}
-  - {fileID: 114198636069697750}
-  - {fileID: 114280988063116122}
-  - {fileID: 114470637933926604}
-  - {fileID: 114282203893397668}
-  - {fileID: 114397601540726254}
-  - {fileID: 114920020537290608}
-  - {fileID: 114608676236513390}
-  - {fileID: 114057354908579530}
-  - {fileID: 114195531484553040}
-  - {fileID: 114190781253080986}
-  MasterBankRef: {fileID: 114765585463959120}
-  StringsBankRef: {fileID: 114173293454238398}
-  stringsBankWriteTime: 636929560646201544
-  cacheVersion: 2
---- !u!114 &114002513985844398
+  - {fileID: 114798934608679172}
+  - {fileID: 114383346268142536}
+  - {fileID: 114339385025043678}
+  - {fileID: 114203016379920990}
+  - {fileID: 114834380803247374}
+  - {fileID: 114920916629896512}
+  - {fileID: 114203431126528724}
+  - {fileID: 114522741838659372}
+  - {fileID: 114443038907897492}
+  - {fileID: 114859012973393666}
+  - {fileID: 114728567085628216}
+  - {fileID: 114044319505130930}
+  - {fileID: 114931923949798276}
+  - {fileID: 114276845030657206}
+  - {fileID: 114431543979524286}
+  - {fileID: 114452640331118166}
+  - {fileID: 114516459080126380}
+  MasterBanks:
+  - {fileID: 114944868969863948}
+  StringsBanks:
+  - {fileID: 114831614093948622}
+  stringsBankWriteTime: 636930455142583553
+  cacheVersion: 3
+--- !u!114 &114042794466435798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/M\xFAsica/Tema_principal"
+  guid: 2e6f628e351acf46a1af4447c5090676
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 114057055408359356}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 102857
+--- !u!114 &114044319505130930
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -52,7 +78,7 @@ MonoBehaviour:
   Path: event:/Efectos de sonido/Pasos_tierra
   guid: b331ba9f78266a45890e11cfc2f49935
   Banks:
-  - {fileID: 114629271177520948}
+  - {fileID: 114944868969863948}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -60,53 +86,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 656
---- !u!114 &114041979911497108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_largo_x5"
-  guid: 1226e80515034e4b83c9dba864c7280e
-  Banks:
-  - {fileID: 114629271177520948}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 9875
---- !u!114 &114057354908579530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/Efectos de sonido/Mochila
-  guid: d4fb592bf49a6042a63a8bb01fb91dec
-  Banks:
-  - {fileID: 114765585463959120}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 1125
---- !u!114 &114144644195349016
+--- !u!114 &114057055408359356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,26 +102,7 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 0
---- !u!114 &114173293454238398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: C:\Users\alber\Documents\FMOD Studio\Rehome_FMOD\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636929560646201544
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 1512
-  Exists: 1
---- !u!114 &114190781253080986
+--- !u!114 &114117849078863052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,18 +114,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_1"
-  guid: e0a10957a5db214fb8fa6f735ad632ad
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_x5"
+  guid: 7da8d30e62bd144782934944f793f8fb
   Banks:
-  - {fileID: 114765585463959120}
+  - {fileID: 114248136012317238}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 6000
---- !u!114 &114195531484553040
+  Length: 1250
+--- !u!114 &114140666515091240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,41 +137,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_3"
-  guid: ddd5f76414c16b43bd3716850267dc8f
+  Path: "event:/Efectos de sonido/Men\xFA/Cambio_entre_botones"
+  guid: 40de87a5944c394983331770742fb271
   Banks:
-  - {fileID: 114765585463959120}
+  - {fileID: 114248136012317238}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 2500
---- !u!114 &114198636069697750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/Ambientes/Ambiente_latas_pajaros
-  guid: 9512ff01da347540a5336eeaea928ed8
-  Banks:
-  - {fileID: 114765585463959120}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 134012
---- !u!114 &114221453146778244
+  Length: 2000
+--- !u!114 &114203016379920990
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,16 +163,16 @@ MonoBehaviour:
   Path: "event:/M\xFAsica/Tema_principal"
   guid: 2e6f628e351acf46a1af4447c5090676
   Banks:
-  - {fileID: 114629271177520948}
+  - {fileID: 114944868969863948}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114144644195349016}
+  - {fileID: 114514374622738868}
   MinDistance: 0
   MaxDistance: 0
   Length: 102857
---- !u!114 &114229269293501702
+--- !u!114 &114203431126528724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,386 +184,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Men\xFA/Cambio_entre_botones"
-  guid: 40de87a5944c394983331770742fb271
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_x5"
+  guid: 7da8d30e62bd144782934944f793f8fb
   Banks:
-  - {fileID: 114629271177520948}
+  - {fileID: 114944868969863948}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 2000
---- !u!114 &114270822209263012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_1"
-  guid: 778d480973ff0c48af0d4058937be908
-  Banks:
-  - {fileID: 114629271177520948}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2500
---- !u!114 &114280988063116122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_2"
-  guid: 9df66a638f038e499810c7bc9aa6d041
-  Banks:
-  - {fileID: 114765585463959120}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 7000
---- !u!114 &114282203893397668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_x5"
-  guid: a4ed776b57d8724baa5d3e011c314802
-  Banks:
-  - {fileID: 114765585463959120}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 3750
---- !u!114 &114300953217523864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_1"
-  guid: 778d480973ff0c48af0d4058937be908
-  Banks:
-  - {fileID: 114765585463959120}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2500
---- !u!114 &114329171219042244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_2"
-  guid: cba2aa98f99e0446a265eaead07b98af
-  Banks:
-  - {fileID: 114629271177520948}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2500
---- !u!114 &114351626945244958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/Efectos de sonido/Refill_botella
-  guid: 2cf50ff25a8ea740990417e45322bcc2
-  Banks:
-  - {fileID: 114629271177520948}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 500
---- !u!114 &114397601540726254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/Efectos de sonido/Pasos_tierra
-  guid: b331ba9f78266a45890e11cfc2f49935
-  Banks:
-  - {fileID: 114765585463959120}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 656
---- !u!114 &114407156802169568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Men\xFA/Selecci\xF3n_de_boton"
-  guid: a05055386bb4cd41a2509b92bd8786b0
-  Banks:
-  - {fileID: 114629271177520948}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2000
---- !u!114 &114454056661129632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Men\xFA/Cambio_entre_botones"
-  guid: 40de87a5944c394983331770742fb271
-  Banks:
-  - {fileID: 114765585463959120}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2000
---- !u!114 &114470637933926604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Men\xFA/Selecci\xF3n_de_boton"
-  guid: a05055386bb4cd41a2509b92bd8786b0
-  Banks:
-  - {fileID: 114765585463959120}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2000
---- !u!114 &114478013011311174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/Efectos de sonido/Refill_botella
-  guid: 2cf50ff25a8ea740990417e45322bcc2
-  Banks:
-  - {fileID: 114765585463959120}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 500
---- !u!114 &114512075928548688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Fin_del_d\xEDa"
-  guid: 2e451bee0e5d444b9979bc6af89fad8b
-  Banks:
-  - {fileID: 114629271177520948}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 10036
---- !u!114 &114562200043599700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_2"
-  guid: 9df66a638f038e499810c7bc9aa6d041
-  Banks:
-  - {fileID: 114629271177520948}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 7000
---- !u!114 &114587435752759282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/Ambientes/Ambiente_latas_pajaros
-  guid: 9512ff01da347540a5336eeaea928ed8
-  Banks:
-  - {fileID: 114629271177520948}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 134012
---- !u!114 &114608676236513390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_2"
-  guid: cba2aa98f99e0446a265eaead07b98af
-  Banks:
-  - {fileID: 114765585463959120}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2500
---- !u!114 &114625800605651304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_3"
-  guid: ddd5f76414c16b43bd3716850267dc8f
-  Banks:
-  - {fileID: 114629271177520948}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 2500
---- !u!114 &114629271177520948
+  Length: 1250
+--- !u!114 &114248136012317238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -638,13 +208,105 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: E:\Repos\GGJ19\GGJ19\Assets\Audio\FMOD\Master Bank.bank
-  lastModified: 636929560646151573
+  lastModified: 636930455142132742
   LoadResult: 0
   FileSizes:
   - Name: 
     Value: 5993056
   Exists: 1
---- !u!114 &114657224127468624
+--- !u!114 &114276845030657206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_2"
+  guid: cba2aa98f99e0446a265eaead07b98af
+  Banks:
+  - {fileID: 114944868969863948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2500
+--- !u!114 &114339153741947960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_2"
+  guid: cba2aa98f99e0446a265eaead07b98af
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2500
+--- !u!114 &114339385025043678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Fin_del_d\xEDa"
+  guid: 2e451bee0e5d444b9979bc6af89fad8b
+  Banks:
+  - {fileID: 114944868969863948}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 10036
+--- !u!114 &114383346268142536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Efectos de sonido/Refill_botella
+  guid: 2cf50ff25a8ea740990417e45322bcc2
+  Banks:
+  - {fileID: 114944868969863948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 500
+--- !u!114 &114431543979524286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -659,7 +321,7 @@ MonoBehaviour:
   Path: event:/Efectos de sonido/Mochila
   guid: d4fb592bf49a6042a63a8bb01fb91dec
   Banks:
-  - {fileID: 114629271177520948}
+  - {fileID: 114944868969863948}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -667,7 +329,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1125
---- !u!114 &114693826120860966
+--- !u!114 &114443038907897492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -679,18 +341,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_largo_x5"
-  guid: 1226e80515034e4b83c9dba864c7280e
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_2"
+  guid: 9df66a638f038e499810c7bc9aa6d041
   Banks:
-  - {fileID: 114765585463959120}
+  - {fileID: 114944868969863948}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 9875
---- !u!114 &114720290194088684
+  Length: 7000
+--- !u!114 &114452640331118166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -702,18 +364,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_x5"
-  guid: a4ed776b57d8724baa5d3e011c314802
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_3"
+  guid: ddd5f76414c16b43bd3716850267dc8f
   Banks:
-  - {fileID: 114629271177520948}
+  - {fileID: 114944868969863948}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 3750
---- !u!114 &114726526705424004
+  Length: 2500
+--- !u!114 &114461881733961280
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -725,18 +387,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_1"
-  guid: e0a10957a5db214fb8fa6f735ad632ad
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_3"
+  guid: ddd5f76414c16b43bd3716850267dc8f
   Banks:
-  - {fileID: 114629271177520948}
+  - {fileID: 114248136012317238}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 6000
---- !u!114 &114730308683046556
+  Length: 2500
+--- !u!114 &114467846785233224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_2"
+  guid: 9df66a638f038e499810c7bc9aa6d041
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 7000
+--- !u!114 &114510719203734584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -749,13 +434,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\FMOD\Master Bank.strings.bank
-  lastModified: 636929560646201544
+  lastModified: 636930455142583553
   LoadResult: 0
   FileSizes:
   - Name: 
     Value: 1512
   Exists: 1
---- !u!114 &114748303334105632
+--- !u!114 &114512406162708282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Efectos de sonido/Mochila
+  guid: d4fb592bf49a6042a63a8bb01fb91dec
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1125
+--- !u!114 &114514374622738868
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -771,7 +479,260 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 0
---- !u!114 &114765585463959120
+--- !u!114 &114516459080126380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_1"
+  guid: e0a10957a5db214fb8fa6f735ad632ad
+  Banks:
+  - {fileID: 114944868969863948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 6000
+--- !u!114 &114522741838659372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Ambientes/Ambiente_latas_pajaros
+  guid: 9512ff01da347540a5336eeaea928ed8
+  Banks:
+  - {fileID: 114944868969863948}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 134012
+--- !u!114 &114557402040091356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_1"
+  guid: e0a10957a5db214fb8fa6f735ad632ad
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 6000
+--- !u!114 &114561758172722344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_x5"
+  guid: a4ed776b57d8724baa5d3e011c314802
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3750
+--- !u!114 &114617382591810300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_largo_x5"
+  guid: 1226e80515034e4b83c9dba864c7280e
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 9875
+--- !u!114 &114670657924425056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Efectos de sonido/Pasos_tierra
+  guid: b331ba9f78266a45890e11cfc2f49935
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 656
+--- !u!114 &114687243266030576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Men\xFA/Selecci\xF3n_de_boton"
+  guid: a05055386bb4cd41a2509b92bd8786b0
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &114719136558568956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Efectos de sonido/Refill_botella
+  guid: 2cf50ff25a8ea740990417e45322bcc2
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 500
+--- !u!114 &114728567085628216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_x5"
+  guid: a4ed776b57d8724baa5d3e011c314802
+  Banks:
+  - {fileID: 114944868969863948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3750
+--- !u!114 &114757522362726632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Ambientes/Ambiente_latas_pajaros
+  guid: 9512ff01da347540a5336eeaea928ed8
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 134012
+--- !u!114 &114798934608679172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_largo_x5"
+  guid: 1226e80515034e4b83c9dba864c7280e
+  Banks:
+  - {fileID: 114944868969863948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 9875
+--- !u!114 &114831614093948622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -783,14 +744,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: C:\Users\alber\Documents\FMOD Studio\Rehome_FMOD\Build\Desktop\Master Bank.bank
-  lastModified: 636929560646151573
+  Path: Assets\Audio\FMOD\Master Bank.strings.bank
+  lastModified: 636930455142583553
   LoadResult: 0
   FileSizes:
-  - Name: Desktop
-    Value: 5993056
+  - Name: 
+    Value: 1512
   Exists: 1
---- !u!114 &114809711176760294
+--- !u!114 &114834380803247374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -802,65 +763,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_largo_1"
-  guid: bc89a9cd3961994ba5d0df95d4a85656
+  Path: "event:/Efectos de sonido/Men\xFA/Cambio_entre_botones"
+  guid: 40de87a5944c394983331770742fb271
   Banks:
-  - {fileID: 114629271177520948}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 32625
---- !u!114 &114829460510652982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/M\xFAsica/Tema_principal"
-  guid: 2e6f628e351acf46a1af4447c5090676
-  Banks:
-  - {fileID: 114765585463959120}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 114748303334105632}
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 102857
---- !u!114 &114848867300618724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_x5"
-  guid: 7da8d30e62bd144782934944f793f8fb
-  Banks:
-  - {fileID: 114765585463959120}
+  - {fileID: 114944868969863948}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 1250
---- !u!114 &114920020537290608
+  Length: 2000
+--- !u!114 &114856033339131622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_1"
+  guid: 778d480973ff0c48af0d4058937be908
+  Banks:
+  - {fileID: 114248136012317238}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2500
+--- !u!114 &114859012973393666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Men\xFA/Selecci\xF3n_de_boton"
+  guid: a05055386bb4cd41a2509b92bd8786b0
+  Banks:
+  - {fileID: 114944868969863948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2000
+--- !u!114 &114905722075983762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -875,7 +835,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_largo_1"
   guid: bc89a9cd3961994ba5d0df95d4a85656
   Banks:
-  - {fileID: 114765585463959120}
+  - {fileID: 114248136012317238}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -883,7 +843,72 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 32625
---- !u!114 &114978329645220274
+--- !u!114 &114920916629896512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_1"
+  guid: 778d480973ff0c48af0d4058937be908
+  Banks:
+  - {fileID: 114944868969863948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2500
+--- !u!114 &114931923949798276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_largo_1"
+  guid: bc89a9cd3961994ba5d0df95d4a85656
+  Banks:
+  - {fileID: 114944868969863948}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 32625
+--- !u!114 &114944868969863948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: E:\Repos\GGJ19\GGJ19\Assets\Audio\FMOD\Master Bank.bank
+  lastModified: 636930455142132742
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 5993056
+  Exists: 1
+--- !u!114 &114997442190571470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -898,7 +923,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Fin_del_d\xEDa"
   guid: 2e451bee0e5d444b9979bc6af89fad8b
   Banks:
-  - {fileID: 114765585463959120}
+  - {fileID: 114248136012317238}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -906,26 +931,3 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 10036
---- !u!114 &114980248406749008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_x5"
-  guid: 7da8d30e62bd144782934944f793f8fb
-  Banks:
-  - {fileID: 114629271177520948}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 1250

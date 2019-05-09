@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Player;
+using FMODUnity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,12 +28,19 @@ namespace Assets.Scripts.Conversation
         [SerializeField]
         private Character _character;
 
+        private DialogBoxSoundManager _dialogBoxSoundManager;
+
         private List<string> _names = new List<string>();
         private List<string> _textsToRead = new List<string>();
         private int _index;
         private bool _isObjectRequest;
 
         public bool IsOpen => _textBox?.gameObject.activeSelf ?? false;
+
+        public void Awake()
+        {
+            _dialogBoxSoundManager = FindObjectOfType<DialogBoxSoundManager>();
+        }
 
         public void Update()
         {
@@ -44,6 +52,8 @@ namespace Assets.Scripts.Conversation
             var textToRead = _textsToRead.First();
             if (_index < textToRead.Length)
             {
+                PlaySound(_index, textToRead);
+
                 var charsToRead = Mathf.Min(_speed, textToRead.Length - _index);
                 _textBoxText.text += textToRead.Substring(_index, charsToRead);
                 _textBoxName.text = _names.First();
@@ -54,6 +64,10 @@ namespace Assets.Scripts.Conversation
                     _textBoxText.text += Environment.NewLine;
                     _textBoxText.text += " ";
                 }
+            }
+            else
+            {
+                StopSound();
             }
 
             if (Input.GetMouseButton(0) && _index >= textToRead.Length && _textsToRead.Any())
@@ -120,6 +134,39 @@ namespace Assets.Scripts.Conversation
         {
             Hide();
             _character.OpenBag();
+        }
+
+        private void PlaySound(int index, string textToRead)
+        {
+            if (index != 0)
+            {
+                return;
+            }
+
+            const int ShortMessageCharacterLimit = 20;
+            const int MediumMessageCharacterLimit = 20;
+
+
+            _dialogBoxSoundManager.PlayShortMessageSound();
+
+            //if (textToRead.Length <= ShortMessageCharacterLimit)
+            //{
+            //    _dialogBoxSoundManager.PlayShortMessageSound();
+            //    return;
+            //}
+
+            //if (textToRead.Length <= MediumMessageCharacterLimit)
+            //{
+            //    _dialogBoxSoundManager.PlayMediumMessageSound();
+            //    return;
+            //}
+
+            //_dialogBoxSoundManager.PlayLongMessageSound();
+        }
+
+        private void StopSound()
+        {
+            _dialogBoxSoundManager.StopCurrentSound();
         }
 
         private void Hide()

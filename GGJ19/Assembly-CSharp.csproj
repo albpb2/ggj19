@@ -117,6 +117,7 @@
     <Compile Include="Assets\Scripts\CameraScripts\CharacterTracker.cs" />
     <Compile Include="Assets\Scripts\Conversation\BasicDialogLine.cs" />
     <Compile Include="Assets\Scripts\Conversation\DialogBox.cs" />
+    <Compile Include="Assets\Scripts\Conversation\DialogBoxSoundManager.cs" />
     <Compile Include="Assets\Scripts\Conversation\DialogLine.cs" />
     <Compile Include="Assets\Scripts\Conversation\DialogManager.cs" />
     <Compile Include="Assets\Scripts\Conversation\MediumDialogLine.cs" />
