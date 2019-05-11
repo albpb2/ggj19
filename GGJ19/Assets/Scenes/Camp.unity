@@ -2723,7 +2723,7 @@ GameObject:
   - component: {fileID: 301594332}
   - component: {fileID: 301594331}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: DialogBoxSoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2760,9 +2760,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_1"
+  Event: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_x5"
   PlayEvent: 11
-  StopEvent: 0
+  StopEvent: 12
   CollisionTag: 
   AllowFadeout: 1
   TriggerOnce: 0
