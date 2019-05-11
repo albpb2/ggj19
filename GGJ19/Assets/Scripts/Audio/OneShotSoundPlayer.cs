@@ -9,7 +9,12 @@ namespace Assets.Scripts.Audio
         [FMODUnity.EventRef]
         [SerializeField]
         private string _fillBottleEventName;
+        [FMODUnity.EventRef]
+        [SerializeField]
+        private string _openBagEventName;
+
         private EventInstance _fillBottleEvent;
+        private EventInstance _openBagEvent;
 
         private Dictionary<Sound, EventInstance> _eventPerSound;
 
@@ -19,7 +24,8 @@ namespace Assets.Scripts.Audio
 
             _eventPerSound = new Dictionary<Sound, EventInstance>
             {
-                [Sound.FillWatter] = _fillBottleEvent
+                [Sound.FillWatter] = _fillBottleEvent,
+                [Sound.OpenBag] = _openBagEvent
             };
         }
 

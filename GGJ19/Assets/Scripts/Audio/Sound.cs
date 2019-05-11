@@ -2,6 +2,7 @@
 {
     public enum Sound
     {
-        FillWatter
+        FillWatter,
+        OpenBag
     }
 }

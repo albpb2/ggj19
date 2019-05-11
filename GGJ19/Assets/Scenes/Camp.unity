@@ -6512,6 +6512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fillBottleEventName: event:/Efectos de sonido/Refill_botella
+  _openBagEventName: event:/Efectos de sonido/Mochila
 --- !u!1 &791606296
 GameObject:
   m_ObjectHideFlags: 0

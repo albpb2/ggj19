@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Audio;
 using Assets.Scripts.Objects;
 using Assets.Scripts.Objects.PortableObjects;
 using Assets.Scripts.StorageSystem;
@@ -23,6 +24,7 @@ namespace Assets.Scripts.Player
         private GameManager _gameManager;
         private Character _character;
         private GameObject _bottleNotification;
+        private OneShotSoundPlayer _oneShotSoundPlayer;
 
         public Bag ActiveBag { get; set; }
 
@@ -42,6 +44,7 @@ namespace Assets.Scripts.Player
             _gameManager = FindObjectOfType<GameManager>();
             _character = GetComponent<Character>();
             _bottleNotification = GameObject.FindGameObjectWithTag("water-fill-notification");
+            _oneShotSoundPlayer = FindObjectOfType<OneShotSoundPlayer>();
             ActiveBag = _dialogBag;
         }
 
@@ -151,6 +154,7 @@ namespace Assets.Scripts.Player
         private void OpenActiveBag()
         {
             ActiveBag.gameObject.SetActive(true);
+            _oneShotSoundPlayer.Play(Sound.OpenBag);
             PaintItems();
         }
 
