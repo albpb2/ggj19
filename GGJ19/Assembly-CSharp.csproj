@@ -108,9 +108,8 @@
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudio.cs" />
     <Compile Include="Assets\ResonanceAudio\Scripts\FmodResonanceAudioRoom.cs" />
-    <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Audio\FModSound.cs" />
-    <Compile Include="Assets\Scripts\Audio\PermanentAudioSource.cs" />
+    <Compile Include="Assets\Scripts\Audio\SceneSoundPlayer.cs" />
     <Compile Include="Assets\Scripts\Audio\Sound.cs" />
     <Compile Include="Assets\Scripts\Audio\SoundPlayer.cs" />
     <Compile Include="Assets\Scripts\CameraScripts\CameraMovementController.cs" />

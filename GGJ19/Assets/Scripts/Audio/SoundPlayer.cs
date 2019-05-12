@@ -6,6 +6,8 @@ namespace Assets.Scripts.Audio
 {
     public class SoundPlayer : MonoBehaviour
     {
+        private static SoundPlayer _instance;
+
         [FMODUnity.EventRef]
         [SerializeField]
         private string _fillBottleEventName;
@@ -26,20 +28,17 @@ namespace Assets.Scripts.Audio
 
         private Dictionary<Sound, EventInstance> _eventPerSound;
 
-        public void Start()
+        public void Awake()
         {
-            _fillBottleEvent = FMODUnity.RuntimeManager.CreateInstance(_fillBottleEventName);
-            _openBagEvent = FMODUnity.RuntimeManager.CreateInstance(_openBagEventName);
-            _endOfDayEvent = FMODUnity.RuntimeManager.CreateInstance(_endOfDayEventName);
-            _buttonClickEvent = FMODUnity.RuntimeManager.CreateInstance(_buttonClickEventName);
+            LoadEvents();
 
-            _eventPerSound = new Dictionary<Sound, EventInstance>
+            if (_instance == null)
             {
-                [Sound.FillWatter] = _fillBottleEvent,
-                [Sound.OpenBag] = _openBagEvent,
-                [Sound.EndOfDay] = _endOfDayEvent,
-                [Sound.ButtonClick] = _buttonClickEvent,
-            };
+                DontDestroyOnLoad(gameObject);
+                _instance = this;
+            }
+            else if (_instance != this)
+                Destroy(gameObject);
         }
 
         public void Play(Sound sound)
@@ -69,6 +68,22 @@ namespace Assets.Scripts.Audio
         public void PlayButtonClickSound()
         {
             Play(Sound.ButtonClick);
+        }
+
+        private void LoadEvents()
+        {
+            _fillBottleEvent = FMODUnity.RuntimeManager.CreateInstance(_fillBottleEventName);
+            _openBagEvent = FMODUnity.RuntimeManager.CreateInstance(_openBagEventName);
+            _endOfDayEvent = FMODUnity.RuntimeManager.CreateInstance(_endOfDayEventName);
+            _buttonClickEvent = FMODUnity.RuntimeManager.CreateInstance(_buttonClickEventName);
+
+            _eventPerSound = new Dictionary<Sound, EventInstance>
+            {
+                [Sound.FillWatter] = _fillBottleEvent,
+                [Sound.OpenBag] = _openBagEvent,
+                [Sound.EndOfDay] = _endOfDayEvent,
+                [Sound.ButtonClick] = _buttonClickEvent,
+            };
         }
     }
 }
