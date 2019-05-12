@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Audio;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class TimeTracker : MonoBehaviour
@@ -27,8 +28,16 @@ public class TimeTracker : MonoBehaviour
     private float _secondsPerHour;
     private float _secondsPerDay;
     private bool _stopped;
+    private SoundPlayer _soundPlayer;
+    private float _timeToStartEndOfDaySoundInSeconds;
+    private bool _endOfDaySoundPlaying = false;
 
     public int CurrentDay { get; set; } = 1;
+
+    public void Awake()
+    {
+        _soundPlayer = FindObjectOfType<SoundPlayer>();
+    }
 
     public void Start()
     {
@@ -37,6 +46,9 @@ public class TimeTracker : MonoBehaviour
         _secondsPerDay = _realDayDurationInMinutes * 60;
         _dayText.text = "1";
         Debug.Log("Day 1 starts.");
+
+        const float EndOfDaySoundDuration = 10;
+        _timeToStartEndOfDaySoundInSeconds = _secondsPerDay - EndOfDaySoundDuration;
     }
 
     public void Update()
@@ -51,6 +63,10 @@ public class TimeTracker : MonoBehaviour
         if (_timeForCurrentDayInSeconds >= _secondsPerDay)
         {
             EndDay();
+        }
+        else if (MustPlayEndOfDaySound())
+        {
+            PlayEndOfDaySound();
         }
 
         var _currentTimeHour = (int)(_timeForCurrentDayInSeconds / _secondsPerHour);
@@ -75,6 +91,9 @@ public class TimeTracker : MonoBehaviour
     {
         _stopped = true;
         Debug.Log($"Day {CurrentDay} ends.");
+
+        StopEndOfDaySound();
+
         onDayEnded?.Invoke(CurrentDay);
     }
 
@@ -91,5 +110,22 @@ public class TimeTracker : MonoBehaviour
     private int GetMinuteFraction(float minute)
     {
         return ((int) (minute / _minutesFraction)) * _minutesFraction;
+    }
+
+    private bool MustPlayEndOfDaySound()
+    {
+        return !_endOfDaySoundPlaying && _timeForCurrentDayInSeconds >= _timeToStartEndOfDaySoundInSeconds;
+    }
+
+    private void PlayEndOfDaySound()
+    {
+        _endOfDaySoundPlaying = true;
+        _soundPlayer.Play(Sound.EndOfDay);
+    }
+
+    private void StopEndOfDaySound()
+    {
+        _soundPlayer.Stop(Sound.EndOfDay);
+        _endOfDaySoundPlaying = false;
     }
 }

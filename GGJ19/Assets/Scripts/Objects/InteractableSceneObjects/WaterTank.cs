@@ -8,14 +8,14 @@ namespace Assets.Scripts.Objects.InteractableSceneObjects
         private const Sound FillWaterSound = Sound.FillWatter;
 
         private BagHandler _bag;
-        private OneShotSoundPlayer _oneShotSoundPlayer;
+        private SoundPlayer _oneShotSoundPlayer;
 
         public override  void Start()
         {
             base.Start();
             
             _bag = FindObjectOfType<BagHandler>();
-            _oneShotSoundPlayer = FindObjectOfType<OneShotSoundPlayer>();
+            _oneShotSoundPlayer = FindObjectOfType<SoundPlayer>();
         }
 
         public override void Interact()

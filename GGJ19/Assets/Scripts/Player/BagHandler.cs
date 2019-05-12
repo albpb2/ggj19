@@ -24,7 +24,7 @@ namespace Assets.Scripts.Player
         private GameManager _gameManager;
         private Character _character;
         private GameObject _bottleNotification;
-        private OneShotSoundPlayer _oneShotSoundPlayer;
+        private SoundPlayer _oneShotSoundPlayer;
 
         public Bag ActiveBag { get; set; }
 
@@ -44,7 +44,7 @@ namespace Assets.Scripts.Player
             _gameManager = FindObjectOfType<GameManager>();
             _character = GetComponent<Character>();
             _bottleNotification = GameObject.FindGameObjectWithTag("water-fill-notification");
-            _oneShotSoundPlayer = FindObjectOfType<OneShotSoundPlayer>();
+            _oneShotSoundPlayer = FindObjectOfType<SoundPlayer>();
             ActiveBag = _dialogBag;
         }
 

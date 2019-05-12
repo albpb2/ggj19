@@ -3,6 +3,7 @@
     public enum Sound
     {
         FillWatter,
-        OpenBag
+        OpenBag,
+        EndOfDay
     }
 }

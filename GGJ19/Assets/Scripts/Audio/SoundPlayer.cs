@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Audio
 {
-    public class OneShotSoundPlayer : MonoBehaviour
+    public class SoundPlayer : MonoBehaviour
     {
         [FMODUnity.EventRef]
         [SerializeField]
@@ -12,20 +12,27 @@ namespace Assets.Scripts.Audio
         [FMODUnity.EventRef]
         [SerializeField]
         private string _openBagEventName;
+        [FMODUnity.EventRef]
+        [SerializeField]
+        private string _endOfDayEventName;
 
         private EventInstance _fillBottleEvent;
         private EventInstance _openBagEvent;
+        private EventInstance _endOfDayEvent;
 
         private Dictionary<Sound, EventInstance> _eventPerSound;
 
         public void Start()
         {
             _fillBottleEvent = FMODUnity.RuntimeManager.CreateInstance(_fillBottleEventName);
+            _openBagEvent = FMODUnity.RuntimeManager.CreateInstance(_openBagEventName);
+            _endOfDayEvent = FMODUnity.RuntimeManager.CreateInstance(_endOfDayEventName);
 
             _eventPerSound = new Dictionary<Sound, EventInstance>
             {
                 [Sound.FillWatter] = _fillBottleEvent,
-                [Sound.OpenBag] = _openBagEvent
+                [Sound.OpenBag] = _openBagEvent,
+                [Sound.EndOfDay] = _endOfDayEvent
             };
         }
 
@@ -34,6 +41,18 @@ namespace Assets.Scripts.Audio
             if (_eventPerSound.TryGetValue(sound, out var soundEvent))
             {
                 soundEvent.start();
+            }
+            else
+            {
+                throw new System.Exception($"Sound {sound} not found");
+            }
+        }
+
+        public void Stop(Sound sound)
+        {
+            if (_eventPerSound.TryGetValue(sound, out var soundEvent))
+            {
+                soundEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             }
             else
             {
