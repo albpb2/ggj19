@@ -15,10 +15,14 @@ namespace Assets.Scripts.Audio
         [FMODUnity.EventRef]
         [SerializeField]
         private string _endOfDayEventName;
+        [FMODUnity.EventRef]
+        [SerializeField]
+        private string _buttonClickEventName;
 
         private EventInstance _fillBottleEvent;
         private EventInstance _openBagEvent;
         private EventInstance _endOfDayEvent;
+        private EventInstance _buttonClickEvent;
 
         private Dictionary<Sound, EventInstance> _eventPerSound;
 
@@ -27,12 +31,14 @@ namespace Assets.Scripts.Audio
             _fillBottleEvent = FMODUnity.RuntimeManager.CreateInstance(_fillBottleEventName);
             _openBagEvent = FMODUnity.RuntimeManager.CreateInstance(_openBagEventName);
             _endOfDayEvent = FMODUnity.RuntimeManager.CreateInstance(_endOfDayEventName);
+            _buttonClickEvent = FMODUnity.RuntimeManager.CreateInstance(_buttonClickEventName);
 
             _eventPerSound = new Dictionary<Sound, EventInstance>
             {
                 [Sound.FillWatter] = _fillBottleEvent,
                 [Sound.OpenBag] = _openBagEvent,
-                [Sound.EndOfDay] = _endOfDayEvent
+                [Sound.EndOfDay] = _endOfDayEvent,
+                [Sound.ButtonClick] = _buttonClickEvent,
             };
         }
 
@@ -58,6 +64,11 @@ namespace Assets.Scripts.Audio
             {
                 throw new System.Exception($"Sound {sound} not found");
             }
+        }
+
+        public void PlayButtonClickSound()
+        {
+            Play(Sound.ButtonClick);
         }
     }
 }

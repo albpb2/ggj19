@@ -4,6 +4,7 @@
     {
         FillWatter,
         OpenBag,
-        EndOfDay
+        EndOfDay,
+        ButtonClick
     }
 }
