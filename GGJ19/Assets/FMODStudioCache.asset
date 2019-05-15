@@ -37,7 +37,7 @@ MonoBehaviour:
   - {fileID: 114944868969863948}
   StringsBanks:
   - {fileID: 114831614093948622}
-  stringsBankWriteTime: 636931947521328825
+  stringsBankWriteTime: 636935084319639339
   cacheVersion: 3
 --- !u!114 &114042794466435798
 MonoBehaviour:
@@ -168,7 +168,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114262590005695350}
+  - {fileID: 114597287576888750}
   MinDistance: 0
   MaxDistance: 0
   Length: 102857
@@ -190,7 +190,7 @@ MonoBehaviour:
   - {fileID: 114944868969863948}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
@@ -587,6 +587,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3750
+--- !u!114 &114597287576888750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: musvolume
+  Min: 0
+  Max: 100
+  Default: 0
 --- !u!114 &114617382591810300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,7 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\FMOD\Master Bank.strings.bank
-  lastModified: 636931947521328825
+  lastModified: 636935084319639339
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -918,11 +934,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: E:\Repos\GGJ19\GGJ19\Assets\Audio\FMOD\Master Bank.bank
-  lastModified: 636931947521258849
+  lastModified: 636935084319514311
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 5993056
+    Value: 5994784
   Exists: 1
 --- !u!114 &114997442190571470
 MonoBehaviour:
