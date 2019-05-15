@@ -47,3 +47,4 @@ MonoBehaviour:
   _openBagEventName: event:/Efectos de sonido/Mochila
   _endOfDayEventName: "event:/Efectos de sonido/Fin_del_d\xEDa"
   _buttonClickEventName: "event:/Efectos de sonido/Men\xFA/Selecci\xF3n_de_boton"
+  _buttonHoverEventName: "event:/Efectos de sonido/Men\xFA/Cambio_entre_botones"

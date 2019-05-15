@@ -5,6 +5,7 @@
         FillWatter,
         OpenBag,
         EndOfDay,
-        ButtonClick
+        ButtonClick,
+        ButtonHover
     }
 }

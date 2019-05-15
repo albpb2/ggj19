@@ -20,11 +20,15 @@ namespace Assets.Scripts.Audio
         [FMODUnity.EventRef]
         [SerializeField]
         private string _buttonClickEventName;
+        [FMODUnity.EventRef]
+        [SerializeField]
+        private string _buttonHoverEventName;
 
         private EventInstance _fillBottleEvent;
         private EventInstance _openBagEvent;
         private EventInstance _endOfDayEvent;
         private EventInstance _buttonClickEvent;
+        private EventInstance _buttonHoverEvent;
 
         private Dictionary<Sound, EventInstance> _eventPerSound;
 
@@ -76,6 +80,7 @@ namespace Assets.Scripts.Audio
             _openBagEvent = FMODUnity.RuntimeManager.CreateInstance(_openBagEventName);
             _endOfDayEvent = FMODUnity.RuntimeManager.CreateInstance(_endOfDayEventName);
             _buttonClickEvent = FMODUnity.RuntimeManager.CreateInstance(_buttonClickEventName);
+            _buttonHoverEvent = FMODUnity.RuntimeManager.CreateInstance(_buttonHoverEventName);
 
             _eventPerSound = new Dictionary<Sound, EventInstance>
             {
@@ -83,6 +88,7 @@ namespace Assets.Scripts.Audio
                 [Sound.OpenBag] = _openBagEvent,
                 [Sound.EndOfDay] = _endOfDayEvent,
                 [Sound.ButtonClick] = _buttonClickEvent,
+                [Sound.ButtonHover] = _buttonHoverEvent
             };
         }
     }

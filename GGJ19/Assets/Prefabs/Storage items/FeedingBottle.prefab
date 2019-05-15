@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 434098815658575938}
   - component: {fileID: 5498242010434931745}
   - component: {fileID: 8538820747321165807}
+  - component: {fileID: 1112202105609725107}
   m_Layer: 5
   m_Name: FeedingBottle
   m_TagString: Untagged
@@ -142,3 +143,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _portableObjectType: 2
+  FromStorage: 0
+--- !u!114 &1112202105609725107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9097797934438211045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0167576807da024f9da404b755c5e03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
