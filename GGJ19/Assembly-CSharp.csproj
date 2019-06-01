@@ -134,10 +134,13 @@
     <Compile Include="Assets\Scripts\GameState.cs" />
     <Compile Include="Assets\Scripts\HideableGameObject.cs" />
     <Compile Include="Assets\Scripts\InputManager.cs" />
+    <Compile Include="Assets\Scripts\InteractableObjectSpawner.cs" />
     <Compile Include="Assets\Scripts\IUIHideable.cs" />
     <Compile Include="Assets\Scripts\Layers.cs" />
     <Compile Include="Assets\Scripts\Maths\Probabilities.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObject.cs" />
+    <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\Carafe.cs" />
+    <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\CarafeSpawner.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\Gifts.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\PlaneSwitchTrigger.cs" />
     <Compile Include="Assets\Scripts\Objects\InteractableSceneObjects\Store.cs" />

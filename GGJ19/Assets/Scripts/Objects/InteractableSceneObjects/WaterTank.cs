@@ -10,7 +10,7 @@ namespace Assets.Scripts.Objects.InteractableSceneObjects
         private BagHandler _bag;
         private SoundPlayer _oneShotSoundPlayer;
 
-        public override  void Start()
+        public override void Start()
         {
             base.Start();
             

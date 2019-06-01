@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3476707543293870966}
   - component: {fileID: 3476707543293870965}
   - component: {fileID: 3476707543293870964}
-  - component: {fileID: 3647085459344930207}
+  - component: {fileID: 8554122453245870393}
   m_Layer: 0
   m_Name: WaterCarafe
   m_TagString: Untagged
@@ -107,7 +107,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3, y: 3.06}
   m_EdgeRadius: 0
---- !u!114 &3647085459344930207
+--- !u!114 &8554122453245870393
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,6 +116,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3476707543293870967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63b803c5494e2d14cb9b8c8adcced143, type: 3}
+  m_Script: {fileID: 11500000, guid: dcfccb98b5ab5974d9bcd4662de3cc34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
