@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114831614093948622}
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   EditorEvents:
   - {fileID: 114798934608679172}
   - {fileID: 114383346268142536}
@@ -34,10 +34,10 @@ MonoBehaviour:
   - {fileID: 114452640331118166}
   - {fileID: 114516459080126380}
   MasterBanks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   StringsBanks:
   - {fileID: 114831614093948622}
-  stringsBankWriteTime: 636935084319639339
+  stringsBankWriteTime: 636970000413826766
   cacheVersion: 3
 --- !u!114 &114042794466435798
 MonoBehaviour:
@@ -78,7 +78,7 @@ MonoBehaviour:
   Path: event:/Efectos de sonido/Pasos_tierra
   guid: b331ba9f78266a45890e11cfc2f49935
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -163,12 +163,12 @@ MonoBehaviour:
   Path: "event:/M\xFAsica/Tema_principal"
   guid: 2e6f628e351acf46a1af4447c5090676
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114597287576888750}
+  - {fileID: 114391750228374274}
   MinDistance: 0
   MaxDistance: 0
   Length: 102857
@@ -187,7 +187,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_x5"
   guid: 7da8d30e62bd144782934944f793f8fb
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_2"
   guid: cba2aa98f99e0446a265eaead07b98af
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -291,7 +291,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Fin_del_d\xEDa"
   guid: 2e451bee0e5d444b9979bc6af89fad8b
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -314,7 +314,7 @@ MonoBehaviour:
   Path: event:/Efectos de sonido/Refill_botella
   guid: 2cf50ff25a8ea740990417e45322bcc2
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -322,6 +322,41 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &114391750228374274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: musvolume
+  Min: 0
+  Max: 100
+  Default: 0
+--- !u!114 &114430348913733098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\PersonalRepos\GGJ19b\GGJ19\Assets\Audio\FMOD\Master Bank.bank
+  lastModified: 636970000413786850
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 5994784
+  Exists: 1
 --- !u!114 &114431543979524286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,7 +372,7 @@ MonoBehaviour:
   Path: event:/Efectos de sonido/Mochila
   guid: d4fb592bf49a6042a63a8bb01fb91dec
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -360,7 +395,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_2"
   guid: 9df66a638f038e499810c7bc9aa6d041
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -383,7 +418,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_3"
   guid: ddd5f76414c16b43bd3716850267dc8f
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -510,7 +545,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_1"
   guid: e0a10957a5db214fb8fa6f735ad632ad
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -533,7 +568,7 @@ MonoBehaviour:
   Path: event:/Ambientes/Ambiente_latas_pajaros
   guid: 9512ff01da347540a5336eeaea928ed8
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -710,7 +745,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_medio_x5"
   guid: a4ed776b57d8724baa5d3e011c314802
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -756,7 +791,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_largo_x5"
   guid: 1226e80515034e4b83c9dba864c7280e
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -777,7 +812,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\Audio\FMOD\Master Bank.strings.bank
-  lastModified: 636935084319639339
+  lastModified: 636970000413826766
   LoadResult: 0
   FileSizes:
   - Name: 
@@ -798,7 +833,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Men\xFA/Cambio_entre_botones"
   guid: 40de87a5944c394983331770742fb271
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -844,7 +879,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Men\xFA/Selecci\xF3n_de_boton"
   guid: a05055386bb4cd41a2509b92bd8786b0
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -890,7 +925,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_corto_1"
   guid: 778d480973ff0c48af0d4058937be908
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -913,7 +948,7 @@ MonoBehaviour:
   Path: "event:/Efectos de sonido/Di\xE1logos/Dialogo_largo_1"
   guid: bc89a9cd3961994ba5d0df95d4a85656
   Banks:
-  - {fileID: 114944868969863948}
+  - {fileID: 114430348913733098}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -939,7 +974,7 @@ MonoBehaviour:
   FileSizes:
   - Name: 
     Value: 5994784
-  Exists: 1
+  Exists: 0
 --- !u!114 &114997442190571470
 MonoBehaviour:
   m_ObjectHideFlags: 0
