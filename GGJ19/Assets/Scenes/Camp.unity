@@ -17661,7 +17661,7 @@ MonoBehaviour:
   IllnessProbability: 10
   ProperItemSpawningProbability: 70
   HungerItemProbability: 40
-  ThirstItemProbability: 40
+  ThirstItemProbability: 10
   ColdItemProbability: 30
   IllnessItemProbability: 10
   HungerResolvedPoints: 5
